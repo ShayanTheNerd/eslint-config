@@ -1,0 +1,34 @@
+{
+	"extends": ["./src/oxlint.config.jsonc"],
+
+	"env": {
+		"node": true,
+		"es2026": true,
+		"builtin": true
+	},
+
+	"categories": {
+		"correctness": "error",
+		"suspicious": "error",
+		"restriction": "error",
+		"pedantic": "error",
+		"perf": "warn",
+		"style": "warn",
+		"nursery": "error"
+	},
+
+	"rules": {
+		"jsdoc/check-tag-names": "off"
+	},
+
+	"overrides": [
+		{
+			"files": ["src/index.ts", "src/{configs,rules,types}/*.ts"],
+			"rules": {
+				"jest/no-export": "off",
+				"eslint/max-lines": "off",
+				"eslint/max-lines-per-function": "off"
+			}
+		}
+	]
+}

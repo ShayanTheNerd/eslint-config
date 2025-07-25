@@ -1,0 +1,41 @@
+name: CI
+
+on: [push, pull_request]
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  Validation:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup The Environment
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Format
+        run: bun run format
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Check Types
+        run: bun run check:types
+
+      - name: Build Inspector
+        run: bun --bun run build:inspector
+
+      - name: Build Package
+        run: bun run build:package
+
+      - name: Check Exports
+        run: bun run check:exports

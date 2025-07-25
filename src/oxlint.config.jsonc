@@ -1,0 +1,192 @@
+{
+	"$schema": "../node_modules/oxlint/configuration_schema.json",
+
+	"env": {
+		"builtin": true,
+		"es2026": true,
+		"commonjs": false,
+		"node": true,
+		"browser": true,
+		"worker": true,
+		"serviceworker": false,
+		"webextensions": false
+	},
+
+	"categories": {
+		"correctness": "error",
+		"suspicious": "error",
+		"restriction": "error",
+		"pedantic": "error",
+		"perf": "warn",
+		"style": "warn",
+		"nursery": "error"
+	},
+
+	"plugins": [
+		"oxc",
+		"node",
+		"jest",
+		"jsdoc",
+		"eslint",
+		"import",
+		"vitest",
+		"promise",
+		"unicorn",
+		"jsx-a11y",
+		"typescript"
+	],
+
+	"rules": {
+		/*** OXC ***/
+		"oxc/no-async-await": "off",
+		"oxc/no-optional-chaining": "off",
+		"oxc/no-rest-spread-properties": "off",
+
+		/*** ESLint ***/
+		"eslint/yoda": "error",
+		"eslint/alert": "warn",
+		"eslint/id-length": "off",
+		"eslint/sort-vars": "off",
+		"eslint/sort-keys": "off",
+		"eslint/no-ternary": "off",
+		"eslint/no-undefined": "off",
+		"eslint/sort-imports": "off",
+		"eslint/no-magic-numbers": "off",
+		"eslint/arrow-body-style": "off",
+		"eslint/no-duplicate-imports": "off",
+		"eslint/func-names": ["error", "as-needed"],
+
+		"eslint/no-console": [
+			"warn",
+			{
+				"allow": ["info", "warn", "error", "table", "group", "groupEnd", "groupCollapsed"]
+			}
+		],
+
+		/*** TypeScript ***/
+		"typescript/triple-slash-reference": "off",
+		"typescript/explicit-function-return-type": "off",
+		"typescript/consistent-indexed-object-style": ["warn", "record"],
+
+		/*** Import ***/
+		"import/unambiguous": "off",
+		"import/no-namespace": "off",
+		"import/exports-last": "off",
+		"import/max-dependencies": "off",
+		"import/no-default-export": "off",
+		"import/prefer-default-export": "off",
+		"import/no-named-as-default-member": "off",
+		"import/no-anonymous-default-export": "off",
+
+		/*** Unicorn ***/
+		"unicorn/filename-case": "off",
+		"unicorn/prefer-set-has": "off",
+		"unicorn/no-array-reduce": "off",
+		"unicorn/prefer-string-raw": "off",
+		"unicorn/no-array-for-each": "off",
+		"unicorn/no-useless-undefined": "off",
+		"unicorn/prefer-prototype-methods": "off",
+		"unicorn/no-await-expression-member": "off",
+
+		/*** Jest ***/
+		"jest/require-hook": "off",
+		"jest/prefer-lowercase-title": "warn",
+		"jest/require-top-level-describe": "off",
+
+		/*** Customizable Overrides ***/
+		/* These rules are customizable in the ESLint config, but OXLint doesn't respect them. */
+		"eslint/max-depth": "off",
+		"eslint/func-style": "off",
+		"eslint/max-nested-callbacks": "off",
+		"typescript/consistent-type-definitions": "off",
+		"import/extensions": "off",
+		"vitest/consistent-test-it": "off",
+		"jest/max-nested-describe": "off"
+	},
+
+	"overrides": [
+		{
+			"files": ["**/{src,app,server}/**/*.{vue,js,mjs,cjs,jsx,ts,mts,cts,tsx}"],
+			"rules": {
+				"eslint/no-undef": "off"
+			}
+		},
+		{
+			"files": [
+				"**/{shared,dto,dtos,model,models,helper,helpers,module,modules,@type,@types,types,util,utils,utilities,composable,composables,repo,repos,repository,repositories}/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}"
+			],
+			"rules": {
+				"typescript/explicit-function-return-type": "error"
+			}
+		}
+	],
+
+	"ignorePatterns": [
+		/* Dependencies */
+		"**/*.min.*",
+		"**/jspm_packages",
+		"**/pnpm-lock.yaml",
+		"**/bower_components",
+		"**/package-lock.json",
+
+		/* Auto-generated type definitions */
+		"**/typegen.d.ts",
+		"**/components.d.ts",
+		"**/auto-import?(s).d.ts",
+
+		/* Build outputs */
+		"**/out",
+		"**/dist",
+		"**/build",
+		"**/.data",
+		"**/output",
+		"**/.output",
+		"**/.serverless",
+		"**/public/build",
+		"**/public/static",
+		"**/.eslint-config-inspector",
+
+		/* Cache */
+		"**/tmp",
+		"**/.tmp",
+		"**/.npm",
+		"**/temp",
+		"**/.temp",
+		"**/cache",
+		"**/.cache",
+		"**/deno_dir",
+		"**/.parcel-cache",
+		"**/*.lerna_backup",
+		"**/.postcss-cache",
+		"**/.vitepress/cache",
+		"**/vite.config.*.timestamp-*",
+
+		/* Frameworks and tools */
+		"**/.nx",
+		"**/.vite",
+		"**/.yarn",
+		"**/.nuxt",
+		"**/.next",
+		"**/.vitest",
+		"**/.vercel",
+		"**/.svelte-kit",
+		"**/.vite-inspect",
+
+		/* Tests */
+		"**/coverage",
+		"**/_fixtures",
+		"**/.nyc_output",
+		"**/__snapshots__",
+
+		/* Development environment */
+		"**/.idea",
+		"**/.fleet",
+		"**/.history",
+
+		// Documentation
+		"**/LICENSE*",
+		"**/CHANGELOG*.md",
+		"**/CODEOWNERS.md",
+		"**/CODE_OF_CONDUCT.md"
+	]
+}

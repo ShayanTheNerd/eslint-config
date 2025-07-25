@@ -1,0 +1,45 @@
+# ====================================== Template =======================================
+# <type>[(scope)][!]: <summary> (maximum 50 characters)
+
+# [body]: Explain WHY you are making this change, not HOW. (wrap lines at 72 characters)
+
+# [footer]
+# Signed-off-by: <name> (<email address>)
+# Reviewed-by: <name> (@<GitHub username>)
+# References/Fixes: #<GitHub issue number>
+# =======================================================================================
+
+
+# =================================== Commit Message ====================================
+
+# =======================================================================================
+
+
+# ==================================== Specification ====================================
+# https://conventionalcommits.org - <required field> - [optional field]
+
+# Remember to:
+# - not capitalize the subject line, nor end it with a period;
+# - separate subject, body, footer, and paragraphs with a blank line;
+# - start multi-line bullet points with 3 whitespaces followed by "-";
+# - use the imperative, present tense (e.g., "fix" not "fixed" nor "fixes").
+
+# | Type        | Description                                                           |
+# | ----------- | --------------------------------------------------------------------- |
+# | fix         | correction of bugs or issues
+# | feat        | introduction of a new feature
+# | revert      | reversion to a previous commit
+# | docs        | changes or additions to the documentation
+# | ci          | changes to CI configuration files or scripts
+# | style       | code style changes that don't affect functionality
+# | chore       | minor maintenance activities — no production code change
+# | test        | addition or refactoring tests — no production code change
+# | router      | updates related to routing, navigation, or URL management
+# | refactor    | code revisions and improvements — no production code change
+# | build       | changes that affect the build system or external dependencies
+# | perf        | optimizations that improve the performance of production code
+# | upgrade     | modifications related to version upgrades or dependency updates
+# | http        | modifications related to HTTP requests, API calls, or data fetching
+# | core        | fundamental changes or updates that affect the core functionalities
+# | i18n        | modifications to translations or updating translation functionalities
+# =======================================================================================
