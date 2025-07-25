@@ -123,7 +123,7 @@ npm i -D prettier
 
 2. Create a Prettier config file (_prettier.config.js_) in the root of your project:
 ```js
-import prettierConfig from '@shayanthenerd/eslint-config/prettier.config.js';
+import prettierConfig from '@shayanthenerd/eslint-config/prettier';
 
 /** @type {import('prettier').Config} */
 export default {
