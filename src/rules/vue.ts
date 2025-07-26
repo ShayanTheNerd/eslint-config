@@ -39,6 +39,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 	const nuxtUI = isEnabled(nuxt) ? nuxt.ui : undefined;
 	const nuxtUIPrefix = isEnabled(nuxt) && isEnabled(nuxt.ui) ? nuxt.ui.prefix : undefined;
 	const isScriptLangTS = blockLang.script === 'ts';
+	const isStyleLangImplicit = blockLang.style === 'implicit';
 
 	const vueRules = {
 		'no-undef': 'off',
@@ -136,8 +137,8 @@ function getVueRules(options: DeepNonNullable<Options>) {
 				lang: blockLang.script,
 			},
 			style: {
-				lang: blockLang.style,
-				allowNoLang: blockLang.style === 'implicit',
+				lang: isStyleLangImplicit ? undefined : blockLang.style,
+				allowNoLang: isStyleLangImplicit,
 			},
 		}],
 		'vue/block-tag-newline': ['warn', {

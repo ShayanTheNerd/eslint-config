@@ -25,6 +25,11 @@ function enableDetectedConfigs(options: Options): Options {
 
 	options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : false;
 
+	if (options.configs.typescript && options.configs.vue) {
+		options.configs.vue = options.configs.vue === true ? {} : options.configs.vue;
+		options.configs.vue.blockLang = { script: 'ts' };
+	}
+
 	if (options.configs.nuxt) {
 		if (options.configs.nuxt === true) {
 			options.configs.nuxt = {};
