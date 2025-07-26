@@ -26,7 +26,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
 			tailwind,
 		},
 	} = options;
-	const { entryPoint, config, overrides } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
+	const { config, entryPoint, overrides } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
 
 	const tailwindConfig = {
 		name: 'shayanthenerd/tailwind',
@@ -41,8 +41,8 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
 		},
 		settings: {
 			'better-tailwindcss': {
-				entryPoint: path.resolve(entryPoint),
-				tailwindConfig: path.resolve(config),
+				entryPoint,
+				tailwindConfig: config,
 				tsconfig: tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined,
 				attributes: [
 					['^v-bind:ui$', [
