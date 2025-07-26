@@ -399,7 +399,8 @@ interface options {
       overrides?: {},
     },
     importX?: boolean | {
-      requireFileExtension?: 'always' | 'never',
+			removeUnusedImports?: boolean,
+      requireFileExtension?: boolean,
       overrides?: {},
     },
     perfectionist?: boolean | {
