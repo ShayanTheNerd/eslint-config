@@ -50,6 +50,6 @@
 		"*.js": "$(capture).js.map, $(capture).*.js",
 		"*.ts": "$(capture).js, $(capture).*.ts, $(capture).d.ts.map",
 		"README.md": "CHANGELOG.md, CODE_OF_CONDUCT.md, CODEOWNERS, CONTRIBUTING.md, LICENSE",
-		"package.json": ".editorconfig, .oxlintrc.json, .prettierignore, bun.lock, bunfig.toml, eslint.config.ts, lint-staged.config.ts, netlify.toml, prettier.config.js, tsconfig.json, tsdown.config.ts"
+		"package.json": ".editorconfig, .oxlintrc.json, .prettierignore, bun.lock, bunfig.toml, eslint.config.ts, netlify.toml, prettier.config.js, tsconfig.json, tsdown.config.ts"
 	}
 }
