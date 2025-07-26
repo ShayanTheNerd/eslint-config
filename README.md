@@ -43,7 +43,23 @@ import { defineConfig } from '@shayanthenerd/eslint-config';
 export default defineConfig();
 ```
 
-You can also use a TypeScript file (_eslint.config.ts_) for your ESLint configuration. Depending on your Node.js version, [additional setup](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files) may be required.
+You can also use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files) may be required.
+
+If you're using Nuxt, install [@nuxt/eslint](https://eslint.nuxt.com) as a dev dependency:
+```shell
+npm i -D @nuxt/eslint
+```
+
+Then, update your ESLint config file:
+```js
+import { defineConfig } from '@shayanthenerd/eslint-config';
+
+import eslintConfigNuxt from './.nuxt/eslint.config.mjs';
+
+const eslintConfig = defineConfig();
+
+export default eslintConfigNuxt(eslintConfig);
+```
 
 3. Create an OXLint config file (_.oxlintrc.json_) in the root of your project:
 ```jsonc
@@ -231,7 +247,7 @@ Since OXLint and ESLint use separate config files, customizations made in your E
   ],
 
   /* OXLint respects the ignore patterns defined in `.gitignore` and `.eslintignore` files by default. */
-  "ignorePatterns": ["**/*.min.*", "**/oxlint-schema.d.ts"]
+  "ignorePatterns": ["**/*.min.*"]
 }
 ```
 
