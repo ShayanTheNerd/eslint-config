@@ -9,10 +9,21 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getImportXRules(options: DeepNonNullable<Options>) {
 	const { packageDir, configs: { importX } } = options;
-	const { requireFileExtension } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
+	const { removeUnusedImports, requireFileExtension } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
 	const importXRules = {
-		'unused-imports/no-unused-imports': 'warn',
+		'unused-imports/no-unused-imports': removeUnusedImports ? 'warn' : 'off',
+
+		/* `import-x/extensions` rule is broken. */
+		'import-x/extensions': 'off',
+		'import/extensions': [
+			requireFileExtension ? 'warn' : 'off',
+			'always',
+			{
+				ignorePackages: true,
+				checkTypeImports: true,
+			},
+		],
 
 		'import-x/no-amd': 'error',
 		'import-x/exports-last': 'warn',
@@ -36,12 +47,7 @@ function getImportXRules(options: DeepNonNullable<Options>) {
 			includeTypes: true,
 			packageDir: path.resolve(packageDir),
 		}],
-		'import-x/extensions': ['error', requireFileExtension, {
-			fix: true,
-			ignorePackages: true,
-			checkTypeImports: true,
-		}],
-	} satisfies PluginRules<'import-x'> & PluginRules<'unused-imports'>;
+	} satisfies PluginRules<'import'> & PluginRules<'import-x'> & PluginRules<'unused-imports'>;
 
 	return importXRules;
 }

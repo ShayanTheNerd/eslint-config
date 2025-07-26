@@ -9,15 +9,26 @@ type RequireFileExtension = Exclude<
 
 interface ImportXOptions extends ConfigWithOverrides {
 	/**
-	 * Enforce consistent use of file extensions within the import path.
+	 * Automatically remove unused imports.
+	 *
+	 * @default true
+	 *
+	 * @see [unused-imports/no-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md)
+	 */
+	removeUnusedImports?: boolean,
+
+	/**
+	 * Require file extensions within the import path.
 	 *
 	 * Imports from third-party packages are ignored.
 	 *
-	 * @default 'always'
+	 * `import-x/extensions` rule is currently broken, so `import/extensions` is used as a temporary replacement.
 	 *
-	 * @see [import-x/extensions](https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/extensions.md)
+	 * @default true
+	 *
+	 * @see [import/extensions](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/extensions.md)
 	 */
-	requireFileExtension?: RequireFileExtension,
+	requireFileExtension?: boolean,
 }
 
 export type { ImportXOptions };

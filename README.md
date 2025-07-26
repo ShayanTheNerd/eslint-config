@@ -157,6 +157,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     /* Imports are sorted and organized with eslint-plugin-perfectionist. */
     "source.sortImports": "never",
     "source.organizeImports": "never",
+    "source.removeUnusedImports": "never",
 
     /* Apply OXLint and ESLint automatic fixes on file save. */
     "source.fixAll.oxc": "explicit",

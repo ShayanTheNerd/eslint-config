@@ -12,6 +12,7 @@
 		"source.sort.json": "never",
 		"source.sortImports": "never",
 		"source.organizeImports": "never",
+		"source.removeUnusedImports": "never",
 		"source.fixAll.oxc": "explicit",
 		"source.fixAll.eslint": "explicit"
 	},

@@ -76,7 +76,8 @@ const defaultOptions = {
 			overrides: {},
 		},
 		importX: {
-			requireFileExtension: 'always',
+			removeUnusedImports: true,
+			requireFileExtension: true,
 			overrides: {},
 		},
 		perfectionist: {
