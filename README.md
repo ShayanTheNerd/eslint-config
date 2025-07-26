@@ -34,9 +34,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 npm i -D @shayanthenerd/eslint-config
 ```
 
-OXLint and all necessary ESLint plugins and parsers will be installed automatically, so you don't need to install them separately.
-
-If you're using TypeScript and see [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) fail to resolve imports, you should also install [eslint-import-resolver-typescript](https://github.com/import-js/eslint-import-resolver-typescript) as a dev dependency.
+OXLint and all necessary ESLint plugins and parsers will be installed automatically.
 
 2. Create an ESLint config file (_eslint.config.js_) at the root of your project:
 ```js

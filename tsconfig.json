@@ -8,6 +8,7 @@
 			"#rules/*": ["./rules/*"],
 			"#configs/*": ["./configs/*"]
 		},
+		"noEmit": true,
 		"target": "esnext",
 		"declaration": true,
 		"emitDeclarationOnly": true,
@@ -21,6 +22,7 @@
 		"allowImportingTsExtensions": true,
 		"noUncheckedSideEffectImports": true,
 		"strict": true,
+		"allowJs": true,
 		"checkJs": true,
 		"skipLibCheck": true,
 		"noUnusedLocals": true,

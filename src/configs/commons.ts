@@ -7,6 +7,8 @@ import typescriptESLint from 'typescript-eslint';
 import { globs } from '#utils/globs.ts';
 
 function getCommonsConfig(options: DeepNonNullable<Options>): Linter.Config {
+	const { typescript, base: { preferNamedExports } } = options.configs;
+
 	const commonsConfig = {
 		name: 'shayanthenerd/commons',
 		files: [globs.commons],
@@ -15,9 +17,9 @@ function getCommonsConfig(options: DeepNonNullable<Options>): Linter.Config {
 			'@typescript-eslint': typescriptESLint.plugin as ESLint.Plugin,
 		},
 		rules: {
-			'@typescript-eslint/explicit-function-return-type': 'error',
+			'@typescript-eslint/explicit-function-return-type': typescript ? 'error' : 'off',
 			'no-restricted-exports': [
-				options.configs.base.preferNamedExports ? 'error' : 'off',
+				preferNamedExports ? 'error' : 'off',
 				{
 					restrictDefaultExports: {
 						named: true,

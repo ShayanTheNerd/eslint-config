@@ -69,7 +69,7 @@
 		"lint:oxlint": "oxlint --fix",
 		"lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
 		"lint": "bun lint:oxlint && bun lint:eslint",
-		"check:types": "tsc --noEmit",
+		"check:types": "tsc",
 		"check:exports": "bunx @arethetypeswrong/cli --pack --exclude-entrypoints ./prettier ./oxlint",
 		"check:spell": "bunx cspell . --gitignore --cache --cache-location=./node_modules/.cache/.cspellcache",
 		"ci:validate": "bun generate:types && bun format && bun lint && bun check:types && bun --bun build:inspector && bun build:package && bun check:exports"
@@ -94,7 +94,8 @@
 		"defu": "6.1.4",
 		"eslint": "9.31.0",
 		"eslint-flat-config-utils": "2.1.0",
-		"eslint-plugin-better-tailwindcss": "3.7.1",
+		"eslint-import-resolver-typescript": "4.4.4",
+		"eslint-plugin-better-tailwindcss": "3.7.2",
 		"eslint-plugin-cypress": "5.1.0",
 		"eslint-plugin-import-x": "4.16.1",
 		"eslint-plugin-oxlint": "1.8.0",
@@ -110,17 +111,8 @@
 		"tailwind-csstree": "0.1.1",
 		"typescript-eslint": "8.38.0"
 	},
-	"peerDependencies": {
-		"eslint-import-resolver-typescript": "^4.4.4"
-	},
-	"peerDependenciesMeta": {
-		"eslint-import-resolver-typescript": {
-			"optional": true
-		}
-	},
 	"devDependencies": {
 		"@types/node": "24.1.0",
-		"eslint-import-resolver-typescript": "4.4.4",
 		"eslint-typegen": "2.3.0",
 		"lint-staged": "16.1.2",
 		"nano-staged": "0.8.0",

@@ -17,7 +17,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 
 	const typescriptConfig = {
 		name: 'shayanthenerd/typescript',
-		files: [globs.src, vue ? globs.vue : ''],
+		files: [globs.ts, vue ? globs.vue : ''],
 		extends: [
 			typescriptESLint.configs.strictTypeChecked,
 			typescriptESLint.configs.stylisticTypeChecked,

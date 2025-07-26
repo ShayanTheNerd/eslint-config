@@ -14,13 +14,13 @@ const commonsFolders = [
 ] as const;
 
 const globs = {
+	css: '**/*.css',
+	html: '**/*.html',
+	ts: '**/*.?([mc])ts?(x)',
 	src: `**/*.${srcExtensions}`,
 
 	commons: `**/{${commonsFolders.join(',')}}/**/*.${srcExtensions}`,
 	commonsIgnore: `**/lint-staged.config.${srcExtensions}`,
-
-	html: '**/*.html',
-	css: '**/*.css',
 
 	vue: `**/*.${vueExtensions}`,
 	vueMultiRootTemplate: `**/pages/**/(_|-)components/**/*.${vueExtensions}`,

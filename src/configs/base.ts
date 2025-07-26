@@ -36,8 +36,8 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 		files: [globs.src, vue ? globs.vue : ''],
 		extends: [javascriptESLint.configs.recommended],
 		languageOptions: {
+			parser: typescriptESLint.parser,
 			parserOptions: {
-				parser: typescriptESLint.parser,
 				ecmaVersion: 'latest',
 				ecmaFeatures: {
 					jsx: true,
