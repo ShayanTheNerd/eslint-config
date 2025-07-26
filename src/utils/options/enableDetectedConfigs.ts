@@ -6,7 +6,6 @@ import { defaultOptions } from './defaultOptions.ts';
 function enableDetectedConfigs(options: Options): Options {
 	options.configs ??= {};
 	options.configs.test ??= {};
-	options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : false;
 
 	options.configs.html ??= false;
 	options.configs.css ??= false;
@@ -23,6 +22,8 @@ function enableDetectedConfigs(options: Options): Options {
 	options.configs.test.storybook ??= isPackageDetected('storybook', options);
 	options.configs.test.playwright ??= isPackageDetected('@playwright/test', options);
 	options.configs.oxlint ??= isPackageDetected('oxlint', options) ? defaultOptions.configs.oxlint : false;
+
+	options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : false;
 
 	if (options.configs.nuxt) {
 		if (options.configs.nuxt === true) {
