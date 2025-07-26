@@ -57,20 +57,21 @@
 	"type": "module",
 	"packageManager": "bun@1.2.19",
 	"scripts": {
-		"postinstall": "bun simple-git-hooks && bun generate:types",
+		"postinstall": "bun set:gitmessage && bunx simple-git-hooks && bun generate:types",
 		"prepublishOnly": "bun ci:validate",
+		"set:gitmessage": "git config --local commit.template \".gitmessage\"",
 		"inspect": "bunx @eslint/config-inspector",
 		"build:package": "tsdown --no-report",
-		"build:inspector": "bunx @eslint/config-inspector build --config='./scripts/defaultESLintConfigReference.ts'",
+		"build:inspector": "bunx @eslint/config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
 		"preview:inspector": "bunx serve .eslint-config-inspector",
-		"generate:types": "bun './scripts/generateESLintTypes.ts'",
+		"generate:types": "bun ./scripts/generateESLintTypes.ts",
 		"format": "prettier --write . '!**/*.{js,ts}' --cache",
 		"lint:oxlint": "oxlint --fix",
-		"lint:eslint": "eslint --fix --cache --cache-location='./node_modules/.cache/.eslintcache'",
+		"lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
 		"lint": "bun lint:oxlint && bun lint:eslint",
 		"check:types": "tsc --noEmit",
 		"check:exports": "bunx @arethetypeswrong/cli --pack --exclude-entrypoints ./prettier ./oxlint",
-		"check:spell": "bunx cspell . --gitignore --cache --cache-location='./node_modules/.cache/.cspellcache'",
+		"check:spell": "bunx cspell . --gitignore --cache --cache-location=./node_modules/.cache/.cspellcache",
 		"ci:validate": "bun generate:types && bun format && bun lint && bun check:types && bun --bun build:inspector && bun build:package && bun check:exports"
 	},
 	"simple-git-hooks": {
@@ -117,14 +118,8 @@
 		"lint-staged": "16.1.2",
 		"prettier": "3.6.2",
 		"publint": "0.3.12",
-		"simple-git-hooks": "2.13.0",
 		"tsdown": "0.13.0",
 		"typescript": "5.8.3",
 		"unplugin-unused": "0.5.1"
-	},
-	"trustedDependencies": [
-		"esbuild",
-		"unrs-resolver",
-		"simple-git-hooks"
-	]
+	}
 }
