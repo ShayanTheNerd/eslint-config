@@ -32,21 +32,15 @@
 	"files": [
 		"./dist"
 	],
-	"main": "./dist/index.cjs",
+	"main": "./dist/index.js",
 	"module": "./dist/index.js",
-	"types": "./dist/index.d.cts",
+	"types": "./dist/index.d.ts",
 	"exports": {
-		".": {
-			"import": "./dist/index.js",
-			"require": "./dist/index.cjs"
-		},
+		".": "./dist/index.js",
 		"./package.json": "./package.json",
 		"./types/*": "./dist/types/*",
 		"./oxlint": "./dist/oxlint.config.jsonc",
-		"./prettier": {
-			"import": "./dist/prettier.config.js",
-			"require": "./dist/prettier.config.cjs"
-		}
+		"./prettier": "./dist/prettier.config.js"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -73,7 +67,7 @@
 		"lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
 		"lint": "bun lint:oxlint && bun lint:eslint",
 		"check:types": "tsc",
-		"check:exports": "bunx @arethetypeswrong/cli --pack --exclude-entrypoints ./prettier ./oxlint",
+		"check:exports": "bunx @arethetypeswrong/cli --pack --profile=esm-only --exclude-entrypoints=./oxlint",
 		"check:spell": "bunx cspell . --gitignore --cache --cache-location=./node_modules/.cache/.cspellcache",
 		"ci:validate": "bun generate:types && bun format && bun lint && bun check:types && bun build:inspector && bun build:package && bun check:exports"
 	},

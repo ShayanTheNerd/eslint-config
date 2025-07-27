@@ -8,7 +8,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 - **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic](https://eslint.style), eliminating the need for Prettier
 - **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
 - **Developer-friendly**: Easy to use and well-documented with JSDoc
-- **Modern**: Requires Node.js v20.12.0+ and ESLint v9.28.0+
+- **Modern**: Requires Node.js v20.12.0+ and ESLint v9.28.0+ (ESM-only)
 
 > [!NOTE]
 > This configuration is designed with a flexible API for easy customization. However, it remains a **personal config**. While its primary goal is to enforce best practices and maintain code consistency, some rules—particularly stylistic ones—are rather opinionated. <br /> If the available customization and override options still don't meet your requirements, feel free to fork the project and tailor it to your needs.
