@@ -55,6 +55,7 @@
 	"packageManager": "bun@1.2.19",
 	"scripts": {
 		"prepare": "bun set:gitmessage && bunx simple-git-hooks && bun generate:types",
+		"prepublishOnly": "bun build:package",
 		"set:gitmessage": "git config --local commit.template \".gitmessage\"",
 		"inspect": "bunx @eslint/config-inspector",
 		"build:package": "tsdown --no-report",
