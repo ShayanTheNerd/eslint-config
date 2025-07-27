@@ -6,36 +6,22 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   Validation:
+    name: Validate the Code
     runs-on: ubuntu-latest
     steps:
-      - name: Setup The Environment
+      - name: Prepare the Environment
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: node
 
-      - name: Setup Bun
+      - name: Install Bun
         uses: oven-sh/setup-bun@v2
 
-      - name: Install Dependencies
+      - name: Install the Dependencies
         run: bun install --frozen-lockfile
 
-      - name: Format
-        run: bun run format
-
-      - name: Lint
-        run: bun run lint
-
-      - name: Check Types
-        run: bun run check:types
-
-      - name: Build Inspector
-        run: bun --bun run build:inspector
-
-      - name: Build Package
-        run: bun run build:package
-
-      - name: Check Exports
-        run: bun run check:exports
+      - name: Run the Validations
+        run: bun run ci:validate

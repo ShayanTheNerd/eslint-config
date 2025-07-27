@@ -72,7 +72,7 @@
 		"check:types": "tsc",
 		"check:exports": "bunx @arethetypeswrong/cli --pack --exclude-entrypoints ./prettier ./oxlint",
 		"check:spell": "bunx cspell . --gitignore --cache --cache-location=./node_modules/.cache/.cspellcache",
-		"ci:validate": "bun generate:types && bun format && bun lint && bun check:types && bun --bun build:inspector && bun build:package && bun check:exports"
+		"ci:validate": "bun generate:types && bun format && bun lint && bun check:types && bun build:inspector && bun build:package && bun check:exports"
 	},
 	"simple-git-hooks": {
 		"pre-commit": "./node_modules/.bin/nano-staged"
