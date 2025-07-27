@@ -26,20 +26,15 @@
 
 # | Type        | Description                                                           |
 # | ----------- | --------------------------------------------------------------------- |
-# | fix         | correction of bugs or issues
-# | feat        | introduction of a new feature
-# | revert      | reversion to a previous commit
-# | docs        | changes or additions to the documentation
-# | ci          | changes to CI configuration files or scripts
-# | style       | code style changes that don't affect functionality
-# | chore       | minor maintenance activities — no production code change
-# | test        | addition or refactoring tests — no production code change
-# | router      | updates related to routing, navigation, or URL management
-# | refactor    | code revisions and improvements — no production code change
-# | build       | changes that affect the build system or external dependencies
-# | perf        | optimizations that improve the performance of production code
-# | upgrade     | modifications related to version upgrades or dependency updates
-# | http        | modifications related to HTTP requests, API calls, or data fetching
-# | core        | fundamental changes or updates that affect the core functionalities
-# | i18n        | modifications to translations or updating translation functionalities
+# | fix         | Correction of bugs or issues                                          |
+# | feat        | Introduction of a new feature                                         |
+# | revert      | Reversion to a previous commit                                        |
+# | docs        | Changes or additions to the documentation                             |
+# | ci          | Changes to CI configuration files or scripts                          |
+# | style       | Code style changes that don't affect functionality                    |
+# | chore       | Minor maintenance activities — no production code change              |
+# | refactor    | Code revisions and improvements — no production code change           |
+# | test        | Addition or refactoring of tests — no production code change          |
+# | build       | Changes that affect the build system or external dependencies         |
+# | perf        | Optimizations that improve the performance of production code         |
 # =======================================================================================

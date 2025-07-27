@@ -65,7 +65,7 @@
 		"build:inspector": "bunx @eslint/config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
 		"preview:inspector": "bunx serve .eslint-config-inspector",
 		"generate:types": "bun ./scripts/generateESLintTypes.ts",
-		"format": "prettier --write . '!**/*.{js,ts}' --cache",
+		"format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
 		"lint:oxlint": "oxlint --fix",
 		"lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
 		"lint": "bun lint:oxlint && bun lint:eslint",
@@ -78,7 +78,7 @@
 		"pre-commit": "./node_modules/.bin/nano-staged"
 	},
 	"nano-staged": {
-		"**/*.{json,jsonc,yaml,yml,md,lock}": "prettier --write --ignore-unknown --cache",
+		"**/*.{json,jsonc,yaml,yml,lock}": "prettier --write --ignore-unknown --cache",
 		"**/*.{js,ts}": [
 			"oxlint --fix",
 			"eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache"

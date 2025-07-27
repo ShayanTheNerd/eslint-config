@@ -24,9 +24,9 @@ The link to a repository or an online code editor/playground that can reproduce 
 If applicable, add screenshots to help explain your problem.
 
 **The environment**
-- **Operating System:** [e.g. Windows 11]
-- **Node version:** [e.g. v24.3.0]
-- **ESLint version:** [e.g. v9.31.0]
+- **Operating System:** (e.g. Windows 11)
+- **Node version:** (e.g. v24.3.0)
+- **ESLint version:** (e.g. v9.31.0)
 
 **Additional context**
 Add any other context about the problem here.

@@ -16,6 +16,9 @@
 		"source.fixAll.oxc": "explicit",
 		"source.fixAll.eslint": "explicit"
 	},
+	"[markdown]": {
+		"editor.defaultFormatter": "vscode.markdown-language-features"
+	},
 	"[javascript][typescript][javascriptreact][typescriptreact][vue]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
@@ -50,7 +53,7 @@
 		".gitignore": ".gitattributes, .gitmessage",
 		"*.js": "$(capture).js.map, $(capture).*.js",
 		"*.ts": "$(capture).js, $(capture).*.ts, $(capture).d.ts.map",
-		"README.md": "CHANGELOG.md, CODE_OF_CONDUCT.md, CODEOWNERS, CONTRIBUTING.md, LICENSE",
+		"README.md": "CODE_OF_CONDUCT.md, CODEOWNERS, CONTRIBUTING.md, LICENSE",
 		"package.json": ".editorconfig, .oxlintrc.json, .prettierignore, bun.lock, bunfig.toml, eslint.config.ts, netlify.toml, prettier.config.js, tsconfig.json, tsdown.config.ts"
 	}
 }
