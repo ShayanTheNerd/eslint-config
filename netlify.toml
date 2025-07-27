@@ -1,9 +1,9 @@
-[build]
-	publish = ".eslint-config-inspector"
-	command = "bun --bun build:inspector"
-
 [build.environment]
 	NODE_VERSION = "24"
+
+[build]
+	command = "bun run build:inspector"
+	publish = ".eslint-config-inspector"
 
 [[redirects]]
 	from = "/*"
