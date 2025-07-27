@@ -41,13 +41,13 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${ github.actor }"
+          git config user.email "${ github.actor_id }+${ github.actor }@users.noreply.github.com"
 
       - name: Bump the Version & Create a New Tag
         id: version
         run: |
-          new_version=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          new_version=$(npm version ${ github.event.inputs.version } --no-git-tag-version)
           git commit -am "chore: release ${new_version}"
           git tag -am "Release ${new_version}" ${new_version}
           git push --follow-tags
@@ -56,10 +56,26 @@ jobs:
       - name: Publish to NPM
         run: npm publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${ secrets.NPM_TOKEN }
+          NODE_AUTH_TOKEN: ${ secrets.NPM_TOKEN }
 
-      - name: Create a GitHub Draft Release
-        run: gh release create ${{ steps.version.outputs.tag }} --generate-notes --draft
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate a Changelog Based on Conventional Commits
+        id: changelog
+        uses: requarks/changelog-action@v1.10.2
+        with:
+          token: ${ secrets.GITHUB_TOKEN }
+          tag: ${ steps.version.outputs.tag }
+          writeToFile: false
+          useGitmojis: false
+          restrictToTypes: feat,perf,fix,docs,refactor
+
+      - name: Create a Draft GitHub Release
+        uses: ncipollo/release-action@v1.18.0
+        with:
+          draft: true
+          makeLatest: true
+          allowUpdates: true
+          generateReleaseNotes: true
+          token: ${ secrets.GITHUB_TOKEN }
+          tag: ${ steps.version.outputs.tag }
+          body: ${ steps.changelog.outputs.changes }
