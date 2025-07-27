@@ -12,16 +12,6 @@ on:
           - minor
           - major
 
-changelog:
-  exclude:
-    labels:
-      - ci
-      - test
-      - chore
-      - build
-      - style
-      - revert
-
 jobs:
   release:
     name: Release a New Version
