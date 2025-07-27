@@ -43,7 +43,10 @@
 		"./package.json": "./package.json",
 		"./types/*": "./dist/types/*",
 		"./oxlint": "./dist/oxlint.config.jsonc",
-		"./prettier": "./dist/prettier.config.js"
+		"./prettier": {
+			"import": "./dist/prettier.config.js",
+			"require": "./dist/prettier.config.cjs"
+		}
 	},
 	"publishConfig": {
 		"access": "public"
@@ -57,7 +60,7 @@
 	"type": "module",
 	"packageManager": "bun@1.2.19",
 	"scripts": {
-		"postinstall": "bun set:gitmessage && bunx simple-git-hooks && bun generate:types",
+		"prepare": "bun set:gitmessage && bunx simple-git-hooks && bun generate:types",
 		"prepublishOnly": "bun ci:validate",
 		"set:gitmessage": "git config --local commit.template \".gitmessage\"",
 		"inspect": "bunx @eslint/config-inspector",
