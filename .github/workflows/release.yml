@@ -31,7 +31,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: node
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
@@ -57,10 +56,8 @@ jobs:
         run: npm publish
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create a GitHub Draft Release
         run: gh release create ${{ steps.version.outputs.tag }} --generate-notes --draft
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

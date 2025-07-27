@@ -10,3 +10,19 @@ changelog:
       - build
       - style
       - revert
+  categories:
+    - title: Features
+      labels:
+        - feat
+    - title: Bug Fixes
+      labels:
+        - fix
+    - title: Documentation
+      labels:
+        - 'docs'
+    - title: Refactoring
+      labels:
+        - refactor
+    - title: Performance Improvements
+      labels:
+        - perf
