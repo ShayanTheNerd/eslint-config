@@ -49,7 +49,7 @@ jobs:
         run: |
           new_version=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
           git commit -am "chore: release ${new_version}"
-          git tag -a ${new_version}
+          git tag -am "Release ${new_version}" ${new_version}
           git push --follow-tags
           echo "tag=${new_version}" >> $GITHUB_OUTPUT
 
