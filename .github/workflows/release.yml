@@ -1,0 +1,73 @@
+name: RELEASE
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The type of version-bump (patch, minor, or major)'
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+changelog:
+  exclude:
+    labels:
+      - ci
+      - test
+      - chore
+      - build
+      - style
+      - revert
+
+jobs:
+  release:
+    name: Release a New Version
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Prepare the Environment
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: node
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install the Dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Configure Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+
+      - name: Bump the Version & Create a New Tag
+        id: version
+        run: |
+          new_version=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          git commit -am "chore: release ${new_version}"
+          git tag ${new_version}
+          git push --follow-tags
+          echo "tag=${new_version}" >> $GITHUB_OUTPUT
+
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create a GitHub Draft Release
+        run: gh release create ${{ steps.version.outputs.tag }} --generate-notes --draft
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
