@@ -8,7 +8,13 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getImportXRules(options: DeepNonNullable<Options>) {
-	const { packageDir, configs: { importX } } = options;
+	const {
+		packageDir,
+		configs: {
+			importX,
+			typescript,
+		},
+	} = options;
 	const { removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
 	const importXRules = {
@@ -26,8 +32,13 @@ function getImportXRules(options: DeepNonNullable<Options>) {
 		'import-x/no-empty-named-blocks': 'error',
 		'import-x/no-import-module-exports': 'error',
 		'import-x/no-useless-path-segments': 'error',
+		'import-x/no-named-as-default-member': 'off',
+		'import-x/named': typescript ? 'off' : 'error',
+		'import-x/export': typescript ? 'off' : 'error',
+		'import-x/default': typescript ? 'off' : 'error',
 		'import-x/consistent-type-specifier-style': 'warn',
 		'import-x/first': ['warn', 'disable-absolute-first'],
+		'import-x/no-unresolved': typescript ? 'off' : 'error',
 		'import-x/namespace': ['error', { allowComputed: true }],
 		'import-x/no-duplicates': ['error', { considerQueryString: true }],
 		'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }],
