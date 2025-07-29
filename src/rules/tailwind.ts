@@ -6,10 +6,8 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 type CSSRules = PluginRules<'css'>;
-type VueRules = PluginRules<'vue'>;
 type StylisticRules = PluginRules<'@stylistic'>;
 type TailwindRules =
-	& Pick<VueRules, 'vue/max-len'>
 	& PluginRules<'better-tailwindcss'>
 	& Pick<CSSRules, 'css/no-duplicate-imports'>
 	& Pick<StylisticRules, '@stylistic/max-len'>;
@@ -28,7 +26,6 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
 	const isTailwindV4 = isEnabled(tailwind) && tailwind.entryPoint;
 
 	const tailwindRules = {
-		'vue/max-len': 'off',
 		'@stylistic/max-len': 'off',
 		'css/no-duplicate-imports': 'off',
 

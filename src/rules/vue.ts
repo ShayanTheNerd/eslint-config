@@ -14,7 +14,7 @@ type VueRules =
 	& Pick<ImportXRules, 'import-x/default' | 'import-x/no-unresolved'>;
 
 function getVueRules(options: DeepNonNullable<Options>) {
-	const { typescript, stylistic, vue, nuxt } = options.configs;
+	const { typescript, stylistic, tailwind, vue, nuxt } = options.configs;
 	const {
 		indent,
 		useTabs,
@@ -126,19 +126,22 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'vue/define-props-destructuring': ['warn', { destructure: destructureProps }],
 		'vue/define-emits-declaration': ['warn', isScriptLangTS ? 'type-based' : 'runtime'],
 		'vue/define-props-declaration': ['error', isScriptLangTS ? 'type-based' : 'runtime'],
-		'vue/max-len': ['warn', {
-			tabWidth: indent,
-			code: maxLineLength,
-			template: Infinity,
-			ignoreUrls: true,
-			ignoreStrings: true,
-			ignoreComments: true,
-			ignoreRegExpLiterals: true,
-			ignoreTrailingComments: true,
-			ignoreTemplateLiterals: true,
-			ignoreHTMLTextContents: true,
-			ignoreHTMLAttributeValues: true,
-		}],
+		'vue/max-len': [
+			tailwind ? 'off' : 'warn',
+			{
+				tabWidth: indent,
+				code: maxLineLength,
+				template: Infinity,
+				ignoreUrls: true,
+				ignoreStrings: true,
+				ignoreComments: true,
+				ignoreRegExpLiterals: true,
+				ignoreTrailingComments: true,
+				ignoreTemplateLiterals: true,
+				ignoreHTMLTextContents: true,
+				ignoreHTMLAttributeValues: true,
+			},
+		],
 		'vue/block-lang': ['error', {
 			script: {
 				lang: blockLang.script,
