@@ -9,25 +9,14 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getImportXRules(options: DeepNonNullable<Options>) {
 	const { packageDir, configs: { importX } } = options;
-	const { removeUnusedImports, requireFileExtension } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
+	const { removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
 	const importXRules = {
 		'unused-imports/no-unused-imports': removeUnusedImports ? 'warn' : 'off',
 
-		/* `import-x/extensions` rule is broken. */
-		'import-x/extensions': 'off',
-		'import/extensions': [
-			requireFileExtension ? 'warn' : 'off',
-			'always',
-			{
-				ignorePackages: true,
-				checkTypeImports: true,
-			},
-		],
-
 		'import-x/no-amd': 'error',
-		'import-x/exports-last': 'warn',
 		'import-x/no-commonjs': 'error',
+		'import-x/exports-last': 'warn',
 		'import-x/no-deprecated': 'warn',
 		'import-x/group-exports': 'warn',
 		'import-x/no-self-import': 'error',
@@ -35,7 +24,6 @@ function getImportXRules(options: DeepNonNullable<Options>) {
 		'import-x/no-named-default': 'error',
 		'import-x/no-mutable-exports': 'error',
 		'import-x/no-empty-named-blocks': 'error',
-		'import-x/no-named-as-default-member': 'off',
 		'import-x/no-import-module-exports': 'error',
 		'import-x/no-useless-path-segments': 'error',
 		'import-x/consistent-type-specifier-style': 'warn',
@@ -47,7 +35,7 @@ function getImportXRules(options: DeepNonNullable<Options>) {
 			includeTypes: true,
 			packageDir: path.resolve(packageDir),
 		}],
-	} satisfies PluginRules<'import'> & PluginRules<'import-x'> & PluginRules<'unused-imports'>;
+	} satisfies PluginRules<'import-x'> & PluginRules<'unused-imports'>;
 
 	return importXRules;
 }

@@ -10,7 +10,6 @@ import eslintPluginPlaywright from 'eslint-plugin-playwright';
 import { globs } from '#utils/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getVitestRules } from '#rules/vitest.ts';
-import { getImportXRules } from '#rules/importX.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 import { getPlaywrightRules } from '#rules/playwright.ts';
 import { getTypeScriptRules } from '#rules/typescript.ts';
@@ -18,7 +17,6 @@ import { getTypeScriptRules } from '#rules/typescript.ts';
 function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const {
 		vue,
-		importX,
 		typescript,
 		test: {
 			vitest,
@@ -27,7 +25,6 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 	} = options.configs;
 
 	const vitestRules = getVitestRules(options);
-	const importXRules = getImportXRules(options);
 	const javascriptRules = getJavaScriptRules(options);
 	const typescriptRules = getTypeScriptRules(options);
 	const playwrightRules = getPlaywrightRules(options);
@@ -49,8 +46,6 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 			'@typescript-eslint/consistent-type-definitions': isEnabled(typescript)
 				? typescriptRules['@typescript-eslint/consistent-type-definitions']
 				: 'off',
-
-			'import-x/extensions': isEnabled(importX) ? importXRules['import-x/extensions'] : 'off',
 
 			'playwright/max-nested-describe': isEnabled(playwright)
 				? playwrightRules['playwright/max-nested-describe']

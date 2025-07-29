@@ -2,7 +2,6 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
-import eslintPluginImport from 'eslint-plugin-import';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
@@ -12,9 +11,6 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getImportXRules } from '#rules/importX.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-/* Remove rules that are handled by `import-x`. */
-eslintPluginImport.flatConfigs.recommended.rules = {};
-
 function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const { vue, importX, typescript } = options.configs;
 	const { overrides } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
@@ -23,19 +19,11 @@ function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
 		name: 'shayanthenerd/import-x',
 		files: [globs.src, vue ? globs.vue : ''],
 		extends: [
-			eslintPluginImport.flatConfigs.recommended,
 			eslintPluginImportX.flatConfigs.recommended,
-			typescript ? eslintPluginImport.flatConfigs.typescript : {},
 			typescript ? eslintPluginImportX.flatConfigs.typescript : {},
 		],
 		plugins: {
 			'unused-imports': eslintPluginUnusedImports,
-		},
-		settings: {
-			'import/resolver': {
-				typescript: true,
-			},
-			'import/extensions': ['.js', '.cjs', '.mjs', '.jsx', '.ts', '.cts', '.mts', '.tsx', '.vue'],
 		},
 		rules: getImportXRules(options),
 	} satisfies ConfigObject;

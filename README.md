@@ -400,7 +400,6 @@ interface options {
     },
     importX?: boolean | {
 			removeUnusedImports?: boolean,
-      requireFileExtension?: boolean,
       overrides?: {},
     },
     perfectionist?: boolean | {
