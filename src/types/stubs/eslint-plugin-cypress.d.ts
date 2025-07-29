@@ -7,6 +7,5 @@ declare module 'eslint-plugin-cypress' {
 		},
 	};
 
-	/* eslint-disable-next-line no-restricted-exports */
 	export default plugin;
 }

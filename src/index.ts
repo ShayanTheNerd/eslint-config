@@ -12,7 +12,6 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
 import { getHTMLConfig } from '#configs/html.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
-import { getCommonsConfig } from '#configs/commons.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
@@ -22,6 +21,7 @@ import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
+import { getRestrictedExports } from '#configs/restrictedExports.ts';
 import { getOXLintOverridesConfig } from '#configs/oxlintOverrides.ts';
 import { getIgnorePatterns } from '#utils/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#utils/options/mergeWithDefaults.ts';
@@ -57,6 +57,9 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 			stylistic,
 			typescript,
 			perfectionist,
+			base: {
+				preferNamedExports,
+			},
 			test: {
 				vitest,
 				cypress,
@@ -78,7 +81,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 		globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
 		getBaseConfig(mergedOptions),
-		getCommonsConfig(mergedOptions),
+		preferNamedExports ? getRestrictedExports() : {},
 
 		isEnabled(importX) ? getImportXConfig(mergedOptions) : {},
 		isEnabled(stylistic) ? getStylisticConfig(mergedOptions) : {},

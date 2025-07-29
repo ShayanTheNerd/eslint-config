@@ -30,6 +30,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
 		'@typescript-eslint/prefer-enum-initializers': 'error',
 		'@typescript-eslint/no-unnecessary-qualifier': 'error',
 		'@typescript-eslint/switch-exhaustiveness-check': 'warn',
+		'@typescript-eslint/explicit-module-boundary-types': 'warn',
 		'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn',
 		'@typescript-eslint/method-signature-style': ['error', methodSignatureStyle],
 		'@typescript-eslint/consistent-type-definitions': ['warn', typeDefinitionStyle],

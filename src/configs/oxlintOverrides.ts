@@ -31,7 +31,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 
 	const oxlintOverridesConfig = {
 		name: 'shayanthenerd/oxlint/overrides',
-		files: [globs.src, globs.commons, vue ? globs.vue : '', vitest || playwright ? globs.test : ''],
+		files: [globs.src, vue ? globs.vue : '', vitest || playwright ? globs.test : ''],
 		plugins: {
 			'vitest': eslintPluginVitest,
 			'import-x': eslintPluginImportX,
@@ -43,6 +43,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 			'func-style': javascriptRules['func-style'],
 			'max-nested-callbacks': javascriptRules['max-nested-callbacks'],
 
+			'@typescript-eslint/explicit-module-boundary-types': typescriptRules['@typescript-eslint/explicit-module-boundary-types'],
 			'@typescript-eslint/consistent-type-definitions': isEnabled(typescript)
 				? typescriptRules['@typescript-eslint/consistent-type-definitions']
 				: 'off',

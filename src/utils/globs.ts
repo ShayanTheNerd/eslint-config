@@ -1,13 +1,12 @@
 const srcExtensions = '?([mc])[jt]s?(x)' as const;
 const vueExtensions = `{vue,${srcExtensions}}` as const;
 
-const commonsFolders = [
+const restrictedExportsFolders = [
 	'shared',
 	'dto?(s)',
 	'model?(s)',
 	'helper?(s)',
 	'module?(s)',
-	'?(@)type?(s)',
 	'util?(s|ities)',
 	'composable?(s)',
 	'repo?(s|sitory|sitories)',
@@ -19,8 +18,7 @@ const globs = {
 	ts: '**/*.?([mc])ts?(x)',
 	src: `**/*.${srcExtensions}`,
 
-	commons: `**/{${commonsFolders.join(',')}}/**/*.${srcExtensions}`,
-	commonsIgnore: `**/lint-staged.config.${srcExtensions}`,
+	restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
 
 	vue: `**/*.${vueExtensions}`,
 	vueMultiRootTemplate: `**/pages/**/(_|-)components/**/*.${vueExtensions}`,

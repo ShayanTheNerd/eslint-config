@@ -17,7 +17,15 @@ interface BaseOptions extends ConfigWithOverrides {
 	functionStyle?: RuleOptions<'func-style'>,
 
 	/**
-	 * Prefer named exports instead of default exports.
+	 * Enforce named exports in the following directories:
+	 * - 'shared'
+	 * - 'dto', 'dtos'
+	 * - 'model', 'models'
+	 * - 'helper', 'helpers'
+	 * - 'module', 'modules'
+	 * - 'util', 'utils', 'utilities'
+	 * - 'composable', 'composables'
+	 * - 'repo', 'repos', 'repository', 'repositories'
 	 *
 	 * @default true
 	 *

@@ -66,6 +66,7 @@
 		/*** TypeScript ***/
 		"typescript/triple-slash-reference": "off",
 		"typescript/explicit-function-return-type": "off",
+		"typescript/explicit-module-boundary-types": "off",
 		"typescript/consistent-indexed-object-style": ["warn", "record"],
 
 		/*** Import ***/
@@ -109,14 +110,6 @@
 			"files": ["**/{src,app,server}/**/*.{vue,js,mjs,cjs,jsx,ts,mts,cts,tsx}"],
 			"rules": {
 				"eslint/no-undef": "off"
-			}
-		},
-		{
-			"files": [
-				"**/{shared,dto,dtos,model,models,helper,helpers,module,modules,@type,@types,types,util,utils,utilities,composable,composables,repo,repos,repository,repositories}/**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx}"
-			],
-			"rules": {
-				"typescript/explicit-function-return-type": "error"
 			}
 		}
 	],
