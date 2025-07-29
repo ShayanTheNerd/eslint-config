@@ -29,7 +29,6 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		blocksOrder,
 		macrosOrder,
 		attributesOrder,
-		vOnHandlerStyle,
 		destructureProps,
 		vForDelimiterStyle,
 		attributeHyphenation,
@@ -113,7 +112,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'vue/prefer-prop-type-boolean-first': 'warn',
 		'vue/no-setup-props-reactivity-loss': 'error',
 		'vue/block-order': ['warn', { order: blocksOrder }],
-		'vue/v-on-handler-style': ['error', vOnHandlerStyle],
+		// 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
 		'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
 		'vue/require-typed-ref': isScriptLangTS ? 'error' : 'off',
 		'vue/define-macros-order': ['warn', { order: macrosOrder }],

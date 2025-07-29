@@ -180,14 +180,15 @@ interface VueOptions extends ConfigWithOverrides {
 	 */
 	vForDelimiterStyle?: RuleOptions<'vue/v-for-delimiter-style'>,
 
-	/**
-	 * Enforce a consistent handler style in `v-on` directives.
-	 *
-	 * @default ['method', 'inline-function']
-	 *
-	 * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
-	 */
-	vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
+	/* https://github.com/vuejs/eslint-plugin-vue/issues/2571 */
+	// /**
+	//  * Enforce a consistent handler style in `v-on` directives.
+	//  *
+	//  * @default ['method', 'inline-function']
+	//  *
+	//  * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
+	//  */
+	// vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
 
 	/**
 	 * Disallow certain elements and components.

@@ -136,7 +136,7 @@ const defaultOptions = {
 			destructureProps: 'always',
 			componentNameCaseInTemplate: 'PascalCase',
 			vForDelimiterStyle: 'in',
-			vOnHandlerStyle: ['method', 'inline-function'],
+			// vOnHandlerStyle: ['method', 'inline-function'], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
 			restrictedElements: [],
 			restrictedStaticAttributes: [],
 			ignoredUndefinedComponents: [],
