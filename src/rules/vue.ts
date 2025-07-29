@@ -194,6 +194,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 			extensions: ['vue', 'js', 'jsx', ...(typescript ? ['ts', 'tsx'] : [])],
 		}],
 		'vue/component-name-in-template-casing': ['warn', componentNameCaseInTemplate, {
+			ignores: ['*.*'],
 			registeredComponentsOnly: false,
 		}],
 	} satisfies VueRules;

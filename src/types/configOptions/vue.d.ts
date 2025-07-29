@@ -163,6 +163,8 @@ interface VueOptions extends ConfigWithOverrides {
 	/**
 	 * Enforce consistent casing for component names in `<template>` blocks.
 	 *
+	 * Compound components (e.g., `<motion.div>`) are ignored by default.
+	 *
 	 * @default 'PascalCase'
 	 *
 	 * @see [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing)
