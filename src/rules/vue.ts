@@ -10,8 +10,8 @@ import { getRestrictedVueElements } from '#utils/vue/getRestrictedVueElements.ts
 type ImportXRules = PluginRules<'import-x'>;
 type VueRules =
 	& PluginRules<'vue'>
-	& Pick<ImportXRules, 'import-x/default'>
-	& Pick<CoreRules, 'no-undef' | 'no-useless-assignment'>;
+	& Pick<CoreRules, 'no-undef' | 'no-useless-assignment'>
+	& Pick<ImportXRules, 'import-x/default' | 'import-x/no-unresolved'>;
 
 function getVueRules(options: DeepNonNullable<Options>) {
 	const { typescript, stylistic, vue, nuxt } = options.configs;
@@ -50,6 +50,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'no-undef': 'off',
 		'no-useless-assignment': 'off',
 		'import-x/default': 'off',
+		'import-x/no-unresolved': 'off',
 
 		/* Base Rules (Enabling Correct ESLint Parsing) */
 		'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
