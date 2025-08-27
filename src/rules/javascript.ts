@@ -102,7 +102,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'prefer-destructuring': 'warn',
 		'no-implicit-coercion': 'error',
 		'no-array-constructor': 'error',
-		'no-underscore-dangle': 'error',
 		'prefer-object-spread': 'error',
 		'radix': ['error', 'as-needed'],
 		'curly': ['warn', 'multi-line'],
