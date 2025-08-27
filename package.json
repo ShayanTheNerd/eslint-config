@@ -52,11 +52,11 @@
 		"#configs/*": "./src/configs/*"
 	},
 	"type": "module",
-	"packageManager": "bun@1.2.19",
+	"packageManager": "bun@1.2.21",
 	"scripts": {
-		"prepare": "bun set:gitmessage && bunx simple-git-hooks && bun generate:types",
+		"prepare": "bun git:gitmessage && bunx simple-git-hooks && bun generate:types",
 		"prepublishOnly": "bun build:package",
-		"set:gitmessage": "git config --local commit.template \".gitmessage\"",
+		"git:gitmessage": "git config --local commit.template \".gitmessage\"",
 		"inspect": "bunx @eslint/config-inspector",
 		"build:package": "tsdown --no-report",
 		"build:inspector": "bunx @eslint/config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
@@ -75,48 +75,48 @@
 		"pre-commit": "./node_modules/.bin/nano-staged"
 	},
 	"nano-staged": {
-		"**/*.{json,jsonc,yaml,yml,lock}": "prettier --write --ignore-unknown --cache",
-		"**/*.{js,ts}": [
-			"oxlint --fix",
-			"eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache"
-		]
+		"**/*.{js,ts}": "bun lint",
+		"**/*.{json,jsonc,yaml,yml,lock}": "bun format"
 	},
 	"dependencies": {
-		"@eslint/compat": "1.3.1",
+		"@eslint/compat": "1.3.2",
 		"@eslint/css": "0.10.0",
-		"@eslint/js": "9.32.0",
-		"@html-eslint/eslint-plugin": "0.43.1",
-		"@stylistic/eslint-plugin": "5.2.2",
+		"@eslint/js": "9.34.0",
+		"@html-eslint/eslint-plugin": "0.46.1",
+		"@stylistic/eslint-plugin": "5.2.3",
 		"@vitest/eslint-plugin": "1.3.4",
 		"defu": "6.1.4",
-		"eslint": "9.32.0",
+		"eslint": "9.34.0",
 		"eslint-flat-config-utils": "2.1.1",
 		"eslint-import-resolver-typescript": "4.4.4",
-		"eslint-plugin-better-tailwindcss": "3.7.2",
-		"eslint-plugin-cypress": "5.1.0",
+		"eslint-plugin-better-tailwindcss": "3.7.5",
+		"eslint-plugin-cypress": "5.1.1",
 		"eslint-plugin-import-x": "4.16.1",
-		"eslint-plugin-oxlint": "1.9.0",
+		"eslint-plugin-oxlint": "1.13.0",
 		"eslint-plugin-perfectionist": "4.15.0",
-		"eslint-plugin-playwright": "2.2.1",
-		"eslint-plugin-storybook": "9.0.18",
-		"eslint-plugin-unused-imports": "4.1.4",
-		"eslint-plugin-vue": "10.3.0",
+		"eslint-plugin-playwright": "2.2.2",
+		"eslint-plugin-storybook": "9.1.3",
+		"eslint-plugin-unused-imports": "4.2.0",
+		"eslint-plugin-vue": "10.4.0",
 		"eslint-plugin-vuejs-accessibility": "2.4.1",
 		"globals": "16.3.0",
-		"local-pkg": "1.1.1",
-		"oxlint": "1.9.0",
-		"tailwind-csstree": "0.1.2",
-		"typescript-eslint": "8.38.0"
+		"local-pkg": "1.1.2",
+		"oxlint": "1.13.0",
+		"tailwind-csstree": "0.1.3",
+		"typescript-eslint": "8.41.0"
 	},
 	"devDependencies": {
-		"@types/node": "24.1.0",
+		"@types/node": "24.3.0",
 		"eslint-typegen": "2.3.0",
-		"lint-staged": "16.1.2",
 		"nano-staged": "0.8.0",
 		"prettier": "3.6.2",
 		"publint": "0.3.12",
-		"tsdown": "0.13.0",
-		"typescript": "5.8.3",
-		"unplugin-unused": "0.5.1"
-	}
+		"tsdown": "0.14.2",
+		"typescript": "5.9.2",
+		"unplugin-unused": "0.5.2"
+	},
+	"trustedDependencies": [
+		"esbuild",
+		"unrs-resolver"
+	]
 }
