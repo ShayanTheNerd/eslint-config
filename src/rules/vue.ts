@@ -42,7 +42,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 	} = isEnabled(vue) ? vue : defaultOptions.configs.vue;
 	const nuxtImage = isEnabled(nuxt) ? nuxt.image : undefined;
 	const nuxtUI = isEnabled(nuxt) ? nuxt.ui : undefined;
-	const nuxtUIPrefix = isEnabled(nuxt) && isEnabled(nuxt.ui) ? nuxt.ui.prefix : undefined;
+	const nuxtUIPrefix = isEnabled(nuxt) && isEnabled(nuxt.ui) ? nuxt.ui.prefix : defaultOptions.configs.nuxt.ui.prefix;
 	const isScriptLangTS = blockLang.script === 'ts';
 	const isStyleLangImplicit = blockLang.style === 'implicit';
 
@@ -174,18 +174,20 @@ function getVueRules(options: DeepNonNullable<Options>) {
 			},
 			{
 				element: nuxtUI ? ['a', 'RouterLink', 'NuxtLink'] : '',
-				message: nuxtUI && nuxtUIPrefix ? `Use \`<${nuxtUIPrefix}Link>\`.` : undefined,
+				message: nuxtUI ? `Use \`<${nuxtUIPrefix}Link>\`.` : undefined,
 			},
 			{
 				element: ['a', nuxt ? 'RouterLink' : ''],
 				message: `Use \`<${nuxt ? 'NuxtLink' : 'RouterLink'}>\`.`,
 			},
-			...(nuxtUI && nuxtUIPrefix ? getRestrictedVueElements(nuxtUIPrefix) : []),
+			...(nuxtUI ? getRestrictedVueElements(nuxtUIPrefix) : []),
 			...userRestrictedElements,
 		],
 		'vue/no-restricted-static-attribute': [
 			'error',
-			...(nuxtUI && nuxtUIPrefix ? getRestrictedVueInputs(nuxtUIPrefix) : []),
+			...(nuxtUI ? getRestrictedVueInputs(nuxtUIPrefix) : []),
+			nuxtUI ? { key: 'href', element: `${nuxtUIPrefix}Link`, message: 'Use `v-bind:to=""`.' } : { key: '' },
+			nuxtUI ? { key: 'href', element: `${nuxtUIPrefix}Button`, message: 'Use `v-bind:to=""`.' } : { key: ' ' },
 			...userRestrictedStaticAttributes,
 		],
 		'vue/no-undef-components': ['error', {
