@@ -34,6 +34,8 @@ function isPackageDetected(packageName: string, options: Options = defaultOption
 		detectedPackages.push(packageName);
 	}
 
+	detectedPackages.sort();
+
 	return isPackageInstalled;
 }
 
