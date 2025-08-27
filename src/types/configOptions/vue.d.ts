@@ -195,8 +195,6 @@ interface VueOptions extends ConfigWithOverrides {
 	 *
 	 * When NuxtUI or NuxtImage are enabled, certain HTML elements (e.g., `<img>`, `<a>`, `<form>`, `<input>`) are disallowed in favor of their alternative components.
 	 *
-	 * New items extend the defaults, they don't override it.
-	 *
 	 * @default []
 	 *
 	 * @see [vue/no-restricted-html-elements](https://eslint.vuejs.org/rules/no-restricted-html-elements)

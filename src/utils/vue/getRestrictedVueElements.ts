@@ -23,7 +23,7 @@ function getRestrictedVueElements(prefix: string): RestrictedElement[] {
 	for (const [element, component] of alternativeComponentPairs) {
 		restrictedElements.push({
 			element,
-			message: `Use <${prefix}${component}>.`,
+			message: `Use \`<${prefix}${component}>\`.`,
 		});
 	}
 

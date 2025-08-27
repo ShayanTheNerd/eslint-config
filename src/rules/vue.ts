@@ -171,11 +171,11 @@ function getVueRules(options: DeepNonNullable<Options>) {
 			},
 			{
 				element: nuxtUI ? ['a', 'RouterLink', 'NuxtLink'] : '',
-				message: nuxtUI && nuxtUIPrefix ? `Use <${nuxtUIPrefix}Link>.` : undefined,
+				message: nuxtUI && nuxtUIPrefix ? `Use \`<${nuxtUIPrefix}Link>\`.` : undefined,
 			},
 			{
 				element: ['a', nuxt ? 'RouterLink' : ''],
-				message: `Use <${nuxt ? 'NuxtLink' : 'RouterLink'}>.`,
+				message: `Use \`<${nuxt ? 'NuxtLink' : 'RouterLink'}>\`.`,
 			},
 			...(nuxtUI && nuxtUIPrefix ? getRestrictedVueElements(nuxtUIPrefix) : []),
 			...userRestrictedElements,

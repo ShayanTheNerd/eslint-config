@@ -19,7 +19,7 @@ function getRestrictedVueInputs(prefix: string): RestrictedInput[] {
 			element: 'input',
 			key: 'type',
 			value: input,
-			message: `Use <${prefix}${component}>.`,
+			message: `Use \`<${prefix}${component}>\`.`,
 		});
 	}
 
