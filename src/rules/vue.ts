@@ -56,6 +56,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
 
 		/* Priority B: Strongly Recommended (Improving Readability) */
+		'vue/require-default-prop': 'off',
 		'vue/html-closing-bracket-newline': 'warn',
 		'vue/singleline-html-element-content-newline': 'off',
 		'vue/html-indent': ['warn', useTabs ? 'tab' : indent],
