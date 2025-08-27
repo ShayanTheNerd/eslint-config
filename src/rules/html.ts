@@ -28,6 +28,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
 		'@html-eslint/no-target-blank': 'error',
 		'@html-eslint/no-duplicate-class': 'warn',
 		'@html-eslint/require-button-type': 'error',
+		'@html-eslint/no-ineffective-attrs': 'error',
 		'@html-eslint/no-script-style-type': 'error',
 		'@html-eslint/require-meta-charset': 'error',
 		'@html-eslint/quotes': ['warn', 'double', { enforceTemplatedAttrValue: true }],

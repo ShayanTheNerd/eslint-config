@@ -18,6 +18,7 @@ function getHTMLConfig(options: DeepNonNullable<Options>): Linter.Config {
 		name: 'shayanthenerd/html',
 		files: [globs.html],
 		extends: [eslintPluginHTML.configs['flat/recommended']],
+		language: 'html/html',
 		rules: getHTMLRules(options),
 	} satisfies ConfigObject;
 
