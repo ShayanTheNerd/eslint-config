@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsdown/config';
+import { defineConfig } from 'tsdown';
 
 export default defineConfig({
 	format: ['esm'],
@@ -15,7 +15,9 @@ export default defineConfig({
 		},
 	},
 	dts: {
-		isolatedDeclarations: true,
+		compilerOptions: {
+			isolatedDeclarations: true,
+		},
 	},
 	unused: {
 		ignore: ['eslint-import-resolver-typescript'],
