@@ -49,7 +49,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'no-void': 'error',
 		'no-proto': 'warn',
 		'no-empty': 'warn',
-		'camelcase': 'warn',
 		'no-caller': 'error',
 		'no-eq-null': 'warn',
 		'complexity': 'warn',
@@ -128,6 +127,11 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'prefer-promise-reject-errors': ['error', { allowEmptyReject: true }],
 		'prefer-regex-literals': ['error', { disallowRedundantWrapping: true }],
 		'no-extra-boolean-cast': ['error', { enforceForInnerExpressions: true }],
+		'camelcase': ['warn', {
+			properties: 'never',
+			ignoreImports: true,
+			ignoreDestructuring: true,
+		}],
 		'no-console': ['warn', {
 			allow: ['info', 'warn', 'error', 'table', 'group', 'groupEnd', 'groupCollapsed'],
 		}],
