@@ -63,7 +63,6 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'vue/html-indent': ['warn', useTabs ? 'tab' : indent],
 		'vue/v-slot-style': ['warn', { atComponent: 'shorthand' }],
 		'vue/attribute-hyphenation': ['warn', attributeHyphenation],
-		'vue/first-attribute-linebreak': ['warn', { singleline: 'beside' }],
 		'vue/v-on-event-hyphenation': ['warn', attributeHyphenation, { autofix: true }],
 		'vue/v-bind-style': ['warn', 'shorthand', { sameNameShorthand: preferVBindSameNameShorthand }],
 		'vue/html-self-closing': ['error', {
