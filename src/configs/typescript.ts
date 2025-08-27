@@ -4,6 +4,7 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import typescriptESLint from 'typescript-eslint';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import path from 'node:path';
 
 import { globs } from '#utils/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
@@ -24,10 +25,11 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 		],
 		languageOptions: {
 			parserOptions: {
-				tsconfigRootDir: tsConfig ? tsConfig.rootDir : undefined,
+				warnOnUnsupportedTypeScriptVersion: false,
+				tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
 				projectService: {
-					allowDefaultProject: allowedDefaultProjects,
 					defaultProject: tsConfig ? tsConfig.filename : undefined,
+					allowDefaultProject: allowedDefaultProjects,
 				},
 			},
 		},
