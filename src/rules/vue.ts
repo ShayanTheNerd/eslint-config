@@ -197,7 +197,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 			extensions: ['vue', 'js', 'jsx', ...(typescript ? ['ts', 'tsx'] : [])],
 		}],
 		'vue/component-name-in-template-casing': ['warn', componentNameCaseInTemplate, {
-			ignores: ['*.*'],
+			ignores: ['/^\\w+(\\.\\w+)+$/'], // Ignore compound components such as `<motion.div>`.
 			registeredComponentsOnly: false,
 		}],
 	} satisfies VueRules;
