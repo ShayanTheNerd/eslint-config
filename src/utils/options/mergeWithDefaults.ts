@@ -8,6 +8,14 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 import { enableDetectedConfigs } from '#utils/options/enableDetectedConfigs.ts';
 
 const mergeOptions = createDefu((object, key, value): boolean => {
+	const stringKey = key.toString();
+	const uniqueArrayOptions = ['allowedRelativeFontUnits', 'macrosOrder', 'blocksOrder', 'attributesOrder'];
+	if (uniqueArrayOptions.includes(stringKey)) {
+		object[key] = value;
+
+		return true;
+	}
+
 	const isValueTrue = value === true;
 	const isDefaultValueFalse = object[key] === false;
 	const isValueEmptyString = isEmptyString(value);
