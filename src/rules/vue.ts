@@ -98,6 +98,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'vue/custom-event-name-casing': 'warn',
 		'vue/no-use-v-else-with-v-for': 'error',
 		'vue/no-empty-component-block': 'error',
+		'vue/no-negated-v-if-condition': 'warn',
 		'vue/no-import-compiler-macros': 'error',
 		'vue/require-typed-object-prop': 'error',
 		'vue/require-macro-variable-name': 'warn',
