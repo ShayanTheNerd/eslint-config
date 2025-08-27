@@ -81,11 +81,13 @@
 		"import/no-anonymous-default-export": "off",
 
 		/*** Unicorn ***/
+		"unicorn/no-null": "off",
 		"unicorn/filename-case": "off",
 		"unicorn/prefer-set-has": "off",
 		"unicorn/no-array-reduce": "off",
 		"unicorn/prefer-string-raw": "off",
 		"unicorn/no-array-for-each": "off",
+		"unicorn/prefer-global-this": "off",
 		"unicorn/no-useless-undefined": "off",
 		"unicorn/prefer-prototype-methods": "off",
 		"unicorn/no-await-expression-member": "off",
@@ -94,6 +96,11 @@
 		"jest/require-hook": "off",
 		"jest/prefer-lowercase-title": "warn",
 		"jest/require-top-level-describe": "off",
+
+		/*** JSDoc ***/
+		"jsdoc/require-param": "off",
+		"jsdoc/require-returns": "off",
+		"jsdoc/require-property": "off",
 
 		/*** Customizable Overrides ***/
 		/* These rules are customizable in the ESLint config, but OXLint doesn't respect them. */
