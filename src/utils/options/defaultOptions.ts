@@ -149,7 +149,6 @@ const defaultOptions = {
 			},
 		},
 		test: {
-			// fix these
 			storybook: {
 				overrides: {},
 			},

@@ -3,7 +3,7 @@
 		"ESLint": {
 			"type": "stdio",
 			"command": "bunx",
-			"args": ["eslint", "--mcp"]
+			"args": ["@eslint/mcp"]
 		}
 	}
 }

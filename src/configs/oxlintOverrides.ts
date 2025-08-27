@@ -1,4 +1,4 @@
-import type { ESLint, Linter } from 'eslint';
+import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
@@ -36,7 +36,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 			'vitest': eslintPluginVitest,
 			'import-x': eslintPluginImportX,
 			'playwright': eslintPluginPlaywright,
-			'@typescript-eslint': typescriptESLint.plugin as ESLint.Plugin,
+			'@typescript-eslint': typescriptESLint.plugin,
 		},
 		rules: {
 			'max-depth': javascriptRules['max-depth'],
