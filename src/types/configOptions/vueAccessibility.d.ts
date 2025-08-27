@@ -30,7 +30,7 @@ interface VueAccessibilityOptions {
 	 *
 	 * New items extend the defaults, they don't override it.
 	 *
-	 * @default ['img', 'picture', 'NuxtImg', 'NuxtPicture']
+	 * @default ['img', 'picture', 'NuxtImg', 'NuxtPicture', 'UBadge']
 	 *
 	 * @see [vuejs-accessibility/anchor-has-content: `accessibleChildren` option](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/rules/anchor-has-content#%F0%9F%94%A7-options)
 	 */

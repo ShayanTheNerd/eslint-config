@@ -87,7 +87,7 @@ const defaultOptions = {
 			accessibility: {
 				imageComponents: ['NuxtImg'],
 				anchorComponents: ['RouterLink', 'NuxtLink', 'ULink'],
-				accessibleChildComponents: ['img', 'picture', 'NuxtImg', 'NuxtPicture'],
+				accessibleChildComponents: ['img', 'picture', 'NuxtImg', 'NuxtPicture', 'UBadge'],
 			},
 			blocksOrder: [
 				'script:not([setup])',
