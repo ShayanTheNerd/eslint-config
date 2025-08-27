@@ -6,8 +6,7 @@ import { globs } from '#utils/globs.ts';
 function getVueComponentNamesConfig(): Linter.Config {
 	const vueComponentNamesConfig = {
 		name: 'shayanthenerd/vue/multi-word-component-names',
-		files: [globs.vueComponentNames],
-		ignores: [globs.vueComponentNamesIgnore],
+		files: [globs.vueAppErrorLayoutsPages],
 		rules: {
 			'vue/match-component-file-name': 'off',
 			'vue/multi-word-component-names': 'off',

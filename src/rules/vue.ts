@@ -51,6 +51,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		'no-useless-assignment': 'off',
 		'import-x/default': 'off',
 		'import-x/no-unresolved': 'off',
+		'vue/no-multiple-template-root': 'off',
 
 		/* Base Rules (Enabling Correct ESLint Parsing) */
 		'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],

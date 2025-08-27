@@ -21,9 +21,8 @@ const globs = {
 	restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
 
 	vue: `**/*.${vueExtensions}`,
-	vueMultiRootTemplate: `**/pages/**/(_|-)components/**/*.${vueExtensions}`,
-	vueComponentNames: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
-	vueComponentNamesIgnore: `**/{layouts,pages}/**/(_|-)components/**/*.${vueExtensions}`,
+	vueServerComponents: `**/*.server.${vueExtensions}`,
+	vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
 
 	storybook: `**/*.(story|stories).${srcExtensions}`,
 	test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,

@@ -26,7 +26,7 @@ import { getOXLintOverridesConfig } from '#configs/oxlintOverrides.ts';
 import { getIgnorePatterns } from '#utils/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#utils/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
-import { getNuxtMultiRootTemplateConfig } from '#configs/nuxtMultiRootTemplate.ts';
+import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 
 /**
  * Define the ESLint configuration based on the provided options and any number of Flat Config objects.
@@ -94,7 +94,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 
 		isEnabled(vue) ? getVueConfig(mergedOptions) : {},
 		isEnabled(vue) ? getVueComponentNamesConfig() : {},
-		isEnabled(vue) && isEnabled(nuxt) ? getNuxtMultiRootTemplateConfig() : {},
+		isEnabled(vue) && isEnabled(nuxt) ? getVueServerComponentsConfig() : {},
 
 		isEnabled(storybook) ? getStorybookConfig(mergedOptions) : {},
 		isEnabled(vitest) ? getVitestConfig(mergedOptions) : {},
