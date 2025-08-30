@@ -24,6 +24,7 @@
 
 	"plugins": [
 		"oxc",
+		"vue",
 		"node",
 		"jest",
 		"jsdoc",
@@ -55,7 +56,7 @@
 		"eslint/arrow-body-style": "off",
 		"eslint/no-duplicate-imports": "off",
 		"eslint/func-names": ["error", "as-needed"],
-
+		"eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
 		"eslint/no-console": [
 			"warn",
 			{
