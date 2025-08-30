@@ -293,7 +293,7 @@ interface Options {
 		/**
 		 * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
 		 *
-		 * @default false // `true` if "tailwindcss" is detected in the package.json file when `autoDetectDeps` is enabled
+		 * @default false
 		 */
 		css?: boolean | CSSOptions,
 
