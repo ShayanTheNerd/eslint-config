@@ -3,8 +3,8 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintCSS from '@eslint/css';
-import { tailwind4 } from 'tailwind-csstree';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import { tailwind3, tailwind4 } from 'tailwind-csstree';
 
 import { globs } from '#utils/globs.ts';
 import { getCSSRules } from '#rules/css.ts';
@@ -12,8 +12,9 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
-	const { css } = options.configs;
+	const { css, tailwind } = options.configs;
 	const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
+	const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;
 
 	const cssConfig = {
 		name: 'shayanthenerd/css',
@@ -22,7 +23,7 @@ function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
 		language: 'css/css',
 		languageOptions: {
 			tolerant: true,
-			customSyntax: options.configs.tailwind ? tailwind4 : undefined,
+			customSyntax: isEnabled(tailwind) ? tailwindSyntax : undefined,
 		} as Linter.LanguageOptions,
 		rules: getCSSRules(options),
 	} satisfies ConfigObject;
