@@ -5,14 +5,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-type VueRules = PluginRules<'vue'>;
-type CSSRules = PluginRules<'css'>;
 type StylisticRules = PluginRules<'@stylistic'>;
-type TailwindRules =
-	& PluginRules<'better-tailwindcss'>
-	& Pick<CSSRules, 'css/no-duplicate-imports'>
-	& Pick<StylisticRules, '@stylistic/max-len'>
-	& Pick<VueRules, 'vue/first-attribute-linebreak'>;
 
 function getTailwindRules(options: DeepNonNullable<Options>) {
 	const { tailwind, stylistic } = options.configs;
@@ -29,8 +22,6 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
 
 	const tailwindRules = {
 		'@stylistic/max-len': 'off',
-		'css/no-duplicate-imports': 'off',
-		'vue/first-attribute-linebreak': 'off',
 
 		'better-tailwindcss/no-duplicate-classes': 'error',
 		'better-tailwindcss/no-deprecated-classes': 'error',
@@ -55,7 +46,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
 				indent: useTabs ? 'tab' : indent,
 			},
 		],
-	} satisfies TailwindRules;
+	} satisfies PluginRules<'better-tailwindcss'> & Pick<StylisticRules, '@stylistic/max-len'>;
 
 	return tailwindRules;
 }
