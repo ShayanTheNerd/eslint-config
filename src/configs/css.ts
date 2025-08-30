@@ -5,6 +5,7 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import eslintCSS from '@eslint/css';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import { tailwind3, tailwind4 } from 'tailwind-csstree';
+import { styleText } from 'node:util';
 
 import { globs } from '#utils/globs.ts';
 import { getCSSRules } from '#rules/css.ts';
@@ -27,6 +28,12 @@ function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
 		} as Linter.LanguageOptions,
 		rules: getCSSRules(options),
 	} satisfies ConfigObject;
+
+	console.warn(
+		styleText('yellow', '⚠︎ Enabling the CSS config with `--cache` or `--print-config` options (CLI flags) may cause ESLint to crash. This is a known issue with the "tailwind-csstree" package used by "@eslint/css". Check out'),
+		styleText('blue', 'https://github.com/eslint/css/issues/211'),
+		styleText('yellow', 'for more details.'),
+	);
 
 	/* @ts-expect-error - Incompatible `parser` types */
 	return mergeConfigs(cssConfig, overrides);
