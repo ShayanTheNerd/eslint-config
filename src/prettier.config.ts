@@ -28,7 +28,7 @@ const prettierConfig: Config = {
 
 	overrides: [
 		{
-			files: ['*.jsonc', 'bun.lock'],
+			files: ['*.jsonc'],
 			options: {
 				parser: 'json',
 			},

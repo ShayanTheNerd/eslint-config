@@ -2,7 +2,7 @@
 	"servers": {
 		"ESLint": {
 			"type": "stdio",
-			"command": "bunx",
+			"command": "pnpm dlx",
 			"args": ["@eslint/mcp"]
 		}
 	}

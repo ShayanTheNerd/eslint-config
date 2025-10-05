@@ -23,21 +23,21 @@ jobs:
 
     steps:
       - name: Prepare the Environment
-        uses: actions/checkout@v4
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 0
 
+      - name: Install PNPM
+        uses: pnpm/action-setup@a7487c7e89a18df4991f7f222e4898a00d66ddda # v4.1.0
+
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
           node-version: node
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Bun
-        uses: oven-sh/setup-bun@v2
-
       - name: Install the Dependencies
-        run: bun install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Configure Git
         run: |
@@ -61,7 +61,7 @@ jobs:
 
       - name: Generate a Changelog Based on Conventional Commits
         id: changelog
-        uses: requarks/changelog-action@v1.10.2
+        uses: requarks/changelog-action@b78a3354a01f4a1affb484b9264b506a815c46b1 # v1.10.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ steps.version.outputs.tag }}
@@ -70,7 +70,7 @@ jobs:
           restrictToTypes: feat,perf,fix,docs,refactor
 
       - name: Create a Draft GitHub Release
-        uses: ncipollo/release-action@v1.18.0
+        uses: ncipollo/release-action@b7eabc95ff50cbeeedec83973935c8f306dfcd0b # v1.20.0
         with:
           draft: true
           makeLatest: true

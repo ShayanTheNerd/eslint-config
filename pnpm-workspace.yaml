@@ -1,0 +1,12 @@
+savePrefix: ''
+useBetaCli: true
+shellEmulator: true
+
+ignoredBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+  - simple-git-hooks
+
+peerDependencyRules:
+  allowedVersions:
+    eslint-plugin-vue>vue-eslint-parser@^10.0.0: 9.4.3
