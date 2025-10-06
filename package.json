@@ -52,7 +52,7 @@
 		"#configs/*": "./src/configs/*"
 	},
 	"type": "module",
-	"packageManager": "pnpm@10.18.0",
+	"packageManager": "pnpm@10.18.1",
 	"scripts": {
 		"prepare": "pnpm git:gitmessage && pnpm simple-git-hooks && pnpm generate:types",
 		"prepublishOnly": "pnpm build:package",
