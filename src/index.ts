@@ -1,9 +1,8 @@
 import type { Linter } from 'eslint';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
-import { globalIgnores } from 'eslint/config';
 import eslintPluginOXLint from 'eslint-plugin-oxlint';
-import { config as defineESLintConfig } from 'typescript-eslint';
+import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
 import path from 'node:path';
 
 import { getCSSConfig } from '#configs/css.ts';
@@ -104,6 +103,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 		...(oxlint ? eslintPluginOXLint.buildFromOxlintConfigFile(oxlintConfigPath) : []),
 		oxlint ? getOXLintOverridesConfig(mergedOptions) : {},
 
+		/* @ts-expect-error -- There's a type mismatch in the `extends` field. */
 		...configs,
 	);
 
