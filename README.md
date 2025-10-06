@@ -460,6 +460,9 @@ interface options {
     },
     nuxt?: boolean | {
       image?: boolean,
+      icon?: boolean | {
+        component?: string,
+      }
       ui?: boolean | {
         prefix?: string,
       }

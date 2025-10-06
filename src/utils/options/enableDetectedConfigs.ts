@@ -36,6 +36,7 @@ function enableDetectedConfigs(options: Options): Options {
 		}
 
 		options.configs.nuxt.ui ??= isPackageDetected('@nuxt/ui', options);
+		options.configs.nuxt.icon ??= isPackageDetected('@nuxt/icon', options);
 		options.configs.nuxt.image ??= isPackageDetected('@nuxt/image', options);
 	}
 

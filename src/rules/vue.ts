@@ -43,6 +43,10 @@ function getVueRules(options: DeepNonNullable<Options>) {
 	const nuxtImage = isEnabled(nuxt) ? nuxt.image : undefined;
 	const nuxtUI = isEnabled(nuxt) ? nuxt.ui : undefined;
 	const nuxtUIPrefix = isEnabled(nuxt) && isEnabled(nuxt.ui) ? nuxt.ui.prefix : defaultOptions.configs.nuxt.ui.prefix;
+	const nuxtIcon = isEnabled(nuxt) ? nuxt.icon : undefined;
+	const nuxtIconComponent = isEnabled(nuxt) && isEnabled(nuxt.icon)
+		? nuxt.icon.component
+		: defaultOptions.configs.nuxt.icon.component;
 	const isScriptLangTS = blockLang.script === 'ts';
 	const isStyleLangImplicit = blockLang.style === 'implicit';
 
@@ -196,10 +200,12 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		],
 		'vue/no-undef-components': ['error', {
 			ignorePatterns: [
-				'^(Nuxt|U)',
-				'^(Icon|Html|Head|Title|Base|Meta|Link|Style|Body|NoScript)$',
+				nuxt ? '^Nuxt' : undefined,
+				nuxt ? '^(Html|Head|Title|Base|Meta|Link|Style|Body|NoScript|ClientOnly|DevOnly)$' : undefined,
+				nuxtIcon ? `^${nuxtIconComponent}$` : undefined,
+				nuxtUI ? `^${nuxtUIPrefix}` : undefined,
 				...userIgnoredUndefinedComponents,
-			],
+			].filter(Boolean),
 		}],
 		'vue/match-component-file-name': ['error', {
 			shouldMatchCase: true,

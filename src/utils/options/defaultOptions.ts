@@ -144,6 +144,9 @@ const defaultOptions = {
 		},
 		nuxt: {
 			image: false,
+			icon: {
+				component: 'Icon',
+			},
 			ui: {
 				prefix: 'U',
 			},
