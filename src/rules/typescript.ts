@@ -19,6 +19,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
 		'prefer-destructuring': 'off',
 
 		'@typescript-eslint/no-loop-func': 'error',
+		'@typescript-eslint/unbound-method': 'off',
 		'@typescript-eslint/default-param-last': 'warn',
 		'@typescript-eslint/no-unsafe-assignment': 'warn',
 		'@typescript-eslint/prefer-destructuring': 'warn',
