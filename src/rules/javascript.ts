@@ -105,6 +105,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'radix': ['error', 'as-needed'],
 		'curly': ['warn', 'multi-line'],
 		'max-depth': ['warn', maxDepth],
+		'preserve-caught-error': 'warn',
 		'no-object-constructor': 'error',
 		'prefer-object-has-own': 'error',
 		'no-useless-constructor': 'error',
