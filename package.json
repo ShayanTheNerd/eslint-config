@@ -1,6 +1,6 @@
 {
 	"name": "@shayanthenerd/eslint-config",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"license": "MIT",
 	"description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
 	"keywords": [
