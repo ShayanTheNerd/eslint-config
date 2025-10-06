@@ -60,6 +60,11 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		/* Base Rules (Enabling Correct ESLint Parsing) */
 		'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
 
+		/* Priority A: Essential */
+		'vue/no-async-in-computed-properties': ['error', {
+			ignoredObjectNames: ['z'],
+		}],
+
 		/* Priority B: Strongly Recommended (Improving Readability) */
 		'vue/require-default-prop': 'off',
 		'vue/html-closing-bracket-newline': 'warn',
