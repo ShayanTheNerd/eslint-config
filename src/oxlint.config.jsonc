@@ -104,6 +104,10 @@
 		"jsdoc/require-returns": "off",
 		"jsdoc/require-property": "off",
 
+		/*** Vue ***/
+		"vue/max-props": "off",
+		"vue/no-required-prop-with-default": "off",
+
 		/*** Customizable Overrides ***/
 		/* These rules are customizable in the ESLint config, but OXLint doesn't respect them. */
 		"eslint/max-depth": "off",
