@@ -41,6 +41,7 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
 				{
 					groupName: 'vue-sfc',
 					elementNamePattern: ['\\.(vue|[jt]sx)$'],
+					modifiers: ['value'], // Prevent type-imports from '.vue' files from being grouped with component-imports.
 				},
 				{
 					groupName: 'image',
