@@ -6,12 +6,14 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getVueAccessibilityRules(options: DeepNonNullable<Options>) {
-	const { vue } = options.configs;
+	const { vue, nuxt } = options.configs;
 	const {
 		imageComponents: userImageComponents,
 		anchorComponents: userAnchorComponents,
 		accessibleChildComponents: userAccessibleChildComponents,
 	} = isEnabled(vue) && isEnabled(vue.accessibility) ? vue.accessibility : defaultOptions.configs.vue.accessibility;
+	const nuxtUI = isEnabled(nuxt) ? nuxt.ui : undefined;
+	const nuxtUIPrefix = isEnabled(nuxt) && isEnabled(nuxt.ui) ? nuxt.ui.prefix : defaultOptions.configs.nuxt.ui.prefix;
 
 	const vueA11yRules = {
 		'vuejs-accessibility/click-events-have-key-events': 'off',
@@ -23,9 +25,20 @@ function getVueAccessibilityRules(options: DeepNonNullable<Options>) {
 			components: userAnchorComponents,
 			accessibleChildren: userAccessibleChildComponents,
 		}],
+		'vuejs-accessibility/form-control-has-label': ['error', {
+			labelComponents: nuxtUI ? [`${nuxtUIPrefix}FormField`] : undefined,
+		}],
+		'vuejs-accessibility/label-has-for': ['error', {
+			allowChildren: true,
+			required: {
+				some: ['nesting', 'id'],
+			},
+			controlComponents: ['input', 'output', 'meter', 'select', 'textarea', 'progress'],
+		}],
 	} satisfies PluginRules<'vuejs-accessibility'>;
 
 	return vueA11yRules;
 }
 
+// oxlint-disable-next-line no-named-export
 export { getVueAccessibilityRules };
