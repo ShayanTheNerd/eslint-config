@@ -115,7 +115,8 @@
 		"eslint/max-nested-callbacks": "off",
 		"typescript/consistent-type-definitions": "off",
 		"vitest/consistent-test-it": "off",
-		"jest/max-nested-describe": "off"
+		"jest/max-nested-describe": "off",
+		"vue/define-props-destructuring": "off"
 	},
 
 	"overrides": [
