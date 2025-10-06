@@ -87,11 +87,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
 		}],
 
 		/* Priority C: Recommended (Potentially Dangerous Patterns) */
-		'vue/attributes-order': ['warn', {
-			alphabetical: true,
-			sortLineLength: true,
-			order: attributesOrder,
-		}],
+		'vue/attributes-order': ['warn', { order: attributesOrder }],
 
 		/* Miscellaneous */
 		'vue/camelcase': 'warn',
