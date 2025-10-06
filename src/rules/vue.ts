@@ -167,10 +167,11 @@ function getVueRules(options: DeepNonNullable<Options>) {
 				element: nuxtImage ? 'img' : '',
 				message: 'Use `<NuxtImg>`.',
 			},
-			{
-				element: nuxtImage ? 'picture' : '',
-				message: 'Use `<NuxtPicture>`.',
-			},
+			// https://github.com/nuxt/image/issues/309
+			// {
+			// 	element: nuxtImage ? 'picture' : '',
+			// 	message: 'Use `<NuxtPicture>`.',
+			// },
 			{
 				element: nuxtUI ? ['a', 'RouterLink', 'NuxtLink'] : '',
 				message: nuxtUI ? `Use \`<${nuxtUIPrefix}Link>\`.` : undefined,

@@ -2,7 +2,7 @@ interface NuxtOptions {
 	/**
 	 * Whether [NuxtImage](https://image.nuxt.com) is used in the project.
 	 *
-	 * Enforce the use of `<NuxtImg>` instead of `<img>`, and `<NuxtPicture>` instead of `<picture>`.
+	 * Enforce the use of `<NuxtImg>` instead of `<img>`.
 	 *
 	 * @default false // `true` if "@nuxt/image" is detected in the package.json file when `autoDetectDeps` is enabled
 	 *
