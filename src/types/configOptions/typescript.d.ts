@@ -7,7 +7,9 @@ interface TypeScriptOptions extends ConfigWithOverrides {
 	 *
 	 * The matched files may not also be included in their nearest _tsconfig.json_ file.
 	 *
-	 * @default []
+	 * New items extend the defaults, they don't override it.
+	 *
+	 * @default ['{prettier,eslint}.config.?([mc])ts']
 	 *
 	 * @see [@typescript-eslint: `allowDefaultProject` option](https://typescript-eslint.io/packages/parser#allowdefaultproject)
 	 */

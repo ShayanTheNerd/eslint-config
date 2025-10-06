@@ -1,5 +1,5 @@
 {
-	"exclude": ["dist"],
+	"exclude": ["dist", "eslint.config.ts", "prettier.config.ts"],
 	"compilerOptions": {
 		"baseUrl": "./src",
 		"paths": {

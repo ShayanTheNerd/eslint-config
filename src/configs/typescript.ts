@@ -29,7 +29,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 				tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
 				projectService: {
 					defaultProject: tsConfig ? tsConfig.filename : undefined,
-					allowDefaultProject: allowedDefaultProjects,
+					allowDefaultProject: ['{prettier,eslint}.config.?([mc])ts', ...allowedDefaultProjects],
 				},
 			},
 		},
