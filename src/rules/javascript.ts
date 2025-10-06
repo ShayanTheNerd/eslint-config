@@ -90,6 +90,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'init-declarations': 'error',
 		'consistent-return': 'error',
 		'no-useless-concat': 'error',
+		'no-param-reassign': 'error',
 		'no-useless-rename': 'error',
 		'default-param-last': 'warn',
 		'symbol-description': 'warn',
