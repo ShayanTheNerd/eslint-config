@@ -1,6 +1,8 @@
+import type { Linter } from 'eslint';
+
 import { defineConfig } from '../src/index.ts';
 
-export default defineConfig({
+const config: Linter.Config[] = defineConfig({
 	autoDetectDeps: false,
 	configs: {
 		oxlint: './src/oxlint.config.jsonc',
@@ -23,3 +25,5 @@ export default defineConfig({
 		},
 	},
 });
+
+export default config;
