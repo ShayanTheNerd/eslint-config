@@ -110,10 +110,10 @@ const defaultOptions = {
 				'defineExpose',
 			],
 			attributesOrder: [
-				'DEFINITION',
 				'CONDITIONALS',
 				'RENDER_MODIFIERS',
 				'LIST_RENDERING',
+				'DEFINITION',
 				'UNIQUE',
 				'GLOBAL',
 				'SLOT',
