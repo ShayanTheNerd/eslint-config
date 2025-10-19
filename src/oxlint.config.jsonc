@@ -54,8 +54,8 @@
 		"eslint/sort-imports": "off",
 		"eslint/no-magic-numbers": "off",
 		"eslint/arrow-body-style": "off",
-		"eslint/no-duplicate-imports": "off",
 		"eslint/func-names": ["error", "as-needed"],
+		"eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
 		"eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
 		"eslint/no-console": [
 			"warn",
