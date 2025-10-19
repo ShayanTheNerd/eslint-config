@@ -36,7 +36,6 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 		'@stylistic/lines-between-class-members': 'off',
 		'@stylistic/arrow-parens': ['warn', arrowParens],
 		'@stylistic/comma-dangle': ['warn', trailingComma],
-		'@stylistic/object-curly-spacing': ['warn', 'always'],
 		'@stylistic/nonblock-statement-body-position': 'error',
 		'@stylistic/generator-star-spacing': ['warn', 'after'],
 		'@stylistic/implicit-arrow-linebreak': ['error', 'beside'],
@@ -46,6 +45,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 		'@stylistic/function-call-argument-newline': ['warn', 'consistent'],
 		'@stylistic/brace-style': ['warn', '1tbs', { allowSingleLine: true }],
 		'@stylistic/padded-blocks': ['error', 'never', { allowSingleLineBlocks: true }],
+		'@stylistic/object-curly-spacing': ['warn', 'always', { emptyObjects: 'never' }],
 		'@stylistic/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
 		'@stylistic/indent': [
 			'warn',
