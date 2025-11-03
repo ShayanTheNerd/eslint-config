@@ -201,6 +201,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
 
   /* Adjust these based on the features you're using to silently auto-fix the stylistic rules in your IDE. */
   "tailwindCSS.lint.cssConflict": "ignore", // Only if you're using the Tailwind config
+	"tailwindCSS.lint.recommendedVariantOrder": "ignore", // Only if you're using the Tailwind config
   "eslint.rules.customizations": [
     { "rule": "*styl*", "severity": "off", "fixable": true },
     { "rule": "*sort*", "severity": "off", "fixable": true },
