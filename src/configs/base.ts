@@ -14,6 +14,9 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const {
 		configs: {
 			vue,
+			test: {
+				vitest,
+			},
 			base: {
 				overrides,
 			},
@@ -54,6 +57,8 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 				...(worker ? globals.worker : {}),
 				...(serviceworker ? globals.serviceworker : {}),
 				...(webextension ? globals.webextensions : {}),
+				...(vue ? globals.vue : {}),
+				...(vitest ? globals.vitest : {}),
 				...userGlobals,
 			},
 		},
