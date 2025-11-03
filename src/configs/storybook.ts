@@ -10,8 +10,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getStorybookRules } from '#rules/storybook.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-/* @ts-expect-error - Incorrect type definition for the `configs` property */
-const eslintConfigStorybook = eslintPluginStorybook.configs['flat/recommended']; // eslint-disable-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+const eslintConfigStorybook = eslintPluginStorybook.configs['flat/recommended'];
 
 function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const { storybook } = options.configs.test;

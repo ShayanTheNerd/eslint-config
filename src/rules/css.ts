@@ -1,9 +1,12 @@
 import type { Options } from '#types/index.d.ts';
-import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
+
+type PhysicalUnits = RuleOptions<'css/prefer-logical-properties'>['allowUnits'];
+type PhysicalProperties = RuleOptions<'css/prefer-logical-properties'>['allowProperties'];
 
 const allowedPhysicalUnits = [
 	'cqh',
@@ -16,7 +19,7 @@ const allowedPhysicalUnits = [
 	'svw',
 	'vh',
 	'vw',
-];
+] satisfies PhysicalUnits;
 const allowedPhysicalProperties = [
 	'bottom',
 	'border-bottom',
@@ -48,7 +51,7 @@ const allowedPhysicalProperties = [
 	'scroll-padding-top',
 	'top',
 	'width',
-];
+] satisfies PhysicalProperties;
 
 function getCSSRules(options: DeepNonNullable<Options>) {
 	const { css } = options.configs;
