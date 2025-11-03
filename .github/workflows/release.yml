@@ -17,9 +17,8 @@ jobs:
     name: Release a New Version
     runs-on: ubuntu-latest
     permissions:
+      id-token: write
       contents: write
-      issues: write
-      pull-requests: write
 
     steps:
       - name: Prepare the Environment
@@ -55,9 +54,6 @@ jobs:
 
       - name: Publish to NPM
         run: npm publish
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate a Changelog Based on Conventional Commits
         id: changelog
