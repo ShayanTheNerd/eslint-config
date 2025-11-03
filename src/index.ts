@@ -70,7 +70,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 	const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
 	const oxlintConfigPath = path.resolve(oxlint || defaultOptions.configs.oxlint);
 
-	const eslintConfig = defineESLintConfig(
+	const configObjects = [
 		{
 			name: 'shayanthenerd/global',
 			linterOptions,
@@ -80,32 +80,34 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 		globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
 		getBaseConfig(mergedOptions),
-		preferNamedExports ? getRestrictedExports() : {},
+		preferNamedExports ? getRestrictedExports() : undefined,
 
-		isEnabled(importX) ? getImportXConfig(mergedOptions) : {},
-		isEnabled(stylistic) ? getStylisticConfig(mergedOptions) : {},
-		isEnabled(perfectionist) ? getPerfectionistConfig(mergedOptions) : {},
+		isEnabled(importX) ? getImportXConfig(mergedOptions) : undefined,
+		isEnabled(stylistic) ? getStylisticConfig(mergedOptions) : undefined,
+		isEnabled(perfectionist) ? getPerfectionistConfig(mergedOptions) : undefined,
 
-		isEnabled(typescript) ? getTypeScriptConfig(mergedOptions) : {},
-		isEnabled(html) ? getHTMLConfig(mergedOptions) : {},
-		isEnabled(css) ? getCSSConfig(mergedOptions) : {},
-		isEnabled(tailwind) ? getTailwindConfig(mergedOptions) : {},
+		isEnabled(typescript) ? getTypeScriptConfig(mergedOptions) : undefined,
+		isEnabled(html) ? getHTMLConfig(mergedOptions) : undefined,
+		isEnabled(css) ? getCSSConfig(mergedOptions) : undefined,
+		isEnabled(tailwind) ? getTailwindConfig(mergedOptions) : undefined,
 
-		isEnabled(vue) ? getVueConfig(mergedOptions) : {},
-		isEnabled(vue) ? getVueComponentNamesConfig() : {},
-		isEnabled(vue) && isEnabled(nuxt) ? getVueServerComponentsConfig() : {},
+		isEnabled(vue) ? getVueConfig(mergedOptions) : undefined,
+		isEnabled(vue) ? getVueComponentNamesConfig() : undefined,
+		isEnabled(vue) && isEnabled(nuxt) ? getVueServerComponentsConfig() : undefined,
 
-		isEnabled(storybook) ? getStorybookConfig(mergedOptions) : {},
-		isEnabled(vitest) ? getVitestConfig(mergedOptions) : {},
-		isEnabled(playwright) ? getPlaywrightConfig(mergedOptions) : {},
-		isEnabled(cypress) ? getCypressConfig(mergedOptions) : {},
+		isEnabled(storybook) ? getStorybookConfig(mergedOptions) : undefined,
+		isEnabled(vitest) ? getVitestConfig(mergedOptions) : undefined,
+		isEnabled(playwright) ? getPlaywrightConfig(mergedOptions) : undefined,
+		isEnabled(cypress) ? getCypressConfig(mergedOptions) : undefined,
 
 		...(oxlint ? eslintPluginOXLint.buildFromOxlintConfigFile(oxlintConfigPath) : []),
-		oxlint ? getOXLintOverridesConfig(mergedOptions) : {},
+		oxlint ? getOXLintOverridesConfig(mergedOptions) : undefined,
 
-		/* @ts-expect-error -- There's a type mismatch in the `extends` field. */
 		...configs,
-	);
+	].filter(Boolean);
+
+	/* @ts-expect-error -- There's a type mismatch in the `extends` field. */
+	const eslintConfig = defineESLintConfig(...configObjects);
 
 	return eslintConfig as Linter.Config[];
 }
