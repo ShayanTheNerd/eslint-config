@@ -26,12 +26,9 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
 		'no-template-curly-in-string': 'error',
 		'no-unmodified-loop-condition': 'error',
 		'use-isnan': ['error', { enforceForIndexOf: true }],
+		'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 		'no-unsafe-negation': ['error', { enforceForOrderingRelations: true }],
 		'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
-		'no-unused-vars': ['error', {
-			argsIgnorePattern: '^_',
-			ignoreUsingDeclarations: true,
-		}],
 		'no-use-before-define': ['error', {
 			functions: false,
 			ignoreTypeReferences: false,

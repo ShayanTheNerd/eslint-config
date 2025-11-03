@@ -56,6 +56,7 @@
 		"eslint/arrow-body-style": "off",
 		"eslint/func-names": ["error", "as-needed"],
 		"eslint/no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+		"eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
 		"eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
 		"eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
 		"eslint/no-console": [
