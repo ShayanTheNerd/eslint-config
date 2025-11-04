@@ -29,15 +29,15 @@
 	"files": [
 		"./dist"
 	],
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
+	"main": "./dist/index.mjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.mts",
 	"exports": {
-		".": "./dist/index.js",
+		".": "./dist/index.mjs",
 		"./package.json": "./package.json",
 		"./types/*": "./dist/types/*",
 		"./oxlint": "./dist/oxlint.config.jsonc",
-		"./prettier": "./dist/prettier.config.js"
+		"./prettier": "./dist/prettier.config.mjs"
 	},
 	"publishConfig": {
 		"access": "public"
@@ -81,13 +81,13 @@
 	},
 	"dependencies": {
 		"@eslint/compat": "1.4.1",
-		"@eslint/css": "0.14.0",
-		"@eslint/js": "9.39.0",
-		"@html-eslint/eslint-plugin": "0.47.0",
+		"@eslint/css": "0.14.1",
+		"@eslint/js": "9.39.1",
+		"@html-eslint/eslint-plugin": "0.47.1",
 		"@stylistic/eslint-plugin": "5.5.0",
 		"@vitest/eslint-plugin": "1.4.0",
 		"defu": "6.1.4",
-		"eslint": "9.38.0",
+		"eslint": "9.39.1",
 		"eslint-flat-config-utils": "2.1.4",
 		"eslint-import-resolver-typescript": "4.4.4",
 		"eslint-plugin-better-tailwindcss": "3.7.10",
@@ -96,7 +96,7 @@
 		"eslint-plugin-oxlint": "1.25.0",
 		"eslint-plugin-perfectionist": "4.15.1",
 		"eslint-plugin-playwright": "2.3.0",
-		"eslint-plugin-storybook": "10.0.3",
+		"eslint-plugin-storybook": "10.0.4",
 		"eslint-plugin-unused-imports": "4.3.0",
 		"eslint-plugin-vue": "10.5.1",
 		"eslint-plugin-vuejs-accessibility": "2.4.1",
@@ -117,7 +117,7 @@
 		"publint": "0.3.15",
 		"serve": "14.2.5",
 		"simple-git-hooks": "2.13.1",
-		"tsdown": "0.15.12",
+		"tsdown": "0.16.0",
 		"typescript": "5.9.3",
 		"unplugin-unused": "0.5.5"
 	}

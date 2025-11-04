@@ -8,7 +8,7 @@ export default defineConfig({
 		customExports(packageExports) {
 			packageExports['./types/*'] = './dist/types/*';
 			packageExports['./oxlint'] = './dist/oxlint.config.jsonc';
-			packageExports['./prettier'] = './dist/prettier.config.js';
+			packageExports['./prettier'] = './dist/prettier.config.mjs';
 			delete packageExports['./prettier.config'];
 
 			return packageExports;
