@@ -9,6 +9,7 @@ function getStorybookRules(options: DeepNonNullable<Options>) {
 		'storybook/csf-component': 'error',
 		'storybook/no-stories-of': 'error',
 		'storybook/meta-satisfies-type': 'warn',
+		'storybook/meta-inline-properties': 'warn',
 		'storybook/no-uninstalled-addons': ['error', {
 			packageJsonLocation: path.resolve(options.packageDir, 'package.json'),
 		}],
