@@ -8,6 +8,8 @@ function getPlaywrightRules(options: DeepNonNullable<Options>) {
 	const playwrightRules = {
 		'playwright/max-expects': 'off',
 		'playwright/prefer-to-be': 'warn',
+		'playwright/require-hook': 'error',
+		'playwright/prefer-locator': 'error',
 		'playwright/no-get-by-title': 'error',
 		'playwright/prefer-to-contain': 'warn',
 		'playwright/no-wait-for-timeout': 'off',
@@ -17,6 +19,7 @@ function getPlaywrightRules(options: DeepNonNullable<Options>) {
 		'playwright/prefer-to-have-count': 'warn',
 		'playwright/prefer-hooks-in-order': 'warn',
 		'playwright/prefer-to-have-length': 'warn',
+		'playwright/prefer-native-locators': 'warn',
 		'playwright/no-commented-out-tests': 'error',
 		'playwright/prefer-equality-matcher': 'warn',
 		'playwright/require-to-throw-message': 'error',
