@@ -7,6 +7,7 @@ function getCypressRules() {
 		'cypress/no-xpath': 'error',
 		'cypress/no-async-tests': 'off',
 		'cypress/no-chained-get': 'error',
+		'cypress/no-async-before': 'warn',
 		'cypress/assertion-before-screenshot': 'error',
 	} satisfies PluginRules<'cypress'>;
 
