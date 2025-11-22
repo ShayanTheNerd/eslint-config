@@ -11,16 +11,19 @@ import { getStylisticRules } from '#rules/stylistic.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
 function getStylisticConfig(options: DeepNonNullable<Options>): Linter.Config {
-	const { stylistic } = options.configs;
+	const { vue, stylistic } = options.configs;
 	const { overrides } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
+
 	const stylisticConfig = {
 		name: 'shayanthenerd/stylistic',
-		files: [globs.src, options.configs.vue ? globs.vue : ''],
-		extends: [eslintPluginStylistic.configs.recommended],
+		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+		plugins: {
+			'@stylistic': eslintPluginStylistic,
+		},
 		rules: getStylisticRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(stylisticConfig, overrides);
 }
 

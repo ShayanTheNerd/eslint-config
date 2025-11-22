@@ -13,9 +13,22 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getTailwindRules } from '#rules/tailwind.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-const eslintParserHTML = eslintPluginHTML.configs['flat/recommended'].languageOptions.parser;
-const eslintParserVue = eslintPluginVue.configs['flat/recommended']
-	.find((config) => config.name === 'vue/base/setup-for-vue')?.languageOptions?.parser;
+/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+const eslintParserHTML = (eslintPluginHTML.configs?.['flat/recommended'] as ConfigObject)?.languageOptions?.parser;
+const eslintParserVue = eslintPluginVue.configs['flat/recommended'].find((config) => {
+	return config.name === 'vue/base/setup-for-vue';
+})?.languageOptions?.parser;
+
+const vueAttributes = [
+	['^v-bind:ui$', [
+		{ match: 'objectValues' },
+	]],
+	['^(?:v-bind:)?(class|activeClass|inactiveClass)$', [
+		{ match: 'strings' },
+		{ match: 'objectKeys' },
+		{ match: 'objectValues' },
+	]],
+] as const;
 
 function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const {
@@ -30,36 +43,27 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
 
 	const tailwindConfig = {
 		name: 'shayanthenerd/tailwind',
-		files: [globs.src, html ? globs.html : '', vue ? globs.vue : ''],
+		files: [globs.src, html ? globs.html : '', vue ? globs.vue : ''].filter(Boolean),
 		plugins: {
 			'better-tailwindcss': eslintPluginTailwind,
 		},
 		languageOptions: {
 			parserOptions: {
-				parser: html ? eslintParserHTML : eslintParserVue,
+				parser: isEnabled(html) ? eslintParserHTML : eslintParserVue,
 			},
 		},
 		settings: {
 			'better-tailwindcss': {
-				entryPoint,
-				tailwindConfig: config,
+				entryPoint: entryPoint || undefined,
+				tailwindConfig: config || undefined,
+				attributes: isEnabled(vue) ? vueAttributes : undefined,
 				tsconfig: tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined,
-				attributes: [
-					['^v-bind:ui$', [
-						{ match: 'objectValues' },
-					]],
-					['^(?:v-bind:)?(class|activeClass|inactiveClass)$', [
-						{ match: 'strings' },
-						{ match: 'objectKeys' },
-						{ match: 'objectValues' },
-					]],
-				],
 			},
 		},
 		rules: getTailwindRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(tailwindConfig, overrides);
 }
 

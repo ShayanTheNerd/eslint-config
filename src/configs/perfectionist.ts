@@ -16,7 +16,7 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Confi
 
 	const perfectionistConfig = {
 		name: 'shayanthenerd/perfectionist',
-		files: [globs.src, vue ? globs.vue : ''],
+		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
 		plugins: {
 			perfectionist: eslintPluginPerfectionist,
 		},
@@ -28,7 +28,7 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Confi
 		rules: getPerfectionistRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(perfectionistConfig, overrides);
 }
 

@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
-import eslintCSS from '@eslint/css';
+import eslintPluginCSS from '@eslint/css';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import { tailwind3, tailwind4 } from 'tailwind-csstree';
 
@@ -19,7 +19,9 @@ function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const cssConfig = {
 		name: 'shayanthenerd/css',
 		files: [globs.css],
-		extends: [eslintCSS.configs.recommended],
+		plugins: {
+			css: eslintPluginCSS,
+		},
 		language: 'css/css',
 		languageOptions: {
 			tolerant: true,
@@ -28,7 +30,7 @@ function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getCSSRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(cssConfig, overrides);
 }
 

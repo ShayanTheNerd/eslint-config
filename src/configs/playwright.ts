@@ -1,4 +1,5 @@
 import type { Linter } from 'eslint';
+import type { FlatConfig } from 'typescript-eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
@@ -17,7 +18,12 @@ function getPlaywrightConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const playwrightConfig = {
 		name: 'shayanthenerd/playwright',
 		files: [globs.test],
-		extends: [eslintPluginPlaywright.configs['flat/recommended']],
+		plugins: {
+			playwright: eslintPluginPlaywright,
+		},
+		languageOptions: {
+			globals: eslintPluginPlaywright.configs['flat/recommended'].languageOptions?.globals as FlatConfig.GlobalsConfig,
+		},
 		rules: getPlaywrightRules(options),
 	} satisfies ConfigObject;
 

@@ -2,8 +2,8 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
-import typescriptESLint from 'typescript-eslint';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import { plugin as eslintPluginTypeScript, parser as eslintParserTypeScript } from 'typescript-eslint';
 import path from 'node:path';
 
 import { globs } from '#utils/globs.ts';
@@ -18,12 +18,12 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 
 	const typescriptConfig = {
 		name: 'shayanthenerd/typescript',
-		files: [globs.ts, vue ? globs.vue : ''],
-		extends: [
-			typescriptESLint.configs.strictTypeChecked,
-			typescriptESLint.configs.stylisticTypeChecked,
-		],
+		files: isEnabled(vue) ? [globs.ts, globs.vue] : [globs.ts],
+		plugins: {
+			'@typescript-eslint': eslintPluginTypeScript,
+		},
 		languageOptions: {
+			parser: eslintParserTypeScript,
 			parserOptions: {
 				warnOnUnsupportedTypeScriptVersion: false,
 				tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
@@ -36,7 +36,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getTypeScriptRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(typescriptConfig, overrides);
 }
 

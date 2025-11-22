@@ -58,13 +58,22 @@ function getCSSRules(options: DeepNonNullable<Options>) {
 	const { useBaseline, allowedRelativeFontUnits } = isEnabled(css) ? css : defaultOptions.configs.css;
 
 	const cssRules = {
+		'css/font-family-fallbacks': 'warn',
+		'css/no-duplicate-imports': 'error',
+		'css/no-duplicate-keyframe-selectors': 'error',
+		'css/no-empty-blocks': 'error',
+		'css/no-important': 'warn',
+		'css/no-invalid-at-rule-placement': 'error',
+		'css/no-invalid-at-rules': 'error',
+		'css/no-invalid-named-grid-areas': 'error',
 		'css/no-invalid-properties': ['error', { allowUnknownVariables: true }],
-		'css/relative-font-units': ['warn', { allowUnits: allowedRelativeFontUnits }],
-		'css/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
+		'css/no-unmatchable-selectors': 'error',
 		'css/prefer-logical-properties': ['error', {
 			allowUnits: allowedPhysicalUnits,
 			allowProperties: allowedPhysicalProperties,
 		}],
+		'css/relative-font-units': ['warn', { allowUnits: allowedRelativeFontUnits }],
+		'css/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
 	} satisfies PluginRules<'css'>;
 
 	return cssRules;

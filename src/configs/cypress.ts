@@ -1,4 +1,5 @@
 import type { Linter } from 'eslint';
+import type { FlatConfig } from 'typescript-eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
@@ -17,7 +18,12 @@ function getCypressConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const cypressConfig = {
 		name: 'shayanthenerd/cypress',
 		files: [globs.test],
-		extends: [eslintPluginCypress.configs.recommended],
+		plugins: {
+			cypress: eslintPluginCypress,
+		},
+		languageOptions: {
+			globals: eslintPluginCypress.configs.recommended.languageOptions?.globals as FlatConfig.GlobalsConfig,
+		},
 		rules: getCypressRules(),
 	} satisfies ConfigObject;
 

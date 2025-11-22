@@ -10,8 +10,6 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getStorybookRules } from '#rules/storybook.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-const eslintConfigStorybook = eslintPluginStorybook.configs['flat/recommended'];
-
 function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const { storybook } = options.configs.test;
 	const { overrides } = isEnabled(storybook) ? storybook : defaultOptions.configs.test.storybook;
@@ -19,7 +17,9 @@ function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const storybookConfig = {
 		name: 'shayanthenerd/storybook',
 		files: [globs.storybook],
-		extends: [eslintConfigStorybook],
+		plugins: {
+			storybook: eslintPluginStorybook,
+		},
 		rules: getStorybookRules(options),
 	} satisfies ConfigObject;
 

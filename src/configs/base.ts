@@ -3,11 +3,11 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import globals from 'globals';
-import javascriptESLint from '@eslint/js';
-import typescriptESLint from 'typescript-eslint';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import { parser as eslintParserTypeScript } from 'typescript-eslint';
 
 import { globs } from '#utils/globs.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 
 function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
@@ -36,10 +36,9 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 
 	const baseConfig = {
 		name: 'shayanthenerd/base',
-		files: [globs.src, vue ? globs.vue : ''],
-		extends: [javascriptESLint.configs.recommended],
+		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
 		languageOptions: {
-			parser: typescriptESLint.parser,
+			parser: eslintParserTypeScript,
 			parserOptions: {
 				ecmaVersion: 'latest',
 				ecmaFeatures: {
@@ -50,22 +49,22 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 			globals: {
 				...globals.builtin,
 				...globals.es2026,
-				...(commonjs ? globals.commonjs : {}),
-				...(node ? globals.node : {}),
-				...(node ? globals.nodeBuiltin : {}),
-				...(browser ? globals.browser : {}),
-				...(worker ? globals.worker : {}),
-				...(serviceworker ? globals.serviceworker : {}),
-				...(webextension ? globals.webextensions : {}),
-				...(vue ? globals.vue : {}),
-				...(vitest ? globals.vitest : {}),
+				...(commonjs && globals.commonjs),
+				...(node && globals.node),
+				...(node && globals.nodeBuiltin),
+				...(browser && globals.browser),
+				...(worker && globals.worker),
+				...(serviceworker && globals.serviceworker),
+				...(webextension && globals.webextensions),
+				...(isEnabled(vue) && globals.vue),
+				...(isEnabled(vitest) && globals.vitest),
 				...userGlobals,
 			},
 		},
 		rules: getJavaScriptRules(options),
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return mergeConfigs(baseConfig, overrides);
 }
 

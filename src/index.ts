@@ -28,10 +28,10 @@ import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 
 /**
- * Define the ESLint configuration based on the provided options and any number of Flat Config objects.
+ * Define ESLint configuration based on the provided options and any number of Flat Config Objects.
  *
  * @param {Options} options - Options to configure and customize the config
- * @param {...ConfigObject} configs - Additional Flat Config objects to extend the config
+ * @param {...ConfigObject} configs - Additional Flat Config Objects to extend the default config
  *
  * @returns {Linter.Config[]} The merged ESLint configuration array
  */
@@ -68,48 +68,52 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 		},
 	} = mergedOptions;
 	const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
-	const oxlintConfigPath = path.resolve(oxlint || defaultOptions.configs.oxlint);
+	const oxlintConfigPath = oxlint ? path.resolve(oxlint || defaultOptions.configs.oxlint) : '';
+	const oxlintOverrides = oxlint
+		? eslintPluginOXLint
+			.buildFromOxlintConfigFile(oxlintConfigPath)
+			.filter((config) => config.name !== 'oxlint/vue-svelte-exceptions')
+		: [];
 
 	const configObjects = [
+		globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
+
 		{
 			name: 'shayanthenerd/global',
 			linterOptions,
 			settings,
 			rules,
 		},
-		globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
-
 		getBaseConfig(mergedOptions),
-		preferNamedExports ? getRestrictedExports() : undefined,
 
-		isEnabled(importX) ? getImportXConfig(mergedOptions) : undefined,
-		isEnabled(stylistic) ? getStylisticConfig(mergedOptions) : undefined,
-		isEnabled(perfectionist) ? getPerfectionistConfig(mergedOptions) : undefined,
+		isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
+		isEnabled(html) && getHTMLConfig(mergedOptions),
+		isEnabled(css) && getCSSConfig(mergedOptions),
 
-		isEnabled(typescript) ? getTypeScriptConfig(mergedOptions) : undefined,
-		isEnabled(html) ? getHTMLConfig(mergedOptions) : undefined,
-		isEnabled(css) ? getCSSConfig(mergedOptions) : undefined,
-		isEnabled(tailwind) ? getTailwindConfig(mergedOptions) : undefined,
+		isEnabled(importX) && getImportXConfig(mergedOptions),
+		preferNamedExports && getRestrictedExports(),
+		isEnabled(stylistic) && getStylisticConfig(mergedOptions),
+		isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
-		isEnabled(vue) ? getVueConfig(mergedOptions) : undefined,
-		isEnabled(vue) ? getVueComponentNamesConfig() : undefined,
-		isEnabled(vue) && isEnabled(nuxt) ? getVueServerComponentsConfig() : undefined,
+		isEnabled(tailwind) && getTailwindConfig(mergedOptions),
+		isEnabled(vue) && getVueConfig(mergedOptions),
+		isEnabled(vue) && getVueComponentNamesConfig(),
+		(isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
 
-		isEnabled(storybook) ? getStorybookConfig(mergedOptions) : undefined,
-		isEnabled(vitest) ? getVitestConfig(mergedOptions) : undefined,
-		isEnabled(playwright) ? getPlaywrightConfig(mergedOptions) : undefined,
-		isEnabled(cypress) ? getCypressConfig(mergedOptions) : undefined,
+		isEnabled(storybook) && getStorybookConfig(mergedOptions),
+		isEnabled(vitest) && getVitestConfig(mergedOptions),
+		isEnabled(cypress) && getCypressConfig(mergedOptions),
+		isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
 
-		...(oxlint ? eslintPluginOXLint.buildFromOxlintConfigFile(oxlintConfigPath) : []),
-		oxlint ? getOXLintOverridesConfig(mergedOptions) : undefined,
+		...oxlintOverrides,
+		oxlint && getOXLintOverridesConfig(mergedOptions),
 
 		...configs,
-	].filter(Boolean);
+	].filter(Boolean) as Linter.Config[];
 
-	/* @ts-expect-error -- There's a type mismatch in the `extends` field. */
-	const eslintConfig = defineESLintConfig(...configObjects);
+	const eslintConfig = defineESLintConfig(configObjects);
 
-	return eslintConfig as Linter.Config[];
+	return eslintConfig;
 }
 
 export { defineConfig };

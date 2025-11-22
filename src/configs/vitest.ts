@@ -17,7 +17,9 @@ function getVitestConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const vitestConfig = {
 		name: 'shayanthenerd/vitest',
 		files: [globs.test],
-		extends: [eslintPluginVitest.configs.recommended],
+		plugins: {
+			vitest: eslintPluginVitest,
+		},
 		rules: getVitestRules(options),
 	} satisfies ConfigObject;
 

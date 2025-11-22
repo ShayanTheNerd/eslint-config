@@ -17,6 +17,7 @@ import { getTypeScriptRules } from '#rules/typescript.ts';
 function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const {
 		vue,
+		importX,
 		typescript,
 		test: {
 			vitest,
@@ -31,12 +32,16 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 
 	const oxlintOverridesConfig = {
 		name: 'shayanthenerd/oxlint/overrides',
-		files: [globs.src, vue ? globs.vue : '', vitest || playwright ? globs.test : ''],
+		files: [
+			globs.src,
+			isEnabled(vue) ? globs.vue : '',
+			isEnabled(vitest) || isEnabled(playwright) ? globs.test : '',
+		].filter(Boolean),
 		plugins: {
-			'vitest': eslintPluginVitest,
-			'import-x': eslintPluginImportX,
-			'playwright': eslintPluginPlaywright,
-			'@typescript-eslint': typescriptESLint.plugin,
+			...(isEnabled(vitest) && { vitest: eslintPluginVitest }),
+			...(isEnabled(importX) && { 'import-x': eslintPluginImportX }),
+			...(isEnabled(playwright) && { playwright: eslintPluginPlaywright }),
+			...(isEnabled(typescript) && { '@typescript-eslint': typescriptESLint.plugin }),
 		},
 		rules: {
 			'max-depth': javascriptRules['max-depth'],
@@ -57,7 +62,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 		},
 	} satisfies ConfigObject;
 
-	/* @ts-expect-error - Incompatible `parser` types */
+	/* @ts-expect-error — Incompatible `parser` types */
 	return oxlintOverridesConfig;
 }
 
