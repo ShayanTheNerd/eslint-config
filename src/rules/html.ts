@@ -43,13 +43,21 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
 		'@html-eslint/require-open-graph-protocol': 'error',
 
 		/* Accessibility */
+		'@html-eslint/no-invalid-role': 'error',
+		'@html-eslint/no-empty-headings': 'error',
 		'@html-eslint/no-abstract-roles': 'error',
+		'@html-eslint/no-invalid-entity': 'error',
 		'@html-eslint/no-accesskey-attrs': 'error',
+		'@html-eslint/require-input-label': 'error',
 		'@html-eslint/require-frame-title': 'error',
 		'@html-eslint/no-aria-hidden-body': 'error',
 		'@html-eslint/no-positive-tabindex': 'error',
 		'@html-eslint/require-meta-viewport': 'error',
 		'@html-eslint/no-skip-heading-levels': 'error',
+		'@html-eslint/no-non-scalable-viewport': 'error',
+		'@html-eslint/no-heading-inside-button': 'error',
+		'@html-eslint/no-aria-hidden-on-focusable': 'error',
+		'@html-eslint/no-extra-spacing-text': ['warn', { skip: ['pre'] }],
 
 		/* Style */
 		'@html-eslint/lowercase': 'warn',
