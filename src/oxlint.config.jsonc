@@ -52,6 +52,7 @@
 		"eslint/no-ternary": "off",
 		"eslint/no-undefined": "off",
 		"eslint/sort-imports": "off",
+		"eslint/no-else-return": "off",
 		"eslint/no-magic-numbers": "off",
 		"eslint/arrow-body-style": "off",
 		"eslint/func-names": ["error", "as-needed"],
