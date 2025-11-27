@@ -302,7 +302,7 @@ interface Options {
 		 *
 		 * @default false
 		 */
-		tailwind?: false | (TailwindOptions & ConfigWithOverrides),
+		tailwind?: false | TailwindOptions,
 
 		/**
 		 * Use [typescript-eslint](https://typescript-eslint.io) to enforce TypeScript-specific rules.
