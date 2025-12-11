@@ -32,6 +32,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 		'@stylistic/comma-spacing': 'warn',
 		'@stylistic/comma-style': 'warn',
 		'@stylistic/computed-property-spacing': 'warn',
+		'@stylistic/dot-location': ['warn', 'property'],
 		'@stylistic/eol-last': 'warn',
 		'@stylistic/exp-list-style': 'warn',
 		'@stylistic/function-call-argument-newline': ['warn', 'consistent'],
