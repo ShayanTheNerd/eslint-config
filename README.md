@@ -2,7 +2,7 @@
 
 A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style.
 
-- **Performant**: Powered by [OXLint](https://oxc.rs/docs/guide/usage/linter) for rapid linting
+- **Performant**: Powered by [OXLint (OXC Linter)](https://oxc.rs/docs/guide/usage/linter) for rapid linting
 - **Flat Config**: Type-safe [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files) with `extends` and `overrides` support
 - **Comprehensive**: Dependency detection with support for TypeScript, Vue & Nuxt, Tailwind, Storybook, Vitest & Playwright, and more
 - **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic](https://eslint.style), eliminating the need for Prettier
@@ -138,15 +138,27 @@ This config uses [ESLint Stylistic](https://eslint.style) to format JavaScript a
 npm i -D prettier
 ```
 
-2. Create a Prettier config file (_prettier.config.js_) in the root of your project:
+2. Create a Prettier config file in the root of your project (_prettier.config.js_):
 ```js
 import prettierConfig from '@shayanthenerd/eslint-config/prettier';
 
 /** @type {import('prettier').Config} */
 export default {
   ...prettierConfig,
-  semi: false, // Override the `semi` option from the shared config
+  semi: false, // Override `semi` from the shared config
 };
+```
+
+Or if you prefer using TypeScrpit (_prettier.config.ts_):
+```ts
+import type { Config } from 'prettier';
+
+import prettierConfig from '@shayanthenerd/eslint-config/prettier';
+
+export default {
+  ...prettierConfig,
+  semi: true, // Override `semi` from the shared config
+} satisfies Config;
 ```
 
 3. To prevent conflicts with ESLint, Prettier should be configured to only format files other than JavaScript, TypeScript, HTML, and Vue. Hence, add the following script to your _package.json_ file:
@@ -259,7 +271,7 @@ Since OXLint and ESLint use separate config files, customizations made in your E
 
 `defineConfig` takes the `options` object as the first argument. `options` is thoroughly documented with JSDoc, and provides many options for rule customizations. In addition, each config object in `options.configs` accepts an `overrides` option:
 ```ts
-interface overrides {
+interface Overrides {
   name: '',
   files: [],
   ignores: [],
