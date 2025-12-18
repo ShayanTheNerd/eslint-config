@@ -23,8 +23,8 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
 		'perfectionist/sort-union-types': 'warn',
 		'perfectionist/sort-array-includes': 'warn',
 		'perfectionist/sort-intersection-types': 'warn',
-		'perfectionist/sort-named-imports': ['warn', { groupKind: 'types-first' }],
-		'perfectionist/sort-named-exports': ['warn', { groupKind: 'types-first' }],
+		'perfectionist/sort-named-imports': 'warn',
+		'perfectionist/sort-named-exports': 'warn',
 		'perfectionist/sort-imports': ['warn', {
 			environment: env,
 			tsconfig: tsConfig || undefined,
