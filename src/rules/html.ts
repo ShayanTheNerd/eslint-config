@@ -31,6 +31,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
 		'@html-eslint/no-obsolete-tags': 'error',
 		'@html-eslint/no-script-style-type': 'warn',
 		'@html-eslint/no-target-blank': 'warn',
+		'@html-eslint/no-whitespace-only-children': 'error',
 		'@html-eslint/prefer-https': 'warn',
 		'@html-eslint/require-button-type': 'error',
 		'@html-eslint/require-closing-tags': ['warn', {
