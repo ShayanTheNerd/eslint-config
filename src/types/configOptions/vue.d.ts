@@ -9,9 +9,9 @@ interface BlockLang {
 
 type Macro =
 	| 'definePage'
+	| 'defineEmits'
 	| 'defineModel'
 	| 'defineProps'
-	| 'defineEmits'
 	| 'defineSlots'
 	| 'defineCustom'
 	| 'defineExpose'

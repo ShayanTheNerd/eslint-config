@@ -3,7 +3,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import { plugin as eslintPluginTypeScript, parser as eslintParserTypeScript } from 'typescript-eslint';
+import { parser as eslintParserTypeScript, plugin as eslintPluginTypeScript } from 'typescript-eslint';
 import path from 'node:path';
 
 import { globs } from '#utils/globs.ts';

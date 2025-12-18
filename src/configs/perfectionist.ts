@@ -23,6 +23,11 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Confi
 		settings: {
 			perfectionist: {
 				type: sortType,
+				specialCharacters: 'trim',
+				fallbackSort: {
+					order: 'asc',
+					type: 'natural',
+				},
 			},
 		},
 		rules: getPerfectionistRules(options),
