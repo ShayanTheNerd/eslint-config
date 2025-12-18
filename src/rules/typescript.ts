@@ -97,6 +97,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
 		'@typescript-eslint/no-unused-expressions': 'error',
 		'@typescript-eslint/no-unused-vars': 'error',
 		'@typescript-eslint/no-useless-constructor': 'error',
+		'@typescript-eslint/no-useless-default-assignment': 'warn',
 		'@typescript-eslint/no-wrapper-object-types': 'error',
 		'@typescript-eslint/only-throw-error': 'error',
 		'@typescript-eslint/prefer-as-const': 'warn',
