@@ -147,7 +147,10 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
 		'@typescript-eslint/no-unsafe-type-assertion': 'warn',
 		'@typescript-eslint/prefer-enum-initializers': 'error',
 		'@typescript-eslint/no-unnecessary-qualifier': 'warn',
-		'@typescript-eslint/switch-exhaustiveness-check': 'warn',
+		'@typescript-eslint/switch-exhaustiveness-check': ['warn', {
+			requireDefaultForNonUnion: true,
+			considerDefaultExhaustiveForUnions: true,
+		}],
 		'@typescript-eslint/explicit-module-boundary-types': 'warn',
 		'@typescript-eslint/no-unused-private-class-members': 'error',
 		'@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn',
