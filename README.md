@@ -516,9 +516,8 @@ Under this policy, minor updates may introduce new linting errors, which could b
 You can find a list of all available versions and their changelogs on the [releases page](https://github.com/ShayanTheNerd/eslint-config/releases).
 
 ## Roadmap to v1.0.0
-- [ ] Integrate additional ESLint plugins, such as [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn), [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n), and [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc).
-- [ ] Add support for other frameworks and file types, including Astro, React, Next.js, MDX, Markdown, and JSON.
-- [ ] Reduce bundle size by dynamically (programmatically) installing dependencies as needed.
+- [ ] Integrate additional ESLint plugins such as [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn), [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n), [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc), etc.
+- [ ] Add support for other frameworks and file types, including Astro, React, Next.js, MDX, Markdown, JSON, etc.
 - [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
 
 ## Contribution Guide
