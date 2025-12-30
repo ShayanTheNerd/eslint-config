@@ -8,30 +8,46 @@
 			"#rules/*": ["./rules/*"],
 			"#configs/*": ["./configs/*"]
 		},
-		"noEmit": true,
-		"target": "esnext",
+
+		/* Type Checking */
+		"allowUnreachableCode": false,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"noUncheckedIndexedAccess": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"strict": true,
+
+		/* Modules */
+		"allowImportingTsExtensions": true,
+		"module": "nodenext",
+		"noUncheckedSideEffectImports": true,
+		"resolveJsonModule": true,
+
+		/* Emit */
 		"declaration": true,
 		"emitDeclarationOnly": true,
-		"incremental": true,
-		"tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
-		"module": "nodenext",
-		"moduleDetection": "force",
-		"esModuleInterop": true,
-		"resolveJsonModule": true,
-		"verbatimModuleSyntax": true,
-		"allowImportingTsExtensions": true,
-		"noUncheckedSideEffectImports": true,
-		"strict": true,
+		"noEmit": true,
+
+		/* JavaScript Support */
 		"allowJs": true,
 		"checkJs": true,
-		"skipLibCheck": true,
-		"noUnusedLocals": true,
-		"noImplicitReturns": true,
-		"noImplicitOverride": true,
+
+		/* Interop Constraints */
 		"erasableSyntaxOnly": true,
-		"noUnusedParameters": true,
-		"allowUnreachableCode": false,
-		"noUncheckedIndexedAccess": true,
-		"noFallthroughCasesInSwitch": true
+		"esModuleInterop": true,
+		"verbatimModuleSyntax": true,
+
+		/* Language and Environment */
+		"moduleDetection": "force",
+		"target": "esnext",
+
+		/* Projects */
+		"incremental": true,
+		"tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
+
+		/* Completeness */
+		"skipLibCheck": true
 	}
 }
