@@ -1,7 +1,7 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-	format: ['esm'],
+	format: 'esm',
 	copy: ['./src/oxlint.config.jsonc'],
 	entry: ['./src/index.ts', './src/prettier.config.ts'],
 	exports: {
