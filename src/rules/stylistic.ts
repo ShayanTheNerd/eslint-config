@@ -175,7 +175,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 				blankLine: 'never',
 			},
 			{
-				prev: ['const', 'let', 'var'],
+				prev: ['var', 'let', 'const', 'using'],
 				next: 'block-like',
 				blankLine: 'any',
 			},
@@ -183,6 +183,11 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 				prev: 'block-like',
 				next: '*',
 				blankLine: 'always',
+			},
+			{
+				prev: ['case', 'default'],
+				next: ['case', 'default'],
+				blankLine: 'any',
 			},
 		],
 		'@stylistic/quote-props': ['warn', 'consistent-as-needed'],
