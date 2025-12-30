@@ -194,8 +194,8 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     "source.fixAll.oxc": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.run": "onSave",
-  "oxc.lint.run": "onSave",
+	"oxc.lint.run": "onSave",
+	"eslint.run": "onSave",
   "editor.formatOnSave": true,
 
   /* Format and lint JavaScript, TypeScript, HTML, and Vue files with ESLint, while everything else is formatted with Prettier. */

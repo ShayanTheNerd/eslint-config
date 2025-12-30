@@ -318,7 +318,7 @@ interface Options {
 		typescript?: boolean | TypeScriptOptions,
 
 		/**
-		 * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
+		 * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) and [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports) to organize imports and exports, and detect related issues.
 		 *
 		 * @default true
 		 */
