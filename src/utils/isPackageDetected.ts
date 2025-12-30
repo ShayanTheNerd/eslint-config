@@ -10,6 +10,7 @@ const detectedPackages: string[] = [];
 
 function logDetectedPackages(): void {
 	if (detectedPackages.length > 0) {
+		detectedPackages.sort();
 		console.info(
 			styleText('green', '✔'),
 			'Automatic dependency detection enabled ESLint configurations for',
@@ -33,8 +34,6 @@ function isPackageDetected(packageName: string, options: Options = defaultOption
 	if (isPackageInstalled) {
 		detectedPackages.push(packageName);
 	}
-
-	detectedPackages.sort();
 
 	return isPackageInstalled;
 }
