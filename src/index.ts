@@ -7,6 +7,7 @@ import path from 'node:path';
 
 import { getCSSConfig } from '#configs/css.ts';
 import { getVueConfig } from '#configs/vue.ts';
+import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
 import { getHTMLConfig } from '#configs/html.ts';
@@ -46,10 +47,11 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 			linterOptions,
 		},
 		configs: {
-			vue,
 			css,
-			nuxt,
+			zod,
+			vue,
 			html,
+			nuxt,
 			oxlint,
 			importX,
 			tailwind,
@@ -95,6 +97,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
 		isEnabled(stylistic) && getStylisticConfig(mergedOptions),
 		isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
+		isEnabled(zod) && getZodConfig(mergedOptions),
 		isEnabled(tailwind) && getTailwindConfig(mergedOptions),
 		isEnabled(vue) && getVueConfig(mergedOptions),
 		isEnabled(vue) && getVueComponentNamesConfig(),

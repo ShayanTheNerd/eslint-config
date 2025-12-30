@@ -332,6 +332,13 @@ interface Options {
 		perfectionist?: boolean | PerfectionistOptions,
 
 		/**
+		 * Use [eslint-plugin-zod-x](https://github.com/marcalexiei/eslint-plugin-zod-x) to enforce Zod best practices.
+		 *
+		 * @default false // `true` if "zod" is detected in the package.json file when `autoDetectDeps` is enabled
+		 */
+		zod?: boolean | ConfigWithOverrides,
+
+		/**
 		 * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
 		 *
 		 * @default false // `true` if "vue" is detected in the package.json file when `autoDetectDeps` is enabled

@@ -12,6 +12,7 @@ const config: Linter.Config[] = defineConfig({
 		typescript: true,
 		importX: true,
 		perfectionist: true,
+		zod: true,
 		tailwind: {
 			entryPoint: '',
 		},

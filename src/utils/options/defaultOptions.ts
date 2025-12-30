@@ -83,6 +83,9 @@ const defaultOptions = {
 			sortType: 'line-length',
 			overrides: {},
 		},
+		zod: {
+			overrides: {},
+		},
 		vue: {
 			accessibility: {
 				imageComponents: ['NuxtImg'],

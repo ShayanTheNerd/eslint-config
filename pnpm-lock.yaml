@@ -64,6 +64,9 @@ importers:
       eslint-plugin-vuejs-accessibility:
         specifier: 2.4.1
         version: 2.4.1(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-zod-x:
+        specifier: 2.0.0
+        version: 2.0.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       globals:
         specifier: 16.5.0
         version: 16.5.0
@@ -1562,6 +1565,17 @@ packages:
     engines: { node: '>=16.0.0' }
     peerDependencies:
       eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+
+  eslint-plugin-zod-x@2.0.0:
+    resolution:
+      { integrity: sha512-Lh+3neHBMD+VSibHvelTZelf0Nlqi0tzKqy+KkEdfAKsdJYj06gzyjVr+wwV64brF4gNlpJGMYxa6FKdOsjyNw== }
+    engines: { node: ^20 || ^22 || >=24 }
+    peerDependencies:
+      eslint: ^9
+      zod: ^4
+    peerDependenciesMeta:
+      zod:
+        optional: true
 
   eslint-scope@7.2.2:
     resolution:
@@ -3937,6 +3951,15 @@ snapshots:
       vue-eslint-parser: 9.4.3(eslint@9.39.2(jiti@2.6.1))
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-zod-x@2.0.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3):
+    dependencies:
+      '@typescript-eslint/utils': 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
+      eslint: 9.39.2(jiti@2.6.1)
+      esquery: 1.6.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-scope@7.2.2:
     dependencies:
