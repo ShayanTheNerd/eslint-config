@@ -41,7 +41,10 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 		'@stylistic/indent': [
 			'warn',
 			useTabs ? 'tab' : indent,
-			{ tabLength: indent },
+			{
+				tabLength: indent,
+				SwitchCase: 1,
+			},
 		],
 		'@stylistic/indent-binary-ops': ['warn', useTabs ? 'tab' : indent],
 		'@stylistic/jsx-closing-bracket-location': 'warn',
