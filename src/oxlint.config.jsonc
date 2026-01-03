@@ -50,6 +50,7 @@
 		"eslint/sort-vars": "off",
 		"eslint/sort-keys": "off",
 		"eslint/no-ternary": "off",
+		"eslint/no-continue": "off",
 		"eslint/no-undefined": "off",
 		"eslint/sort-imports": "off",
 		"eslint/max-statements": "off",
