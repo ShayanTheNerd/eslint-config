@@ -78,6 +78,9 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
 			allowModuleStart: true,
 			allowObjectStart: true,
 			allowInterfaceStart: true,
+			afterHashbangComment: true,
+			applyDefaultIgnorePatterns: false,
+			ignorePattern: '@ts|eslint|oxlint',
 		}],
 		'@stylistic/max-len': ['warn', {
 			tabWidth: indent,
