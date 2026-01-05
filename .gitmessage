@@ -26,15 +26,15 @@
 
 # | Type        | Description                                                           |
 # | ----------- | --------------------------------------------------------------------- |
-# | fix         | Correction of bugs or issues                                          |
-# | feat        | Introduction of a new feature                                         |
-# | revert      | Reversion to a previous commit                                        |
-# | docs        | Changes or additions to the documentation                             |
-# | ci          | Changes to CI configuration files or scripts                          |
-# | style       | Code style changes that don't affect functionality                    |
-# | chore       | Minor maintenance activities — no production code change              |
-# | refactor    | Code revisions and improvements — no production code change           |
-# | test        | Addition or refactoring of tests — no production code change          |
 # | build       | Changes that affect the build system or external dependencies         |
+# | chore       | Minor maintenance activities — no production code change              |
+# | ci          | Changes to CI configuration files or scripts                          |
+# | docs        | Changes or additions to the documentation                             |
+# | feat        | Introduction of a new feature                                         |
+# | fix         | Correction of bugs or issues                                          |
 # | perf        | Optimizations that improve the performance of production code         |
+# | refactor    | Code revisions and improvements — no production code change           |
+# | revert      | Reversion to a previous commit                                        |
+# | style       | Code style changes that don't affect functionality                    |
+# | test        | Addition or refactoring of tests — no production code change          |
 # =======================================================================================
