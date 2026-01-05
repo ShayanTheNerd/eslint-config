@@ -11,7 +11,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getTypeScriptRules } from '#rules/typescript.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
+type TypeScriptRules = ReturnType<typeof getTypeScriptRules>;
+type TypeScriptConfig = Linter.Config & { rules: TypeScriptRules };
+
+function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfig {
 	const { tsConfig, configs: { vue, typescript } } = options;
 	const { allowedDefaultProjects } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
 	const { overrides } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;

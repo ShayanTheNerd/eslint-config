@@ -11,7 +11,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getPlaywrightRules } from '#rules/playwright.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getPlaywrightConfig(options: DeepNonNullable<Options>): Linter.Config {
+type PlaywrightRules = ReturnType<typeof getPlaywrightRules>;
+type PlaywrightConfig = Linter.Config & { rules: PlaywrightRules };
+
+function getPlaywrightConfig(options: DeepNonNullable<Options>): PlaywrightConfig {
 	const { playwright } = options.configs.test;
 	const { overrides } = isEnabled(playwright) ? playwright : defaultOptions.configs.test.playwright;
 
@@ -27,6 +30,7 @@ function getPlaywrightConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getPlaywrightRules(options),
 	} satisfies ConfigObject;
 
+	/* @ts-expect-error — `mergeConfigs` Incorrect type inference */
 	return mergeConfigs(playwrightConfig, overrides);
 }
 

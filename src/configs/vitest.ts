@@ -10,7 +10,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getVitestRules } from '#rules/vitest.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getVitestConfig(options: DeepNonNullable<Options>): Linter.Config {
+type VitestRules = ReturnType<typeof getVitestRules>;
+type VitestConfig = Linter.Config & { rules: VitestRules };
+
+function getVitestConfig(options: DeepNonNullable<Options>): VitestConfig {
 	const { vitest } = options.configs.test;
 	const { overrides } = isEnabled(vitest) ? vitest : defaultOptions.configs.test.vitest;
 
@@ -23,6 +26,7 @@ function getVitestConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getVitestRules(options),
 	} satisfies ConfigObject;
 
+	/* @ts-expect-error — Incorrect type inference */
 	return mergeConfigs(vitestConfig, overrides);
 }
 

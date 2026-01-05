@@ -13,7 +13,10 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
 const eslintParserHTML = (eslintPluginHTML.configs?.['flat/recommended'] as ConfigObject)?.languageOptions?.parser;
 
-function getHTMLConfig(options: DeepNonNullable<Options>): Linter.Config {
+type HTMLRules = ReturnType<typeof getHTMLRules>;
+type HTMLConfig = Linter.Config & { rules: HTMLRules };
+
+function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
 	const { html } = options.configs;
 	const { overrides } = isEnabled(html) ? html : defaultOptions.configs.html;
 

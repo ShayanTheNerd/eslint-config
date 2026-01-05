@@ -11,7 +11,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getImportXRules } from '#rules/importX.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
+type ImportXRules = ReturnType<typeof getImportXRules>;
+type ImportXConfig = Linter.Config & { rules: ImportXRules };
+
+function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
 	const { vue, importX, typescript } = options.configs;
 	const { overrides, removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 

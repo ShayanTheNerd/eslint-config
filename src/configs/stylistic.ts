@@ -10,7 +10,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getStylisticRules } from '#rules/stylistic.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getStylisticConfig(options: DeepNonNullable<Options>): Linter.Config {
+type StylisticRules = ReturnType<typeof getStylisticRules>;
+type StylisticConfig = Linter.Config & { rules: StylisticRules };
+
+function getStylisticConfig(options: DeepNonNullable<Options>): StylisticConfig {
 	const { vue, stylistic } = options.configs;
 	const { overrides } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
 

@@ -11,7 +11,10 @@ import { getCSSRules } from '#rules/css.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
+type CSSRules = ReturnType<typeof getCSSRules>;
+type CSSConfig = Linter.Config & { rules: CSSRules };
+
+function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
 	const { css, tailwind } = options.configs;
 	const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
 	const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;

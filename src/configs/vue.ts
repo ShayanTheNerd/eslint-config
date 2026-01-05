@@ -18,7 +18,11 @@ const vueSetupConfig = eslintPluginVue.configs['flat/recommended'].find((config)
 }) as ConfigObject;
 vueSetupConfig.name = 'setup';
 
-function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
+type VueRules = ReturnType<typeof getVueRules>;
+type VueAccessibilityRules = ReturnType<typeof getVueAccessibilityRules>;
+type VueConfig = Linter.Config & { rules: VueRules & VueAccessibilityRules };
+
+function getVueConfig(options: DeepNonNullable<Options>): VueConfig {
 	const { vue } = options.configs;
 	const accessibility = isEnabled(vue) && isEnabled(vue.accessibility);
 	const { overrides } = isEnabled(vue) ? vue : defaultOptions.configs.vue;

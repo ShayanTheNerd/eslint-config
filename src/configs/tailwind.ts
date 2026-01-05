@@ -30,7 +30,10 @@ const vueAttributes = [
 	]],
 ] as const;
 
-function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
+type TailwindRules = ReturnType<typeof getTailwindRules>;
+type TailwindConfig = Linter.Config & { rules: TailwindRules };
+
+function getTailwindConfig(options: DeepNonNullable<Options>): TailwindConfig {
 	const {
 		tsConfig,
 		configs: {
@@ -43,7 +46,11 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
 
 	const tailwindConfig = {
 		name: 'shayanthenerd/tailwind',
-		files: [globs.src, html ? globs.html : '', vue ? globs.vue : ''].filter(Boolean),
+		files: [
+			globs.src,
+			vue ? globs.vue : '',
+			html ? globs.html : '',
+		].filter(Boolean),
 		plugins: {
 			'better-tailwindcss': eslintPluginTailwind,
 		},

@@ -11,7 +11,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getCypressRules } from '#rules/cypress.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getCypressConfig(options: DeepNonNullable<Options>): Linter.Config {
+type CypressRules = ReturnType<typeof getCypressRules>;
+type CypressConfig = Linter.Config & { rules: CypressRules };
+
+function getCypressConfig(options: DeepNonNullable<Options>): CypressConfig {
 	const { cypress } = options.configs.test;
 	const { overrides } = isEnabled(cypress) ? cypress : defaultOptions.configs.test.cypress;
 
@@ -27,6 +30,7 @@ function getCypressConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getCypressRules(),
 	} satisfies ConfigObject;
 
+	/* @ts-expect-error — `mergeConfigs` Incorrect type inference */
 	return mergeConfigs(cypressConfig, overrides);
 }
 

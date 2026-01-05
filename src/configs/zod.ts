@@ -10,7 +10,10 @@ import { getZodRules } from '#rules/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getZodConfig(options: DeepNonNullable<Options>): Linter.Config {
+type ZodRules = ReturnType<typeof getZodRules>;
+type ZodConfig = Linter.Config & { rules: ZodRules };
+
+function getZodConfig(options: DeepNonNullable<Options>): ZodConfig {
 	const { zod, vue } = options.configs;
 	const { overrides } = isEnabled(zod) ? zod : defaultOptions.configs.zod;
 
@@ -23,6 +26,7 @@ function getZodConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getZodRules(),
 	} satisfies ConfigObject;
 
+	/* @ts-expect-error — Incorrect type inference */
 	return mergeConfigs(zodConfig, overrides);
 }
 

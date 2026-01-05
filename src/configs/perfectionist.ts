@@ -10,7 +10,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getPerfectionistRules } from '#rules/perfectionist.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Config {
+type PerfectionistRules = ReturnType<typeof getPerfectionistRules>;
+type PerfectionistConfig = Linter.Config & { rules: PerfectionistRules };
+
+function getPerfectionistConfig(options: DeepNonNullable<Options>): PerfectionistConfig {
 	const { vue, perfectionist } = options.configs;
 	const { sortType, overrides } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
 

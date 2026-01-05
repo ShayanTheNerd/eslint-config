@@ -1,9 +1,9 @@
-import type { Linter } from 'eslint';
 import type { ConfigObject } from '#types/index.d.ts';
+import type { CoreRules } from '#types/eslintRules.d.ts';
 
 import { globs } from '#utils/globs.ts';
 
-function getRestrictedExports(): Linter.Config {
+function getRestrictedExports() {
 	const restrictedExportsConfig = {
 		name: 'shayanthenerd/restricted-exports',
 		files: [globs.restrictedExports],
@@ -16,7 +16,7 @@ function getRestrictedExports(): Linter.Config {
 					namespaceFrom: true,
 				},
 			}],
-		},
+		} satisfies Pick<CoreRules, 'no-restricted-exports'>,
 	} satisfies ConfigObject;
 
 	return restrictedExportsConfig;

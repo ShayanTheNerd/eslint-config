@@ -10,7 +10,10 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getStorybookRules } from '#rules/storybook.ts';
 import { defaultOptions } from '#utils/options/defaultOptions.ts';
 
-function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
+type StorybookRules = ReturnType<typeof getStorybookRules>;
+type StorybookConfig = Linter.Config & { rules: StorybookRules };
+
+function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig {
 	const { storybook } = options.configs.test;
 	const { overrides } = isEnabled(storybook) ? storybook : defaultOptions.configs.test.storybook;
 
@@ -23,6 +26,7 @@ function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
 		rules: getStorybookRules(options),
 	} satisfies ConfigObject;
 
+	/* @ts-expect-error — `mergeConfigs` Incorrect type inference */
 	return mergeConfigs(storybookConfig, overrides);
 }
 

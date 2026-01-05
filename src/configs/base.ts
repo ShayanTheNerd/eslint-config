@@ -10,7 +10,10 @@ import { globs } from '#utils/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 
-function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
+type JavaScriptRules = ReturnType<typeof getJavaScriptRules>;
+type BaseConfig = Linter.Config & { rules: JavaScriptRules };
+
+function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
 	const {
 		configs: {
 			vue,
