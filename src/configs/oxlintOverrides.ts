@@ -8,12 +8,16 @@ import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
 import { globs } from '#utils/globs.ts';
+import { getVueConfig } from '#configs/vue.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { getVitestRules } from '#rules/vitest.ts';
-import { getJavaScriptRules } from '#rules/javascript.ts';
-import { getPlaywrightRules } from '#rules/playwright.ts';
-import { getTypeScriptRules } from '#rules/typescript.ts';
+import { getBaseConfig } from '#configs/base.ts';
+import { getVitestConfig } from '#configs/vitest.ts';
+import { getPlaywrightConfig } from '#configs/playwright.ts';
+import { getTypeScriptConfig } from '#configs/typescript.ts';
 
+/**
+ * Prevent OXLint from overriding rules that are customizable via the configuration options.
+*/
 function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Config {
 	const {
 		vue,
@@ -25,17 +29,18 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 		},
 	} = options.configs;
 
-	const vitestRules = getVitestRules(options);
-	const javascriptRules = getJavaScriptRules(options);
-	const typescriptRules = getTypeScriptRules(options);
-	const playwrightRules = getPlaywrightRules(options);
+	const vueRules = getVueConfig(options).rules;
+	const vitestRules = getVitestConfig(options).rules;
+	const javascriptRules = getBaseConfig(options).rules;
+	const typescriptRules = getTypeScriptConfig(options).rules;
+	const playwrightRules = getPlaywrightConfig(options).rules;
 
 	const oxlintOverridesConfig = {
 		name: 'shayanthenerd/oxlint/overrides',
 		files: [
 			globs.src,
 			isEnabled(vue) ? globs.vue : '',
-			isEnabled(vitest) || isEnabled(playwright) ? globs.test : '',
+			(isEnabled(vitest) || isEnabled(playwright)) ? globs.test : '',
 		].filter(Boolean),
 		plugins: {
 			...(isEnabled(vitest) && { vitest: eslintPluginVitest }),
@@ -48,7 +53,6 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 			'func-style': javascriptRules['func-style'],
 			'max-nested-callbacks': javascriptRules['max-nested-callbacks'],
 
-			'@typescript-eslint/explicit-module-boundary-types': typescriptRules['@typescript-eslint/explicit-module-boundary-types'],
 			'@typescript-eslint/consistent-type-definitions': isEnabled(typescript)
 				? typescriptRules['@typescript-eslint/consistent-type-definitions']
 				: 'off',
@@ -59,6 +63,8 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 
 			'vitest/consistent-test-it': isEnabled(vitest) ? vitestRules['vitest/consistent-test-it'] : 'off',
 			'vitest/max-nested-describe': isEnabled(vitest) ? vitestRules['vitest/max-nested-describe'] : 'off',
+
+			'vue/define-props-destructuring': isEnabled(vue) ? vueRules['vue/define-props-destructuring'] : 'off',
 		},
 	} satisfies ConfigObject;
 

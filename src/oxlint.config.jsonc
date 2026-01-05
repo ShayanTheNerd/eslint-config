@@ -119,9 +119,9 @@
 		"vue/no-required-prop-with-default": "off",
 
 		/*** Customizable Overrides ***/
-		/* These rules are customizable in the ESLint config, but OXLint doesn't respect them. */
-		"eslint/max-depth": "off",
+		/* These rules are customizable in the ESLint config, but the customizations aren't reflected here. */
 		"eslint/func-style": "off",
+		"eslint/max-depth": "off",
 		"eslint/max-nested-callbacks": "off",
 		"typescript/consistent-type-definitions": "off",
 		"vitest/consistent-test-it": "off",
