@@ -2,6 +2,10 @@ savePrefix: ''
 useBetaCli: true
 shellEmulator: true
 
+publicHoistPattern:
+  - eslint
+  - oxlint
+
 ignoredBuiltDependencies:
   - esbuild
   - unrs-resolver
