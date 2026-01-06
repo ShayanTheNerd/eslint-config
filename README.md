@@ -122,11 +122,15 @@ npm run lint:inspect
 ```
 
 ## Automatic Dependency Detection
-By default, this config automatically detects dependencies in your project, and enables the appropriate ESLint configurations. This is powered by [local-pkg](https://github.com/antfu-collective/local-pkg), which scans your _node_modules_ directory instead of _package.json_. <br />
-For instance, if you install a package "A" that depends on another package "B", your package manager will install both. Even if "B" isn't listed in your _package.json_ file, it will be present in _node_modules_. Consequently, this config will detect both "A" and "B" and enable the appropriate ESLint configurations for them. <br />
+This package automatically detects dependencies in your project and enables the corresponding ESLint configurations for them. This is powered by [local-pkg](https://github.com/antfu-collective/local-pkg), which scans your _node_modules_ directory instead of _package.json_. <br />
+> [!IMPORTANT]
+> This behavior is particularly noticeable with package managers that use a flat _node_modules_ structure, such as **NPM** or **Bun**. <br />
+A concrete example is `eslint-plugin-storybook`, which is a dependency of this package. Since the plugin transitively depends on `storybook`, NPM and Bun hoist `storybook` to the root of your _node_modules_. As a result, the ESLint configuration for `storybook` will be automatically enabled, even if you haven't explicitly installed it. <br />
+Using a package manager with strict dependency resolution, such as **PNPM**, prevents this issue by hiding transitive dependencies from the root of your _node_modules_.
+
 To opt out of this behavior, you can either set `autoDetectDeps: false` in the options object or explicitly disable any unwanted configurations that were automatically enabled.
 
-Unlike other plugins, the configurations for Tailwind aren't automatically enabled upon dependency detection. This is because you must explicitly provide the path to your Tailwind config file or entry point.
+Unlike other plugins, the configuration for Tailwind isn't automatically enabled upon dependency detection, because you must explicitly provide the path to your Tailwind entry point (config file), or the ESLint configuration won't work as expected.
 
 Stylistic, Perfectionist, ImportX, and core (JavaScript) rules are enabled by default.
 
@@ -149,7 +153,7 @@ export default {
 };
 ```
 
-Or if you prefer using TypeScrpit (_prettier.config.ts_):
+Or if you prefer using TypeScript (_prettier.config.ts_):
 ```ts
 import type { Config } from 'prettier';
 
@@ -170,7 +174,7 @@ export default {
 }
 ```
 
-For IDE setup guidance, refer to [VS Code Integration](#vs-code-integration).
+For IDE setup guidance, see [VS Code Integration](#vs-code-integration).
 
 ## VS Code Integration
 Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [OXLint](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode), and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode). Then, add the following in the _.vscode/settings.json_ file of your project:
@@ -269,7 +273,7 @@ Since OXLint and ESLint use separate config files, customizations made in your E
 ```
 
 ### ESLint
-`defineConfig` takes the `options` object as the first argument. `options` is thoroughly documented with JSDoc, and provides many options for rule customizations. In addition, each config object in `options.configs` accepts an `overrides` option:
+`defineConfig` takes the `options` object as the first argument. `options` is thoroughly documented with JSDoc and provides many options for rule customizations. In addition, each config object in `options.configs` accepts an `overrides` option:
 ```ts
 interface Overrides {
   name: '',
@@ -519,10 +523,10 @@ You can find a list of all available versions and their changelogs on the [relea
 - [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
 
 ## Contribution Guide
-Any form of contribution is always appreciated! Please refer to the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+Any form of contribution is always appreciated! Please chekc out the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 ## Credits
-This project was inspired by the work of [Anthony Fu](https://github.com/antfu), whose generous contributions to the JavaScript and ESLint ecosystem were instrumental in making it possible.
+This project was inspired by the work of [Anthony Fu](https://github.com/antfu), whose generous contributions to the JavaScript and the ESLint ecosystem were instrumental in making it possible.
 
 ## License
 [MIT](LICENSE) License © 2025-PRESENT — [Shayan Zamani](https://github.com/ShayanTheNerd)
