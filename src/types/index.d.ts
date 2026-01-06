@@ -261,11 +261,11 @@ interface Options {
      *
      * Provide the path to your OXLint configuration file (relative to the current working directory) or set to `false` to disable it.
      *
-     * Enabling this improves performance and feedback loops when using OXLint.
+     * Enabling OXLint improves performance and feedback loops.
      *
      * It will fall back to the default value if set to an empty string (`''`).
      *
-     * @default false // `'.oxlintrc.json'` if "oxlint" is detected in the package.json file when `autoDetectDeps` is enabled
+     * @default '.oxlintrc.json'
      */
     oxlint?: false | string,
 

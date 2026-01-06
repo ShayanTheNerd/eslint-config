@@ -71,7 +71,7 @@ export default eslintConfigNuxt(eslintConfig);
 > [!NOTE]
 > The Nuxt config relies on the Vue config, so make sure it's enabled (either automatically or manually).
 
-3. Create an OXLint config file (_.oxlintrc.json_) in the root of your project:
+3. If you're not using OXLint, set `configs.oxlint` to `false` in your ESLint config and skip this step. Otherwise, create an OXLint config file (_.oxlintrc.json_) in the root of your project:
 ```jsonc
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json", // Optional

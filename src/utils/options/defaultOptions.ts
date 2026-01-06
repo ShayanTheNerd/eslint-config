@@ -29,7 +29,7 @@ const defaultOptions = {
   },
 
   configs: {
-    oxlint: './.oxlintrc.json',
+    oxlint: '.oxlintrc.json',
     base: {
       maxDepth: 3,
       maxNestedCallbacks: 3,
