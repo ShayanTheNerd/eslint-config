@@ -63,6 +63,8 @@ jobs:
           tag: ${{ steps.version.outputs.tag }}
           writeToFile: false
           useGitmojis: false
+          includeRefIssues: true
+          includeInvalidCommits: true
           restrictToTypes: feat,perf,fix,docs,refactor
 
       - name: Create a Draft GitHub Release
