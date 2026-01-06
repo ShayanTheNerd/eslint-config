@@ -99,7 +99,7 @@ interface Options {
    * - [better-tailwindcss: `tsconfig` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md#tsconfig)
    * - [perfectionist/sort-imports: `tsconfig` option](https://perfectionist.dev/rules/sort-imports#tsconfig)
    *
-   * @default undefined // `{ rootDir: '.', filename: 'tsconfig.json' }` if "typescript" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default undefined // `{ rootDir: '.', filename: 'tsconfig.json' }` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
    */
   tsConfig?: false | {
     /**
@@ -330,7 +330,7 @@ interface Options {
      * - [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to better understand imports from TypeScript files such as ".ts", ".tsx", etc.
      * - [eslint-plugin-vue](https://eslint.vuejs.org) to enforce TypeScript-specific rules in the `<script setup lang="ts">` of Vue SFCs.
      *
-     * @default false // `true` if "typescript" is detected in the package.json file when `autoDetectDeps` is enabled
+     * @default false // `true` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     typescript?: boolean | TypeScriptOptions,
 
@@ -351,14 +351,14 @@ interface Options {
     /**
      * Use [eslint-plugin-zod-x](https://github.com/marcalexiei/eslint-plugin-zod-x) to enforce Zod best practices.
      *
-     * @default false // `true` if "zod" is detected in the package.json file when `autoDetectDeps` is enabled
+     * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     zod?: boolean | ConfigWithOverrides,
 
     /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
      *
-     * @default false // `true` if "vue" is detected in the package.json file when `autoDetectDeps` is enabled
+     * @default false // `true` if "vue" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     vue?: boolean | VueOptions,
 
@@ -369,7 +369,7 @@ interface Options {
      *
      * **This configuration requires `configs.vue` to be enabled.**
      *
-     * @default false // `true` if "nuxt" is detected in the package.json file when `autoDetectDeps` is enabled
+     * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     nuxt?: boolean | NuxtOptions,
 

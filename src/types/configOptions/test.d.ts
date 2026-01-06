@@ -5,28 +5,28 @@ interface TestOptions {
   /**
    * Use [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook) to enforce best practices and code styles for Storybook stories and tests.
    *
-   * @default false // `true` if "storybook" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "storybook" is detected in the dependencies when `autoDetectDeps` is enabled
    */
   storybook?: boolean | ConfigWithOverrides,
 
   /**
    * Use [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest) to enforce best practices and code styles for Vitest tests.
    *
-   * @default false // `true` if "vitest" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "vitest" is detected in the dependencies when `autoDetectDeps` is enabled
   */
   vitest?: boolean | ConfigWithOverrides,
 
   /**
    * Use [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright) to enforce best practices and code styles for Playwright tests.
    *
-   * @default false // `true` if "@playwright/test" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "@playwright/test" is detected in the dependencies when `autoDetectDeps` is enabled
   */
   playwright?: boolean | ConfigWithOverrides,
 
   /**
    * Use [eslint-plugin-cypress](https://github.com/cypress-io/eslint-plugin-cypress) to enforce best practices and code styles for Cypress tests.
    *
-   * @default false // `true` if "cypress" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "cypress" is detected in the dependencies when `autoDetectDeps` is enabled
    */
   cypress?: boolean | ConfigWithOverrides,
 

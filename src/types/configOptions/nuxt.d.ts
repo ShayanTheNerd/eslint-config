@@ -4,7 +4,7 @@ interface NuxtOptions {
    *
    * Enforce the use of `<NuxtImg>` instead of `<img>`.
    *
-   * @default false // `true` if "@nuxt/image" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "@nuxt/image" is detected in the dependencies when `autoDetectDeps` is enabled
    *
    * @see [vue/no-restricted-html-elements](https://eslint.vuejs.org/rules/no-restricted-html-elements)
    */
@@ -15,7 +15,7 @@ interface NuxtOptions {
    *
    * Allows ESLint to recognize the icon component.
    *
-   * @default false // `true` if "@nuxt/icon" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "@nuxt/icon" is detected in the dependencies when `autoDetectDeps` is enabled
    *
    * @see [vue/no-undef-components](https://eslint.vuejs.org/rules/no-undef-components)
    */
@@ -41,7 +41,7 @@ interface NuxtOptions {
    *
    * Enforce the use of NuxtUI components over their standard counterparts. For example, `<ULink>` must be used instead of `<a>`, `<UInput>` instead of `<input>`, etc.
    *
-   * @default false // `true` if "@nuxt/ui" is detected in the package.json file when `autoDetectDeps` is enabled
+   * @default false // `true` if "@nuxt/ui" is detected in the dependencies when `autoDetectDeps` is enabled
    *
    * @see [vue/no-restricted-html-elements](https://eslint.vuejs.org/rules/no-restricted-html-elements)
    */

@@ -143,7 +143,7 @@ interface VueOptions extends ConfigWithOverrides {
    *
    * @default
    * {
-   *   script: 'js', // `'ts'` if "typescript" is detected in the package.json file when `autoDetectDeps` is enabled
+   *   script: 'js', // `'ts'` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
    *   style: 'implicit',
    * }
    *
