@@ -16,12 +16,19 @@ const defaultOptions = {
       reportUnusedDisableDirectives: 'warn',
     },
     globals: {
-      node: true,
-      commonjs: false,
-      browser: true,
       worker: true,
-      serviceworker: false,
-      webextension: false,
+      commonjs: false,
+      bun: true, // The default value will be ignored if `env` isn't set to `bun`.
+      deno: true, // The default value will be ignored if `env` isn't set to `deno`.
+      node: true,
+      nodeBuiltin: true, // The default value will be ignored if `env` isn't set to `node`.
+      browser: true, // The default value will be ignored if `env` isn't set to `browser`.
+      sharedWorker: true, // The default value will be ignored if `env` isn't set to `browser`.
+      serviceworker: true, // The default value will be ignored if `env` isn't set to `browser`.
+      webextension: true, // The default value will be ignored if `env` isn't set to `browser`.
+      audioWorklet: true, // The default value will be ignored if `env` isn't set to `browser`.
+      vitest: false,
+      vue: true, // The default value will be ignored if `configs.vue` is disabled.
       custom: {},
     },
     settings: {},

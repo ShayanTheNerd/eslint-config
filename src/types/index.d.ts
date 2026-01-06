@@ -182,24 +182,38 @@ interface Options {
      *
      * @default
      * {
-     *   node: true,
-     *   commonjs: false,
-     *   browser: true,
      *   worker: true,
-     *   serviceworker: false,
-     *   webextension: false,
+     *   commonjs: false,
+     *   bun: false, // `true` if `env` is set to `bun`
+     *   deno: false, // `true` if `env` is set to `deno`
+     *   node: true,
+     *   nodeBuiltin: false, // `true` if `env` is set to `node`
+     *   browser: true, // `true` if `env` is set to `browser`
+     *   serviceworker: false, // `true` if `env` is set to `browser`
+     *   sharedWorker: false, // `true` if `env` is set to `browser`
+     *   webextension: false, // `true` if `env` is set to `browser`
+     *   audioWorklet: false, // `true` if `env` is set to `browser`
+     *   vitest: false,
+     *   vue: false, // `true` if `configs.vue` is enabled
      *   custom: {},
      * }
      *
      * @see [Language Options: Specifying Globals: Using Configuration Files](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
      */
     globals?: {
-      node?: boolean,
-      commonjs?: boolean,
-      browser?: boolean,
       worker?: boolean,
+      commonjs?: boolean,
+      bun?: boolean,
+      deno?: boolean,
+      node?: boolean,
+      nodeBuiltin?: boolean,
+      browser?: boolean,
       serviceworker?: boolean,
+      sharedWorker?: boolean,
       webextension?: boolean,
+      audioWorklet?: boolean,
+      vitest?: boolean,
+      vue?: boolean,
       custom?: Linter.LanguageOptions['globals'],
     },
 
