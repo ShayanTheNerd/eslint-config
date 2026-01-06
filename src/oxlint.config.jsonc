@@ -67,6 +67,7 @@
     "eslint/no-ternary": "off",
     "eslint/no-undefined": "off",
     "eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
+    "eslint/prefer-destructuring": ["warn", { "array": false }],
     "eslint/sort-imports": "off",
     "eslint/sort-keys": "off",
     "eslint/sort-vars": "off",

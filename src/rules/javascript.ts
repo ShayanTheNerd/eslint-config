@@ -196,7 +196,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'operator-assignment': 'error',
     'prefer-arrow-callback': ['warn', { allowUnboundThis: true }],
     'prefer-const': 'error',
-    'prefer-destructuring': 'warn',
+    'prefer-destructuring': ['warn', { array: false }],
     'prefer-exponentiation-operator': 'warn',
     'prefer-named-capture-group': 'warn',
     'prefer-numeric-literals': 'warn',

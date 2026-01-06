@@ -140,7 +140,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     /* Uncategorized */
     '@typescript-eslint/no-loop-func': 'error',
     '@typescript-eslint/default-param-last': 'warn',
-    '@typescript-eslint/prefer-destructuring': 'warn',
+    '@typescript-eslint/prefer-destructuring': ['warn', { array: false }],
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-useless-empty-export': 'error',
