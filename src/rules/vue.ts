@@ -3,9 +3,9 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
-import { getRestrictedVueInputs } from '#utils/vue/getRestrictedVueInputs.ts';
-import { getRestrictedVueElements } from '#utils/vue/getRestrictedVueElements.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
+import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
 
 type ImportXRules = PluginRules<'import-x'>;
 type VueRules =

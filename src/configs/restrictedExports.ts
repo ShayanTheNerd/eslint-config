@@ -1,7 +1,7 @@
 import type { ConfigObject } from '#types/index.d.ts';
 import type { CoreRules } from '#types/eslintRules.d.ts';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 
 function getRestrictedExports() {
   const restrictedExportsConfig = {

@@ -3,7 +3,7 @@ import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getPerfectionistRules(options: DeepNonNullable<Options>) {
   const {

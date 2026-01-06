@@ -8,10 +8,10 @@ import eslintPluginHTML from '@html-eslint/eslint-plugin';
 import eslintPluginTailwind from 'eslint-plugin-better-tailwindcss';
 import path from 'node:path';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getTailwindRules } from '#rules/tailwind.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
 const eslintParserHTML = (eslintPluginHTML.configs?.['flat/recommended'] as ConfigObject)?.languageOptions?.parser;

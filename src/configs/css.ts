@@ -6,10 +6,10 @@ import eslintPluginCSS from '@eslint/css';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import { tailwind3, tailwind4 } from 'tailwind-csstree';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { getCSSRules } from '#rules/css.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type CSSRules = ReturnType<typeof getCSSRules>;
 type CSSConfig = Linter.Config & { rules: CSSRules };

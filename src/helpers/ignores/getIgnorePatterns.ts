@@ -1,7 +1,7 @@
 import type { Options } from '#types/index.d.ts';
 
-import { defaultIgnorePatterns } from '#utils/ignores/defaultIgnorePatterns.ts';
-import { resolveGitignorePatterns } from '#utils/ignores/resolveGitignorePatterns.ts';
+import { defaultIgnorePatterns } from '#helpers/ignores/defaultIgnorePatterns.ts';
+import { resolveGitignorePatterns } from '#helpers/ignores/resolveGitignorePatterns.ts';
 
 interface IgnorePatternsOptions {
   patterns: string[],

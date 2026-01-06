@@ -43,10 +43,11 @@
     "access": "public"
   },
   "imports": {
-    "#utils/*": "./src/utils/*",
-    "#types/*": "./src/types/*",
+    "#configs/*": "./src/configs/*",
+    "#helpers/*": "./src/helpers/*",
     "#rules/*": "./src/rules/*",
-    "#configs/*": "./src/configs/*"
+    "#types/*": "./src/types/*",
+    "#utils/*": "./src/utils/*"
   },
   "type": "module",
   "engines": {

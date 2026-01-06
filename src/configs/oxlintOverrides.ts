@@ -7,7 +7,7 @@ import eslintPluginVitest from '@vitest/eslint-plugin';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { getVueConfig } from '#configs/vue.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';

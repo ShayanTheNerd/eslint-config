@@ -5,10 +5,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginStorybook from 'eslint-plugin-storybook';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getStorybookRules } from '#rules/storybook.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type StorybookRules = ReturnType<typeof getStorybookRules>;
 type StorybookConfig = Linter.Config & { rules: StorybookRules };

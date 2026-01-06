@@ -5,10 +5,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getVitestRules } from '#rules/vitest.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type VitestRules = ReturnType<typeof getVitestRules>;
 type VitestConfig = Linter.Config & { rules: VitestRules };

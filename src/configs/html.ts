@@ -5,10 +5,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginHTML from '@html-eslint/eslint-plugin';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { getHTMLRules } from '#rules/html.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
 const eslintParserHTML = (eslintPluginHTML.configs?.['flat/recommended'] as ConfigObject)?.languageOptions?.parser;

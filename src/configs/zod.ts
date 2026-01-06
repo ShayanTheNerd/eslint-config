@@ -5,10 +5,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import eslintPluginZodX from 'eslint-plugin-zod-x';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { getZodRules } from '#rules/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type ZodRules = ReturnType<typeof getZodRules>;
 type ZodConfig = Linter.Config & { rules: ZodRules };

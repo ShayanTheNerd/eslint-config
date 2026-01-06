@@ -5,7 +5,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import path from 'node:path';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getImportXRules(options: DeepNonNullable<Options>) {
   const {

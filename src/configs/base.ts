@@ -6,7 +6,7 @@ import globals from 'globals';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import { parser as eslintParserTypeScript } from 'typescript-eslint';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 

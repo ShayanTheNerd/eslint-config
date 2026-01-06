@@ -1,7 +1,6 @@
 import type { Options } from '#types/index.d.ts';
 
-import { isPackageDetected, logDetectedPackages } from '#utils/isPackageDetected.ts';
-import { defaultOptions } from './defaultOptions.ts';
+import { isPackageDetected, logDetectedPackages } from '#helpers/isPackageDetected.ts';
 
 /* oxlint-disable-next-line eslint/complexity */
 function enableDetectedConfigs(options: Options): Options {
@@ -23,7 +22,6 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.test.cypress ??= isPackageDetected('cypress', options);
   options.configs.test.storybook ??= isPackageDetected('storybook', options);
   options.configs.test.playwright ??= isPackageDetected('@playwright/test', options);
-  options.configs.oxlint ??= isPackageDetected('oxlint', options) ? defaultOptions.configs.oxlint : false;
 
   options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : false;
 

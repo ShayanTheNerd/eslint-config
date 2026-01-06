@@ -6,10 +6,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getPlaywrightRules } from '#rules/playwright.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type PlaywrightRules = ReturnType<typeof getPlaywrightRules>;
 type PlaywrightConfig = Linter.Config & { rules: PlaywrightRules };

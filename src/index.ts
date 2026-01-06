@@ -19,12 +19,12 @@ import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
 import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedExports } from '#configs/restrictedExports.ts';
 import { getOXLintOverridesConfig } from '#configs/oxlintOverrides.ts';
-import { getIgnorePatterns } from '#utils/ignores/getIgnorePatterns.ts';
-import { mergeWithDefaults } from '#utils/options/mergeWithDefaults.ts';
+import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
+import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 

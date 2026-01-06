@@ -4,7 +4,7 @@ import { isPackageExists as packageExists } from 'local-pkg';
 import path from 'node:path';
 import { styleText } from 'node:util';
 
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 const detectedPackages: string[] = [];
 

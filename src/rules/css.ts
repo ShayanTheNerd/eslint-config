@@ -3,7 +3,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type PhysicalUnits = RuleOptions<'css/prefer-logical-properties'>['allowUnits'];
 type PhysicalProperties = RuleOptions<'css/prefer-logical-properties'>['allowProperties'];

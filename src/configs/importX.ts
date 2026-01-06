@@ -6,10 +6,10 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getImportXRules } from '#rules/importX.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type ImportXRules = ReturnType<typeof getImportXRules>;
 type ImportXConfig = Linter.Config & { rules: ImportXRules };

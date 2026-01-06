@@ -3,10 +3,11 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "#utils/*": ["./utils/*"],
-      "#types/*": ["./types/*"],
+      "#configs/*": ["./configs/*"],
+      "#helpers/*": ["./helpers/*"],
       "#rules/*": ["./rules/*"],
-      "#configs/*": ["./configs/*"]
+      "#types/*": ["./types/*"],
+      "#utils/*": ["./utils/*"]
     },
 
     /* Type Checking */

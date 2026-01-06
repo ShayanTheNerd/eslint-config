@@ -6,10 +6,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginCypress from 'eslint-plugin-cypress';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getCypressRules } from '#rules/cypress.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type CypressRules = ReturnType<typeof getCypressRules>;
 type CypressConfig = Linter.Config & { rules: CypressRules };

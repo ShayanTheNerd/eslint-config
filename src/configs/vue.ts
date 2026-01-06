@@ -7,10 +7,10 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import { parser as eslintParserTypeScript } from 'typescript-eslint';
 import eslintPluginVueAccessibility from 'eslint-plugin-vuejs-accessibility';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { getVueRules } from '#rules/vue.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getVueAccessibilityRules } from '#rules/vueAccessibility.ts';
 
 const vueSetupConfig = eslintPluginVue.configs['flat/recommended'].find((config) => {

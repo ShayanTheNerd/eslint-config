@@ -5,10 +5,10 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getPerfectionistRules } from '#rules/perfectionist.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type PerfectionistRules = ReturnType<typeof getPerfectionistRules>;
 type PerfectionistConfig = Linter.Config & { rules: PerfectionistRules };

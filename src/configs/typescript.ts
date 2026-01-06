@@ -6,10 +6,10 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import { parser as eslintParserTypeScript, plugin as eslintPluginTypeScript } from 'typescript-eslint';
 import path from 'node:path';
 
-import { globs } from '#utils/globs.ts';
+import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getTypeScriptRules } from '#rules/typescript.ts';
-import { defaultOptions } from '#utils/options/defaultOptions.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type TypeScriptRules = ReturnType<typeof getTypeScriptRules>;
 type TypeScriptConfig = Linter.Config & { rules: TypeScriptRules };
