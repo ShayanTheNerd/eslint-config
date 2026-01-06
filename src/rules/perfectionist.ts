@@ -26,7 +26,7 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
     'perfectionist/sort-named-imports': 'warn',
     'perfectionist/sort-named-exports': 'warn',
     'perfectionist/sort-imports': ['warn', {
-      environment: env,
+      environment: env === 'bun' ? 'bun' : 'node',
       tsconfig: tsConfig || undefined,
       sortSideEffects: true,
       fallbackSort: {

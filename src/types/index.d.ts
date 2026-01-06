@@ -80,12 +80,15 @@ interface Options {
    * Specify the runtime environment to correctly resolve its built-in modules
   *
   * This is used by
-  * [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
-  * to recognize the environment’s built-in modules when sorting the imports.
+  *
+  * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
+  * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
+  *
+  * to recognize the environment’s built-in modules.
   *
   * @default 'node'
   */
-  env?: 'bun' | 'node',
+  env?: 'bun' | 'deno' | 'node' | 'browser',
 
   /**
    * The path and the name of the root TypeScript config file.
