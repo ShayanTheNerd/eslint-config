@@ -9,9 +9,9 @@ const eslintSchemaPath = path.resolve('src/types/eslint-schema.d.ts');
 
 await fs.rm(eslintSchemaPath, { force: true });
 await generateESLintTypes(defaultESLintConfigReference, {
-	dtsPath: eslintSchemaPath,
-	augmentFlatConfigUtils: true,
-	exportTypeName: 'ESLintSchema',
+  dtsPath: eslintSchemaPath,
+  augmentFlatConfigUtils: true,
+  exportTypeName: 'ESLintSchema',
 });
 
 const successIcon = styleText('green', '✔');

@@ -17,24 +17,24 @@ type HTMLRules = ReturnType<typeof getHTMLRules>;
 type HTMLConfig = Linter.Config & { rules: HTMLRules };
 
 function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
-	const { html } = options.configs;
-	const { overrides } = isEnabled(html) ? html : defaultOptions.configs.html;
+  const { html } = options.configs;
+  const { overrides } = isEnabled(html) ? html : defaultOptions.configs.html;
 
-	const htmlConfig = {
-		name: 'shayanthenerd/html',
-		files: [globs.html],
-		plugins: {
-			'@html-eslint': eslintPluginHTML,
-		},
-		language: 'html/html',
-		languageOptions: {
-			parser: eslintParserHTML,
-		},
-		rules: getHTMLRules(options),
-	} satisfies ConfigObject;
+  const htmlConfig = {
+    name: 'shayanthenerd/html',
+    files: [globs.html],
+    plugins: {
+      '@html-eslint': eslintPluginHTML,
+    },
+    language: 'html/html',
+    languageOptions: {
+      parser: eslintParserHTML,
+    },
+    rules: getHTMLRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(htmlConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(htmlConfig, overrides);
 }
 
 export { getHTMLConfig };

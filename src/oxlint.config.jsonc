@@ -1,210 +1,210 @@
 {
-	"$schema": "../node_modules/oxlint/configuration_schema.json",
+  "$schema": "../node_modules/oxlint/configuration_schema.json",
 
-	"env": {
-		"builtin": true,
-		"es2026": true,
-		"commonjs": false,
-		"node": true,
-		"browser": true,
-		"worker": true,
-		"serviceworker": false,
-		"webextensions": false
-	},
+  "env": {
+    "builtin": true,
+    "es2026": true,
+    "commonjs": false,
+    "node": true,
+    "browser": true,
+    "worker": true,
+    "serviceworker": false,
+    "webextensions": false
+  },
 
-	"categories": {
-		"correctness": "error",
-		"suspicious": "error",
-		"restriction": "error",
-		"pedantic": "error",
-		"perf": "warn",
-		"style": "warn",
-		"nursery": "error"
-	},
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "restriction": "error",
+    "pedantic": "error",
+    "perf": "warn",
+    "style": "warn",
+    "nursery": "error"
+  },
 
-	"plugins": [
-		"oxc",
-		"vue",
-		"node",
-		"jest",
-		"jsdoc",
-		"eslint",
-		"import",
-		"vitest",
-		"promise",
-		"unicorn",
-		"jsx-a11y",
-		"typescript"
-	],
+  "plugins": [
+    "oxc",
+    "vue",
+    "node",
+    "jest",
+    "jsdoc",
+    "eslint",
+    "import",
+    "vitest",
+    "promise",
+    "unicorn",
+    "jsx-a11y",
+    "typescript"
+  ],
 
-	"rules": {
-		/*** OXC ***/
-		"oxc/no-async-await": "off",
-		"oxc/no-optional-chaining": "off",
-		"oxc/no-rest-spread-properties": "off",
+  "rules": {
+    /*** OXC ***/
+    "oxc/no-async-await": "off",
+    "oxc/no-optional-chaining": "off",
+    "oxc/no-rest-spread-properties": "off",
 
-		/*** ESLint ***/
-		"eslint/alert": "warn",
-		"eslint/arrow-body-style": "off",
-		"eslint/capitalized-comments": "off",
-		"eslint/func-names": ["error", "as-needed"],
-		"eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
-		"eslint/id-length": "off",
-		"eslint/max-statements": "off",
-		"eslint/no-console": [
-			"warn",
-			{
-				"allow": ["info", "warn", "error", "table", "group", "groupEnd", "groupCollapsed"]
-			}
-		],
-		"eslint/no-continue": "off",
-		"eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
-		"eslint/no-else-return": "off",
-		"eslint/no-inline-comments": "off",
-		"eslint/no-magic-numbers": "off",
-		"eslint/no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
-		"eslint/no-sequences": ["error", { "allowInParentheses": false }],
-		"eslint/no-ternary": "off",
-		"eslint/no-undefined": "off",
-		"eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
-		"eslint/sort-imports": "off",
-		"eslint/sort-keys": "off",
-		"eslint/sort-vars": "off",
-		"eslint/yoda": "error",
-		"no-sequences": ["error", { "allowInParentheses": false }],
+    /*** ESLint ***/
+    "eslint/alert": "warn",
+    "eslint/arrow-body-style": "off",
+    "eslint/capitalized-comments": "off",
+    "eslint/func-names": ["error", "as-needed"],
+    "eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
+    "eslint/id-length": "off",
+    "eslint/max-statements": "off",
+    "eslint/no-console": [
+      "warn",
+      {
+        "allow": ["info", "warn", "error", "table", "group", "groupEnd", "groupCollapsed"]
+      }
+    ],
+    "eslint/no-continue": "off",
+    "eslint/no-duplicate-imports": ["error", { "allowSeparateTypeImports": true }],
+    "eslint/no-else-return": "off",
+    "eslint/no-inline-comments": "off",
+    "eslint/no-magic-numbers": "off",
+    "eslint/no-plusplus": ["warn", { "allowForLoopAfterthoughts": true }],
+    "eslint/no-sequences": ["error", { "allowInParentheses": false }],
+    "eslint/no-ternary": "off",
+    "eslint/no-undefined": "off",
+    "eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
+    "eslint/sort-imports": "off",
+    "eslint/sort-keys": "off",
+    "eslint/sort-vars": "off",
+    "eslint/yoda": "error",
+    "no-sequences": ["error", { "allowInParentheses": false }],
 
-		/*** TypeScript ***/
-		"typescript/consistent-indexed-object-style": ["warn", "record"],
-		"typescript/explicit-function-return-type": "off",
-		"typescript/explicit-module-boundary-types": "off",
-		"typescript/strict-boolean-expressions": "off",
-		"typescript/triple-slash-reference": "off",
+    /*** TypeScript ***/
+    "typescript/consistent-indexed-object-style": ["warn", "record"],
+    "typescript/explicit-function-return-type": "off",
+    "typescript/explicit-module-boundary-types": "off",
+    "typescript/strict-boolean-expressions": "off",
+    "typescript/triple-slash-reference": "off",
 
-		/*** Import ***/
-		"import/extensions": "off",
-		"import/exports-last": "off",
-		"import/max-dependencies": "off",
-		"import/no-anonymous-default-export": "off",
-		"import/no-default-export": "off",
-		"import/no-named-as-default-member": "off",
-		"import/no-named-export": "off",
-		"import/no-namespace": "off",
-		"import/prefer-default-export": "off",
-		"import/unambiguous": "off",
+    /*** Import ***/
+    "import/extensions": "off",
+    "import/exports-last": "off",
+    "import/max-dependencies": "off",
+    "import/no-anonymous-default-export": "off",
+    "import/no-default-export": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-named-export": "off",
+    "import/no-namespace": "off",
+    "import/prefer-default-export": "off",
+    "import/unambiguous": "off",
 
-		/*** Unicorn ***/
-		"unicorn/filename-case": "off",
-		"unicorn/no-array-for-each": "off",
-		"unicorn/no-array-reduce": "off",
-		"unicorn/no-await-expression-member": "off",
-		"unicorn/no-immediate-mutation": "warn",
-		"unicorn/no-null": "off",
-		"unicorn/no-useless-undefined": "off",
-		"unicorn/prefer-global-this": "off",
-		"unicorn/prefer-prototype-methods": "off",
-		"unicorn/prefer-set-has": "off",
-		"unicorn/prefer-string-raw": "off",
+    /*** Unicorn ***/
+    "unicorn/filename-case": "off",
+    "unicorn/no-array-for-each": "off",
+    "unicorn/no-array-reduce": "off",
+    "unicorn/no-await-expression-member": "off",
+    "unicorn/no-immediate-mutation": "warn",
+    "unicorn/no-null": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/prefer-global-this": "off",
+    "unicorn/prefer-prototype-methods": "off",
+    "unicorn/prefer-set-has": "off",
+    "unicorn/prefer-string-raw": "off",
 
-		/*** Jest ***/
-		"jest/prefer-lowercase-title": "warn",
-		"jest/require-hook": "off",
-		"jest/require-top-level-describe": "off",
+    /*** Jest ***/
+    "jest/prefer-lowercase-title": "warn",
+    "jest/require-hook": "off",
+    "jest/require-top-level-describe": "off",
 
-		/*** JSDoc ***/
-		"jsdoc/require-param": "off",
-		"jsdoc/require-property": "off",
-		"jsdoc/require-returns": "off",
+    /*** JSDoc ***/
+    "jsdoc/require-param": "off",
+    "jsdoc/require-property": "off",
+    "jsdoc/require-returns": "off",
 
-		/*** Vue ***/
-		"vue/max-props": "off",
-		"vue/no-required-prop-with-default": "off",
+    /*** Vue ***/
+    "vue/max-props": "off",
+    "vue/no-required-prop-with-default": "off",
 
-		/*** Customizable Overrides ***/
-		/* These rules are customizable in the ESLint config, but the customizations aren't reflected here. */
-		"eslint/func-style": "off",
-		"eslint/max-depth": "off",
-		"eslint/max-nested-callbacks": "off",
-		"typescript/consistent-type-definitions": "off",
-		"vitest/consistent-test-it": "off",
-		"jest/max-nested-describe": "off",
-		"vue/define-props-destructuring": "off"
-	},
+    /*** Customizable Overrides ***/
+    /* These rules are customizable in the ESLint config, but the customizations aren't reflected here. */
+    "eslint/func-style": "off",
+    "eslint/max-depth": "off",
+    "eslint/max-nested-callbacks": "off",
+    "typescript/consistent-type-definitions": "off",
+    "vitest/consistent-test-it": "off",
+    "jest/max-nested-describe": "off",
+    "vue/define-props-destructuring": "off"
+  },
 
-	"overrides": [
-		{
-			"files": ["**/{src,app,server}/**/*.{vue,js,mjs,cjs,jsx,ts,mts,cts,tsx}"],
-			"rules": {
-				"eslint/no-undef": "off"
-			}
-		}
-	],
+  "overrides": [
+    {
+      "files": ["**/{src,app,server}/**/*.{vue,js,mjs,cjs,jsx,ts,mts,cts,tsx}"],
+      "rules": {
+        "eslint/no-undef": "off"
+      }
+    }
+  ],
 
-	"ignorePatterns": [
-		/* Dependencies */
-		"**/*.min.*",
-		"**/jspm_packages",
-		"**/pnpm-lock.yaml",
-		"**/bower_components",
-		"**/package-lock.json",
+  "ignorePatterns": [
+    /* Dependencies */
+    "**/*.min.*",
+    "**/jspm_packages",
+    "**/pnpm-lock.yaml",
+    "**/bower_components",
+    "**/package-lock.json",
 
-		/* Auto-generated type definitions */
-		"**/typegen.d.ts",
-		"**/components.d.ts",
-		"**/auto-import?(s).d.ts",
+    /* Auto-generated type definitions */
+    "**/typegen.d.ts",
+    "**/components.d.ts",
+    "**/auto-import?(s).d.ts",
 
-		/* Build outputs */
-		"**/out",
-		"**/dist",
-		"**/build",
-		"**/.data",
-		"**/output",
-		"**/.output",
-		"**/.serverless",
-		"**/public/build",
-		"**/public/static",
-		"**/.eslint-config-inspector",
+    /* Build outputs */
+    "**/out",
+    "**/dist",
+    "**/build",
+    "**/.data",
+    "**/output",
+    "**/.output",
+    "**/.serverless",
+    "**/public/build",
+    "**/public/static",
+    "**/.eslint-config-inspector",
 
-		/* Cache */
-		"**/tmp",
-		"**/.tmp",
-		"**/.npm",
-		"**/temp",
-		"**/.temp",
-		"**/cache",
-		"**/.cache",
-		"**/deno_dir",
-		"**/.parcel-cache",
-		"**/*.lerna_backup",
-		"**/.postcss-cache",
-		"**/.vitepress/cache",
-		"**/vite.config.*.timestamp-*",
+    /* Cache */
+    "**/tmp",
+    "**/.tmp",
+    "**/.npm",
+    "**/temp",
+    "**/.temp",
+    "**/cache",
+    "**/.cache",
+    "**/deno_dir",
+    "**/.parcel-cache",
+    "**/*.lerna_backup",
+    "**/.postcss-cache",
+    "**/.vitepress/cache",
+    "**/vite.config.*.timestamp-*",
 
-		/* Frameworks and tools */
-		"**/.nx",
-		"**/.vite",
-		"**/.yarn",
-		"**/.nuxt",
-		"**/.next",
-		"**/.vitest",
-		"**/.vercel",
-		"**/.svelte-kit",
-		"**/.vite-inspect",
+    /* Frameworks and tools */
+    "**/.nx",
+    "**/.vite",
+    "**/.yarn",
+    "**/.nuxt",
+    "**/.next",
+    "**/.vitest",
+    "**/.vercel",
+    "**/.svelte-kit",
+    "**/.vite-inspect",
 
-		/* Tests */
-		"**/coverage",
-		"**/_fixtures",
-		"**/.nyc_output",
-		"**/__snapshots__",
+    /* Tests */
+    "**/coverage",
+    "**/_fixtures",
+    "**/.nyc_output",
+    "**/__snapshots__",
 
-		/* Development environment */
-		"**/.idea",
-		"**/.fleet",
-		"**/.history",
+    /* Development environment */
+    "**/.idea",
+    "**/.fleet",
+    "**/.history",
 
-		// Documentation
-		"**/LICENSE*",
-		"**/CHANGELOG*.md",
-		"**/CODEOWNERS.md",
-		"**/CODE_OF_CONDUCT.md"
-	]
+    // Documentation
+    "**/LICENSE*",
+    "**/CHANGELOG*.md",
+    "**/CODEOWNERS.md",
+    "**/CODE_OF_CONDUCT.md"
+  ]
 }

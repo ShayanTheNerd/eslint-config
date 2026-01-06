@@ -9,33 +9,33 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 const detectedPackages: string[] = [];
 
 function logDetectedPackages(): void {
-	if (detectedPackages.length > 0) {
-		detectedPackages.sort();
-		console.info(
-			styleText('green', '✔'),
-			'Automatic dependency detection enabled ESLint configurations for',
-			detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
-		);
-	}
+  if (detectedPackages.length > 0) {
+    detectedPackages.sort();
+    console.info(
+      styleText('green', '✔'),
+      'Automatic dependency detection enabled ESLint configurations for',
+      detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
+    );
+  }
 }
 
 function isPackageDetected(packageName: string, options: Options = defaultOptions): boolean {
-	const {
-		packageDir = defaultOptions.packageDir,
-		autoDetectDeps = defaultOptions.autoDetectDeps,
-	} = options;
+  const {
+    packageDir = defaultOptions.packageDir,
+    autoDetectDeps = defaultOptions.autoDetectDeps,
+  } = options;
 
-	if (!autoDetectDeps) {
-		return false;
-	}
+  if (!autoDetectDeps) {
+    return false;
+  }
 
-	const isPackageInstalled = packageExists(packageName, { paths: [path.resolve(packageDir)] });
+  const isPackageInstalled = packageExists(packageName, { paths: [path.resolve(packageDir)] });
 
-	if (isPackageInstalled) {
-		detectedPackages.push(packageName);
-	}
+  if (isPackageInstalled) {
+    detectedPackages.push(packageName);
+  }
 
-	return isPackageInstalled;
+  return isPackageInstalled;
 }
 
 export { isPackageDetected, logDetectedPackages };

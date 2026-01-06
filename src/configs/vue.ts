@@ -14,7 +14,7 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 import { getVueAccessibilityRules } from '#rules/vueAccessibility.ts';
 
 const vueSetupConfig = eslintPluginVue.configs['flat/recommended'].find((config) => {
-	return config.name === 'vue/base/setup-for-vue';
+  return config.name === 'vue/base/setup-for-vue';
 }) as ConfigObject;
 vueSetupConfig.name = 'setup';
 
@@ -23,37 +23,37 @@ type VueAccessibilityRules = ReturnType<typeof getVueAccessibilityRules>;
 type VueConfig = Linter.Config & { rules: VueRules & VueAccessibilityRules };
 
 function getVueConfig(options: DeepNonNullable<Options>): VueConfig {
-	const { vue } = options.configs;
-	const accessibility = isEnabled(vue) && isEnabled(vue.accessibility);
-	const { overrides } = isEnabled(vue) ? vue : defaultOptions.configs.vue;
+  const { vue } = options.configs;
+  const accessibility = isEnabled(vue) && isEnabled(vue.accessibility);
+  const { overrides } = isEnabled(vue) ? vue : defaultOptions.configs.vue;
 
-	const vueConfig = {
-		name: 'shayanthenerd/vue',
-		files: [globs.vue],
-		extends: [vueSetupConfig], // Required for `vue/comment-directive` rule to work correctly.
-		plugins: {
-			vue: eslintPluginVue,
-			...(accessibility && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
-		},
-		languageOptions: {
-			globals: eslintPluginVueAccessibility.configs['flat/recommended'][0]?.languageOptions.globals,
-			parser: vueSetupConfig.languageOptions?.parser,
-			parserOptions: {
-				parser: eslintParserTypeScript,
-				extraFileExtensions: ['.vue'],
-				vueFeatures: {
-					filter: false,
-				},
-			},
-		},
-		rules: {
-			...getVueRules(options),
-			...(accessibility && getVueAccessibilityRules(options)),
-		},
-	} satisfies ConfigObject;
+  const vueConfig = {
+    name: 'shayanthenerd/vue',
+    files: [globs.vue],
+    extends: [vueSetupConfig], // Required for `vue/comment-directive` rule to work correctly.
+    plugins: {
+      vue: eslintPluginVue,
+      ...(accessibility && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
+    },
+    languageOptions: {
+      globals: eslintPluginVueAccessibility.configs['flat/recommended'][0]?.languageOptions.globals,
+      parser: vueSetupConfig.languageOptions?.parser,
+      parserOptions: {
+        parser: eslintParserTypeScript,
+        extraFileExtensions: ['.vue'],
+        vueFeatures: {
+          filter: false,
+        },
+      },
+    },
+    rules: {
+      ...getVueRules(options),
+      ...(accessibility && getVueAccessibilityRules(options)),
+    },
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(vueConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(vueConfig, overrides);
 }
 
 export { getVueConfig };

@@ -1,53 +1,53 @@
 {
-	"exclude": ["dist", "eslint.config.ts", "prettier.config.ts"],
-	"compilerOptions": {
-		"baseUrl": "./src",
-		"paths": {
-			"#utils/*": ["./utils/*"],
-			"#types/*": ["./types/*"],
-			"#rules/*": ["./rules/*"],
-			"#configs/*": ["./configs/*"]
-		},
+  "exclude": ["dist", "eslint.config.ts", "prettier.config.ts"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "#utils/*": ["./utils/*"],
+      "#types/*": ["./types/*"],
+      "#rules/*": ["./rules/*"],
+      "#configs/*": ["./configs/*"]
+    },
 
-		/* Type Checking */
-		"allowUnreachableCode": false,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitOverride": true,
-		"noImplicitReturns": true,
-		"noUncheckedIndexedAccess": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"strict": true,
+    /* Type Checking */
+    "allowUnreachableCode": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strict": true,
 
-		/* Modules */
-		"allowImportingTsExtensions": true,
-		"module": "nodenext",
-		"noUncheckedSideEffectImports": true,
-		"resolveJsonModule": true,
+    /* Modules */
+    "allowImportingTsExtensions": true,
+    "module": "nodenext",
+    "noUncheckedSideEffectImports": true,
+    "resolveJsonModule": true,
 
-		/* Emit */
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"noEmit": true,
+    /* Emit */
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": true,
 
-		/* JavaScript Support */
-		"allowJs": true,
-		"checkJs": true,
+    /* JavaScript Support */
+    "allowJs": true,
+    "checkJs": true,
 
-		/* Interop Constraints */
-		"erasableSyntaxOnly": true,
-		"esModuleInterop": true,
-		"verbatimModuleSyntax": true,
+    /* Interop Constraints */
+    "erasableSyntaxOnly": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
 
-		/* Language and Environment */
-		"moduleDetection": "force",
-		"target": "esnext",
+    /* Language and Environment */
+    "moduleDetection": "force",
+    "target": "esnext",
 
-		/* Projects */
-		"incremental": true,
-		"tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
+    /* Projects */
+    "incremental": true,
+    "tsBuildInfoFile": "node_modules/.cache/.tsbuildinfo",
 
-		/* Completeness */
-		"skipLibCheck": true
-	}
+    /* Completeness */
+    "skipLibCheck": true
+  }
 }

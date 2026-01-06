@@ -14,20 +14,20 @@ type ZodRules = ReturnType<typeof getZodRules>;
 type ZodConfig = Linter.Config & { rules: ZodRules };
 
 function getZodConfig(options: DeepNonNullable<Options>): ZodConfig {
-	const { zod, vue } = options.configs;
-	const { overrides } = isEnabled(zod) ? zod : defaultOptions.configs.zod;
+  const { zod, vue } = options.configs;
+  const { overrides } = isEnabled(zod) ? zod : defaultOptions.configs.zod;
 
-	const zodConfig = {
-		name: 'shayanthenerd/zod',
-		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
-		plugins: {
-			'zod-x': eslintPluginZodX,
-		},
-		rules: getZodRules(),
-	} satisfies ConfigObject;
+  const zodConfig = {
+    name: 'shayanthenerd/zod',
+    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    plugins: {
+      'zod-x': eslintPluginZodX,
+    },
+    rules: getZodRules(),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incorrect type inference */
-	return mergeConfigs(zodConfig, overrides);
+  /* @ts-expect-error — Incorrect type inference */
+  return mergeConfigs(zodConfig, overrides);
 }
 
 export { getZodConfig };

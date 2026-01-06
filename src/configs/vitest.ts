@@ -14,20 +14,20 @@ type VitestRules = ReturnType<typeof getVitestRules>;
 type VitestConfig = Linter.Config & { rules: VitestRules };
 
 function getVitestConfig(options: DeepNonNullable<Options>): VitestConfig {
-	const { vitest } = options.configs.test;
-	const { overrides } = isEnabled(vitest) ? vitest : defaultOptions.configs.test.vitest;
+  const { vitest } = options.configs.test;
+  const { overrides } = isEnabled(vitest) ? vitest : defaultOptions.configs.test.vitest;
 
-	const vitestConfig = {
-		name: 'shayanthenerd/vitest',
-		files: [globs.test],
-		plugins: {
-			vitest: eslintPluginVitest,
-		},
-		rules: getVitestRules(options),
-	} satisfies ConfigObject;
+  const vitestConfig = {
+    name: 'shayanthenerd/vitest',
+    files: [globs.test],
+    plugins: {
+      vitest: eslintPluginVitest,
+    },
+    rules: getVitestRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incorrect type inference */
-	return mergeConfigs(vitestConfig, overrides);
+  /* @ts-expect-error — Incorrect type inference */
+  return mergeConfigs(vitestConfig, overrides);
 }
 
 export { getVitestConfig };

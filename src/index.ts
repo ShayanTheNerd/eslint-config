@@ -37,86 +37,86 @@ import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
  * @returns {Linter.Config[]} The merged ESLint configuration array
  */
 function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter.Config[] {
-	const mergedOptions = mergeWithDefaults(options);
-	const {
-		gitignore,
-		global: {
-			rules,
-			ignores,
-			settings,
-			linterOptions,
-		},
-		configs: {
-			css,
-			zod,
-			vue,
-			html,
-			nuxt,
-			oxlint,
-			importX,
-			tailwind,
-			stylistic,
-			typescript,
-			perfectionist,
-			base: {
-				preferNamedExports,
-			},
-			test: {
-				vitest,
-				cypress,
-				storybook,
-				playwright,
-			},
-		},
-	} = mergedOptions;
-	const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
-	const oxlintConfigPath = oxlint ? path.resolve(oxlint || defaultOptions.configs.oxlint) : '';
-	const oxlintOverrides = oxlint
-		? eslintPluginOXLint
-			.buildFromOxlintConfigFile(oxlintConfigPath)
-			.filter((config) => config.name !== 'oxlint/vue-svelte-exceptions')
-		: [];
+  const mergedOptions = mergeWithDefaults(options);
+  const {
+    gitignore,
+    global: {
+      rules,
+      ignores,
+      settings,
+      linterOptions,
+    },
+    configs: {
+      css,
+      zod,
+      vue,
+      html,
+      nuxt,
+      oxlint,
+      importX,
+      tailwind,
+      stylistic,
+      typescript,
+      perfectionist,
+      base: {
+        preferNamedExports,
+      },
+      test: {
+        vitest,
+        cypress,
+        storybook,
+        playwright,
+      },
+    },
+  } = mergedOptions;
+  const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
+  const oxlintConfigPath = oxlint ? path.resolve(oxlint || defaultOptions.configs.oxlint) : '';
+  const oxlintOverrides = oxlint
+    ? eslintPluginOXLint
+      .buildFromOxlintConfigFile(oxlintConfigPath)
+      .filter((config) => config.name !== 'oxlint/vue-svelte-exceptions')
+    : [];
 
-	const configObjects = [
-		globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
+  const configObjects = [
+    globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
-		{
-			name: 'shayanthenerd/global',
-			linterOptions,
-			settings,
-			rules,
-		},
-		getBaseConfig(mergedOptions),
+    {
+      name: 'shayanthenerd/global',
+      linterOptions,
+      settings,
+      rules,
+    },
+    getBaseConfig(mergedOptions),
 
-		isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
-		isEnabled(html) && getHTMLConfig(mergedOptions),
-		isEnabled(css) && getCSSConfig(mergedOptions),
+    isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
+    isEnabled(html) && getHTMLConfig(mergedOptions),
+    isEnabled(css) && getCSSConfig(mergedOptions),
 
-		isEnabled(importX) && getImportXConfig(mergedOptions),
-		preferNamedExports && getRestrictedExports(),
-		isEnabled(stylistic) && getStylisticConfig(mergedOptions),
-		isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
+    isEnabled(importX) && getImportXConfig(mergedOptions),
+    preferNamedExports && getRestrictedExports(),
+    isEnabled(stylistic) && getStylisticConfig(mergedOptions),
+    isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
-		isEnabled(zod) && getZodConfig(mergedOptions),
-		isEnabled(tailwind) && getTailwindConfig(mergedOptions),
-		isEnabled(vue) && getVueConfig(mergedOptions),
-		isEnabled(vue) && getVueComponentNamesConfig(),
-		(isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
+    isEnabled(zod) && getZodConfig(mergedOptions),
+    isEnabled(tailwind) && getTailwindConfig(mergedOptions),
+    isEnabled(vue) && getVueConfig(mergedOptions),
+    isEnabled(vue) && getVueComponentNamesConfig(),
+    (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
 
-		isEnabled(storybook) && getStorybookConfig(mergedOptions),
-		isEnabled(vitest) && getVitestConfig(mergedOptions),
-		isEnabled(cypress) && getCypressConfig(mergedOptions),
-		isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
+    isEnabled(storybook) && getStorybookConfig(mergedOptions),
+    isEnabled(vitest) && getVitestConfig(mergedOptions),
+    isEnabled(cypress) && getCypressConfig(mergedOptions),
+    isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
 
-		...oxlintOverrides,
-		oxlint && getOXLintOverridesConfig(mergedOptions),
+    ...oxlintOverrides,
+    oxlint && getOXLintOverridesConfig(mergedOptions),
 
-		...configs,
-	].filter(Boolean) as Linter.Config[];
+    ...configs,
+  ].filter(Boolean) as Linter.Config[];
 
-	const eslintConfig = defineESLintConfig(configObjects);
+  const eslintConfig = defineESLintConfig(configObjects);
 
-	return eslintConfig;
+  return eslintConfig;
 }
 
 export { defineConfig };

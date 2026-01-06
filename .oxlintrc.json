@@ -1,29 +1,30 @@
 {
-	"extends": ["./src/oxlint.config.jsonc"],
+  "extends": ["./src/oxlint.config.jsonc"],
 
-	"env": {
-		"node": true,
-		"es2026": true,
-		"builtin": true
-	},
+  "env": {
+    "node": true,
+    "es2026": true,
+    "builtin": true
+  },
 
-	"categories": {
-		"correctness": "error",
-		"suspicious": "error",
-		"restriction": "error",
-		"pedantic": "error",
-		"perf": "warn",
-		"style": "warn",
-		"nursery": "error"
-	},
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "restriction": "error",
+    "pedantic": "error",
+    "perf": "warn",
+    "style": "warn",
+    "nursery": "error"
+  },
 
-	"overrides": [
-		{
-			"files": ["src/index.ts", "src/{configs,rules,types}/*.ts"],
-			"rules": {
-				"eslint/max-lines": "off",
-				"eslint/max-lines-per-function": "off"
-			}
-		}
-	]
+  "overrides": [
+    {
+      "files": ["src/index.ts", "src/{configs,rules,types}/*.ts"],
+      "rules": {
+        "eslint/max-lines": "off",
+        "eslint/complexity": "off",
+        "eslint/max-lines-per-function": "off"
+      }
+    }
+  ]
 }

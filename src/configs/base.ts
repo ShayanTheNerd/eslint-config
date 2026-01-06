@@ -14,61 +14,61 @@ type JavaScriptRules = ReturnType<typeof getJavaScriptRules>;
 type BaseConfig = Linter.Config & { rules: JavaScriptRules };
 
 function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
-	const {
-		configs: {
-			vue,
-			test: {
-				vitest,
-			},
-			base: {
-				overrides,
-			},
-		},
-		global: {
-			globals: {
-				node,
-				worker,
-				browser,
-				commonjs,
-				webextension,
-				serviceworker,
-				custom: userGlobals,
-			},
-		},
-	}	= options;
+  const {
+    configs: {
+      vue,
+      test: {
+        vitest,
+      },
+      base: {
+        overrides,
+      },
+    },
+    global: {
+      globals: {
+        node,
+        worker,
+        browser,
+        commonjs,
+        webextension,
+        serviceworker,
+        custom: userGlobals,
+      },
+    },
+  } = options;
 
-	const baseConfig = {
-		name: 'shayanthenerd/base',
-		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
-		languageOptions: {
-			parser: eslintParserTypeScript,
-			parserOptions: {
-				ecmaVersion: 'latest',
-				ecmaFeatures: {
-					jsx: true,
-					impliedStrict: true,
-				},
-			},
-			globals: {
-				...globals.builtin,
-				...globals.es2026,
-				...(commonjs && globals.commonjs),
-				...(node && globals.node),
-				...(node && globals.nodeBuiltin),
-				...(browser && globals.browser),
-				...(worker && globals.worker),
-				...(serviceworker && globals.serviceworker),
-				...(webextension && globals.webextensions),
-				...(isEnabled(vue) && globals.vue),
-				...(isEnabled(vitest) && globals.vitest),
-				...userGlobals,
-			},
-		},
-		rules: getJavaScriptRules(options),
-	} satisfies ConfigObject;
+  const baseConfig = {
+    name: 'shayanthenerd/base',
+    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    languageOptions: {
+      parser: eslintParserTypeScript,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: {
+          jsx: true,
+          impliedStrict: true,
+        },
+      },
+      globals: {
+        ...globals.builtin,
+        ...globals.es2026,
+        ...(commonjs && globals.commonjs),
+        ...(node && globals.node),
+        ...(node && globals.nodeBuiltin),
+        ...(browser && globals.browser),
+        ...(worker && globals.worker),
+        ...(serviceworker && globals.serviceworker),
+        ...(webextension && globals.webextensions),
+        ...(isEnabled(vue) && globals.vue),
+        ...(isEnabled(vitest) && globals.vitest),
+        ...userGlobals,
+      },
+    },
+    rules: getJavaScriptRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(baseConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(baseConfig, overrides);
 }
 
 export { getBaseConfig };

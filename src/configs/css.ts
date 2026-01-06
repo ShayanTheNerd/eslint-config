@@ -15,26 +15,26 @@ type CSSRules = ReturnType<typeof getCSSRules>;
 type CSSConfig = Linter.Config & { rules: CSSRules };
 
 function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
-	const { css, tailwind } = options.configs;
-	const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
-	const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;
+  const { css, tailwind } = options.configs;
+  const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
+  const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;
 
-	const cssConfig = {
-		name: 'shayanthenerd/css',
-		files: [globs.css],
-		plugins: {
-			css: eslintPluginCSS,
-		},
-		language: 'css/css',
-		languageOptions: {
-			tolerant: true,
-			customSyntax: isEnabled(tailwind) ? tailwindSyntax : undefined,
-		} as Linter.LanguageOptions,
-		rules: getCSSRules(options),
-	} satisfies ConfigObject;
+  const cssConfig = {
+    name: 'shayanthenerd/css',
+    files: [globs.css],
+    plugins: {
+      css: eslintPluginCSS,
+    },
+    language: 'css/css',
+    languageOptions: {
+      tolerant: true,
+      customSyntax: isEnabled(tailwind) ? tailwindSyntax : undefined,
+    } as Linter.LanguageOptions,
+    rules: getCSSRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(cssConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(cssConfig, overrides);
 }
 
 export { getCSSConfig };

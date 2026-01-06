@@ -8,27 +8,27 @@ import { defaultOptions } from '#utils/options/defaultOptions.ts';
 import { enableDetectedConfigs } from '#utils/options/enableDetectedConfigs.ts';
 
 const mergeOptions = createDefu((object, key, value): boolean => {
-	const stringKey = key.toString();
-	const uniqueArrayOptions = ['allowedRelativeFontUnits', 'macrosOrder', 'blocksOrder', 'attributesOrder'];
-	if (uniqueArrayOptions.includes(stringKey)) {
-		object[key] = value;
+  const stringKey = key.toString();
+  const uniqueArrayOptions = ['allowedRelativeFontUnits', 'macrosOrder', 'blocksOrder', 'attributesOrder'];
+  if (uniqueArrayOptions.includes(stringKey)) {
+    object[key] = value;
 
-		return true;
-	}
+    return true;
+  }
 
-	const isValueTrue = value === true;
-	const isDefaultValueFalse = object[key] === false;
-	const isValueEmptyString = isEmptyString(value);
-	const fallBackToDefault = isValueEmptyString || (isValueTrue && !isDefaultValueFalse);
+  const isValueTrue = value === true;
+  const isDefaultValueFalse = object[key] === false;
+  const isValueEmptyString = isEmptyString(value);
+  const fallBackToDefault = isValueEmptyString || (isValueTrue && !isDefaultValueFalse);
 
-	return fallBackToDefault;
+  return fallBackToDefault;
 });
 
 function mergeWithDefaults(options: Options): DeepNonNullable<Options> {
-	const optionsWithDetectedConfigs = enableDetectedConfigs(options);
-	const mergedOptions = mergeOptions(optionsWithDetectedConfigs, defaultOptions);
+  const optionsWithDetectedConfigs = enableDetectedConfigs(options);
+  const mergedOptions = mergeOptions(optionsWithDetectedConfigs, defaultOptions);
 
-	return mergedOptions as DeepNonNullable<Options>;
+  return mergedOptions as DeepNonNullable<Options>;
 }
 
 export { mergeWithDefaults };

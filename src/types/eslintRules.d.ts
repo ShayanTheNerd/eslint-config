@@ -14,11 +14,11 @@ type PluginRules<PluginName extends PluginNames> = Pick<ESLintSchema, PluginRule
 type Rule<RuleName extends RuleNames> = DeepNonNullable<ESLintSchema>[RuleName];
 type RuleConfigs<RuleName extends RuleNames> = Tail<Rule<RuleName>>;
 type RuleOptions<RuleName extends RuleNames, Index extends (0 | 1 | 2) = 0> = NonNullable<
-	RuleConfigs<RuleName>[Index]
+  RuleConfigs<RuleName>[Index]
 >;
 
 export type {
-	CoreRules,
-	PluginRules,
-	RuleOptions,
+  CoreRules,
+  PluginRules,
+  RuleOptions,
 };

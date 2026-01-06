@@ -15,22 +15,22 @@ type ImportXRules = ReturnType<typeof getImportXRules>;
 type ImportXConfig = Linter.Config & { rules: ImportXRules };
 
 function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
-	const { vue, importX, typescript } = options.configs;
-	const { overrides, removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
+  const { vue, importX, typescript } = options.configs;
+  const { overrides, removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
-	const importXConfig = {
-		name: 'shayanthenerd/imports',
-		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
-		plugins: {
-			'import-x': eslintPluginImportX,
-			...(removeUnusedImports && { 'unused-imports': eslintPluginUnusedImports }),
-		},
-		settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : undefined,
-		rules: getImportXRules(options),
-	} satisfies ConfigObject;
+  const importXConfig = {
+    name: 'shayanthenerd/imports',
+    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    plugins: {
+      'import-x': eslintPluginImportX,
+      ...(removeUnusedImports && { 'unused-imports': eslintPluginUnusedImports }),
+    },
+    settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : undefined,
+    rules: getImportXRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(importXConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(importXConfig, overrides);
 }
 
 export { getImportXConfig };

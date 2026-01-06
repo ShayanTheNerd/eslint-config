@@ -1,27 +1,27 @@
 import { defineConfig } from 'tsdown';
 
 export default defineConfig({
-	format: 'esm',
-	copy: ['./src/oxlint.config.jsonc'],
-	entry: ['./src/index.ts', './src/prettier.config.ts'],
-	exports: {
-		customExports(packageExports) {
-			packageExports['./types/*'] = './dist/types/*';
-			packageExports['./oxlint'] = './dist/oxlint.config.jsonc';
-			packageExports['./prettier'] = './dist/prettier.config.mjs';
-			delete packageExports['./prettier.config'];
+  format: 'esm',
+  copy: ['./src/oxlint.config.jsonc'],
+  entry: ['./src/index.ts', './src/prettier.config.ts'],
+  exports: {
+    customExports(packageExports) {
+      packageExports['./types/*'] = './dist/types/*';
+      packageExports['./oxlint'] = './dist/oxlint.config.jsonc';
+      packageExports['./prettier'] = './dist/prettier.config.mjs';
+      delete packageExports['./prettier.config'];
 
-			return packageExports;
-		},
-	},
-	dts: {
-		compilerOptions: {
-			isolatedDeclarations: true,
-		},
-	},
-	unused: {
-		ignore: ['eslint-import-resolver-typescript'],
-	},
-	publint: true,
-	unbundle: true,
+      return packageExports;
+    },
+  },
+  dts: {
+    compilerOptions: {
+      isolatedDeclarations: true,
+    },
+  },
+  unused: {
+    ignore: ['eslint-import-resolver-typescript'],
+  },
+  publint: true,
+  unbundle: true,
 });

@@ -15,23 +15,23 @@ type CypressRules = ReturnType<typeof getCypressRules>;
 type CypressConfig = Linter.Config & { rules: CypressRules };
 
 function getCypressConfig(options: DeepNonNullable<Options>): CypressConfig {
-	const { cypress } = options.configs.test;
-	const { overrides } = isEnabled(cypress) ? cypress : defaultOptions.configs.test.cypress;
+  const { cypress } = options.configs.test;
+  const { overrides } = isEnabled(cypress) ? cypress : defaultOptions.configs.test.cypress;
 
-	const cypressConfig = {
-		name: 'shayanthenerd/cypress',
-		files: [globs.test],
-		plugins: {
-			cypress: eslintPluginCypress,
-		},
-		languageOptions: {
-			globals: eslintPluginCypress.configs.recommended.languageOptions?.globals as FlatConfig.GlobalsConfig,
-		},
-		rules: getCypressRules(),
-	} satisfies ConfigObject;
+  const cypressConfig = {
+    name: 'shayanthenerd/cypress',
+    files: [globs.test],
+    plugins: {
+      cypress: eslintPluginCypress,
+    },
+    languageOptions: {
+      globals: eslintPluginCypress.configs.recommended.languageOptions?.globals as FlatConfig.GlobalsConfig,
+    },
+    rules: getCypressRules(),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — `mergeConfigs` Incorrect type inference */
-	return mergeConfigs(cypressConfig, overrides);
+  /* @ts-expect-error — `mergeConfigs` Incorrect type inference */
+  return mergeConfigs(cypressConfig, overrides);
 }
 
 export { getCypressConfig };

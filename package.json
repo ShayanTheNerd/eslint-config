@@ -1,126 +1,128 @@
 {
-	"name": "@shayanthenerd/eslint-config",
-	"version": "0.14.0",
-	"license": "MIT",
-	"description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
-	"keywords": [
-		"eslint",
-		"eslint-config",
-		"eslint-flat-config",
-		"eslint-config-vue",
-		"eslint-config-typescript",
-		"oxlint",
-		"oxlint-config"
-	],
-	"homepage": "https://eslint-config.shayan-zamani.me",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
-	},
-	"bugs": {
-		"url": "https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md"
-	},
-	"author": {
-		"name": "Shayan Zamani",
-		"email": "dev.shayan.zamani@gmail.com",
-		"url": "https://github.com/ShayanTheNerd"
-	},
-	"funding": "https://buymeacoffee.com/shayanthenerd",
-	"files": [
-		"./dist"
-	],
-	"main": "./dist/index.mjs",
-	"module": "./dist/index.mjs",
-	"types": "./dist/index.d.mts",
-	"exports": {
-		".": "./dist/index.mjs",
-		"./package.json": "./package.json",
-		"./types/*": "./dist/types/*",
-		"./oxlint": "./dist/oxlint.config.jsonc",
-		"./prettier": "./dist/prettier.config.mjs"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"imports": {
-		"#utils/*": "./src/utils/*",
-		"#types/*": "./src/types/*",
-		"#rules/*": "./src/rules/*",
-		"#configs/*": "./src/configs/*"
-	},
-	"type": "module",
-	"engines": {
-		"name": "node",
-		"version": "^22.12.0",
-		"onfail": "download"
-	},
-	"packageManager": "pnpm@10.26.2",
-	"scripts": {
-		"prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
-		"prepublishOnly": "pnpm build:package",
-		"git:gitmessage": "git config --local commit.template \".gitmessage\"",
-		"inspect": "eslint-config-inspector",
-		"build:package": "tsdown --no-report",
-		"build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
-		"preview:inspector": "serve .eslint-config-inspector",
-		"generate:types": "node ./scripts/generateESLintTypes.ts",
-		"update:actions": "actions-up --yes",
-		"format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
-		"lint:oxlint": "oxlint --fix",
-		"lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
-		"lint": "pnpm lint:oxlint && pnpm lint:eslint",
-		"check:types": "tsc",
-		"check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
-		"check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
-		"ci:validate": "pnpm generate:types && pnpm format && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
-	},
-	"simple-git-hooks": {
-		"pre-commit": "./node_modules/.bin/nano-staged"
-	},
-	"nano-staged": {
-		"**/*.{js,ts}": "pnpm lint",
-		"**/*.{json,jsonc,yaml,yml,lock}": "pnpm format"
-	},
-	"dependencies": {
-		"@eslint/compat": "2.0.0",
-		"@eslint/css": "0.14.1",
-		"@html-eslint/eslint-plugin": "0.52.0",
-		"@stylistic/eslint-plugin": "5.6.1",
-		"@vitest/eslint-plugin": "1.6.4",
-		"defu": "6.1.4",
-		"eslint": "9.39.2",
-		"eslint-flat-config-utils": "2.1.4",
-		"eslint-import-resolver-typescript": "4.4.4",
-		"eslint-plugin-better-tailwindcss": "3.8.0",
-		"eslint-plugin-cypress": "5.2.0",
-		"eslint-plugin-import-x": "4.16.1",
-		"eslint-plugin-oxlint": "1.36.0",
-		"eslint-plugin-perfectionist": "5.1.0",
-		"eslint-plugin-playwright": "2.4.0",
-		"eslint-plugin-storybook": "10.1.11",
-		"eslint-plugin-unused-imports": "4.3.0",
-		"eslint-plugin-vue": "10.6.2",
-		"eslint-plugin-vuejs-accessibility": "2.4.1",
-		"eslint-plugin-zod-x": "2.0.0",
-		"globals": "16.5.0",
-		"local-pkg": "1.1.2",
-		"oxlint": "1.37.0",
-		"tailwind-csstree": "0.1.4",
-		"typescript-eslint": "8.51.0"
-	},
-	"devDependencies": {
-		"@arethetypeswrong/cli": "0.18.2",
-		"@eslint/config-inspector": "1.4.2",
-		"@types/node": "25.0.3",
-		"actions-up": "1.8.0",
-		"eslint-typegen": "2.3.0",
-		"nano-staged": "0.9.0",
-		"prettier": "3.7.4",
-		"publint": "0.3.16",
-		"serve": "14.2.5",
-		"simple-git-hooks": "2.13.1",
-		"tsdown": "0.18.3",
-		"typescript": "5.9.3",
-		"unplugin-unused": "0.5.6"
-	}
+  "name": "@shayanthenerd/eslint-config",
+  "version": "0.14.0",
+  "license": "MIT",
+  "description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
+  "keywords": [
+    "eslint",
+    "eslint-config",
+    "eslint-flat-config",
+    "eslint-config-vue",
+    "eslint-config-typescript",
+    "oxlint",
+    "oxlint-config"
+  ],
+  "homepage": "https://eslint-config.shayan-zamani.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md"
+  },
+  "author": {
+    "name": "Shayan Zamani",
+    "email": "dev.shayan.zamani@gmail.com",
+    "url": "https://github.com/ShayanTheNerd"
+  },
+  "funding": "https://buymeacoffee.com/shayanthenerd",
+  "files": [
+    "./dist"
+  ],
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json",
+    "./types/*": "./dist/types/*",
+    "./oxlint": "./dist/oxlint.config.jsonc",
+    "./prettier": "./dist/prettier.config.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "imports": {
+    "#utils/*": "./src/utils/*",
+    "#types/*": "./src/types/*",
+    "#rules/*": "./src/rules/*",
+    "#configs/*": "./src/configs/*"
+  },
+  "type": "module",
+  "engines": {
+    "name": "node",
+    "version": "^22.18.0",
+    "onfail": "download"
+  },
+  "packageManager": "pnpm@10.27.0",
+  "scripts": {
+    "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
+    "prepublishOnly": "pnpm build:package",
+    "git:gitmessage": "git config --local commit.template \".gitmessage\"",
+    "inspect": "eslint-config-inspector",
+    "build:package": "tsdown --no-report",
+    "build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
+    "preview:inspector": "serve .eslint-config-inspector",
+    "generate:types": "node ./scripts/generateESLintTypes.ts",
+    "update:actions": "actions-up --yes",
+    "format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
+    "lint:oxlint": "oxlint --fix",
+    "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
+    "lint": "pnpm lint:oxlint && pnpm lint:eslint",
+    "check:types": "tsc",
+    "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
+    "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
+    "ci:validate": "pnpm generate:types && pnpm format && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./node_modules/.bin/nano-staged"
+  },
+  "nano-staged": {
+    "eslint.config.ts": "pnpm lint",
+    "prettier.config.ts": "pnpm format",
+    "**/*.{js,ts}": "pnpm lint",
+    "**/*.{json,jsonc,yaml,yml,lock}": "pnpm format"
+  },
+  "dependencies": {
+    "@eslint/compat": "2.0.0",
+    "@eslint/css": "0.14.1",
+    "@html-eslint/eslint-plugin": "0.52.0",
+    "@stylistic/eslint-plugin": "5.6.1",
+    "@vitest/eslint-plugin": "1.6.4",
+    "defu": "6.1.4",
+    "eslint": "9.39.2",
+    "eslint-flat-config-utils": "2.1.4",
+    "eslint-import-resolver-typescript": "4.4.4",
+    "eslint-plugin-better-tailwindcss": "3.8.0",
+    "eslint-plugin-cypress": "5.2.0",
+    "eslint-plugin-import-x": "4.16.1",
+    "eslint-plugin-oxlint": "1.36.0",
+    "eslint-plugin-perfectionist": "5.1.0",
+    "eslint-plugin-playwright": "2.4.0",
+    "eslint-plugin-storybook": "10.1.11",
+    "eslint-plugin-unused-imports": "4.3.0",
+    "eslint-plugin-vue": "10.6.2",
+    "eslint-plugin-vuejs-accessibility": "2.4.1",
+    "eslint-plugin-zod-x": "2.0.0",
+    "globals": "16.5.0",
+    "local-pkg": "1.1.2",
+    "oxlint": "1.37.0",
+    "tailwind-csstree": "0.1.4",
+    "typescript-eslint": "8.51.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.2",
+    "@eslint/config-inspector": "1.4.2",
+    "@types/node": "25.0.3",
+    "actions-up": "1.8.0",
+    "eslint-typegen": "2.3.0",
+    "nano-staged": "0.9.0",
+    "prettier": "3.7.4",
+    "publint": "0.3.16",
+    "serve": "14.2.5",
+    "simple-git-hooks": "2.13.1",
+    "tsdown": "0.18.3",
+    "typescript": "5.9.3",
+    "unplugin-unused": "0.5.6"
+  }
 }

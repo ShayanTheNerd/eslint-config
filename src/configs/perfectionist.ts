@@ -14,30 +14,30 @@ type PerfectionistRules = ReturnType<typeof getPerfectionistRules>;
 type PerfectionistConfig = Linter.Config & { rules: PerfectionistRules };
 
 function getPerfectionistConfig(options: DeepNonNullable<Options>): PerfectionistConfig {
-	const { vue, perfectionist } = options.configs;
-	const { sortType, overrides } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
+  const { vue, perfectionist } = options.configs;
+  const { sortType, overrides } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
 
-	const perfectionistConfig = {
-		name: 'shayanthenerd/perfectionist',
-		files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
-		plugins: {
-			perfectionist: eslintPluginPerfectionist,
-		},
-		settings: {
-			perfectionist: {
-				type: sortType,
-				specialCharacters: 'trim',
-				fallbackSort: {
-					order: 'asc',
-					type: 'natural',
-				},
-			},
-		},
-		rules: getPerfectionistRules(options),
-	} satisfies ConfigObject;
+  const perfectionistConfig = {
+    name: 'shayanthenerd/perfectionist',
+    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    plugins: {
+      perfectionist: eslintPluginPerfectionist,
+    },
+    settings: {
+      perfectionist: {
+        type: sortType,
+        specialCharacters: 'trim',
+        fallbackSort: {
+          order: 'asc',
+          type: 'natural',
+        },
+      },
+    },
+    rules: getPerfectionistRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — Incompatible `parser` types */
-	return mergeConfigs(perfectionistConfig, overrides);
+  /* @ts-expect-error — Incompatible `parser` types */
+  return mergeConfigs(perfectionistConfig, overrides);
 }
 
 export { getPerfectionistConfig };

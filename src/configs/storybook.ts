@@ -14,20 +14,20 @@ type StorybookRules = ReturnType<typeof getStorybookRules>;
 type StorybookConfig = Linter.Config & { rules: StorybookRules };
 
 function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig {
-	const { storybook } = options.configs.test;
-	const { overrides } = isEnabled(storybook) ? storybook : defaultOptions.configs.test.storybook;
+  const { storybook } = options.configs.test;
+  const { overrides } = isEnabled(storybook) ? storybook : defaultOptions.configs.test.storybook;
 
-	const storybookConfig = {
-		name: 'shayanthenerd/storybook',
-		files: [globs.storybook],
-		plugins: {
-			storybook: eslintPluginStorybook,
-		},
-		rules: getStorybookRules(options),
-	} satisfies ConfigObject;
+  const storybookConfig = {
+    name: 'shayanthenerd/storybook',
+    files: [globs.storybook],
+    plugins: {
+      storybook: eslintPluginStorybook,
+    },
+    rules: getStorybookRules(options),
+  } satisfies ConfigObject;
 
-	/* @ts-expect-error — `mergeConfigs` Incorrect type inference */
-	return mergeConfigs(storybookConfig, overrides);
+  /* @ts-expect-error — `mergeConfigs` Incorrect type inference */
+  return mergeConfigs(storybookConfig, overrides);
 }
 
 export { getStorybookConfig };

@@ -9,49 +9,45 @@ type StylisticRules = PluginRules<'@stylistic'>;
 type TailwindRules = PluginRules<'better-tailwindcss'> & Pick<StylisticRules, '@stylistic/max-len'>;
 
 function getTailwindRules(options: DeepNonNullable<Options>) {
-	const { tailwind, stylistic } = options.configs;
-	const {
-		multilineSort,
-		ignoredUnregisteredClasses: userIgnoredUnregisteredClasses,
-	} = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
-	const {
-		indent,
-		useTabs,
-		maxLineLength,
-	} = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
-	const isTailwindV4 = isEnabled(tailwind) && tailwind.entryPoint;
+  const { tailwind, stylistic } = options.configs;
+  const {
+    multilineSort,
+    ignoredUnregisteredClasses: userIgnoredUnregisteredClasses,
+  } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
+  const { indent, maxLineLength } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
+  const isTailwindV4 = isEnabled(tailwind) && tailwind.entryPoint;
 
-	const tailwindRules = {
-		'better-tailwindcss/enforce-consistent-line-wrapping': [
-			multilineSort ? 'warn' : 'off',
-			{
-				preferSingleLine: true,
-				printWidth: maxLineLength,
-				indent: useTabs ? 'tab' : indent,
-			},
-		],
-		'better-tailwindcss/enforce-consistent-class-order': 'warn',
-		'better-tailwindcss/enforce-consistent-variable-syntax': 'warn',
-		'better-tailwindcss/enforce-consistent-important-position': 'warn',
-		'better-tailwindcss/enforce-shorthand-classes': 'warn',
-		'better-tailwindcss/no-duplicate-classes': 'error',
-		'better-tailwindcss/no-deprecated-classes': 'error',
-		'better-tailwindcss/no-unnecessary-whitespace': 'warn',
-		'better-tailwindcss/no-unregistered-classes': [
-			isTailwindV4 ? 'warn' : 'off',
-			{
-				detectComponentClasses: true,
-				ignore: userIgnoredUnregisteredClasses,
-			},
-		],
-		'better-tailwindcss/no-conflicting-classes': 'error',
-	} satisfies TailwindRules;
+  const tailwindRules = {
+    'better-tailwindcss/enforce-consistent-line-wrapping': [
+      multilineSort ? 'warn' : 'off',
+      {
+        indent,
+        preferSingleLine: true,
+        printWidth: maxLineLength,
+      },
+    ],
+    'better-tailwindcss/enforce-consistent-class-order': 'warn',
+    'better-tailwindcss/enforce-consistent-variable-syntax': 'warn',
+    'better-tailwindcss/enforce-consistent-important-position': 'warn',
+    'better-tailwindcss/enforce-shorthand-classes': 'warn',
+    'better-tailwindcss/no-duplicate-classes': 'error',
+    'better-tailwindcss/no-deprecated-classes': 'error',
+    'better-tailwindcss/no-unnecessary-whitespace': 'warn',
+    'better-tailwindcss/no-unregistered-classes': [
+      isTailwindV4 ? 'warn' : 'off',
+      {
+        detectComponentClasses: true,
+        ignore: userIgnoredUnregisteredClasses,
+      },
+    ],
+    'better-tailwindcss/no-conflicting-classes': 'error',
+  } satisfies TailwindRules;
 
-	if (isEnabled(stylistic)) {
-		(tailwindRules as TailwindRules)['@stylistic/max-len'] = 'off';
-	}
+  if (isEnabled(stylistic)) {
+    (tailwindRules as TailwindRules)['@stylistic/max-len'] = 'off';
+  }
 
-	return tailwindRules;
+  return tailwindRules;
 }
 
 export { getTailwindRules };
