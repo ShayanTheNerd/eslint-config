@@ -76,7 +76,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
     rules: getJavaScriptRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(baseConfig, overrides);
 }
 

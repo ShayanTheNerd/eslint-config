@@ -68,7 +68,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
     },
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return oxlintOverridesConfig;
 }
 

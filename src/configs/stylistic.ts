@@ -26,7 +26,7 @@ function getStylisticConfig(options: DeepNonNullable<Options>): StylisticConfig 
     rules: getStylisticRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(stylisticConfig, overrides);
 }
 

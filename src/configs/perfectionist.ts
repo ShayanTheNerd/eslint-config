@@ -36,7 +36,7 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Perfectionis
     rules: getPerfectionistRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(perfectionistConfig, overrides);
 }
 

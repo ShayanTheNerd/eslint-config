@@ -29,7 +29,7 @@ function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
     rules: getImportXRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(importXConfig, overrides);
 }
 

@@ -30,7 +30,7 @@ function getCypressConfig(options: DeepNonNullable<Options>): CypressConfig {
     rules: getCypressRules(),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — `mergeConfigs` Incorrect type inference */
+  /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(cypressConfig, overrides);
 }
 

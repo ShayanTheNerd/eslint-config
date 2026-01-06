@@ -26,7 +26,7 @@ function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig 
     rules: getStorybookRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — `mergeConfigs` Incorrect type inference */
+  /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(storybookConfig, overrides);
 }
 

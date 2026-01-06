@@ -30,7 +30,7 @@ function getPlaywrightConfig(options: DeepNonNullable<Options>): PlaywrightConfi
     rules: getPlaywrightRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — `mergeConfigs` Incorrect type inference */
+  /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(playwrightConfig, overrides);
 }
 

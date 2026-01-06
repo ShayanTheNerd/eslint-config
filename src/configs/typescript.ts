@@ -39,7 +39,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfi
     rules: getTypeScriptRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(typescriptConfig, overrides);
 }
 

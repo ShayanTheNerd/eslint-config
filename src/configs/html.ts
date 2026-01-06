@@ -33,7 +33,7 @@ function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
     rules: getHTMLRules(options),
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible `parser` types */
+  /* @ts-expect-error — Incompatible types */
   return mergeConfigs(htmlConfig, overrides);
 }
 
