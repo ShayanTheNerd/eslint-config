@@ -2,9 +2,9 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
+import eslintPluginVue from 'eslint-plugin-vue';
 import typescriptESLint from 'typescript-eslint';
 import eslintPluginVitest from '@vitest/eslint-plugin';
-import eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
 
 import { globs } from '#helpers/globs.ts';
@@ -21,7 +21,6 @@ import { getTypeScriptConfig } from '#configs/typescript.ts';
 function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {
     vue,
-    importX,
     typescript,
     test: {
       vitest,
@@ -43,8 +42,8 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
       (isEnabled(vitest) || isEnabled(playwright)) ? globs.test : '',
     ].filter(Boolean),
     plugins: {
+      ...(isEnabled(vue) && { vue: eslintPluginVue }),
       ...(isEnabled(vitest) && { vitest: eslintPluginVitest }),
-      ...(isEnabled(importX) && { 'import-x': eslintPluginImportX }),
       ...(isEnabled(playwright) && { playwright: eslintPluginPlaywright }),
       ...(isEnabled(typescript) && { '@typescript-eslint': typescriptESLint.plugin }),
     },
@@ -68,7 +67,6 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
     },
   } satisfies ConfigObject;
 
-  /* @ts-expect-error — Incompatible types */
   return oxlintOverridesConfig;
 }
 
