@@ -59,6 +59,7 @@ const defaultIgnorePatterns = [
   '**/.idea',
   '**/.fleet',
   '**/.history',
+  '**/.DS_Store',
 
   // Documentation
   '**/LICENSE*',
