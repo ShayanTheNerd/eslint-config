@@ -32,16 +32,13 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 1. Install the package:
 ```shell
 npm i -D @shayanthenerd/eslint-config
+# or
+bun i -d @shayanthenerd/eslint-config
+# or
+pnpm i -D @shayanthenerd/eslint-config oxlint
 ```
 
-OXLint and all necessary ESLint plugins and parsers will be installed automatically.
-> [!important]
-> If you're using PNPM without `shamefullyHoist: true`, make sure to install `eslint` and `oxlint` separately with `pnpm i -D eslint oxlint`, or hoist them in _pnpm-workspace.yaml_:
-> ```yaml
-> publicHoistPattern:
->   - eslint
->   - oxlint
-> ```
+This will install OXLint along with all the necessary ESLint plugins and parsers. However, if you're using PNPM, you must install `oxlint` separately.
 
 2. Create an ESLint config file (_eslint.config.js_) at the root of your project:
 ```js
