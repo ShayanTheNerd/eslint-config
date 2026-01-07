@@ -10,7 +10,6 @@ const eslintSchemaPath = path.resolve('src/types/eslint-schema.d.ts');
 await fs.rm(eslintSchemaPath, { force: true });
 await generateESLintTypes(defaultESLintConfigReference, {
   dtsPath: eslintSchemaPath,
-  augmentFlatConfigUtils: true,
   exportTypeName: 'ESLintSchema',
 });
 
