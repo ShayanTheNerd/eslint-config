@@ -16,6 +16,7 @@ function enableDetectedConfigs(options: Options): Options {
 
   options.configs.vue ??= isPackageDetected('vue', options);
   options.configs.nuxt ??= isPackageDetected('nuxt', options);
+  options.configs.astro ??= isPackageDetected('astro', options);
   options.configs.typescript ??= isPackageDetected('typescript', options);
   options.configs.zod ??= isPackageDetected('zod', options);
   options.configs.test.vitest ??= isPackageDetected('vitest', options);

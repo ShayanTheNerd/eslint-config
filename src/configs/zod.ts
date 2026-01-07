@@ -14,12 +14,12 @@ type ZodRules = ReturnType<typeof getZodRules>;
 type ZodConfig = Linter.Config & { rules: ZodRules };
 
 function getZodConfig(options: DeepNonNullable<Options>): ZodConfig {
-  const { zod, vue } = options.configs;
+  const { zod, vue, astro } = options.configs;
   const { overrides } = isEnabled(zod) ? zod : defaultOptions.configs.zod;
 
   const zodConfig = {
     name: 'shayanthenerd/zod',
-    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       'zod-x': eslintPluginZodX,
     },

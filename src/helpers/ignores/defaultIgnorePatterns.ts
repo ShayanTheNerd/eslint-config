@@ -44,6 +44,7 @@ const defaultIgnorePatterns = [
   '**/.yarn',
   '**/.nuxt',
   '**/.next',
+  '**/.astro',
   '**/.vitest',
   '**/.vercel',
   '**/.svelte-kit',

@@ -18,6 +18,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
     env,
     configs: {
       vue,
+      astro,
       base: {
         overrides,
       },
@@ -37,6 +38,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
         sharedWorker,
         serviceworker,
         vue: vueGlobals,
+        astro: astroGlobals,
         custom: userGlobals,
       },
     },
@@ -44,7 +46,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
 
   const baseConfig = {
     name: 'shayanthenerd/base',
-    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     languageOptions: {
       parser: eslintParserTypeScript,
       parserOptions: {
@@ -70,6 +72,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
         ...((audioWorklet && env === 'browser') && globals.audioWorklet),
         ...(vitest && globals.vitest),
         ...((vueGlobals && isEnabled(vue)) && globals.vue),
+        ...((astroGlobals && isEnabled(astro)) && globals.astro),
         ...userGlobals,
       },
     },

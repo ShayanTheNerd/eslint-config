@@ -15,13 +15,13 @@ type TypeScriptRules = ReturnType<typeof getTypeScriptRules>;
 type TypeScriptConfig = Linter.Config & { rules: TypeScriptRules };
 
 function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfig {
-  const { tsConfig, configs: { vue, typescript } } = options;
+  const { tsConfig, configs: { vue, astro, typescript } } = options;
   const { allowedDefaultProjects } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
   const { overrides } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
 
   const typescriptConfig = {
     name: 'shayanthenerd/typescript',
-    files: isEnabled(vue) ? [globs.ts, globs.vue] : [globs.ts],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       '@typescript-eslint': eslintPluginTypeScript,
     },

@@ -4,7 +4,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 
 - **Performant**: Powered by [OXLint (OXC Linter)](https://oxc.rs/docs/guide/usage/linter) for rapid linting
 - **Flat Config**: Type-safe [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files) with `extends` and `overrides` support
-- **Comprehensive**: Dependency detection with support for TypeScript, Vue & Nuxt, Tailwind, Storybook, Vitest & Playwright, and more
+- **Comprehensive**: Dependency detection with support for TypeScript, Astro, Vue & Nuxt, Tailwind, Storybook, Vitest & Playwright, and more
 - **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic](https://eslint.style), eliminating the need for Prettier
 - **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
 - **Developer-friendly**: Easy to use and well-documented with JSDoc
@@ -89,7 +89,8 @@ export default eslintConfigNuxt(eslintConfig);
     "webextension": false,
     "audioWorklet": false,
     "vitest": true,
-    "vue": true
+    "vue": true,
+    "astro": true
   },
 
   "categories": {
@@ -144,7 +145,7 @@ Unlike other plugins, the configuration for Tailwind isn't automatically enabled
 Stylistic, Perfectionist, ImportX, and core (JavaScript) rules are enabled by default.
 
 ## Formatting
-This config uses [ESLint Stylistic](https://eslint.style) to format JavaScript and TypeScript files (`?([mc])[jt]s?(x)`) as well as the `<script>` blocks in Vue components. HTML and the `<template>` blocks in Vue components are formatted with [html-eslint](https://html-eslint.org) and [eslint-plugin-vue](https://eslint.vuejs.org), respectively. For other files such as CSS, JSON, and Markdown, you'll need Prettier. To make this easier, a customizable [shared Prettier configuration](https://prettier.io/docs/sharing-configurations) is provided. Here's how to set it up:
+This config uses [ESLint Stylistic](https://eslint.style) to format JavaScript and TypeScript files (`?([mc])[jt]s?(x)`) as well as Astro (similar to JSX/TSX) and the `<script>` blocks in Vue components. HTML and the `<template>` blocks in Vue components are formatted with [html-eslint](https://html-eslint.org) and [eslint-plugin-vue](https://eslint.vuejs.org), respectively. For other files such as CSS, JSON, and Markdown, you'll need Prettier. To make this easier, a customizable [shared Prettier configuration](https://prettier.io/docs/sharing-configurations) is provided. Here's how to set it up:
 
 1. Install Prettier:
 ```shell
@@ -174,11 +175,11 @@ export default {
 } satisfies Config;
 ```
 
-3. To prevent conflicts with ESLint, Prettier should be configured to only format files other than JavaScript, TypeScript, HTML, and Vue. Hence, add the following script to your _package.json_ file:
+3. To prevent conflicts with ESLint, Prettier should be configured to only format files other than JavaScript, TypeScript, Astro, HTML, and Vue. Hence, add the following script to your _package.json_ file:
 ```json
 {
   "scripts": {
-    "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue}' --cache"
+    "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
   }
 }
 ```
@@ -212,7 +213,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
 
   /* Format and lint JavaScript, TypeScript, HTML, and Vue files with ESLint, while everything else is formatted with Prettier. */
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][typescript][javascriptreact][typescriptreact][html][vue]": {
+  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.validate": [
@@ -223,7 +224,8 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     "html",
     "css",
     "tailwindcss",
-    "vue"
+    "vue",
+    "astro"
   ],
 
   /* Adjust these based on the features you're using to silently auto-fix the stylistic rules in your IDE. */
@@ -364,6 +366,7 @@ export default defineConfig(
         audioWorklet?: boolean,
         vitest?: boolean,
         vue?: boolean,
+        astro?: boolean,
         custom?: {
           [key: string]: boolean | 'off' | 'readonly' | 'readable' | 'writable' | 'writeable',
         },

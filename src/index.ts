@@ -11,6 +11,7 @@ import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
 import { getHTMLConfig } from '#configs/html.ts';
+import { getAstroConfig } from '#configs/astro.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
@@ -52,6 +53,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
       vue,
       html,
       nuxt,
+      astro,
       oxlint,
       importX,
       tailwind,
@@ -102,6 +104,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     isEnabled(vue) && getVueConfig(mergedOptions),
     isEnabled(vue) && getVueComponentNamesConfig(),
     (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
+    isEnabled(astro) && getAstroConfig(mergedOptions),
 
     isEnabled(storybook) && getStorybookConfig(mergedOptions),
     isEnabled(vitest) && getVitestConfig(mergedOptions),

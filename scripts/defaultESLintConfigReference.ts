@@ -18,6 +18,7 @@ const config: Linter.Config[] = defineConfig({
     },
     vue: true,
     nuxt: true,
+    astro: true,
     test: {
       storybook: true,
       vitest: true,

@@ -29,6 +29,7 @@ const defaultOptions = {
       audioWorklet: true, // The default value will be ignored if `env` isn't set to `browser`.
       vitest: false,
       vue: true, // The default value will be ignored if `configs.vue` is disabled.
+      astro: true, // The default value will be ignored if `configs.astro` is disabled.
       custom: {},
     },
     settings: {},
@@ -159,6 +160,9 @@ const defaultOptions = {
       ui: {
         prefix: 'U',
       },
+    },
+    astro: {
+      overrides: {},
     },
     test: {
       storybook: {

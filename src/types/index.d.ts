@@ -195,10 +195,11 @@ interface Options {
      *   audioWorklet: false, // `true` if `env` is set to `browser`
      *   vitest: false,
      *   vue: false, // `true` if `configs.vue` is enabled
+     *   astro: false, // `true` if `configs.astro` is enabled
      *   custom: {},
      * }
      *
-     * @see [Language Options: Specifying Globals: Using Configuration Files](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
+     * @see [Language Options: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
      */
     globals?: {
       worker?: boolean,
@@ -214,6 +215,7 @@ interface Options {
       audioWorklet?: boolean,
       vitest?: boolean,
       vue?: boolean,
+      astro?: boolean,
       custom?: Linter.LanguageOptions['globals'],
     },
 
@@ -372,6 +374,13 @@ interface Options {
      * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     nuxt?: boolean | NuxtOptions,
+
+    /**
+     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
+     *
+     * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    astro?: boolean | ConfigWithOverrides,
 
     /**
      * Configuration options for the testing tools.

@@ -20,7 +20,7 @@ export default defineConfig({
     },
   },
   unused: {
-    ignore: ['eslint-import-resolver-typescript'],
+    ignore: ['eslint-import-resolver-typescript', 'eslint-plugin-jsx-a11y'],
   },
   publint: true,
   unbundle: true,

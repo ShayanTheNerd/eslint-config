@@ -24,6 +24,8 @@ const globs = {
   vueServerComponents: `**/*.server.${vueExtensions}`,
   vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
 
+  astro: '**/*.astro',
+
   storybook: `**/*.(story|stories).${srcExtensions}`,
   test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,
 } as const;

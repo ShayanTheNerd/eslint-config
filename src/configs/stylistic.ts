@@ -14,12 +14,12 @@ type StylisticRules = ReturnType<typeof getStylisticRules>;
 type StylisticConfig = Linter.Config & { rules: StylisticRules };
 
 function getStylisticConfig(options: DeepNonNullable<Options>): StylisticConfig {
-  const { vue, stylistic } = options.configs;
+  const { vue, astro, stylistic } = options.configs;
   const { overrides } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
 
   const stylisticConfig = {
     name: 'shayanthenerd/stylistic',
-    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       '@stylistic': eslintPluginStylistic,
     },

@@ -15,12 +15,12 @@ type ImportXRules = ReturnType<typeof getImportXRules>;
 type ImportXConfig = Linter.Config & { rules: ImportXRules };
 
 function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
-  const { vue, importX, typescript } = options.configs;
+  const { vue, astro, importX, typescript } = options.configs;
   const { overrides, removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
   const importXConfig = {
     name: 'shayanthenerd/imports',
-    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       'import-x': eslintPluginImportX,
       ...(removeUnusedImports && { 'unused-imports': eslintPluginUnusedImports }),

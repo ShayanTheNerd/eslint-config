@@ -21,6 +21,7 @@ import { getTypeScriptConfig } from '#configs/typescript.ts';
 function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {
     vue,
+    astro,
     typescript,
     test: {
       vitest,
@@ -39,6 +40,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
     files: [
       globs.src,
       isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
       (isEnabled(vitest) || isEnabled(playwright)) ? globs.test : '',
     ].filter(Boolean),
     plugins: {

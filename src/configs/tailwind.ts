@@ -22,6 +22,14 @@ const vueAttributes = [
   ]],
 ] as const;
 
+const astroAttributes = [
+  ['^class:list$', [
+    { match: 'strings' },
+    { match: 'objectKeys' },
+    { match: 'objectValues' },
+  ]],
+] as const;
+
 type TailwindRules = ReturnType<typeof getTailwindRules>;
 type TailwindConfig = Linter.Config & { rules: TailwindRules };
 
@@ -31,10 +39,18 @@ function getTailwindConfig(options: DeepNonNullable<Options>): TailwindConfig {
     configs: {
       vue,
       html,
+      astro,
       tailwind,
     },
   } = options;
   const { config, entryPoint, overrides } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
+
+  const attributes = (isEnabled(vue) || isEnabled(astro))
+    ? [
+      ...(isEnabled(vue) ? vueAttributes : []),
+      ...(isEnabled(astro) ? astroAttributes : []),
+    ].filter(Boolean)
+    : undefined;
 
   const tailwindConfig = {
     name: 'shayanthenerd/tailwind',
@@ -42,6 +58,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): TailwindConfig {
       globs.src,
       isEnabled(vue) ? globs.vue : '',
       isEnabled(html) ? globs.html : '',
+      isEnabled(astro) ? globs.astro : '',
     ].filter(Boolean),
     plugins: {
       'better-tailwindcss': eslintPluginTailwind,
@@ -50,8 +67,8 @@ function getTailwindConfig(options: DeepNonNullable<Options>): TailwindConfig {
       'better-tailwindcss': {
         entryPoint: entryPoint || undefined,
         tailwindConfig: config || undefined,
-        attributes: isEnabled(vue) ? vueAttributes : undefined,
         tsconfig: tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined,
+        attributes,
       },
     },
     rules: getTailwindRules(options),

@@ -14,12 +14,12 @@ type PerfectionistRules = ReturnType<typeof getPerfectionistRules>;
 type PerfectionistConfig = Linter.Config & { rules: PerfectionistRules };
 
 function getPerfectionistConfig(options: DeepNonNullable<Options>): PerfectionistConfig {
-  const { vue, perfectionist } = options.configs;
+  const { vue, astro, perfectionist } = options.configs;
   const { sortType, overrides } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
 
   const perfectionistConfig = {
     name: 'shayanthenerd/perfectionist',
-    files: isEnabled(vue) ? [globs.src, globs.vue] : [globs.src],
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       perfectionist: eslintPluginPerfectionist,
     },
