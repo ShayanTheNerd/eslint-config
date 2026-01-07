@@ -2,9 +2,10 @@
   "extends": ["./src/oxlint.config.jsonc"],
 
   "env": {
-    "node": true,
+    "builtin": true,
     "es2026": true,
-    "builtin": true
+    "node": true,
+    "nodeBuiltin": true
   },
 
   "categories": {
