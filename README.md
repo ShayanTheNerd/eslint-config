@@ -77,14 +77,19 @@ export default eslintConfigNuxt(eslintConfig);
 
   /* Customize based on your development environment. */
   "env": {
-    "builtin": true,
-    "es2026": true,
+    "worker": false,
     "commonjs": false,
+    "bun": false,
+    "deno": false,
     "node": true,
+    "nodeBuiltin": true,
     "browser": true,
-    "worker": true,
     "serviceworker": false,
-    "webextensions": false
+    "sharedWorker": false,
+    "webextension": false,
+    "audioWorklet": false,
+    "vitest": true,
+    "vue": true
   },
 
   "categories": {
@@ -177,8 +182,6 @@ export default {
   }
 }
 ```
-
-For IDE setup guidance, see [VS Code Integration](#vs-code-integration).
 
 ## VS Code Integration
 Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [OXLint](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode), and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode). Then, add the following in the _.vscode/settings.json_ file of your project:
@@ -348,12 +351,19 @@ export default defineConfig(
       basePath?: string,
       ignores?: string[],
       globals?: {
-        node?: boolean,
-        commonjs?: boolean,
-        browser?: boolean,
         worker?: boolean,
+        commonjs?: boolean,
+        bun?: boolean,
+        deno?: boolean,
+        node?: boolean,
+        nodeBuiltin?: boolean,
+        browser?: boolean,
         serviceworker?: boolean,
+        sharedWorker?: boolean,
         webextension?: boolean,
+        audioWorklet?: boolean,
+        vitest?: boolean,
+        vue?: boolean,
         custom?: {
           [key: string]: boolean | 'off' | 'readonly' | 'readable' | 'writable' | 'writeable',
         },
