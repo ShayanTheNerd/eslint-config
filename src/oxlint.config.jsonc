@@ -90,6 +90,7 @@
     "import/no-named-as-default-member": "off",
     "import/no-named-export": "off",
     "import/no-namespace": "off",
+    "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
     "import/unambiguous": "off",
 
