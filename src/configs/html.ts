@@ -26,7 +26,6 @@ function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
     plugins: {
       '@html-eslint': eslintPluginHTML,
     },
-    language: 'html/html',
     languageOptions: {
       parser: eslintParserHTML,
     },
