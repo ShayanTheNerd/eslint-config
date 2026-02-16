@@ -1,6 +1,9 @@
 # Contributing Guidelines
 
-Thanks for considering contributing to this project.
+Thank you for your interest in contributing to this project.
+
+## Code of Conduct
+This project is released with a [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
 
 ## Make a Contribution
 1. Fork the repository.
