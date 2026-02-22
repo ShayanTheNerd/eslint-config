@@ -1,4 +1,4 @@
-import { defineConfig } from './src/index.ts';
+import { defineConfig } from './dist/index.mjs';
 
 export default defineConfig(
   {

@@ -63,6 +63,7 @@
     "inspect": "eslint-config-inspector",
     "build:package": "tsdown --no-report",
     "build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
+    "watch:package": "tsdown --watch --publint=false",
     "preview:inspector": "serve .eslint-config-inspector",
     "generate:types": "node ./scripts/generateESLintTypes.ts",
     "update:actions": "actions-up --yes",
