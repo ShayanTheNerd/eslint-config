@@ -53,9 +53,9 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
+    "README.md": "LICENSE",
     ".gitignore": ".gitattributes, .gitmessage",
     "*.mjs": "$(capture).mjs.map, $(capture).d.mts",
-    "README.md": "CODE_OF_CONDUCT.md, CODEOWNERS, CONTRIBUTING.md, LICENSE",
-    "package.json": ".editorconfig, .oxlintrc.json, eslint.config.ts, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
+    "package.json": ".editorconfig, .oxlintrc.json, eslint.config.ts, jsr.json, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
   }
 }

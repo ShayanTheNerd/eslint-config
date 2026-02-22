@@ -3,7 +3,7 @@
 Thank you for your interest in contributing to this project.
 
 ## Code of Conduct
-This project is released with a [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
+This project is released with a [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
 
 ## Make a Contribution
 1. Fork the repository.
@@ -23,4 +23,4 @@ reproduce it.
 To request a new feature, please [open a feature-request issue on GitHub](https://github.com/ShayanTheNerd/eslint-config/issues/new?template=feature_request.md) and describe the feature you would like to see.
 
 ## License
-By contributing, you agree that your contributions will be licensed under the [project's LICENSE](https://github.com/ShayanTheNerd/eslint-config/blob/main/LICENSE).
+By contributing, you agree that your contributions will be licensed under the [project's LICENSE](../LICENSE).

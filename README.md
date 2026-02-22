@@ -41,7 +41,7 @@ import { defineConfig } from '@shayanthenerd/eslint-config';
 export default defineConfig();
 ```
 
-You can also use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files) may be required.
+Alternatively, you can use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files) may be required.
 
 If you're using Nuxt, install [@nuxt/eslint](https://eslint.nuxt.com) as a dev dependency:
 ```shell
@@ -62,7 +62,7 @@ export default eslintConfigNuxt(eslintConfig);
 > [!NOTE]
 > The Nuxt config relies on the Vue config, so make sure it's enabled (either automatically or manually).
 
-3. If you're not using OXLint, set `configs.oxlint` to `false` in your ESLint config and skip this step. Otherwise, create an OXLint config file (_.oxlintrc.json_) in the root of your project:
+3. If you're not using OXLint, set `configs.oxlint` to `false` in your ESLint config and skip this step. Otherwise, create an OXLint config file (_.oxlintrc.json_) at the root of your project:
 ```jsonc
 {
   "$schema": "./node_modules/oxlint/configuration_schema.json", // Optional
@@ -534,7 +534,7 @@ You can find a list of all available versions and their changelogs on the [relea
 - [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
 
 ## Contribution Guide
-Any form of contribution is always appreciated! Please chekc out the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+Any form of contribution is always appreciated! Please check out the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) file.
 
 ## Credits
 This project was inspired by the work of [Anthony Fu](https://github.com/antfu), whose generous contributions to the JavaScript and the ESLint ecosystem were instrumental in making it possible.
