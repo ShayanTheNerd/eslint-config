@@ -2,8 +2,10 @@ import { defineConfig } from 'tsdown';
 
 export default defineConfig({
   format: 'esm',
-  copy: ['./src/oxlint.config.jsonc'],
+  unbundle: true,
   entry: ['./src/index.ts', './src/prettier.config.ts'],
+  copy: ['./src/oxlint.config.jsonc'],
+  external: ['prettier'],
   exports: {
     customExports(packageExports) {
       packageExports['./types/*'] = './dist/types/*';
@@ -19,9 +21,9 @@ export default defineConfig({
       isolatedDeclarations: true,
     },
   },
-  unused: {
-    ignore: ['eslint-import-resolver-typescript', 'eslint-plugin-jsx-a11y'],
-  },
+  report: false,
   publint: true,
-  unbundle: true,
+  unused: {
+    ignore: ['eslint-plugin-jsx-a11y', 'eslint-import-resolver-typescript'],
+  },
 });
