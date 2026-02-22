@@ -8,7 +8,7 @@
   "oxc.lint.run": "onSave",
   "eslint.run": "onSave",
   "eslint.format.enable": true,
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.validate": ["javascript", "typescript", "json"],
   "editor.codeActionsOnSave": {
     "source.sort.json": "never",
     "source.sortImports": "never",
@@ -20,7 +20,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "vscode.markdown-language-features"
   },
-  "[javascript][typescript]": {
+  "[javascript][typescript][{**/package.json}]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
 
@@ -32,7 +32,8 @@
     { "rule": "*quotes", "severity": "off", "fixable": true },
     { "rule": "import*", "severity": "off", "fixable": true },
     { "rule": "*-spac*", "severity": "off", "fixable": true },
-    { "rule": "*newline*", "severity": "off", "fixable": true }
+    { "rule": "*newline*", "severity": "off", "fixable": true },
+    { "rule": "package-json/order-properties", "severity": "off", "fixable": true }
   ],
 
   "npm.packageManager": "pnpm",

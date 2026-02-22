@@ -13,34 +13,21 @@
     "oxlint-config"
   ],
   "homepage": "https://eslint-config.shayan-zamani.me",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
-  },
   "bugs": {
     "email": "dev.shayan.zamani@gmail.com",
     "url": "https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
+  },
+  "funding": "https://buymeacoffee.com/shayanthenerd",
   "author": {
     "name": "Shayan Zamani",
     "email": "dev.shayan.zamani@gmail.com",
     "url": "https://github.com/ShayanTheNerd"
   },
-  "funding": "https://buymeacoffee.com/shayanthenerd",
-  "files": [
-    "./dist"
-  ],
-  "types": "./dist/index.d.mts",
-  "exports": {
-    ".": "./dist/index.mjs",
-    "./package.json": "./package.json",
-    "./types/*": "./dist/types/*",
-    "./oxlint": "./dist/oxlint.config.jsonc",
-    "./prettier": "./dist/prettier.config.mjs"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
+  "type": "module",
   "imports": {
     "#configs/*": "./src/configs/*",
     "#helpers/*": "./src/helpers/*",
@@ -48,48 +35,47 @@
     "#types/*": "./src/types/*",
     "#utils/*": "./src/utils/*"
   },
-  "type": "module",
-  "engines": {
-    "node": ">=20.18.0"
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./oxlint": "./dist/oxlint.config.jsonc",
+    "./package.json": "./package.json",
+    "./prettier": "./dist/prettier.config.mjs",
+    "./types/*": "./dist/types/*"
   },
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": ">=22.18.0",
-      "onFail": "error"
-    }
-  },
-  "packageManager": "pnpm@10.30.1",
+  "types": "./dist/index.d.mts",
+  "files": [
+    "./dist"
+  ],
   "scripts": {
-    "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
     "prepublishOnly": "pnpm build:package",
+    "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
     "git:gitmessage": "git config --local commit.template \".gitmessage\"",
+    "update:actions": "actions-up --yes",
+    "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
     "inspect": "eslint-config-inspector",
-    "build:package": "tsdown",
     "build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
-    "watch:package": "tsdown --watch --publint=false",
     "preview:inspector": "serve .eslint-config-inspector",
     "generate:types": "node ./scripts/generateESLintTypes.ts",
-    "update:actions": "actions-up --yes",
-    "format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
-    "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
-    "lint:oxlint": "oxlint --fix",
-    "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
-    "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "check:types": "tsc",
+    "build:package": "tsdown",
+    "watch:package": "tsdown --watch --publint=false",
     "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
-    "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
+    "format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
+    "lint": "pnpm lint:oxlint && pnpm lint:eslint",
+    "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
+    "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
+    "lint:oxlint": "oxlint --fix",
     "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint:ci && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
-    "eslint.config.ts": "pnpm lint",
-    "prettier.config.ts": "pnpm format",
-    "package.json": "pnpm lint:eslint",
     "**/*.{js,ts}": "pnpm lint",
-    "**/*.{json,jsonc,yaml,yml,lock}": "pnpm format"
+    "**/*.{json,jsonc,yaml,yml,lock}": "pnpm format",
+    "package.json": "pnpm lint:eslint",
+    "eslint.config.ts": "pnpm lint",
+    "prettier.config.ts": "pnpm format"
   },
   "dependencies": {
     "@eslint/compat": "2.0.2",
@@ -140,5 +126,19 @@
   "peerDependencies": {
     "eslint": "^9.28.0 || ^10.0.0",
     "oxlint": "^1.49.0"
+  },
+  "packageManager": "pnpm@10.30.1",
+  "engines": {
+    "node": ">=20.18.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22.18.0",
+      "onFail": "error"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

@@ -17,6 +17,7 @@ const globs = {
   html: '**/*.html',
   ts: '**/*.?([mc])ts?(x)',
   src: `**/*.${srcExtensions}`,
+  packageJson: '**/package.json',
 
   restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
 

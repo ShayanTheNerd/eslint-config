@@ -6,6 +6,7 @@ const config: Linter.Config[] = defineConfig({
   autoDetectDeps: false,
   configs: {
     oxlint: './src/oxlint.config.jsonc',
+    packageJson: true,
     html: true,
     css: true,
     stylistic: true,

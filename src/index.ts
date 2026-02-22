@@ -21,6 +21,7 @@ import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
 import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
+import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedExports } from '#configs/restrictedExports.ts';
@@ -61,6 +62,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
       tailwind,
       stylistic,
       typescript,
+      packageJson,
       perfectionist,
       base: {
         preferNamedExports,
@@ -95,6 +97,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
     isEnabled(html) && getHTMLConfig(mergedOptions),
     isEnabled(css) && getCSSConfig(mergedOptions),
+    isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
 
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),

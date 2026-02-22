@@ -8,6 +8,10 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 const detectedPackages: string[] = [];
 
+function addDetectedPackage(packageName: string): void {
+  detectedPackages.push(packageName);
+}
+
 function logDetectedPackages(): void {
   if (detectedPackages.length > 0) {
     detectedPackages.sort();
@@ -38,4 +42,4 @@ function isPackageDetected(packageName: string, options: Options): boolean {
   return isPackageInstalled;
 }
 
-export { isPackageDetected, logDetectedPackages };
+export { isPackageDetected, addDetectedPackage, logDetectedPackages };

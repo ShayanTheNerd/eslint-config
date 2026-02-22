@@ -37,6 +37,9 @@ const defaultOptions = {
   },
 
   configs: {
+    packageJson: {
+      overrides: {},
+    },
     oxlint: '.oxlintrc.json',
     base: {
       maxDepth: 3,

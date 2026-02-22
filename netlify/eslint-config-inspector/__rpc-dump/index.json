@@ -1,0 +1,10 @@
+{
+  "eslint-config-inspector:get-payload": {
+    "type": "query",
+    "records": {
+      "T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU": "__rpc-dump/eslint-config-inspector~get-payload.record.T1PNoYwrqgwDVLtfmj7L5e0Sq02OEbqHPC8RFhICuUU.json"
+    },
+    "serialization": "structured-clone",
+    "fallback": "__rpc-dump/eslint-config-inspector~get-payload.fallback.json"
+  }
+}

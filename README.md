@@ -215,7 +215,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
 
   /* Format and lint JavaScript, TypeScript, HTML, and Vue files with ESLint, while everything else is formatted with Prettier. */
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro]": {
+  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro][{**/package.json}]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "eslint.validate": [
@@ -223,6 +223,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     "typescript",
     "javascriptreact",
     "typescriptreact",
+    "json",
     "html",
     "css",
     "tailwindcss",
@@ -244,6 +245,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     { "rule": "*order-*", "severity": "off", "fixable": true },
     { "rule": "*newline*", "severity": "off", "fixable": true },
     { "rule": "*attribute*", "severity": "off", "fixable": true },
+    { "rule": "package-json/order-properties", "severity": "off", "fixable": true },
     { "rule": "vue/max-len", "severity": "off", "fixable": true },
     { "rule": "vue/comma-dangle", "severity": "off", "fixable": true },
     { "rule": "vue/space-in-parens", "severity": "off", "fixable": true },
@@ -406,6 +408,9 @@ export default defineConfig(
         maxLineLength?: number,
         maxAttributesPerLine?: number,
         selfCloseVoidHTMLElements?: 'never' | 'always',
+        overrides?: {},
+      },
+      packageJson?: boolean | {
         overrides?: {},
       },
       html?: boolean | {

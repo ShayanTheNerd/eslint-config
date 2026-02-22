@@ -1,0 +1,1 @@
+import{k as o,a1 as r,J as t,h as n,P as s}from"./D2pP4Elx.js";const p=o({__name:"index",setup(a){return r().replace("/configs"),(e,l)=>(t(),n("div",null,[s(e.$slots,"default")]))}});export{p as default};
