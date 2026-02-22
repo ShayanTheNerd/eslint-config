@@ -45,6 +45,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
+    '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/no-array-delete': 'error',
     '@typescript-eslint/no-base-to-string': 'error',
     '@typescript-eslint/no-confusing-void-expression': 'error',
@@ -132,6 +133,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/prefer-includes': 'warn',
     '@typescript-eslint/prefer-nullish-coalescing': 'warn',
     '@typescript-eslint/prefer-optional-chain': 'error',
+    '@typescript-eslint/prefer-readonly': 'warn',
     '@typescript-eslint/prefer-regexp-exec': 'warn',
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
 
@@ -144,6 +146,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-unsafe-type-assertion': 'warn',
     '@typescript-eslint/prefer-enum-initializers': 'error',
     '@typescript-eslint/no-unnecessary-qualifier': 'warn',
+    '@typescript-eslint/strict-void-return': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': ['warn', {
       requireDefaultForNonUnion: true,
       considerDefaultExhaustiveForUnions: true,
