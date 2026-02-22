@@ -45,7 +45,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
-    '@typescript-eslint/no-array-constructor': 'error',
     '@typescript-eslint/no-array-delete': 'error',
     '@typescript-eslint/no-base-to-string': 'error',
     '@typescript-eslint/no-confusing-void-expression': 'error',
@@ -90,14 +89,12 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-unsafe-member-access': 'warn',
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/no-unsafe-unary-minus': 'error',
-    '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-unused-vars': ['error', {
       ...noUnusedVarsOptions,
       enableAutofixRemoval: {
         imports: removeUnusedImports,
       },
     }],
-    '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-useless-default-assignment': 'warn',
     '@typescript-eslint/no-wrapper-object-types': 'error',
     '@typescript-eslint/only-throw-error': 'error',
