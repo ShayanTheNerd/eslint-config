@@ -20,11 +20,13 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
 
   const htmlRules = {
     /* Best Practices */
+    '@html-eslint/css-no-empty-blocks': 'error',
     '@html-eslint/no-duplicate-attrs': 'error',
     '@html-eslint/no-duplicate-class': 'warn',
     '@html-eslint/no-duplicate-id': 'error',
     '@html-eslint/no-duplicate-in-head': 'error',
     '@html-eslint/no-ineffective-attrs': 'warn',
+    '@html-eslint/no-invalid-attr-value': 'error',
     '@html-eslint/no-invalid-entity': 'error',
     '@html-eslint/no-nested-interactive': 'error',
     '@html-eslint/no-obsolete-tags': 'error',
@@ -60,6 +62,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
     '@html-eslint/no-invalid-role': 'error',
     '@html-eslint/no-non-scalable-viewport': 'error',
     '@html-eslint/no-positive-tabindex': 'error',
+    '@html-eslint/no-redundant-role': 'error',
     '@html-eslint/no-skip-heading-levels': 'error',
     '@html-eslint/require-frame-title': 'error',
     '@html-eslint/require-img-alt': 'error',
