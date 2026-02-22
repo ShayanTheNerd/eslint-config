@@ -2,7 +2,7 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options, ConfigObject } from '#types/index.d.ts';
 
-import eslintPluginZodX from 'eslint-plugin-zod-x';
+import eslintPluginZod from 'eslint-plugin-zod';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 
 import { globs } from '#helpers/globs.ts';
@@ -21,7 +21,7 @@ function getZodConfig(options: DeepNonNullable<Options>): ZodConfig {
     name: 'shayanthenerd/zod',
     files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
-      'zod-x': eslintPluginZodX,
+      zod: eslintPluginZod,
     },
     rules: getZodRules(),
   } satisfies ConfigObject;
