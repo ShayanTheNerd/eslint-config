@@ -14,25 +14,25 @@ function logDetectedPackages(): void {
     console.info(
       styleText('green', '✔'),
       'Automatic dependency detection enabled ESLint configurations for',
-      detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
+      `${detectedPackages.map((packageName) => styleText('blue', packageName)).join(', ')}.`,
     );
   }
 }
 
-function isPackageDetected(packageName: string, options: Options = defaultOptions): boolean {
+function isPackageDetected(packageName: string, options: Options): boolean {
   const {
     packageDir = defaultOptions.packageDir,
     autoDetectDeps = defaultOptions.autoDetectDeps,
   } = options;
 
-  if (!autoDetectDeps) {
+  if (autoDetectDeps === false) {
     return false;
   }
 
   const isPackageInstalled = packageExists(packageName, { paths: [path.resolve(packageDir)] });
 
-  if (isPackageInstalled) {
-    detectedPackages.push(packageName);
+  if (autoDetectDeps === 'verbose' && isPackageInstalled) {
+    addDetectedPackage(packageName);
   }
 
   return isPackageInstalled;
