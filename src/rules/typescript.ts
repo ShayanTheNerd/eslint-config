@@ -13,36 +13,29 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
   } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
 
   const tsRules = {
-    /* ESLint Core */
+    /* Disabled ESLint core rules (handled by TypeScript or @typescript-eslint) */
     'constructor-super': 'off',
     'default-param-last': 'off',
     'dot-notation': 'off',
     'getter-return': 'off',
-    'no-array-constructor': 'off',
     'no-class-assign': 'off',
     'no-const-assign': 'off',
     'no-dupe-args': 'off',
     'no-dupe-class-members': 'off',
     'no-dupe-keys': 'off',
-    'no-empty-function': 'off',
     'no-func-assign': 'off',
     'no-implied-eval': 'off',
     'no-import-assign': 'off',
-    'no-loop-func': 'off',
     'no-new-native-nonconstructor': 'off',
     'no-obj-calls': 'off',
     'no-redeclare': 'off',
     'no-setter-return': 'off',
     'no-this-before-super': 'off',
-    'no-throw-literal': 'off',
     'no-undef': 'off',
     'no-unreachable': 'off',
     'no-unsafe-negation': 'off',
-    'no-unused-expressions': 'off',
     'no-unused-private-class-members': 'off',
     'no-unused-vars': 'off',
-    'no-useless-constructor': 'off',
-    'no-with': 'off',
     'prefer-destructuring': 'off',
     'prefer-promise-reject-errors': 'off',
 
@@ -138,7 +131,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/prefer-string-starts-ends-with': 'warn',
 
     /* Uncategorized */
-    '@typescript-eslint/no-loop-func': 'error',
     '@typescript-eslint/default-param-last': 'warn',
     '@typescript-eslint/prefer-destructuring': ['warn', { array: false }],
     '@typescript-eslint/promise-function-async': 'error',

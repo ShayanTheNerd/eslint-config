@@ -36,7 +36,7 @@ function getVueConfig(options: DeepNonNullable<Options>): VueConfig {
       ...(accessibility && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
     },
     languageOptions: {
-      globals: eslintPluginVueAccessibility.configs['flat/recommended'][0]?.languageOptions.globals,
+      globals: eslintPluginVueAccessibility.configs['flat/recommended'][0].languageOptions.globals,
       parser: vueSetupConfig.languageOptions?.parser,
       parserOptions: {
         parser: eslintParserTypeScript,

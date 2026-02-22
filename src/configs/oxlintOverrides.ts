@@ -50,9 +50,10 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
       ...(isEnabled(typescript) && { '@typescript-eslint': typescriptESLint.plugin }),
     },
     rules: {
-      'max-depth': javascriptRules['max-depth'],
       'func-style': javascriptRules['func-style'],
+      'max-depth': javascriptRules['max-depth'],
       'max-nested-callbacks': javascriptRules['max-nested-callbacks'],
+      'no-shadow': javascriptRules['no-shadow'],
 
       '@typescript-eslint/consistent-type-definitions': isEnabled(typescript)
         ? typescriptRules['@typescript-eslint/consistent-type-definitions']

@@ -10,9 +10,6 @@ import { getHTMLRules } from '#rules/html.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
-const eslintParserHTML = (eslintPluginHTML.configs?.['flat/recommended'] as ConfigObject)?.languageOptions?.parser;
-
 type HTMLRules = ReturnType<typeof getHTMLRules>;
 type HTMLConfig = Linter.Config & { rules: HTMLRules };
 
@@ -27,7 +24,7 @@ function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
       '@html-eslint': eslintPluginHTML,
     },
     languageOptions: {
-      parser: eslintParserHTML,
+      parser: eslintPluginHTML.configs['flat/recommended'].languageOptions.parser,
     },
     rules: getHTMLRules(options),
   } satisfies ConfigObject;

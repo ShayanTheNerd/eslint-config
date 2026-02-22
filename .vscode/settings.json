@@ -35,6 +35,8 @@
     { "rule": "*newline*", "severity": "off", "fixable": true }
   ],
 
+  "npm.packageManager": "pnpm",
+
   "files.associations": {
     ".gitmessage": "git-commit"
   },

@@ -57,6 +57,15 @@
     "typescript/consistent-indexed-object-style": ["warn", "record"],
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-module-boundary-types": "off",
+    "typescript/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "ignoreTypeReferences": false
+      }
+    ],
+    "typescript/parameter-properties": "off",
+    "typescript/prefer-readonly-parameter-types": "off",
     "typescript/strict-boolean-expressions": "off",
     "typescript/triple-slash-reference": "off",
 
@@ -66,9 +75,12 @@
     "import/max-dependencies": "off",
     "import/no-anonymous-default-export": "off",
     "import/no-default-export": "off",
+    "import/no-duplicates": ["error", { "considerQueryString": true }],
     "import/no-named-as-default-member": "off",
     "import/no-named-export": "off",
     "import/no-namespace": "off",
+    "import/no-nodejs-modules": "off",
+    "import/no-relative-parent-imports": "off",
     "import/no-unassigned-import": "off",
     "import/prefer-default-export": "off",
     "import/unambiguous": "off",
@@ -77,6 +89,7 @@
     "unicorn/filename-case": "off",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-array-reduce": "off",
+    "unicorn/no-array-sort": "off",
     "unicorn/no-await-expression-member": "off",
     "unicorn/no-immediate-mutation": "warn",
     "unicorn/no-null": "off",
@@ -86,7 +99,9 @@
     "unicorn/prefer-set-has": "off",
     "unicorn/prefer-string-raw": "off",
 
-    /*** Jest ***/
+    /*** Vitest/Jest ***/
+    "vitest/consistent-each-for": "off",
+    "vitest/no-importing-vitest-globals": "off",
     "jest/prefer-lowercase-title": "warn",
     "jest/require-hook": "off",
     "jest/require-top-level-describe": "off",
@@ -101,7 +116,8 @@
     "vue/no-required-prop-with-default": "off",
 
     /*** Customizable Overrides ***/
-    /* These rules are customizable in the ESLint config, but the customizations aren't reflected here. */
+    /* These rules are customizable in the ESLint config, but the customizations aren"t reflected here. */
+    "eslint/no-shadow": "off", // [TODO] https://github.com/oxc-project/oxc/issues/19461
     "eslint/func-style": "off",
     "eslint/max-depth": "off",
     "eslint/max-nested-callbacks": "off",

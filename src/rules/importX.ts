@@ -31,7 +31,6 @@ function getImportXRules(options: DeepNonNullable<Options>) {
     }],
     'import-x/no-mutable-exports': 'error',
     'import-x/no-named-as-default': 'error',
-    'import-x/no-named-as-default-member': 'off',
 
     /* Module Systems */
     'import-x/no-amd': 'error',

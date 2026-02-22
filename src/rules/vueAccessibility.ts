@@ -24,7 +24,6 @@ function getVueAccessibilityRules(options: DeepNonNullable<Options>) {
     'vuejs-accessibility/aria-props': 'error',
     'vuejs-accessibility/aria-role': 'error',
     'vuejs-accessibility/aria-unsupported-elements': 'error',
-    'vuejs-accessibility/click-events-have-key-events': 'off',
     'vuejs-accessibility/form-control-has-label': ['error', {
       labelComponents: isNuxtUIEnabled ? [`${nuxtUIPrefix}FormField`] : undefined,
     }],
@@ -39,7 +38,6 @@ function getVueAccessibilityRules(options: DeepNonNullable<Options>) {
       controlComponents: ['input', 'output', 'meter', 'select', 'textarea', 'progress'],
     }],
     'vuejs-accessibility/media-has-caption': 'error',
-    'vuejs-accessibility/mouse-events-have-key-events': 'off',
     'vuejs-accessibility/no-access-key': 'warn',
     'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
     'vuejs-accessibility/no-autofocus': 'warn',

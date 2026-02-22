@@ -26,14 +26,12 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
         printWidth: maxLineLength,
       },
     ],
-    'better-tailwindcss/enforce-consistent-class-order': 'warn',
-    'better-tailwindcss/enforce-consistent-variable-syntax': 'warn',
-    'better-tailwindcss/enforce-consistent-important-position': 'warn',
-    'better-tailwindcss/enforce-shorthand-classes': 'warn',
+    'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'strict' }],
+    'better-tailwindcss/enforce-canonical-classes': 'warn',
     'better-tailwindcss/no-duplicate-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
-    'better-tailwindcss/no-unregistered-classes': [
+    'better-tailwindcss/no-unknown-classes': [
       isTailwindV4 ? 'warn' : 'off',
       {
         detectComponentClasses: true,

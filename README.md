@@ -29,16 +29,10 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 - [License](#license)
 
 ## Installation and Configuration
-1. Install the package:
+1. Install the package alongside ESLint and OXLint:
 ```shell
-npm i -D @shayanthenerd/eslint-config
-# or
-bun i -d @shayanthenerd/eslint-config
-# or
-pnpm i -D @shayanthenerd/eslint-config oxlint
+npm i -D @shayanthenerd/eslint-config eslint oxlint
 ```
-
-This will install OXLint along with all the necessary ESLint plugins and parsers. However, if you're using PNPM, you must install `oxlint` separately.
 
 2. Create an ESLint config file (_eslint.config.js_) at the root of your project:
 ```js
@@ -477,7 +471,7 @@ export default defineConfig(
           style?: 'css' | 'implicit' | 'scss' | 'postcss',
           script?: 'js' | 'ts' | 'jsx' | 'tsx' | 'implicit',
         },
-        destructureProps?: 'never' | 'always',
+        destructureProps?: 'never' | 'always' | 'only-when-assigned',
         componentNameCaseInTemplate?: 'PascalCase' | 'kebab-case',
         vForDelimiterStyle?: 'in' | 'of',
         vOnHandlerStyle?: 'inline' | 'inline-function' | ['method', 'inline' | 'inline-function'],
