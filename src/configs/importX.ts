@@ -4,7 +4,6 @@ import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginImportX from 'eslint-plugin-import-x';
-import eslintPluginUnusedImports from 'eslint-plugin-unused-imports';
 
 import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
@@ -16,14 +15,13 @@ type ImportXConfig = Linter.Config & { rules: ImportXRules };
 
 function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
   const { vue, astro, importX, typescript } = options.configs;
-  const { overrides, removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
+  const { overrides } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
   const importXConfig = {
     name: 'shayanthenerd/imports',
     files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       'import-x': eslintPluginImportX,
-      ...(removeUnusedImports && { 'unused-imports': eslintPluginUnusedImports }),
     },
     settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : undefined,
     rules: getImportXRules(options),
