@@ -438,6 +438,9 @@ export default defineConfig(
         removeUnusedImports?: boolean,
         overrides?: {},
       },
+      promise?: boolean | {
+        overrides?: {},
+      },
       importX?: boolean | {
         overrides?: {},
       },

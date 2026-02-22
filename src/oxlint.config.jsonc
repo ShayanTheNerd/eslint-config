@@ -69,6 +69,12 @@
     "typescript/strict-boolean-expressions": "off",
     "typescript/triple-slash-reference": "off",
 
+    /*** Promise ***/
+    "promise/always-return": ["error", { "ignoreLastCallback": true }],
+    "promise/catch-or-return": ["error", { "allowThenStrict": true, "allowFinally": true }],
+    "promise/no-return-wrap": ["error", { "allowReject": true }],
+    "promise/prefer-await-to-then": ["warn", { "strict": true }],
+
     /*** Import ***/
     "import/extensions": "off",
     "import/exports-last": "off",

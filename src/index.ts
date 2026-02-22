@@ -15,6 +15,7 @@ import { getAstroConfig } from '#configs/astro.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
+import { getPromiseConfig } from '#configs/promise.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
@@ -55,6 +56,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
       nuxt,
       astro,
       oxlint,
+      promise,
       importX,
       tailwind,
       stylistic,
@@ -94,6 +96,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     isEnabled(html) && getHTMLConfig(mergedOptions),
     isEnabled(css) && getCSSConfig(mergedOptions),
 
+    isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
     preferNamedExports && getRestrictedExports(),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),

@@ -336,6 +336,13 @@ interface Options {
     typescript?: boolean | TypeScriptOptions,
 
     /**
+     * Use [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise) to enforce best practices for JavaScript promises.
+     *
+     * @default true
+     */
+    promise?: boolean | ConfigWithOverrides,
+
+    /**
      * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
      *
      * @default true

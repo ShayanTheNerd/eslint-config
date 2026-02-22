@@ -10,6 +10,7 @@ const config: Linter.Config[] = defineConfig({
     css: true,
     stylistic: true,
     typescript: true,
+    promise: true,
     importX: true,
     perfectionist: true,
     zod: true,

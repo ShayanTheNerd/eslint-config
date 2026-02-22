@@ -83,6 +83,9 @@ const defaultOptions = {
       removeUnusedImports: true,
       overrides: {},
     },
+    promise: {
+      overrides: {},
+    },
     importX: {
       overrides: {},
     },

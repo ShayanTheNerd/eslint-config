@@ -10,6 +10,7 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.html ??= false;
   options.configs.css ??= false;
   options.configs.tailwind ??= false;
+  options.configs.promise ??= true;
   options.configs.importX ??= true;
   options.configs.stylistic ??= true;
   options.configs.perfectionist ??= true;
