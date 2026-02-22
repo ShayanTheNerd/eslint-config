@@ -1,5 +1,7 @@
 import { defineConfig } from 'tsdown';
 
+import { syncJsrExports } from './scripts/syncJsrExports.ts';
+
 export default defineConfig({
   format: 'esm',
   unbundle: true,
@@ -13,7 +15,10 @@ export default defineConfig({
       packageExports['./prettier'] = './dist/prettier.config.mjs';
       delete packageExports['./prettier.config'];
 
-      return packageExports;
+      const sortedPackageExports = Object.fromEntries(Object.entries(packageExports).sort());
+      syncJsrExports(sortedPackageExports);
+
+      return sortedPackageExports;
     },
   },
   dts: {

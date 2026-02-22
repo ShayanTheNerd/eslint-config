@@ -1,4 +1,11 @@
-# @shayanthenerd/eslint-config &nbsp;&nbsp; [![NPM Version](https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=EEEEEE&labelColor=545A61&color=545A61&registry_uri=https://registry.npmjs.com/@shayanthenerd/eslint-config&link=https://github.com/ShayanTheNerd/eslint-config)](https://www.npmjs.com/package/@shayanthenerd/eslint-config) [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?labelColor=545A61&color=545A61)](https://github.com/ShayanTheNerd/eslint-config/blob/main/LICENSE) [![Netlify Status](https://api.netlify.com/api/v1/badges/8ed76fdd-5aa7-446a-89fa-c916f8cce0de/deploy-status)](https://eslint-config.shayan-zamani.me)
+# @shayanthenerd/eslint-config &nbsp;&nbsp; [![npm-version-badge]][npm-version] [![jsr-version-badge]][jsr-version] [![license-badge]][license]
+
+[npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=EEEEEE&labelColor=545A61&color=545A61
+[npm-version]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
+[jsr-version-badge]: https://jsr.io/badges/@antfu/eslint-flat-config-utils?logoColor=EEEEEE&labelColor=545A61&color=545A61
+[jsr-version]: https://jsr.io/badges/@shayanthenerd/eslint-config
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?labelColor=545A61&color=545A61
+[license]: https://github.com/ShayanTheNerd/eslint-config/blob/main/LICENSE
 
 A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style.
 

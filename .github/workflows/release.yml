@@ -46,16 +46,21 @@ jobs:
       - name: Bump the Version & Create a New Tag
         id: version
         run: |
-          new_version=$(npm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          new_version=$(pnpm version ${{ github.event.inputs.version }} --no-git-tag-version)
+          clean_version=$(jq -r .version package.json)
+          jq --arg version "$clean_version" '.version = $version' jsr.json > jsr.json.tmp && mv jsr.json.tmp jsr.json
           git commit -am "chore: release $new_version"
           git tag -am "Release $new_version" $new_version
           git push --follow-tags
           echo "tag=$new_version" >> $GITHUB_OUTPUT
 
-      - name: Publish to NPM
-        run: npm publish
+      - name: Publish to the NPM Registry
+        run: pnpm publish
 
-      - name: Generate a Changelog Based on Conventional Commits
+      - name: Publish to the JSR Registry
+        run: pnpx jsr publish
+
+      - name: Generate a Changelog
         id: changelog
         uses: requarks/changelog-action@b78a3354a01f4a1affb484b9264b506a815c46b1 # v1.10.3
         with:
