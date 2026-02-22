@@ -133,7 +133,7 @@ interface Options {
    *   name: 'shayanthenerd/eslint-config',
    *   basePath: '.',
    *   linterOptions: {
-   *     noInlineConfig: true,
+   *     noInlineConfig: false,
    *     reportUnusedInlineConfigs: 'warn',
    *     reportUnusedDisableDirectives: 'warn'
    *   }

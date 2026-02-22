@@ -11,7 +11,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 
 - **Performant**: Powered by [OXLint (OXC Linter)](https://oxc.rs/docs/guide/usage/linter) for rapid linting
 - **Flat Config**: Type-safe [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files) with `extends` and `overrides` support
-- **Comprehensive**: Dependency detection with support for TypeScript, Astro, Vue & Nuxt, Tailwind, Storybook, Vitest & Playwright, and more
+- **Comprehensive**: Dependency detection with support for TypeScript, Astro, Vue & Nuxt, Tailwind, Storybook, Vitest, etc.
 - **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic](https://eslint.style), eliminating the need for Prettier
 - **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
 - **Developer-friendly**: Easy to use and well-documented with JSDoc
@@ -112,10 +112,11 @@ Due to [the limitation of OXLint](https://oxc.rs/docs/guide/usage/linter/nested-
 ```json
 {
   "scripts": {
+    "lint": "npm run lint:oxlint && npm run lint:eslint",
     "lint:inspect": "npx @eslint/config-inspector",
+    "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
     "lint:oxlint": "oxlint --fix",
-    "lint:eslint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'",
-    "lint": "npm run lint:oxlint && npm run lint:eslint"
+    "lint:eslint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
   }
 }
 ```
@@ -207,10 +208,10 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     "source.fixAll.oxc": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-	"oxc.lint.run": "onSave",
-	"eslint.run": "onSave",
+  "oxc.lint.run": "onSave",
+  "eslint.run": "onSave",
   "editor.formatOnSave": true,
-	"eslint.format.enable": true,
+  "eslint.format.enable": true,
 
   /* Format and lint JavaScript, TypeScript, HTML, and Vue files with ESLint, while everything else is formatted with Prettier. */
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -231,7 +232,8 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
 
   /* Adjust these based on the features you're using to silently auto-fix the stylistic rules in your IDE. */
   "tailwindCSS.lint.cssConflict": "ignore", // Only if you're using the Tailwind config
-	"tailwindCSS.lint.recommendedVariantOrder": "ignore", // Only if you're using the Tailwind config
+  "tailwindCSS.lint.recommendedVariantOrder": "ignore", // Only if you're using the Tailwind config
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore", // Only if you're using the Tailwind config
   "eslint.rules.customizations": [
     { "rule": "*styl*", "severity": "off", "fixable": true },
     { "rule": "*sort*", "severity": "off", "fixable": true },
