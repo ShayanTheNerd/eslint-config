@@ -433,10 +433,10 @@ export default defineConfig(
         allowedDefaultProjects?: string[],
         methodSignatureStyle?: 'property' | 'method',
         typeDefinitionStyle?: 'interface' | 'type',
+        removeUnusedImports?: boolean,
         overrides?: {},
       },
       importX?: boolean | {
-        removeUnusedImports?: boolean,
         overrides?: {},
       },
       perfectionist?: boolean | {

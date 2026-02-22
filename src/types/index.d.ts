@@ -7,7 +7,6 @@ import type { BaseOptions } from '#types/configOptions/base.d.ts';
 import type { HTMLOptions } from '#types/configOptions/html.d.ts';
 import type { NuxtOptions } from '#types/configOptions/nuxt.d.ts';
 import type { TestOptions } from '#types/configOptions/test.d.ts';
-import type { ImportXOptions } from '#types/configOptions/importX.d.ts';
 import type { TailwindOptions } from '#types/configOptions/tailwind.d.ts';
 import type { StylisticOptions } from '#types/configOptions/stylistic.d.ts';
 import type { TypeScriptOptions } from '#types/configOptions/typescript.d.ts';
@@ -337,11 +336,11 @@ interface Options {
     typescript?: boolean | TypeScriptOptions,
 
     /**
-     * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) and [eslint-plugin-unused-imports](https://github.com/sweepline/eslint-plugin-unused-imports) to organize imports and exports, and detect related issues.
+     * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
      *
      * @default true
      */
-    importX?: boolean | ImportXOptions,
+    importX?: boolean | ConfigWithOverrides,
 
     /**
      * Use [eslint-plugin-perfectionist](https://perfectionist.dev) to sort imports, exports, maps, union types, etc.

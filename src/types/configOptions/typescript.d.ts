@@ -3,6 +3,17 @@ import type { ConfigWithOverrides } from '#types/index.d.ts';
 
 interface TypeScriptOptions extends ConfigWithOverrides {
   /**
+   * Automatically remove unused imports.
+   *
+   * If set to `false`, unused imports will only be reported as errors.
+   *
+   * @default true
+   *
+   * @see [@typescript-eslint/no-unused-vars: `enableAutofixRemoval.imports` option](https://typescript-eslint.io/rules/no-unused-vars/#enableautofixremovalimports)
+   */
+  removeUnusedImports?: boolean,
+
+  /**
    * Globs of files to allow running with the default project compiler options despite not being matched by the project service (_tsconfig.json_).
    *
    * The matched files may not also be included in their nearest _tsconfig.json_ file.

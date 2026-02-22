@@ -5,22 +5,17 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import path from 'node:path';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getImportXRules(options: DeepNonNullable<Options>) {
   const {
     packageDir,
     configs: {
-      importX,
       typescript,
     },
   } = options;
   const isTypeScriptEnabled = isEnabled(typescript);
-  const { removeUnusedImports } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
   const importXRules = {
-    'unused-imports/no-unused-imports': removeUnusedImports ? 'warn' : 'off',
-
     /* Helpful Warnings */
     'import-x/export': isTypeScriptEnabled ? 'off' : 'error',
     'import-x/no-deprecated': 'warn',

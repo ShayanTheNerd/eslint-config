@@ -3,14 +3,17 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
+import { getJavaScriptRules } from '#rules/javascript.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getTypeScriptRules(options: DeepNonNullable<Options>) {
   const { typescript } = options.configs;
   const {
+    removeUnusedImports,
     typeDefinitionStyle,
     methodSignatureStyle,
   } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
+  const noUnusedVarsOptions = getJavaScriptRules(options)['no-unused-vars'][1];
 
   const tsRules = {
     /* Disabled ESLint core rules (handled by TypeScript or @typescript-eslint) */
@@ -88,7 +91,12 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/no-unsafe-unary-minus': 'error',
     '@typescript-eslint/no-unused-expressions': 'error',
-    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-unused-vars': ['error', {
+      ...noUnusedVarsOptions,
+      enableAutofixRemoval: {
+        imports: removeUnusedImports,
+      },
+    }],
     '@typescript-eslint/no-useless-constructor': 'error',
     '@typescript-eslint/no-useless-default-assignment': 'warn',
     '@typescript-eslint/no-wrapper-object-types': 'error',

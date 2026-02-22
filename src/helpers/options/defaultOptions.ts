@@ -80,10 +80,10 @@ const defaultOptions = {
       allowedDefaultProjects: [],
       methodSignatureStyle: 'method',
       typeDefinitionStyle: 'interface',
+      removeUnusedImports: true,
       overrides: {},
     },
     importX: {
-      removeUnusedImports: true,
       overrides: {},
     },
     perfectionist: {

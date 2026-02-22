@@ -54,7 +54,15 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-unreachable-loop': 'warn',
     'no-unsafe-negation': ['error', { enforceForOrderingRelations: true }],
     'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
-    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    'no-unused-vars': ['error', {
+      args: 'all',
+      argsIgnorePattern: '^_',
+      caughtErrors: 'all',
+      caughtErrorsIgnorePattern: '^_',
+      destructuredArrayIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      ignoreRestSiblings: true,
+    }],
     'no-use-before-define': ['error', {
       functions: false,
       ignoreTypeReferences: false,
