@@ -41,6 +41,7 @@ function getVitestRules(options: DeepNonNullable<Options>) {
     'vitest/prefer-called-times': 'warn',
     'vitest/prefer-called-with': 'warn',
     'vitest/prefer-comparison-matcher': 'warn',
+    'vitest/prefer-describe-function-title': 'warn',
     'vitest/prefer-each': 'warn',
     'vitest/prefer-equality-matcher': 'warn',
     'vitest/prefer-expect-resolves': 'warn',
