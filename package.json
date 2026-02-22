@@ -18,6 +18,7 @@
     "url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
   },
   "bugs": {
+    "email": "dev.shayan.zamani@gmail.com",
     "url": "https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md"
   },
   "author": {
@@ -29,8 +30,6 @@
   "files": [
     "./dist"
   ],
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
     ".": "./dist/index.mjs",
@@ -51,9 +50,14 @@
   },
   "type": "module",
   "engines": {
-    "name": "node",
-    "version": "^22.18.0",
-    "onfail": "download"
+    "node": ">=20.18.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22.18.0",
+      "onFail": "error"
+    }
   },
   "packageManager": "pnpm@10.30.1",
   "scripts": {
@@ -61,20 +65,21 @@
     "prepublishOnly": "pnpm build:package",
     "git:gitmessage": "git config --local commit.template \".gitmessage\"",
     "inspect": "eslint-config-inspector",
-    "build:package": "tsdown --no-report",
+    "build:package": "tsdown",
     "build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
     "watch:package": "tsdown --watch --publint=false",
     "preview:inspector": "serve .eslint-config-inspector",
     "generate:types": "node ./scripts/generateESLintTypes.ts",
     "update:actions": "actions-up --yes",
     "format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
+    "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
     "lint:oxlint": "oxlint --fix",
     "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "check:types": "tsc",
     "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
     "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
-    "ci:validate": "pnpm generate:types && pnpm format && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
+    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint:ci && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
@@ -82,6 +87,7 @@
   "nano-staged": {
     "eslint.config.ts": "pnpm lint",
     "prettier.config.ts": "pnpm format",
+    "package.json": "pnpm lint:eslint",
     "**/*.{js,ts}": "pnpm lint",
     "**/*.{json,jsonc,yaml,yml,lock}": "pnpm format"
   },
