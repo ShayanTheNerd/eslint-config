@@ -12,7 +12,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
   const { tailwind, stylistic } = options.configs;
   const {
     multilineSort,
-    ignoredUnregisteredClasses: userIgnoredUnregisteredClasses,
+    ignoredUnknownClasses: userIgnoredUnknownClasses,
   } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
   const { indent, maxLineLength } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
   const isTailwindV4 = isEnabled(tailwind) && tailwind.entryPoint;
@@ -31,13 +31,10 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
     'better-tailwindcss/no-duplicate-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
-    'better-tailwindcss/no-unknown-classes': [
-      isTailwindV4 ? 'warn' : 'off',
-      {
-        detectComponentClasses: true,
-        ignore: userIgnoredUnregisteredClasses,
-      },
-    ],
+    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', {
+      detectComponentClasses: true,
+      ignore: userIgnoredUnknownClasses,
+    }],
     'better-tailwindcss/no-conflicting-classes': 'error',
   } satisfies TailwindRules;
 

@@ -71,7 +71,7 @@ const defaultOptions = {
     },
     tailwind: {
       multilineSort: true,
-      ignoredUnregisteredClasses: [],
+      ignoredUnknownClasses: [],
       config: '',
       entryPoint: '',
       overrides: {},

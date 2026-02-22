@@ -30,9 +30,9 @@ interface BaseTailwindOptions extends ConfigWithOverrides {
    *
    * @default []
    *
-   * @see [better-tailwindcss/no-unregistered-classes: `ignore` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/no-unregistered-classes.md#ignore)
+   * @see [better-tailwindcss/no-unregistered-classes: `ignore` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/no-unknown-classes.md#ignore)
    */
-  ignoredUnregisteredClasses?: RuleOptions<'better-tailwindcss/no-unregistered-classes'>['ignore'],
+  ignoredUnknownClasses?: RuleOptions<'better-tailwindcss/no-unknown-classes'>['ignore'],
 }
 
 interface EntryPointRequired {

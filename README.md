@@ -248,7 +248,7 @@ Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/ite
     { "rule": "better-tailwindcss/*", "severity": "off", "fixable": true },
     { "rule": "better-tailwindcss/no-restricted-classes", "severity": "error", "fixable": true },
     { "rule": "better-tailwindcss/no-conflicting-classes", "severity": "error", "fixable": false },
-    { "rule": "better-tailwindcss/no-unregistered-classes", "severity": "error", "fixable": false }
+    { "rule": "better-tailwindcss/no-unknown-classes", "severity": "error", "fixable": false }
   ]
 }
 ```
@@ -420,13 +420,13 @@ export default defineConfig(
         config: string,
         entryPoint?: string,
         multilineSort?: boolean,
-        ignoredUnregisteredClasses?: string[],
+        ignoredUnknownClasses?: string[],
         overrides?: {},
       } | {
         config?: string,
         entryPoint: string,
         multilineSort?: boolean,
-        ignoredUnregisteredClasses?: string[],
+        ignoredUnknownClasses?: string[],
         overrides?: {},
       },
       typescript?: boolean | {
