@@ -62,6 +62,11 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
       },
     }],
     '@stylistic/jsx-one-expression-per-line': 'warn',
+    '@stylistic/exp-jsx-props-style': ['warn', {
+      singleLine: {
+        maxItems: maxAttributesPerLine,
+      },
+    }],
     '@stylistic/jsx-quotes': ['warn', jsxQuotes],
     '@stylistic/jsx-tag-spacing': 'warn',
     '@stylistic/jsx-wrap-multilines': 'warn',
