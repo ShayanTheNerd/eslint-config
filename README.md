@@ -14,6 +14,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 > This configuration is designed with a flexible API for easy customization. However, it remains a **personal config**. While its primary goal is to enforce best practices and maintain code consistency, some rules—particularly stylistic ones—are rather opinionated. <br /> If the available customization and override options still don't meet your requirements, feel free to fork the project and tailor it to your needs.
 
 ## Table of Contents
+- [Plugin Support](#plugin-support)
 - [Installation and Configuration](#installation-and-configuration)
 - [Automatic Dependency Detection](#automatic-dependency-detection)
 - [Formatting](#formatting)
@@ -27,6 +28,46 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 - [Contribution Guide](#contribution-guide)
 - [Credits](#credits)
 - [License](#license)
+
+## Plugin Support
+Legend:
+- ✅ Supported
+- ⌛️ In progress
+- ◻️ Enabled by default
+- ⬛ Disabled by default
+- 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`)
+
+| Category                                                     | Support | Status |
+| :----------------------------------------------------------- | :-----: | :----: |
+| **Languages**                                                |         |        |
+| [JavaScript][eslint]                                         |    ✅    |   ◻️    |
+| [TypeScript][plugin-ts]                                      |    ✅    |   🔎    |
+| [Markdown][plugin-md]                                        |    ⌛️    |   N/A  |
+| [HTML][plugin-html]                                          |    ✅    |   ⬛    |
+| [CSS][plugin-css]                                            |    ✅    |   ⬛    |
+| **Formatting**                                               |         |        |
+| [Stylistic][plugin-stylistic]                                |    ✅    |   ◻️    |
+| [Perfectionist][plugin-perfectionist]                        |    ✅    |   ◻️    |
+| **Frameworks**                                               |         |        |
+| [Astro][plugin-astro] ([JSX accessibility][plugin-jsx-a11y]) |    ✅    |   🔎    |
+| [React][plugin-react] ([hooks][plugin-react-hooks])          |    ⌛️    |   N/A  |
+| [Next][plugin-next]                                          |    ⌛️    |   N/A  |
+| [Vue & Nuxt][plugin-vue] ([accessibility][plugin-vue-a11y])  |    ✅    |   🔎    |
+| [Tailwind][plugin-tailwind]                                  |    ✅    |   ⬛    |
+| **Testing Tools**                                            |         |        |
+| [Storybook][plugin-storybook]                                |    ✅    |   🔎    |
+| [Vitest][plugin-vitest]                                      |    ✅    |   🔎    |
+| [Cypress][plugin-cypress]                                    |    ✅    |   🔎    |
+| [Playwright][plugin-playwright]                              |    ✅    |   🔎    |
+| **Miscellaneous**                                            |         |        |
+| [_package.json_][plugin-package-json]                        |    ✅    |   ◻️    |
+| [OXLint][oxlint]                                             |    ✅    |   ◻️    |
+| [promise][plugin-promise]                                    |    ✅    |   ◻️    |
+| [Import][plugin-import]                                      |    ✅    |   ◻️    |
+| [Zod][plugin-zod]                                            |    ✅    |   🔎    |
+| [Node][plugin-node]                                          |    ⌛️    |   N/A  |
+| [JSDoc][plugin-jsdoc]                                        |    ⌛️    |   N/A  |
+| [Unicorn][plugin-unicorn]                                    |    ⌛️    |   N/A  |
 
 ## Installation and Configuration
 1. Install the package alongside ESLint and OXLint:
