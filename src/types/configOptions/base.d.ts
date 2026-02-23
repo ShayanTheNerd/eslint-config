@@ -17,23 +17,6 @@ interface BaseOptions extends ConfigWithOverrides {
   functionStyle?: RuleOptions<'func-style'>,
 
   /**
-   * Enforce named exports in the following directories:
-   * - shared
-   * - dto, dtos
-   * - model, models
-   * - helper, helpers
-   * - module, modules
-   * - util, utils, utilities
-   * - composable, composables
-   * - repo, repos, repository, repositories
-   *
-   * @default true
-   *
-   * @see [no-restricted-exports: `restrictDefaultExports` option](https://eslint.org/docs/latest/rules/no-restricted-exports#options)
-   */
-  preferNamedExports?: boolean,
-
-  /**
    * Enforce a maximum depth that blocks can be nested to reduce code complexity.
    *
    * @default 3
@@ -50,6 +33,23 @@ interface BaseOptions extends ConfigWithOverrides {
    * @see [max-nested-callbacks](https://eslint.org/docs/latest/rules/max-nested-callbacks)
    */
   maxNestedCallbacks?: Exclude<MaxNestedCallbacksOptions, Record<string, unknown>>,
+
+  /**
+   * Enforce named exports in the following directories:
+   * - shared
+   * - dto, dtos
+   * - model, models
+   * - helper, helpers
+   * - module, modules
+   * - util, utils, utilities
+   * - composable, composables
+   * - repo, repos, repository, repositories
+   *
+   * @default true
+   *
+   * @see [no-restricted-exports: `restrictDefaultExports` option](https://eslint.org/docs/latest/rules/no-restricted-exports#options)
+   */
+  preferNamedExports?: boolean,
 }
 
 export type { BaseOptions };

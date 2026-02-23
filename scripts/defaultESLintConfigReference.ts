@@ -18,9 +18,9 @@ const config: Linter.Config[] = defineConfig({
     tailwind: {
       entryPoint: '',
     },
+    astro: true,
     vue: true,
     nuxt: true,
-    astro: true,
     test: {
       storybook: true,
       vitest: true,

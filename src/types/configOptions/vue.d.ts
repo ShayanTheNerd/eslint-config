@@ -38,42 +38,22 @@ interface VueOptions extends ConfigWithOverrides {
   accessibility?: boolean | VueAccessibilityOptions,
 
   /**
-   * The order of top-level blocks in SFCs.
+   * Enforce the use of specific attributes such as `scoped` and `module` on top-level `<style>` blocks.
    *
-   * @default
-   * [
-   *   'script:not([setup])',
-   *   'script[setup]',
-   *   'template',
-   *   'i18n[locale=en]',
-   *   'i18n:not([locale=en])',
-   *   'style:not([scoped])',
-   *   'style[scoped]',
-   *   'docs',
-   * ]
+   * @default ['scoped', 'module']
    *
-   * @see [vue/block-order](https://eslint.vuejs.org/rules/block-order)
+   * @see [vue/enforce-style-attribute: `allow` option](https://eslint.vuejs.org/rules/enforce-style-attribute#options)
    */
-  blocksOrder?: SFCBlock[],
+  allowedStyleAttributes?: RuleOptions<'vue/enforce-style-attribute'>['allow'],
 
   /**
-   * The order of compiler macros in `<script setup>`.
+   * Whether attributes should be hyphenated.
    *
-   * @default
-   * [
-   *   'definePage',
-   *   'defineOptions',
-   *   'defineModel',
-   *   'defineProps',
-   *   'defineEmits',
-   *   'defineSlots',
-   *   'defineCustom',
-   *   'defineExpose',
-   * ]
+   * @default 'never'
    *
-   * @see [vue/define-macros-order](https://eslint.vuejs.org/rules/define-macros-order)
+   * @see [vue/attribute-hyphenation](https://eslint.vuejs.org/rules/attribute-hyphenation)
    */
-  macrosOrder?: Macro[],
+  attributeHyphenation?: RuleOptions<'vue/attribute-hyphenation'>,
 
   /**
    * The order of HTML and Vue attributes.
@@ -101,13 +81,94 @@ interface VueOptions extends ConfigWithOverrides {
   attributesOrder?: RuleOptions<'vue/attributes-order'>['order'],
 
   /**
-   * Whether attributes should be hyphenated.
+   * The language for top-lever SFC blocks.
    *
-   * @default 'never'
+   * Use `implicit` to omit the `lang` attribute, which defaults to `css` for `<style>`, and `js` for `<script>`.
    *
-   * @see [vue/attribute-hyphenation](https://eslint.vuejs.org/rules/attribute-hyphenation)
+   * @default
+   * {
+   *   script: 'js', // `'ts'` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
+   *   style: 'implicit',
+   * }
+   *
+   * @see [vue/block-lang](https://eslint.vuejs.org/rules/block-lang)
    */
-  attributeHyphenation?: RuleOptions<'vue/attribute-hyphenation'>,
+  blockLang?: BlockLang,
+
+  /**
+   * The order of top-level blocks in SFCs.
+   *
+   * @default
+   * [
+   *   'script:not([setup])',
+   *   'script[setup]',
+   *   'template',
+   *   'i18n[locale=en]',
+   *   'i18n:not([locale=en])',
+   *   'style:not([scoped])',
+   *   'style[scoped]',
+   *   'docs',
+   * ]
+   *
+   * @see [vue/block-order](https://eslint.vuejs.org/rules/block-order)
+   */
+  blocksOrder?: SFCBlock[],
+
+  /**
+   * Enforce consistent casing for component names in `<template>` blocks.
+   *
+   * Compound components (e.g., `<motion.div>`) are ignored by default.
+   *
+   * @default 'PascalCase'
+   *
+   * @see [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing)
+   */
+  componentNameCaseInTemplate?: RuleOptions<'vue/component-name-in-template-casing'>,
+
+  /**
+   * Enforce a consistent style for destructuring props.
+   *
+   * @default 'always'
+   *
+   * @see [vue/define-props-destructuring: `destructure` option](https://eslint.vuejs.org/rules/define-props-destructuring#options)
+   */
+  destructureProps?: RuleOptions<'vue/define-props-destructuring'>['destructure'],
+
+  /**
+   * Regex patterns of undefined component names that should be ignored.
+   *
+   * This is useful for ignoring components that are globally registered or defined in a way that ESLint cannot detect.
+   *
+   * New items extend the defaults, they don't override it.
+   *
+   * @default
+   * [
+   *   '^(Nuxt|U)',
+   *   '^(Icon|Html|Head|Title|Base|Meta|Link|Style|Body|NoScript)$',
+   * ]
+   *
+   * @see [vue/no-undef-components](https://eslint.vuejs.org/rules/no-undef-components)
+   */
+  ignoredUndefinedComponents?: string[],
+
+  /**
+   * The order of compiler macros in `<script setup>`.
+   *
+   * @default
+   * [
+   *   'definePage',
+   *   'defineOptions',
+   *   'defineModel',
+   *   'defineProps',
+   *   'defineEmits',
+   *   'defineSlots',
+   *   'defineCustom',
+   *   'defineExpose',
+   * ]
+   *
+   * @see [vue/define-macros-order](https://eslint.vuejs.org/rules/define-macros-order)
+   */
+  macrosOrder?: Macro[],
 
   /**
    * Enforce consistent use of the `v-bind` same-name shorthand style.
@@ -126,69 +187,6 @@ interface VueOptions extends ConfigWithOverrides {
    * @see [vue/prefer-true-attribute-shorthand](https://eslint.vuejs.org/rules/prefer-true-attribute-shorthand)
    */
   preferVBindTrueShorthand?: RuleOptions<'vue/prefer-true-attribute-shorthand'>,
-
-  /**
-   * Enforce the use of specific attributes such as `scoped` and `module` on top-level `<style>` blocks.
-   *
-   * @default ['scoped', 'module']
-   *
-   * @see [vue/enforce-style-attribute: `allow` option](https://eslint.vuejs.org/rules/enforce-style-attribute#options)
-   */
-  allowedStyleAttributes?: RuleOptions<'vue/enforce-style-attribute'>['allow'],
-
-  /**
-   * The language for top-lever SFC blocks.
-   *
-   * Use `implicit` to omit the `lang` attribute, which defaults to `css` for `<style>`, and `js` for `<script>`.
-   *
-   * @default
-   * {
-   *   script: 'js', // `'ts'` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
-   *   style: 'implicit',
-   * }
-   *
-   * @see [vue/block-lang](https://eslint.vuejs.org/rules/block-lang)
-   */
-  blockLang?: BlockLang,
-
-  /**
-   * Enforce a consistent style for destructuring props.
-   *
-   * @default 'always'
-   *
-   * @see [vue/define-props-destructuring: `destructure` option](https://eslint.vuejs.org/rules/define-props-destructuring#options)
-   */
-  destructureProps?: RuleOptions<'vue/define-props-destructuring'>['destructure'],
-
-  /**
-   * Enforce consistent casing for component names in `<template>` blocks.
-   *
-   * Compound components (e.g., `<motion.div>`) are ignored by default.
-   *
-   * @default 'PascalCase'
-   *
-   * @see [vue/component-name-in-template-casing](https://eslint.vuejs.org/rules/component-name-in-template-casing)
-   */
-  componentNameCaseInTemplate?: RuleOptions<'vue/component-name-in-template-casing'>,
-
-  /**
-   * The delimiter used in `v-for` directives.
-   *
-   * @default 'in'
-   *
-   * @see [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style)
-   */
-  vForDelimiterStyle?: RuleOptions<'vue/v-for-delimiter-style'>,
-
-  /* https://github.com/vuejs/eslint-plugin-vue/issues/2571 */
-  // /**
-  //  * Enforce a consistent handler style in `v-on` directives.
-  //  *
-  //  * @default ['method', 'inline-function']
-  //  *
-  //  * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
-  //  */
-  // vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
 
   /**
    * Disallow certain elements and components.
@@ -211,21 +209,23 @@ interface VueOptions extends ConfigWithOverrides {
   restrictedStaticAttributes?: RuleOptions<'vue/no-restricted-static-attribute'>[],
 
   /**
-   * Regex patterns of undefined component names that should be ignored.
+   * The delimiter used in `v-for` directives.
    *
-   * This is useful for ignoring components that are globally registered or defined in a way that ESLint cannot detect.
+   * @default 'in'
    *
-   * New items extend the defaults, they don't override it.
-   *
-   * @default
-   * [
-   *   '^(Nuxt|U)',
-   *   '^(Icon|Html|Head|Title|Base|Meta|Link|Style|Body|NoScript)$',
-   * ]
-   *
-   * @see [vue/no-undef-components](https://eslint.vuejs.org/rules/no-undef-components)
+   * @see [vue/v-for-delimiter-style](https://eslint.vuejs.org/rules/v-for-delimiter-style)
    */
-  ignoredUndefinedComponents?: string[],
+  vForDelimiterStyle?: RuleOptions<'vue/v-for-delimiter-style'>,
+
+  /* https://github.com/vuejs/eslint-plugin-vue/issues/2571 */
+  // /**
+  //  * Enforce a consistent handler style in `v-on` directives.
+  //  *
+  //  * @default ['method', 'inline-function']
+  //  *
+  //  * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
+  //  */
+  // vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
 }
 
 export type { VueOptions };

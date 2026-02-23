@@ -15,15 +15,6 @@ interface BaseTailwindOptions extends ConfigWithOverrides {
   entryPoint?: string,
 
   /**
-   * Enforce breaking Tailwind classes into multiple lines if they exceed the line length defined by `stylistic.maxLineLength`.
-   *
-   * @default true
-   *
-   * @see [better-tailwindcss/enforce-consistent-line-wrapping](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md)
-   */
-  multilineSort?: boolean,
-
-  /**
    * Regex patterns of unregistered class names that should be ignored.
    *
    * [Component classes](https://tailwindcss.com/docs/adding-custom-styles#adding-component-classes) are detected automatically and don't need to be ignored.
@@ -33,6 +24,15 @@ interface BaseTailwindOptions extends ConfigWithOverrides {
    * @see [better-tailwindcss/no-unregistered-classes: `ignore` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/no-unknown-classes.md#ignore)
    */
   ignoredUnknownClasses?: RuleOptions<'better-tailwindcss/no-unknown-classes'>['ignore'],
+
+  /**
+   * Enforce breaking Tailwind classes into multiple lines if they exceed the line length defined by `stylistic.maxLineLength`.
+   *
+   * @default true
+   *
+   * @see [better-tailwindcss/enforce-consistent-line-wrapping](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md)
+   */
+  multilineSort?: boolean,
 }
 
 interface EntryPointRequired {

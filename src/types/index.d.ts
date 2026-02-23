@@ -57,7 +57,7 @@ interface Options {
    *
    * @default '.gitignore'
    *
-   * @see [ESLint Ignore: Including GitIgnore Files](https://eslint.org/docs/latest/use/configure/ignore#including-gitignore-files)
+   * @see [ESLint Ignore: Including GitIgnore Files](https://eslint.org/docs/latest/use/configure/ignore#include-gitignore-files)
    */
   gitignore?: false | string,
 

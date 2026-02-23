@@ -1,16 +1,5 @@
 interface NuxtOptions {
   /**
-   * Whether [NuxtImage](https://image.nuxt.com) is used in the project.
-   *
-   * Enforce the use of `<NuxtImg>` instead of `<img>`.
-   *
-   * @default false // `true` if "@nuxt/image" is detected in the dependencies when `autoDetectDeps` is enabled
-   *
-   * @see [vue/no-restricted-html-elements](https://eslint.vuejs.org/rules/no-restricted-html-elements)
-   */
-  image?: boolean,
-
-  /**
    * Whether [@nuxt/icon](https://nuxt.com/modules/icon) is used in the project.
    *
    * Allows ESLint to recognize the icon component.
@@ -35,6 +24,17 @@ interface NuxtOptions {
      */
     component?: string,
   },
+
+  /**
+   * Whether [NuxtImage](https://image.nuxt.com) is used in the project.
+   *
+   * Enforce the use of `<NuxtImg>` instead of `<img>`.
+   *
+   * @default false // `true` if "@nuxt/image" is detected in the dependencies when `autoDetectDeps` is enabled
+   *
+   * @see [vue/no-restricted-html-elements](https://eslint.vuejs.org/rules/no-restricted-html-elements)
+   */
+  image?: boolean,
 
   /**
    * Whether [NuxtUI](https://ui.nuxt.com) is used in the project.

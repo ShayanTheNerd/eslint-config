@@ -3,55 +3,6 @@ import type { ConfigWithOverrides } from '#types/index.d.ts';
 
 interface StylisticOptions extends ConfigWithOverrides {
   /**
-   * Add semicolons at the end of statements.
-   *
-   * @default 'always'
-   *
-   * @see [@stylistic/semi](https://eslint.style/rules/semi)
-   */
-  semi?: RuleOptions<'@stylistic/semi'>,
-
-  /**
-   * Add trailing commas to object and array literals.
-   *
-   * This is also used by
-   * [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
-   * to add a trailing delimiter to the last item in multi-line interfaces and type aliases.
-   *
-   * @default 'always-multiline'
-   *
-   * @see [@stylistic/comma-dangle](https://eslint.style/rules/comma-dangle)
-   */
-  trailingComma?: Exclude<RuleOptions<'@stylistic/comma-dangle'>, object>,
-
-  /**
-   * Enforce a consistent delimiter style in interfaces and type aliases.
-   *
-   * @default 'comma'
-   *
-   * @see [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
-   */
-  memberDelimiterStyle?: RuleOptions<'@stylistic/member-delimiter-style'>['singleline']['delimiter'],
-
-  /**
-   * The style of quotes to use for strings.
-   *
-   * @default 'single'
-   *
-   * @see [@stylistic/quotes](https://eslint.style/rules/quotes)
-   */
-  quotes?: RuleOptions<'@stylistic/quotes'>,
-
-  /**
-   * The style of quotes to use for JSX attributes.
-   *
-   * @default 'prefer-double'
-   *
-   * @see [@stylistic/jsx-quotes](https://eslint.style/rules/jsx-quotes)
-   */
-  jsxQuotes?: RuleOptions<'@stylistic/jsx-quotes'>,
-
-  /**
    * Add parentheses around arrow function parameters.
    *
    * @default 'always'
@@ -73,11 +24,31 @@ interface StylisticOptions extends ConfigWithOverrides {
    * - [@stylistic/max-len](https://eslint.style/rules/max-len)
    * - [@stylistic/indent-binary-ops](https://eslint.style/rules/indent-binary-ops)
    * - [perfectionist/sort-imports: `maxLineLength` option](https://perfectionist.dev/rules/sort-imports#maxlinelength)
-   * - [better-tailwindcss/enforce-consistent-line-wrapping: `indent` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md)
+   * - [better-tailwindcss/enforce-consistent-line-wrapping: `indent` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md#indent)
    *
    * @default 2
   */
   indent?: number,
+
+  /**
+   * The style of quotes to use for JSX attributes.
+   *
+   * @default 'prefer-double'
+   *
+   * @see [@stylistic/jsx-quotes](https://eslint.style/rules/jsx-quotes)
+   */
+  jsxQuotes?: RuleOptions<'@stylistic/jsx-quotes'>,
+
+  /**
+   * Maximum number of HTML attributes per line.
+   *
+   * This is used by
+   * - [vue/max-attributes-per-line: `singleline.max` option](https://eslint.vuejs.org/rules/max-attributes-per-line)
+   * - [@html-eslint/attrs-newline: `ifAttrsMoreThan` option](https://html-eslint.dev/rules/attrs-newline)
+   *
+   * @default 3
+   */
+  maxAttributesPerLine?: number,
 
   /**
    * Maximum number of consecutive empty lines.
@@ -89,6 +60,15 @@ interface StylisticOptions extends ConfigWithOverrides {
    * @default 1
    */
   maxConsecutiveEmptyLines?: RuleOptions<'@stylistic/no-multiple-empty-lines'>['max'],
+
+  /**
+   * Enforce a consistent delimiter style in interfaces and type aliases.
+   *
+   * @default 'comma'
+   *
+   * @see [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
+   */
+  memberDelimiterStyle?: RuleOptions<'@stylistic/member-delimiter-style'>['singleline']['delimiter'],
 
   /**
    * Maximum line length for the code. Strings, texts, and comments are ignored.
@@ -104,15 +84,22 @@ interface StylisticOptions extends ConfigWithOverrides {
   maxLineLength?: number,
 
   /**
-   * Maximum number of HTML attributes per line.
+   * The style of quotes to use for strings.
    *
-   * This is used by
-   * - [vue/max-attributes-per-line: `singleline.max` option](https://eslint.vuejs.org/rules/max-attributes-per-line)
-   * - [@html-eslint/attrs-newline: `ifAttrsMoreThan` option](https://html-eslint.dev/rules/attrs-newline)
+   * @default 'single'
    *
-   * @default 3
+   * @see [@stylistic/quotes](https://eslint.style/rules/quotes)
    */
-  maxAttributesPerLine?: number,
+  quotes?: RuleOptions<'@stylistic/quotes'>,
+
+  /**
+   * Add semicolons at the end of statements.
+   *
+   * @default 'always'
+   *
+   * @see [@stylistic/semi](https://eslint.style/rules/semi)
+   */
+  semi?: RuleOptions<'@stylistic/semi'>,
 
   /**
    * Require void HTML elements to be self-closing.
@@ -124,6 +111,19 @@ interface StylisticOptions extends ConfigWithOverrides {
    * @default 'always'
    */
   selfCloseVoidHTMLElements?: 'never' | 'always',
+
+  /**
+   * Add trailing commas to object and array literals.
+   *
+   * This is also used by
+   * [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
+   * to add a trailing delimiter to the last item in multi-line interfaces and type aliases.
+   *
+   * @default 'always-multiline'
+   *
+   * @see [@stylistic/comma-dangle](https://eslint.style/rules/comma-dangle)
+   */
+  trailingComma?: Exclude<RuleOptions<'@stylistic/comma-dangle'>, object>,
 }
 
 export type { StylisticOptions };
