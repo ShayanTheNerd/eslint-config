@@ -104,6 +104,7 @@
     "unicorn/prefer-prototype-methods": "off",
     "unicorn/prefer-set-has": "off",
     "unicorn/prefer-string-raw": "off",
+    "unicorn/prefer-ternary": "off",
 
     /*** Vitest/Jest ***/
     "vitest/consistent-each-for": "off",
