@@ -3,7 +3,7 @@
 Thank you for your interest in contributing to this project.
 
 ## Code of Conduct
-This project is released with a [Contributor Covenant Code of Conduct](./CODE_OF_CONDUCT.md). By participating in this project, you agree to abide by its terms.
+This project is released with a [Contributor Covenant Code of Conduct][code-of-conduct]. By participating in this project, you agree to abide by its terms.
 
 ## Make a Contribution
 1. Fork the repository.
@@ -13,14 +13,20 @@ This project is released with a [Contributor Covenant Code of Conduct](./CODE_OF
 5. Push to the feature branch to the origin: `git push origin feature/your-feature-name`.
 6. Submit a pull request.
 
-**Notice**: Commit messages should adhere to [Conventional Commits Specification](https://www.conventionalcommits.org/en/v1.0.0).
+**Notice**: Commit messages should adhere to [Conventional Commits Specification][conventional-commits].
 
 ## Report Bugs
-To report a bug, please [open a bug-report issue on GitHub](https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md) and provide detailed information about the bug, including steps to
+To report a bug, please [open a bug-report issue on GitHub][bug-report-template] and provide detailed information about the bug, including steps to
 reproduce it.
 
 ## Request Features
-To request a new feature, please [open a feature-request issue on GitHub](https://github.com/ShayanTheNerd/eslint-config/issues/new?template=feature_request.md) and describe the feature you would like to see.
+To request a new feature, please [open a feature-request issue on GitHub][feature-request-template] and describe the feature you would like to see.
 
 ## License
-By contributing, you agree that your contributions will be licensed under the [project's LICENSE](../LICENSE).
+By contributing, you agree that your contributions will be licensed under the [project's LICENSE][license].
+
+[bug-report-template]: https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md
+[code-of-conduct]: ./CODE_OF_CONDUCT.md
+[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0
+[feature-request-template]: https://github.com/ShayanTheNerd/eslint-config/issues/new?template=feature_request.md
+[license]: ../LICENSE

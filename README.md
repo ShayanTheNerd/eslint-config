@@ -1,18 +1,11 @@
 # @shayanthenerd/eslint-config &nbsp;&nbsp; [![npm-version-badge]][npm-version] [![jsr-version-badge]][jsr-version] [![license-badge]][license]
 
-[npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=EEEEEE&labelColor=545A61&color=545A61
-[npm-version]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
-[jsr-version-badge]: https://jsr.io/badges/@antfu/eslint-flat-config-utils?logoColor=EEEEEE&labelColor=545A61&color=545A61
-[jsr-version]: https://jsr.io/badges/@shayanthenerd/eslint-config
-[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?labelColor=545A61&color=545A61
-[license]: https://github.com/ShayanTheNerd/eslint-config/blob/main/LICENSE
-
 A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style.
 
-- **Performant**: Powered by [OXLint (OXC Linter)](https://oxc.rs/docs/guide/usage/linter) for rapid linting
-- **Flat Config**: Type-safe [ESLint Flat Config](https://eslint.org/docs/latest/use/configure/configuration-files) with `extends` and `overrides` support
+- **Performant**: Powered by [OXLint (OXC Linter)][oxlint] for rapid linting
+- **Flat Config**: Type-safe interface with `extends` and `overrides` for every plugin
 - **Comprehensive**: Dependency detection with support for TypeScript, Astro, Vue & Nuxt, Tailwind, Storybook, Vitest, etc.
-- **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic](https://eslint.style), eliminating the need for Prettier
+- **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic][plugin-stylistic], eliminating the need for Prettier
 - **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
 - **Developer-friendly**: Easy to use and well-documented with JSDoc
 - **Modern**: Requires ESLint v9.28.0+ and Node.js v20.18.0+ (ESM-only)
@@ -48,9 +41,9 @@ import { defineConfig } from '@shayanthenerd/eslint-config';
 export default defineConfig();
 ```
 
-Alternatively, you can use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup](https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files) may be required.
+Alternatively, you can use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup][eslint-config-ts-setup] may be required.
 
-If you're using Nuxt, install [@nuxt/eslint](https://eslint.nuxt.com) as a dev dependency:
+If you're using Nuxt, install [@nuxt/eslint][eslint-nuxt] as a dev dependency:
 ```shell
 npm i -D @nuxt/eslint
 ```
@@ -106,7 +99,7 @@ export default eslintConfigNuxt(eslintConfig);
 }
 ```
 
-Due to [the limitation of OXLint](https://oxc.rs/docs/guide/usage/linter/nested-config#extending-configuration-files), only `rules`, `plugins`, and `overrides` can be extended. Check out [OXLint config reference](https://oxc.rs/docs/guide/usage/linter/config-file-reference) for more details.
+Due to [the limitation of OXLint][oxlint-shared-config-limitations], only `rules`, `plugins`, and `overrides` can be extended. Check out [OXLint config reference][oxlint-config-reference] for more details.
 
 4. Add the following scripts to your _package.json_ file:
 ```json
@@ -134,7 +127,7 @@ npm run lint:inspect
 ```
 
 ## Automatic Dependency Detection
-This package automatically detects dependencies in your project and enables the corresponding ESLint configurations for them. This is powered by [local-pkg](https://github.com/antfu-collective/local-pkg), which scans your _node_modules_ directory instead of _package.json_. <br />
+This package automatically detects dependencies in your project and enables the corresponding ESLint configurations for them. This is powered by [local-pkg][local-pkg], which scans your _node_modules_ directory instead of _package.json_. <br />
 > [!IMPORTANT]
 > This behavior is particularly noticeable with package managers that use a flat _node_modules_ structure, such as **NPM** or **Bun**. <br />
 A concrete example is `eslint-plugin-storybook`, which is a dependency of this package. Since the plugin transitively depends on `storybook`, NPM and Bun hoist `storybook` to the root of your _node_modules_. As a result, the ESLint configuration for `storybook` will be automatically enabled, even if you haven't explicitly installed it. <br />
@@ -147,7 +140,7 @@ Unlike other plugins, the configuration for Tailwind isn't automatically enabled
 Stylistic, Perfectionist, ImportX, and core (JavaScript) rules are enabled by default.
 
 ## Formatting
-This config uses [ESLint Stylistic](https://eslint.style) to format JavaScript and TypeScript files (`?([mc])[jt]s?(x)`) as well as Astro (similar to JSX/TSX) and the `<script>` blocks in Vue components. HTML and the `<template>` blocks in Vue components are formatted with [html-eslint](https://html-eslint.org) and [eslint-plugin-vue](https://eslint.vuejs.org), respectively. For other files such as CSS, JSON, and Markdown, you'll need Prettier. To make this easier, a customizable [shared Prettier configuration](https://prettier.io/docs/sharing-configurations) is provided. Here's how to set it up:
+This config uses [ESLint Stylistic][plugin-stylistic] to format JavaScript and TypeScript files (`?([mc])[jt]s?(x)`) as well as Astro (similar to JSX/TSX) and the `<script>` blocks in Vue components. HTML and the `<template>` blocks in Vue components are formatted with [html-eslint][plugin-html] and [eslint-plugin-vue][plugin-vue], respectively. For other files such as CSS, JSON, and Markdown, you'll need Prettier. To make this easier, a customizable [shared Prettier configuration][prettier-shared-config] is provided. Here's how to set it up:
 
 1. Install Prettier:
 ```shell
@@ -187,7 +180,7 @@ export default {
 ```
 
 ## VS Code Integration
-Install VS Code extensions for [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint), [OXLint](https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode), and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode). Then, add the following in the _.vscode/settings.json_ file of your project:
+Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-oxlint], and [Prettier][extension-prettier]. Then, add the following in the _.vscode/settings.json_ file of your project:
 ```jsonc
 {
   /* Enforce Unix-like line endings (LF). */
@@ -536,25 +529,80 @@ export default defineConfig(
 </details>
 
 ## Versioning Policy
-This project adheres to [The Semantic Versioning Standard](https://semver.org). However, to facilitate rapid development and fast iteration, the following changes are considered non-breaking:
+This project adheres to [The Semantic Versioning Standard][semver]. However, to facilitate rapid development and fast iteration, the following changes are considered non-breaking:
 - Upgrades to dependency versions
 - Modifications to rule options
 - Enabling or disabling rules and plugins
 
 Under this policy, minor updates may introduce new linting errors, which could break your project's build pipeline. To prevent this, it's recommended to use an exact version. Alternatively, you can use a tilde (`~`) version range in your _package.json_ file (e.g., `"@shayanthenerd/eslint-config": "~1.2.3"`), which will restrict updates to patches only, ensuring your project's build pipeline remains stable.
 
-You can find a list of all available versions and their changelogs on the [releases page](https://github.com/ShayanTheNerd/eslint-config/releases).
+You can find a list of all available versions and their changelogs on the [releases page][releases].
 
 ## Roadmap to v1.0.0
-- [ ] Integrate additional ESLint plugins such as [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn), [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n), [eslint-plugin-jsdoc](https://github.com/gajus/eslint-plugin-jsdoc), etc.
+- [ ] Integrate additional ESLint plugins such as [eslint-plugin-react][plugin-react], [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], etc.
 - [ ] Add support for other frameworks and file types, including Astro, React, Next.js, MDX, Markdown, JSON, etc.
 - [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
 
 ## Contribution Guide
-Any form of contribution is always appreciated! Please check out the [CONTRIBUTING.md](./.github/CONTRIBUTING.md) file.
+Any form of contribution is always appreciated! Please check out the [CONTRIBUTING.md][contributing] file.
 
 ## Credits
-This project was inspired by the work of [Anthony Fu](https://github.com/antfu), whose generous contributions to the JavaScript and the ESLint ecosystem were instrumental in making it possible.
+This project was inspired by the work of [Anthony Fu][antfu], whose generous contributions to the JavaScript and the ESLint ecosystem were instrumental in making it possible.
 
 ## License
-[MIT](LICENSE) License © 2025-PRESENT — [Shayan Zamani](https://github.com/ShayanTheNerd)
+[MIT][license] License © 2025-PRESENT — [Shayan Zamani][ShayanTheNerd]
+
+<!-- Badges -->
+[jsr-version]: https://jsr.io/badges/@shayanthenerd/eslint-config
+[jsr-version-badge]: https://jsr.io/badges/@shayanthenerd/eslint-config?logoColor=EEEEEE&labelColor=545A61&color=545A61
+[license]: ./LICENSE
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?labelColor=545A61&color=545A61
+[npm-version]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
+[npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=EEEEEE&labelColor=545A61&color=545A61
+
+<!-- Editor Extensions -->
+[extension-eslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+[extension-oxlint]: https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode
+[extension-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+<!-- ESLint Plugins -->
+[plugin-astro]: https://ota-meshi.github.io/eslint-plugin-astro
+[plugin-css]: https://github.com/eslint/css
+[plugin-cypress]: https://github.com/cypress-io/eslint-plugin-cypress
+[plugin-html]: https://html-eslint.org
+[plugin-import]: https://github.com/un-ts/eslint-plugin-import-x
+[plugin-jsdoc]: https://github.com/gajus/eslint-plugin-jsdoc
+[plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+[plugin-md]: https://github.com/eslint/markdown
+[plugin-next]: https://nextjs.org/docs/app/api-reference/config/eslint#eslint-plugin
+[plugin-node]: https://github.com/eslint-community/eslint-plugin-n
+[plugin-package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
+[plugin-perfectionist]: https://perfectionist.dev
+[plugin-playwright]: https://github.com/mskelton/eslint-plugin-playwright
+[plugin-promise]: https://github.com/eslint-community/eslint-plugin-promise
+[plugin-react]: https://eslint-react.xyz
+[plugin-react-hooks]: https://react.dev/reference/eslint-plugin-react-hooks
+[plugin-storybook]: https://storybook.js.org/docs/configure/integration/eslint-plugin
+[plugin-stylistic]: https://eslint.style
+[plugin-tailwind]: https://github.com/schoero/eslint-plugin-better-tailwindcss
+[plugin-ts]: https://typescript-eslint.io
+[plugin-unicorn]: https://github.com/sindresorhus/eslint-plugin-unicorn
+[plugin-vitest]: https://github.com/vitest-dev/eslint-plugin-vitest
+[plugin-vue]: https://eslint.vuejs.org
+[plugin-vue-a11y]: https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility
+[plugin-zod]: https://github.com/marcalexiei/eslint-plugin-zod
+
+<!-- References -->
+[antfu]: https://github.com/antfu
+[contributing]: ./.github/CONTRIBUTING.md
+[eslint]: https://eslint.org
+[eslint-config-ts-setup]: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files
+[eslint-nuxt]: https://eslint.nuxt.com
+[local-pkg]: https://github.com/antfu-collective/local-pkg
+[oxlint]: https://oxc.rs/docs/guide/usage/linter
+[oxlint-config-reference]: https://oxc.rs/docs/guide/usage/linter/config-file-reference
+[oxlint-shared-config-limitations]: https://oxc.rs/docs/guide/usage/linter/nested-config#extending-configuration-files
+[prettier-shared-config]: https://prettier.io/docs/sharing-configurations
+[releases]: https://github.com/ShayanTheNerd/eslint-config/releases
+[semver]: https://semver.org
+[ShayanTheNerd]: https://github.com/ShayanTheNerd

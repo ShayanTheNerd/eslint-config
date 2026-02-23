@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Create a report to help improve the project
-title: '[BUG]'
+title: 'BUG: '
 labels: ''
 assignees: ''
 ---
@@ -9,7 +9,7 @@ assignees: ''
 **Checklist**
 - [ ] I have checked existing issues and pull requests.
 - [ ] I have restarted my IDE and reinstalled the dependencies, but the issue persists.
-- [ ] I confirm that there is no issue with my workspace settings, nor with any extensions such as [ESLint VS Code extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+- [ ] I confirm that there is no issue with my workspace settings, nor with any extensions such as [ESLint VS Code extension][extension-eslint].
 
 **Describe the bug**
 A clear and concise description of what the bug is.
@@ -30,3 +30,5 @@ If applicable, add screenshots to help explain your problem.
 
 **Additional context**
 Add any other context about the problem here.
+
+[extension-eslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
