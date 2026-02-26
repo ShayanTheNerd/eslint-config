@@ -2,6 +2,7 @@ savePrefix: ''
 shellEmulator: true
 
 onlyBuiltDependencies:
+  - '@shayanthenerd/eslint-config'
   - esbuild
   - simple-git-hooks
   - unrs-resolver
