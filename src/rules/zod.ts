@@ -8,6 +8,7 @@ function getZodRules() {
     'zod/no-empty-custom-schema': 'error',
     'zod/no-number-schema-with-int': 'warn',
     'zod/no-optional-and-default-together': ['warn', { preferredMethod: 'default' }],
+    'zod/no-string-schema-with-uuid': 'warn',
     'zod/no-throw-in-refine': 'error',
     'zod/prefer-enum-over-literal-union': 'warn',
     'zod/prefer-meta': 'warn',
