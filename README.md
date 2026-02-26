@@ -284,9 +284,9 @@ Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-ox
     { "rule": "vue/comma-dangle", "severity": "off", "fixable": true },
     { "rule": "vue/space-in-parens", "severity": "off", "fixable": true },
     { "rule": "better-tailwindcss/*", "severity": "off", "fixable": true },
-    { "rule": "better-tailwindcss/no-restricted-classes", "severity": "error", "fixable": true },
+    { "rule": "better-tailwindcss/no-restricted-classes", "severity": "warn", "fixable": true },
     { "rule": "better-tailwindcss/no-conflicting-classes", "severity": "error", "fixable": false },
-    { "rule": "better-tailwindcss/no-unknown-classes", "severity": "error", "fixable": false }
+    { "rule": "better-tailwindcss/no-unknown-classes", "severity": "warn", "fixable": false }
   ]
 }
 ```
@@ -376,17 +376,51 @@ export default defineConfig(
   <summary>The API reference</summary>
   Some types are omitted or aliased for brevity.
 
+  <!-- START_AUTO-GENERATED_API_REFERENCE -->
   ```ts
+  import type { Linter } from 'eslint';
+  import type { FlatConfig } from 'typescript-eslint';
+
+  type VueAttributeCategory =
+    | 'SLOT'
+    | 'EVENTS'
+    | 'GLOBAL'
+    | 'UNIQUE'
+    | 'CONTENT'
+    | 'DEFINITION'
+    | 'OTHER_ATTR'
+    | 'ATTR_STATIC'
+    | 'ATTR_DYNAMIC'
+    | 'CONDITIONALS'
+    | 'LIST_RENDERING'
+    | 'TWO_WAY_BINDING'
+    | 'OTHER_DIRECTIVES'
+    | 'RENDER_MODIFIERS'
+    | 'ATTR_SHORTHAND_BOOL';
+
+  interface Overrides {
+    name?: string,
+    files?: (string | string[])[],
+    ignores?: string[],
+    plugins?: FlatConfig.Plugins,
+    languageOptions?: {
+      parser: FlatConfig.LanguageOptions.parser,
+      globals: FlatConfig.LanguageOptions.globals,
+    },
+    settings?: Record<string, unknown>,
+    rules?: Linter.RulesRecord,
+  }
+
   interface Options {
     autoDetectDeps?: boolean | 'verbose',
     gitignore?: false | string,
     packageDir?: string,
-    env?: 'bun' | 'node',
-    tsConfig?: {
+    env?: 'bun' | 'deno' | 'node' | 'browser',
+    tsConfig?: false | {
       rootDir: string,
       filename?: string,
     },
-
+  
     global?: {
       name?: string,
       basePath?: string,
@@ -406,94 +440,117 @@ export default defineConfig(
         vitest?: boolean,
         vue?: boolean,
         astro?: boolean,
-        custom?: {
-          [key: string]: boolean | 'off' | 'readonly' | 'readable' | 'writable' | 'writeable',
-        },
-      }
+        custom?: Record<string, 'off' | boolean | 'readable' | 'readonly' | 'writable' | 'writeable'>,
+      },
       linterOptions?: {
         noInlineConfig?: boolean,
-        reportUnusedInlineConfigs?: 'error' | 'off' | 'warn',
-        reportUnusedDisableDirectives?: 'error' | 'off' | 'warn',
+        reportUnusedInlineConfigs?: 'off' | 'warn' | 'error',
+        reportUnusedDisableDirectives?: 'off' | 'warn' | 'error',
       },
-      settings?: {
-        [name: string]: unknown,
-      }
+      settings?: Record<string, unknown>,
       rules?: Linter.RulesRecord,
     },
-
+  
     configs?: {
       oxlint?: false | string,
       base?: {
+        functionStyle?: 'expression' | 'declaration',
         maxDepth?: number,
         maxNestedCallbacks?: number,
         preferNamedExports?: boolean,
-        functionStyle?: 'declaration' | 'expression',
-        overrides?: {},
+        overrides?: Overrides,
+      },
+      typescript?: boolean | {
+        allowedDefaultProjects?: string[],
+        methodSignatureStyle?: 'method' | 'property',
+        removeUnusedImports?: boolean,
+        typeDefinitionStyle?: 'type' | 'interface',
+        overrides?: Overrides,
+      },
+      promise?: boolean | {
+        overrides?: Overrides,
+      },
+      importX?: boolean | {
+        overrides?: Overrides,
       },
       stylistic?: boolean | {
-        semi?: 'always' | 'never',
-        trailingComma?: 'always' | 'never' | 'always-multiline' | 'only-multiline',
-        memberDelimiterStyle?: 'semi' | 'comma',
-        quotes?: 'single' | 'double' | 'backtick',
-        jsxQuotes?: 'prefer-single' | 'prefer-double',
         arrowParens?: 'always' | 'as-needed',
         indent?: number,
+        jsxQuotes?: 'prefer-double' | 'prefer-single',
+        maxAttributesPerLine?: number,
         maxConsecutiveEmptyLines?: number,
         maxLineLength?: number,
-        maxAttributesPerLine?: number,
+        memberDelimiterStyle?: 'semi' | 'comma',
+        quotes?: 'double' | 'single' | 'backtick',
         selfCloseVoidHTMLElements?: 'never' | 'always',
-        overrides?: {},
+        semi?: 'never' | 'always',
+        trailingComma?: 'never' | 'always' | 'only-multiline' | 'always-multiline',
+        overrides?: Overrides,
+      },
+      perfectionist?: boolean | {
+        sortType?: 'custom' | 'natural' | 'unsorted' | 'line-length' | 'alphabetical' | 'subgroup-order',
+        overrides?: Overrides,
       },
       packageJson?: boolean | {
-        overrides?: {},
+        overrides?: Overrides,
       },
       html?: boolean | {
-        useBaseline?: number | false | 'widely' | 'newly',
-        idNamingConvention?: 'camelCase' | 'snake_case' | 'PascalCase' | 'kebab-case',
-        overrides?: {},
+        idNamingConvention?: 'camelCase' | 'kebab-case' | 'PascalCase' | 'snake_case',
+        useBaseline?: false | number | 'newly' | 'widely',
+        overrides?: Overrides,
       },
       css?: boolean | {
-        useBaseline?: number | false | 'widely' | 'newly',
-        allowedRelativeFontUnits?: ('%' | 'cap' | 'ch' | 'em' | 'ex' | 'ic' | 'lh' | 'rcap' | 'rch' | 'rem' | 'rex' | 'ric' | 'rlh')[],
-        overrides?: {},
+        allowedRelativeFontUnits?: (
+          | '%'
+          | 'ch'
+          | 'em'
+          | 'ex'
+          | 'ic'
+          | 'lh'
+          | 'cap'
+          | 'rch'
+          | 'rem'
+          | 'rex'
+          | 'ric'
+          | 'rlh'
+          | 'rcap'
+        )[],
+        useBaseline?: false | number | 'newly' | 'widely',
+        overrides?: Overrides,
       },
       tailwind?: false | {
         config: string,
         entryPoint?: string,
-        multilineSort?: boolean,
         ignoredUnknownClasses?: string[],
-        overrides?: {},
+        multilineSort?: boolean,
+        overrides?: Overrides,
       } | {
         config?: string,
         entryPoint: string,
-        multilineSort?: boolean,
         ignoredUnknownClasses?: string[],
-        overrides?: {},
+        multilineSort?: boolean,
+        overrides?: Overrides,
       },
-      typescript?: boolean | {
-        allowedDefaultProjects?: string[],
-        methodSignatureStyle?: 'property' | 'method',
-        typeDefinitionStyle?: 'interface' | 'type',
-        removeUnusedImports?: boolean,
-        overrides?: {},
+      zod?: boolean | {
+        overrides?: Overrides,
       },
-      promise?: boolean | {
-        overrides?: {},
-      },
-      importX?: boolean | {
-        overrides?: {},
-      },
-      perfectionist?: boolean | {
-        sortType?: 'custom' | 'natural' | 'alphabetical' | 'line-length' | 'unsorted',
-        overrides?: {},
+      astro?: boolean | {
+        overrides?: Overrides,
       },
       vue?: boolean | {
         accessibility?: boolean | {
+          accessibleChildComponents?: string[],
           anchorComponents?: string[],
           imageComponents?: string[],
-          accessibleChildComponents?: string[],
         },
-        blockOrder?: (
+        allowedStyleAttributes?: ['plain' | 'module' | 'scoped', 'plain' | 'module' | 'scoped'],
+        attributeHyphenation?: 'never' | 'always',
+        attributesOrder?: (VueAttributeCategory | VueAttributeCategory[])[],
+        blockLang?: {
+          style?: 'css' | 'scss' | 'postcss' | 'implicit',
+          script?: 'js' | 'ts' | 'jsx' | 'tsx' | 'implicit',
+        },
+        blocksOrder?: (
           | 'docs'
           | 'template'
           | 'script[setup]'
@@ -503,70 +560,63 @@ export default defineConfig(
           | 'style:not([scoped])'
           | 'i18n:not([locale=en])'
         )[],
+        componentNameCaseInTemplate?: 'kebab-case' | 'PascalCase',
+        destructureProps?: 'never' | 'always' | 'only-when-assigned',
+        ignoredUndefinedComponents?: string[],
         macrosOrder?: (
           | 'definePage'
+          | 'defineEmits'
           | 'defineModel'
           | 'defineProps'
-          | 'defineEmits'
           | 'defineSlots'
           | 'defineCustom'
           | 'defineExpose'
           | 'defineOptions'
         )[],
-        attributesOrder?: RuleOptions<'vue/attributes-order'>['order'],
-        attributeHyphenation?: 'never' | 'always',
         preferVBindSameNameShorthand?: 'never' | 'always',
         preferVBindTrueShorthand?: 'never' | 'always',
-        allowedStyleAttributes?: ['module' | 'plain' | 'scoped', 'module' | 'plain' | 'scoped'],
-        blockLang?: {
-          style?: 'css' | 'implicit' | 'scss' | 'postcss',
-          script?: 'js' | 'ts' | 'jsx' | 'tsx' | 'implicit',
-        },
-        destructureProps?: 'never' | 'always' | 'only-when-assigned',
-        componentNameCaseInTemplate?: 'PascalCase' | 'kebab-case',
-        vForDelimiterStyle?: 'in' | 'of',
-        vOnHandlerStyle?: 'inline' | 'inline-function' | ['method', 'inline' | 'inline-function'],
         restrictedElements?: (string | {
           element: string | string[],
           message: string,
         })[],
         restrictedStaticAttributes?: (string | {
           key: string,
-          value?: string | true,
+          value: true | string,
           element: string,
           message: string,
         })[],
-        ignoredUndefinedComponents?: string[],
-        overrides?: {},
+        vForDelimiterStyle?: 'in' | 'of',
+        overrides?: Overrides,
       },
       nuxt?: boolean | {
-        image?: boolean,
         icon?: boolean | {
           component?: string,
-        }
+        },
+        image?: boolean,
         ui?: boolean | {
           prefix?: string,
-        }
+        },
       },
       test?: {
+        maxNestedDescribe?: number,
+        testFunction?: 'it' | 'test',
         storybook?: boolean | {
-          overrides?: {},
+          overrides?: Overrides,
         },
         vitest?: boolean | {
-          overrides?: {},
+          overrides?: Overrides,
         },
         playwright?: boolean | {
-          overrides?: {},
+          overrides?: Overrides,
         },
         cypress?: boolean | {
-          overrides?: {},
+          overrides?: Overrides,
         },
-        testFunction?: 'test' | 'it',
-        maxNestedDescribe?: number,
       },
     },
   }
   ```
+  <!-- END_AUTO-GENERATED_API_REFERENCE -->
 </details>
 
 ## Versioning Policy

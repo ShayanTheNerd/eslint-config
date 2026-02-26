@@ -288,46 +288,11 @@ interface Options {
     oxlint?: false | string,
 
     /**
-     * Use [eslint-plugin-package-json](https://github.com/JoshuaKGoldberg/eslint-plugin-package-json) to ensure _package.json_ files are consistent, readable, and valid.
-     *
-     * @default true // `false` if `autoDetectDeps` is disabled
-     */
-    packageJson?: boolean | ConfigWithOverrides,
-
-    /**
      * Customize some of the JavaScript (core) rules.
      *
      * JavaScript rules cannot be turned off.
      */
     base?: BaseOptions,
-
-    /**
-     * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.
-     *
-     * @default true
-     */
-    stylistic?: boolean | StylisticOptions,
-
-    /**
-     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
-     *
-     * @default false
-     */
-    html?: boolean | HTMLOptions,
-
-    /**
-     * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
-     *
-     * @default false
-     */
-    css?: boolean | CSSOptions,
-
-    /**
-     * Use [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss) to sort Tailwind classes, check for unused or conflicting ones, and enforce best practices.
-     *
-     * @default false
-     */
-    tailwind?: false | TailwindOptions,
 
     /**
      * Use [typescript-eslint](https://typescript-eslint.io) to enforce TypeScript-specific rules.
@@ -357,6 +322,13 @@ interface Options {
     importX?: boolean | ConfigWithOverrides,
 
     /**
+     * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.
+     *
+     * @default true
+     */
+    stylistic?: boolean | StylisticOptions,
+
+    /**
      * Use [eslint-plugin-perfectionist](https://perfectionist.dev) to sort imports, exports, maps, union types, etc.
      *
      * @default true
@@ -364,11 +336,46 @@ interface Options {
     perfectionist?: boolean | PerfectionistOptions,
 
     /**
+     * Use [eslint-plugin-package-json](https://github.com/JoshuaKGoldberg/eslint-plugin-package-json) to ensure _package.json_ files are consistent, readable, and valid.
+     *
+     * @default true // `false` if `autoDetectDeps` is disabled
+     */
+    packageJson?: boolean | ConfigWithOverrides,
+
+    /**
+     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
+     *
+     * @default false
+     */
+    html?: boolean | HTMLOptions,
+
+    /**
+     * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
+     *
+     * @default false
+     */
+    css?: boolean | CSSOptions,
+
+    /**
+     * Use [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss) to sort Tailwind classes, check for unused or conflicting ones, and enforce best practices.
+     *
+     * @default false
+     */
+    tailwind?: false | TailwindOptions,
+
+    /**
      * Use [eslint-plugin-zod-x](https://github.com/marcalexiei/eslint-plugin-zod-x) to enforce Zod best practices.
      *
      * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     zod?: boolean | ConfigWithOverrides,
+
+    /**
+     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
+     *
+     * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    astro?: boolean | ConfigWithOverrides,
 
     /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
@@ -387,13 +394,6 @@ interface Options {
      * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     nuxt?: boolean | NuxtOptions,
-
-    /**
-     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
-     *
-     * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
-     */
-    astro?: boolean | ConfigWithOverrides,
 
     /**
      * Configuration options for the testing tools.

@@ -18,18 +18,18 @@ const defaultOptions = {
     globals: {
       worker: true,
       commonjs: false,
-      bun: true, // The default value will be ignored if `env` isn't set to `bun`.
-      deno: true, // The default value will be ignored if `env` isn't set to `deno`.
+      bun: true,
+      deno: true,
       node: true,
-      nodeBuiltin: true, // The default value will be ignored if `env` isn't set to `node`.
-      browser: true, // The default value will be ignored if `env` isn't set to `browser`.
-      sharedWorker: true, // The default value will be ignored if `env` isn't set to `browser`.
-      serviceworker: true, // The default value will be ignored if `env` isn't set to `browser`.
-      webextension: true, // The default value will be ignored if `env` isn't set to `browser`.
-      audioWorklet: true, // The default value will be ignored if `env` isn't set to `browser`.
+      nodeBuiltin: true,
+      browser: true,
+      sharedWorker: true,
+      serviceworker: true,
+      webextension: true,
+      audioWorklet: true,
       vitest: false,
-      vue: true, // The default value will be ignored if `configs.vue` is disabled.
-      astro: true, // The default value will be ignored if `configs.astro` is disabled.
+      vue: true,
+      astro: true,
       custom: {},
     },
     settings: {},

@@ -84,33 +84,31 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     : [];
 
   const configObjects = [
-    globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
-
     {
       name: 'shayanthenerd/global',
-      linterOptions,
-      settings,
       rules,
+      linterOptions,
+      ...((Object.keys(settings).length > 0) && { settings }),
     },
+    globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
     getBaseConfig(mergedOptions),
 
     isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
-    isEnabled(html) && getHTMLConfig(mergedOptions),
-    isEnabled(css) && getCSSConfig(mergedOptions),
-    isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
-
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
     preferNamedExports && getRestrictedExports(),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
-    isEnabled(zod) && getZodConfig(mergedOptions),
+    isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
+    isEnabled(html) && getHTMLConfig(mergedOptions),
+    isEnabled(css) && getCSSConfig(mergedOptions),
     isEnabled(tailwind) && getTailwindConfig(mergedOptions),
+    isEnabled(zod) && getZodConfig(mergedOptions),
+    isEnabled(astro) && getAstroConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
     isEnabled(vue) && getVueComponentNamesConfig(),
     (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
-    isEnabled(astro) && getAstroConfig(mergedOptions),
 
     isEnabled(storybook) && getStorybookConfig(mergedOptions),
     isEnabled(vitest) && getVitestConfig(mergedOptions),

@@ -55,7 +55,8 @@
     "inspect": "eslint-config-inspector",
     "build:inspector": "eslint-config-inspector build --config=./scripts/configs/eslint.config.reference.ts",
     "preview:inspector": "serve .eslint-config-inspector",
-    "generate:types": "node ./scripts/generateESLintTypes.ts",
+    "generate:types": "node ./scripts/generateEslintTypes.ts",
+    "generate:docs": "node ./scripts/generateApiDocs.ts",
     "check:types": "tsc",
     "build:package": "tsdown",
     "watch:package": "tsdown --watch --publint=false",
@@ -65,7 +66,7 @@
     "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
     "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "lint:oxlint": "oxlint --fix",
-    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint:ci && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
+    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint:ci && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports && pnpm generate:docs"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
@@ -119,6 +120,7 @@
     "publint": "0.3.17",
     "serve": "14.2.5",
     "simple-git-hooks": "2.13.1",
+    "ts-morph": "27.0.2",
     "tsdown": "0.20.3",
     "typescript": "5.9.3",
     "unplugin-unused": "0.5.7"

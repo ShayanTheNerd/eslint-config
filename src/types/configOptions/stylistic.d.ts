@@ -62,15 +62,6 @@ interface StylisticOptions extends ConfigWithOverrides {
   maxConsecutiveEmptyLines?: RuleOptions<'@stylistic/no-multiple-empty-lines'>['max'],
 
   /**
-   * Enforce a consistent delimiter style in interfaces and type aliases.
-   *
-   * @default 'comma'
-   *
-   * @see [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
-   */
-  memberDelimiterStyle?: RuleOptions<'@stylistic/member-delimiter-style'>['singleline']['delimiter'],
-
-  /**
    * Maximum line length for the code. Strings, texts, and comments are ignored.
    *
    * This is used by
@@ -84,6 +75,15 @@ interface StylisticOptions extends ConfigWithOverrides {
   maxLineLength?: number,
 
   /**
+   * Enforce a consistent delimiter style in interfaces and type aliases.
+   *
+   * @default 'comma'
+   *
+   * @see [@stylistic/member-delimiter-style: `delimiter` option](https://eslint.style/rules/member-delimiter-style#delimiter)
+   */
+  memberDelimiterStyle?: RuleOptions<'@stylistic/member-delimiter-style'>['singleline']['delimiter'],
+
+  /**
    * The style of quotes to use for strings.
    *
    * @default 'single'
@@ -91,15 +91,6 @@ interface StylisticOptions extends ConfigWithOverrides {
    * @see [@stylistic/quotes](https://eslint.style/rules/quotes)
    */
   quotes?: RuleOptions<'@stylistic/quotes'>,
-
-  /**
-   * Add semicolons at the end of statements.
-   *
-   * @default 'always'
-   *
-   * @see [@stylistic/semi](https://eslint.style/rules/semi)
-   */
-  semi?: RuleOptions<'@stylistic/semi'>,
 
   /**
    * Require void HTML elements to be self-closing.
@@ -111,6 +102,15 @@ interface StylisticOptions extends ConfigWithOverrides {
    * @default 'always'
    */
   selfCloseVoidHTMLElements?: 'never' | 'always',
+
+  /**
+   * Add semicolons at the end of statements.
+   *
+   * @default 'always'
+   *
+   * @see [@stylistic/semi](https://eslint.style/rules/semi)
+   */
+  semi?: RuleOptions<'@stylistic/semi'>,
 
   /**
    * Add trailing commas to object and array literals.
