@@ -163,9 +163,9 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
       },
       {
         selector: 'memberLike',
-        modifiers: ['private'],
+        modifiers: ['#private', 'private'],
         format: ['camelCase'],
-        leadingUnderscore: 'require',
+        leadingUnderscore: 'forbid',
       },
       {
         selector: 'enumMember',
