@@ -3,12 +3,12 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import { styleText } from 'node:util';
 
-import defaultESLintConfigReference from './defaultESLintConfigReference.ts';
+import referenceConfig from './configs/eslint.config.reference.ts';
 
 const eslintSchemaPath = path.resolve('src/types/eslint-schema.d.ts');
 
 await fs.rm(eslintSchemaPath, { force: true });
-await generateESLintTypes(defaultESLintConfigReference, {
+await generateESLintTypes(referenceConfig, {
   dtsPath: eslintSchemaPath,
   exportTypeName: 'ESLintSchema',
 });

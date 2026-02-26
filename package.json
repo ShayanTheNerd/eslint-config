@@ -53,7 +53,7 @@
     "update:actions": "actions-up --yes",
     "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
     "inspect": "eslint-config-inspector",
-    "build:inspector": "eslint-config-inspector build --config=./scripts/defaultESLintConfigReference.ts",
+    "build:inspector": "eslint-config-inspector build --config=./scripts/configs/eslint.config.reference.ts",
     "preview:inspector": "serve .eslint-config-inspector",
     "generate:types": "node ./scripts/generateESLintTypes.ts",
     "check:types": "tsc",
