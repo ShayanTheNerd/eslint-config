@@ -1,11 +1,11 @@
 [build.environment]
-	NODE_VERSION = "24"
+  NODE_VERSION = "26"
 
 [build]
-	command = "pnpm run build:inspector"
-	publish = ".eslint-config-inspector"
+  command = "pnpm run build:inspector"
+  publish = ".eslint-config-inspector"
 
 [[redirects]]
-	from = "/*"
-	to = "/index.html"
-	status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
