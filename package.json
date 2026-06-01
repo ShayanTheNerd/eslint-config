@@ -61,7 +61,7 @@
     "build:package": "tsdown",
     "watch:package": "tsdown --watch --publint=false",
     "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
-    "format": "prettier --write '**/*.{json,jsonc,yaml,yml,lock}' --cache",
+    "format": "prettier --write '**/*.{json,jsonc,yaml,yml}' --cache",
     "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
     "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
@@ -73,7 +73,7 @@
   },
   "nano-staged": {
     "**/*.{js,ts}": "pnpm lint",
-    "**/*.{json,jsonc,yaml,yml,lock}": "pnpm format",
+    "**/*.{json,jsonc,yaml,yml}": "pnpm format",
     "eslint.config.ts": "pnpm lint",
     "package.json": "pnpm lint:eslint",
     "prettier.config.ts": "pnpm format"
