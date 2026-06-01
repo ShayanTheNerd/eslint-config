@@ -12,7 +12,7 @@
     "oxlint",
     "oxlint-config"
   ],
-  "homepage": "https://eslint-config.shayan-zamani.me",
+  "homepage": "https://eslintconfig.netlify.app",
   "bugs": {
     "email": "dev.shayan.zamani@gmail.com",
     "url": "https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md"
