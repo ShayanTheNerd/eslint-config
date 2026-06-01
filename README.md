@@ -8,7 +8,7 @@ A modern, flexible ESLint configuration for enforcing best practices and maintai
 - **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic][plugin-stylistic], eliminating the need for Prettier
 - **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
 - **Developer-friendly**: Easy to use and well-documented with JSDoc
-- **Modern**: Requires ESLint v9.28.0+ and Node.js v20.18.0+ (ESM-only)
+- **Modern**: Requires ESLint version ^10.0.0 and Node.js version ^20.19.0 (ESM-only)
 
 > [!NOTE]
 > This configuration is designed with a flexible API for easy customization. However, it remains a **personal config**. While its primary goal is to enforce best practices and maintain code consistency, some rules—particularly stylistic ones—are rather opinionated. <br /> If the available customization and override options still don't meet your requirements, feel free to fork the project and tailor it to your needs.
@@ -42,7 +42,7 @@ Legend:
 | **Languages**                                                |         |        |
 | [JavaScript][eslint]                                         |    ✅    |   ◻️    |
 | [TypeScript][plugin-ts]                                      |    ✅    |   🔎    |
-| [Markdown][plugin-md]                                        |    ⌛️    |   N/A  |
+| [Markdown][plugin-md]                                        |    ✅    |   ◻️    |
 | [HTML][plugin-html]                                          |    ✅    |   ⬛    |
 | [CSS][plugin-css]                                            |    ✅    |   ⬛    |
 | **Formatting**                                               |         |        |
@@ -258,6 +258,7 @@ Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-ox
     "javascriptreact",
     "typescriptreact",
     "json",
+    "markdown",
     "html",
     "css",
     "tailwindcss",
@@ -494,6 +495,12 @@ export default defineConfig(
       packageJson?: boolean | {
         overrides?: Overrides,
       },
+      markdown?: boolean | {
+        language?: 'gfm' | 'commonmark',
+        frontmatter?: false | 'json' | 'toml' | 'yaml',
+        allowedHtmlTags?: string[],
+        overrides?: Overrides,
+      },
       html?: boolean | {
         idNamingConvention?: 'camelCase' | 'kebab-case' | 'PascalCase' | 'snake_case',
         useBaseline?: false | number | 'newly' | 'widely',
@@ -630,8 +637,8 @@ Under this policy, minor updates may introduce new linting errors, which could b
 You can find a list of all available versions and their changelogs on the [releases page][releases].
 
 ## Roadmap to v1.0.0
-- [ ] Integrate additional ESLint plugins such as [eslint-plugin-react][plugin-react], [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], etc.
-- [ ] Add support for other frameworks and file types, including Astro, React, Next.js, MDX, Markdown, JSON, etc.
+- [ ] Integrate additional ESLint plugins such as [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], [eslint-plugin-jsdoc][plugin-jsdoc] etc.
+- [ ] Add support for other frameworks and file types, including React, Next, Astro, and Markdown.
 - [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
 
 ## Contribution Guide

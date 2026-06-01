@@ -20,7 +20,7 @@
 
   "overrides": [
     {
-      "files": ["src/index.ts", "src/{configs,rules,types}/*.ts"],
+      "files": ["src/index.ts", "src/helpers/options/enableDetectedConfigs.ts", "src/{configs,rules,types}/*.ts"],
       "rules": {
         "eslint/max-lines": "off",
         "eslint/complexity": "off",

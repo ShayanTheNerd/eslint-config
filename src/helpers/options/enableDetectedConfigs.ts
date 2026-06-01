@@ -2,7 +2,6 @@ import type { Options } from '#types/index.d.ts';
 
 import { isPackageDetected, addDetectedPackage, logDetectedPackages } from '#helpers/isPackageDetected.ts';
 
-/* oxlint-disable-next-line eslint/complexity */
 function enableDetectedConfigs(options: Options): Options {
   options.configs ??= {};
   options.configs.test ??= {};
@@ -17,6 +16,9 @@ function enableDetectedConfigs(options: Options): Options {
 
   options.configs.packageJson ??= Boolean(options.autoDetectDeps);
   addDetectedPackage('package.json');
+
+  options.configs.markdown ??= true;
+  addDetectedPackage('markdown');
 
   options.configs.vue ??= isPackageDetected('vue', options);
   options.configs.nuxt ??= isPackageDetected('nuxt', options);

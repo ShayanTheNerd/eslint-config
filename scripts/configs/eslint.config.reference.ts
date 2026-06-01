@@ -12,6 +12,7 @@ const config: Linter.Config[] = defineConfig({
     stylistic: true,
     perfectionist: true,
     packageJson: true,
+    markdown: true,
     html: true,
     css: true,
     tailwind: {

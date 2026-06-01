@@ -40,6 +40,12 @@ const defaultOptions = {
     packageJson: {
       overrides: {},
     },
+    markdown: {
+      language: 'gfm',
+      frontmatter: 'yaml',
+      allowedHtmlTags: [],
+      overrides: {},
+    },
     oxlint: '.oxlintrc.json',
     base: {
       functionStyle: 'declaration',

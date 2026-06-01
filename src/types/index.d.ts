@@ -7,6 +7,7 @@ import type { BaseOptions } from '#types/configOptions/base.d.ts';
 import type { HTMLOptions } from '#types/configOptions/html.d.ts';
 import type { NuxtOptions } from '#types/configOptions/nuxt.d.ts';
 import type { TestOptions } from '#types/configOptions/test.d.ts';
+import type { MarkdownOptions } from '#types/configOptions/markdown.d.ts';
 import type { TailwindOptions } from '#types/configOptions/tailwind.d.ts';
 import type { StylisticOptions } from '#types/configOptions/stylistic.d.ts';
 import type { TypeScriptOptions } from '#types/configOptions/typescript.d.ts';
@@ -341,6 +342,13 @@ interface Options {
      * @default true // `false` if `autoDetectDeps` is disabled
      */
     packageJson?: boolean | ConfigWithOverrides,
+
+    /**
+     * Use [@eslint/markdown](https://github.com/eslint/markdown) to enforce best practices for Markdown files.
+     *
+     * @default true
+     */
+    markdown?: boolean | MarkdownOptions,
 
     /**
      * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.

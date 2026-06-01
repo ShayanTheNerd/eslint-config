@@ -16,6 +16,7 @@ import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
 import { getPromiseConfig } from '#configs/promise.ts';
+import { getMarkdownConfig } from '#configs/markdown.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
@@ -51,14 +52,15 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     },
     configs: {
       css,
-      zod,
       vue,
+      zod,
       html,
       nuxt,
       astro,
       oxlint,
-      promise,
       importX,
+      promise,
+      markdown,
       tailwind,
       stylistic,
       typescript,
@@ -101,6 +103,7 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
     isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
+    isEnabled(markdown) && getMarkdownConfig(mergedOptions),
     isEnabled(html) && getHTMLConfig(mergedOptions),
     isEnabled(css) && getCSSConfig(mergedOptions),
     isEnabled(tailwind) && getTailwindConfig(mergedOptions),

@@ -81,6 +81,7 @@
   "dependencies": {
     "@eslint/compat": "2.0.2",
     "@eslint/css": "0.14.1",
+    "@eslint/markdown": "8.0.2",
     "@html-eslint/eslint-plugin": "0.57.1",
     "@stylistic/eslint-plugin": "5.9.0",
     "@vitest/eslint-plugin": "1.6.9",
@@ -131,12 +132,12 @@
   },
   "packageManager": "pnpm@10.30.3",
   "engines": {
-    "node": ">=20.18.0"
+    "node": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0"
   },
   "devEngines": {
     "runtime": {
       "name": "node",
-      "version": ">=22.18.0",
+      "version": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0",
       "onFail": "error"
     }
   },

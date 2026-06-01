@@ -18,6 +18,7 @@ const globs = {
   ts: '**/*.?([mc])ts?(x)',
   src: `**/*.${srcExtensions}`,
   packageJson: '**/package.json',
+  markdown: '**/*.md',
 
   restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
 
