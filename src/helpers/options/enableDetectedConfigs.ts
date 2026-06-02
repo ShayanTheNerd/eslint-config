@@ -14,7 +14,7 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.stylistic ??= true;
   options.configs.perfectionist ??= true;
 
-  options.configs.packageJson ??= Boolean(options.autoDetectDeps);
+  options.configs.packageJson ??= true;
   addDetectedPackage('package.json');
 
   options.configs.markdown ??= true;

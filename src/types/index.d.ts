@@ -339,7 +339,7 @@ interface Options {
     /**
      * Use [eslint-plugin-package-json](https://github.com/JoshuaKGoldberg/eslint-plugin-package-json) to ensure _package.json_ files are consistent, readable, and valid.
      *
-     * @default true // `false` if `autoDetectDeps` is disabled
+     * @default true
      */
     packageJson?: boolean | ConfigWithOverrides,
 
