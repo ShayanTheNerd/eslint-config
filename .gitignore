@@ -6,7 +6,7 @@ src/types/eslint-schema.d.ts
 
 # Build outputs
 **/dist
-**/.eslint-config-inspector
+**/netlify
 
 # Operating system and development environment
 **/.idea

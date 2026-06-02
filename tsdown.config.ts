@@ -3,11 +3,12 @@ import { defineConfig } from 'tsdown';
 import { syncJsrExports } from './scripts/syncJsrExports.ts';
 
 export default defineConfig({
-  format: 'esm',
   unbundle: true,
   entry: ['./src/index.ts', './src/prettier.config.ts'],
   copy: ['./src/oxlint.config.jsonc'],
-  external: ['prettier'],
+  deps: {
+    neverBundle: ['prettier'],
+  },
   exports: {
     customExports(packageExports) {
       packageExports['./types/*'] = './dist/types/*';
