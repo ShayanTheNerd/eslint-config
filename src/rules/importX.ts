@@ -49,7 +49,7 @@ function getImportXRules(options: DeepNonNullable<Options>) {
     'import-x/group-exports': 'warn',
     'import-x/no-duplicates': ['error', { considerQueryString: true }],
     'import-x/no-named-default': 'error',
-  } satisfies PluginRules<'import-x'> & PluginRules<'unused-imports'>;
+  } satisfies PluginRules<'import-x'>;
 
   return importXRules;
 }

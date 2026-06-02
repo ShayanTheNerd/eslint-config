@@ -1,15 +1,6 @@
 {
-  "include": ["src/**/*.ts", "scripts/**/*.ts", "tsdown.config.ts"],
+  "include": ["scripts/**/*.ts", "src/**/*.ts", "tsdown.config.ts"],
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "#configs/*": ["./configs/*"],
-      "#helpers/*": ["./helpers/*"],
-      "#rules/*": ["./rules/*"],
-      "#types/*": ["./types/*"],
-      "#utils/*": ["./utils/*"]
-    },
-
     /* Type Checking */
     "allowUnreachableCode": false,
     "noFallthroughCasesInSwitch": true,
@@ -18,13 +9,19 @@
     "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strict": true,
 
     /* Modules */
     "allowImportingTsExtensions": true,
     "module": "nodenext",
-    "noUncheckedSideEffectImports": true,
+    "paths": {
+      "#configs/*": ["./src/configs/*"],
+      "#helpers/*": ["./src/helpers/*"],
+      "#rules/*": ["./src/rules/*"],
+      "#types/*": ["./src/types/*"],
+      "#utils/*": ["./src/utils/*"]
+    },
     "resolveJsonModule": true,
+    "types": ["node"],
 
     /* Emit */
     "declaration": true,
