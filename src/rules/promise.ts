@@ -9,7 +9,7 @@ function getPromiseRules() {
     'promise/no-multiple-resolved': 'error',
     'promise/no-nesting': 'error',
     'promise/no-new-statics': 'warn',
-    'promise/no-promise-in-callback': 'error',
+    'promise/no-promise-in-callback': ['error', { exemptDeclarations: true }],
     'promise/no-return-in-finally': 'error',
     'promise/no-return-wrap': ['error', { allowReject: true }],
     'promise/param-names': 'warn',

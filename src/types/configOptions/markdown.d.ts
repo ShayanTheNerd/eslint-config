@@ -5,7 +5,7 @@ interface MarkdownOptions extends ConfigWithOverrides {
   /**
    * Specify the Markdown flavor. (GFM: GitHub-Flavored Markdown)
    *
-   * Note that the following rules are not supported when using `commonmark`:
+   * The following rules are not supported when using `commonmark`:
    * - [`markdown/no-bare-urls`](https://github.com/eslint/markdown/blob/main/docs/rules/no-bare-urls.md)
    * - [`markdown/no-duplicate-definitions`](https://github.com/eslint/markdown/blob/main/docs/rules/no-duplicate-definitions.md)
    * - [`markdown/no-empty-definitions`](https://github.com/eslint/markdown/blob/main/docs/rules/no-empty-definitions.md)
@@ -32,7 +32,7 @@ interface MarkdownOptions extends ConfigWithOverrides {
    *
    * New items extend the defaults instead of overriding them.
    *
-   * @default ['u', 'br', 'rp', 'rt', 'kbd', 'sub', 'sup', 'mark', 'ruby', 'details', 'summary']
+   * @default ['u', 'br', 'rp', 'rt', 'kbd', 'sub', 'sup', 'mark', 'ruby', 'small', 'details', 'summary']
    *
    * @see [markdown/no-html: `allowed` option](https://github.com/eslint/markdown/blob/main/docs/rules/no-html.md#options)
    */

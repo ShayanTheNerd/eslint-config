@@ -8,7 +8,7 @@ function getPlaywrightRules(options: DeepNonNullable<Options>) {
   const playwrightRules = {
     'playwright/expect-expect': 'error',
     'playwright/max-nested-describe': ['warn', { max: maxNestedDescribe }],
-    'playwright/missing-playwright-await': 'error',
+    'playwright/missing-playwright-await': ['error', { includePageLocatorMethods: true }],
     'playwright/no-commented-out-tests': 'error',
     'playwright/no-conditional-expect': 'error',
     'playwright/no-conditional-in-test': 'error',

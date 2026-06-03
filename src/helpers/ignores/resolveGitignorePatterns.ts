@@ -1,4 +1,4 @@
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from 'eslint/config';
 import fs from 'node:fs';
 import path from 'node:path';
 import { styleText } from 'node:util';
@@ -23,7 +23,7 @@ function resolveGitignorePatterns(gitignorePath: string): string[] {
     return gitignorePatterns;
   }
 
-  const ignorePatterns = includeIgnoreFile(gitignoreAbsolutePath).ignores ?? [];
+  const ignorePatterns = includeIgnoreFile(gitignoreAbsolutePath, { gitignoreResolution: true }).ignores ?? [];
 
   if (ignorePatterns.length > 0) {
     gitignorePatterns.push(...ignorePatterns);

@@ -33,6 +33,7 @@ function getMarkdownRules(options: DeepNonNullable<Options>) {
         'sup',
         'mark',
         'ruby',
+        'small',
         'details',
         'summary',
         ...userAllowedHtmlTags,

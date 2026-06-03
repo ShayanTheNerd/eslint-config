@@ -2,6 +2,7 @@ import type { PluginRules } from '#types/eslintRules.d.ts';
 
 function getCypressRules() {
   const cypressRules = {
+    'cypress/no-and': 'warn',
     'cypress/no-assigning-return-values': 'error',
     'cypress/no-async-before': 'warn',
     'cypress/no-async-tests': 'error',
