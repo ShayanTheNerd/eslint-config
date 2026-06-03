@@ -53,10 +53,14 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
       'func-style': javascriptRules['func-style'],
       'max-depth': javascriptRules['max-depth'],
       'max-nested-callbacks': javascriptRules['max-nested-callbacks'],
+      'no-restricted-exports': javascriptRules['no-restricted-exports'],
       'no-shadow': javascriptRules['no-shadow'],
 
       '@typescript-eslint/consistent-type-definitions': isEnabled(typescript)
         ? typescriptRules['@typescript-eslint/consistent-type-definitions']
+        : 'off',
+      '@typescript-eslint/method-signature-style': isEnabled(typescript)
+        ? typescriptRules['@typescript-eslint/method-signature-style']
         : 'off',
 
       'playwright/max-nested-describe': isEnabled(playwright)

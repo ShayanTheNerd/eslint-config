@@ -23,12 +23,12 @@
     "oxc/no-rest-spread-properties": "off",
 
     /*** ESLint ***/
-    "eslint/alert": "warn",
     "eslint/arrow-body-style": "off",
     "eslint/capitalized-comments": "off",
     "eslint/func-names": ["error", "as-needed"],
     "eslint/grouped-accessor-pairs": ["warn", "anyOrder", { "enforceForTSTypes": true }],
     "eslint/id-length": "off",
+    "eslint/logical-assignment-operators": ["error", "always"],
     "eslint/max-statements": "off",
     "eslint/no-console": [
       "warn",
@@ -46,7 +46,10 @@
     "eslint/no-ternary": "off",
     "eslint/no-undefined": "off",
     "eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
+    "eslint/prefer-arrow-callback": ["warn", { "allowUnboundThis": true }],
     "eslint/prefer-destructuring": ["warn", { "array": false }],
+    "eslint/prefer-regex-literals": ["warn", { "disallowRedundantWrapping": true }],
+    "eslint/require-unicode-regexp": "off",
     "eslint/sort-imports": "off",
     "eslint/sort-keys": "off",
     "eslint/sort-vars": "off",
@@ -57,6 +60,7 @@
     "typescript/consistent-indexed-object-style": ["warn", "record"],
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-module-boundary-types": "off",
+    "typescript/method-signature-style": "off",
     "typescript/no-use-before-define": [
       "error",
       {
@@ -72,6 +76,7 @@
     /*** Promise ***/
     "promise/always-return": ["error", { "ignoreLastCallback": true }],
     "promise/catch-or-return": ["error", { "allowThenStrict": true, "allowFinally": true }],
+    "promise/no-promise-in-callback": ["error", { "exemptDeclarations": true }],
     "promise/no-return-wrap": ["error", { "allowReject": true }],
     "promise/prefer-await-to-then": ["warn", { "strict": true }],
 
@@ -79,6 +84,7 @@
     "import/extensions": "off",
     "import/exports-last": "off",
     "import/max-dependencies": "off",
+    "import/newline-after-import": "off",
     "import/no-anonymous-default-export": "off",
     "import/no-default-export": "off",
     "import/no-duplicates": ["error", { "considerQueryString": true }],
@@ -93,6 +99,7 @@
 
     /*** Unicorn ***/
     "unicorn/filename-case": "off",
+    "unicorn/import-style": "off",
     "unicorn/no-array-for-each": "off",
     "unicorn/no-array-reduce": "off",
     "unicorn/no-array-sort": "off",
@@ -106,12 +113,14 @@
     "unicorn/prefer-string-raw": "off",
     "unicorn/prefer-ternary": "off",
 
-    /*** Vitest/Jest ***/
-    "vitest/consistent-each-for": "off",
-    "vitest/no-importing-vitest-globals": "off",
+    /*** Jest/Vitest ***/
     "jest/prefer-lowercase-title": "warn",
     "jest/require-hook": "off",
     "jest/require-top-level-describe": "off",
+    "vitest/consistent-each-for": "off",
+    "vitest/no-importing-vitest-globals": "off",
+    "vitest/require-test-timeout": "off",
+    "vitest/require-hook": "off", // False positives
 
     /*** JSDoc ***/
     "jsdoc/require-param": "off",
@@ -120,17 +129,19 @@
 
     /*** Vue ***/
     "vue/max-props": "off",
+    "vue/no-deprecated-model-definition": ["error", { "allowVue3Compat": true }],
     "vue/no-required-prop-with-default": "off",
 
     /*** Customizable Overrides ***/
     /* These rules are customizable in the ESLint config, but the customizations aren"t reflected here. */
-    "eslint/no-shadow": "off", // [TODO] https://github.com/oxc-project/oxc/issues/19461
     "eslint/func-style": "off",
     "eslint/max-depth": "off",
     "eslint/max-nested-callbacks": "off",
+    "eslint/no-restricted-exports": "off",
+    "eslint/no-shadow": "off", // [TODO] https://github.com/oxc-project/oxc/issues/19461
+    "jest/max-nested-describe": "off",
     "typescript/consistent-type-definitions": "off",
     "vitest/consistent-test-it": "off",
-    "jest/max-nested-describe": "off",
     "vue/define-props-destructuring": "off"
   },
 

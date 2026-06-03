@@ -46,6 +46,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/explicit-member-accessibility': 'warn',
     '@typescript-eslint/no-array-delete': 'error',
     '@typescript-eslint/no-base-to-string': 'error',
     '@typescript-eslint/no-confusing-void-expression': 'error',

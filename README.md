@@ -299,6 +299,10 @@ Since OXLint and ESLint use separate config files, customizations made in your E
 {
   /* Base configuration */
 
+  "options": {
+    "reportUnusedDisableDirectives": "warn"
+  },
+
   "rules": {
     /* Globally override rules. */
     "oxlint/no-named-as-default-member": "warn"

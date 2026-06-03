@@ -1,7 +1,7 @@
 engineStrict: true
+minimumReleaseAge: 100
 savePrefix: ''
 shellEmulator: true
-minimumReleaseAge: 0 # [TODO] It's a temporary fix. Remove it before the next release.
 
 allowBuilds:
   '@shayanthenerd/eslint-config': true

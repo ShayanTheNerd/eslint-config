@@ -3,7 +3,7 @@ import type { Type, SourceFile } from 'ts-morph';
 class TypeExpander {
   private readonly projectTypes: SourceFile;
 
-  constructor(projectTypes: SourceFile) {
+  public constructor(projectTypes: SourceFile) {
     this.projectTypes = projectTypes;
   }
 
@@ -45,9 +45,7 @@ class TypeExpander {
     if (type.isString()) { return 'string'; }
     if (type.isNumber()) { return 'number'; }
     if (type.isBoolean()) { return 'boolean'; }
-    if (type.isStringLiteral() || type.isNumberLiteral() || type.isBooleanLiteral()) {
-      return type.getText();
-    }
+    if (type.isStringLiteral() || type.isNumberLiteral() || type.isBooleanLiteral()) { return type.getText(); }
     /* eslint-enable @stylistic/max-statements-per-line, @stylistic/padding-line-between-statements */
 
     return undefined;

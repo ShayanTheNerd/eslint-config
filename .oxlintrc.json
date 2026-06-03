@@ -18,6 +18,11 @@
     "nursery": "error"
   },
 
+  "options": {
+    "reportUnusedDisableDirectives": "warn",
+    "respectEslintDisableDirectives": false // False positives
+  },
+
   "overrides": [
     {
       "files": ["src/index.ts", "src/helpers/options/enableDetectedConfigs.ts", "src/{configs,rules,types}/*.ts"],
