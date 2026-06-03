@@ -67,6 +67,7 @@ interface StylisticOptions extends ConfigWithOverrides {
    * This is used by
    * - [vue/max-len](https://eslint.vuejs.org/rules/max-len)
    * - [@stylistic/max-len](https://eslint.style/rules/max-len)
+   * - [@html-eslint/attrs-newline: `maxLen` option](https://html-eslint.org/docs/rules/attrs-newline#maxlen)
    * - [perfectionist/sort-imports: `maxLineLength` option](https://perfectionist.dev/rules/sort-imports#maxlinelength)
    * - [better-tailwindcss/enforce-consistent-line-wrapping: `printWidth` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md)
    *

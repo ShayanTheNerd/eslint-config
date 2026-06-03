@@ -13,6 +13,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
   const { useBaseline, idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
   const {
     indent,
+    maxLineLength,
     maxAttributesPerLine,
     maxConsecutiveEmptyLines,
     selfCloseVoidHTMLElements,
@@ -39,10 +40,12 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
       selfClosingCustomPatterns: ['-'],
       selfClosing: selfCloseVoidHTMLElements,
     }],
+    '@html-eslint/require-details-summary': 'error',
     '@html-eslint/require-doctype': 'error',
     '@html-eslint/require-explicit-size': 'warn',
     '@html-eslint/require-li-container': 'error',
     '@html-eslint/require-meta-charset': 'error',
+    '@html-eslint/svg-require-viewbox': 'error',
     '@html-eslint/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
 
     /* SEO */
@@ -64,18 +67,22 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
     '@html-eslint/no-positive-tabindex': 'error',
     '@html-eslint/no-redundant-role': 'error',
     '@html-eslint/no-skip-heading-levels': 'error',
+    '@html-eslint/require-content': 'error',
     '@html-eslint/require-frame-title': 'error',
     '@html-eslint/require-img-alt': 'error',
     '@html-eslint/require-input-label': 'error',
     '@html-eslint/require-meta-viewport': 'error',
 
     /* Style */
-    '@html-eslint/attrs-newline': ['warn', { ifAttrsMoreThan: maxAttributesPerLine }],
+    '@html-eslint/attrs-newline': ['warn', {
+      maxLen: maxLineLength,
+      ifAttrsMoreThan: maxAttributesPerLine,
+    }],
     '@html-eslint/element-newline': ['warn', { inline: ['$inline'] }],
     '@html-eslint/id-naming-convention': ['warn', idNamingConvention],
     '@html-eslint/indent': ['warn', indent],
     '@html-eslint/lowercase': 'warn',
-    '@html-eslint/no-extra-spacing-attrs': ['warn', {
+    '@html-eslint/no-extra-spacing-tags': ['warn', {
       disallowTabs: true,
       disallowMissing: true,
       disallowInAssignment: true,
