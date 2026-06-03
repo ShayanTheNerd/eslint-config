@@ -8,6 +8,7 @@ export default defineConfig({
   copy: ['./src/oxlint.config.jsonc'],
   deps: {
     neverBundle: ['prettier'],
+    skipNodeModulesBundle: true,
   },
   exports: {
     customExports(packageExports) {
