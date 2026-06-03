@@ -3,6 +3,7 @@ import type { ConfigWithExtends } from 'typescript-eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { CSSOptions } from '#types/configOptions/css.d.ts';
 import type { VueOptions } from '#types/configOptions/vue.d.ts';
+import type { ZodOptions } from '#types/configOptions/zod.d.ts';
 import type { BaseOptions } from '#types/configOptions/base.d.ts';
 import type { HTMLOptions } from '#types/configOptions/html.d.ts';
 import type { NuxtOptions } from '#types/configOptions/nuxt.d.ts';
@@ -372,11 +373,11 @@ interface Options {
     tailwind?: false | TailwindOptions,
 
     /**
-     * Use [eslint-plugin-zod-x](https://github.com/marcalexiei/eslint-plugin-zod-x) to enforce Zod best practices.
+     * Use [eslint-plugin-zod](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod) or [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) to enforce best practices for Zod schemas.
      *
      * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
      */
-    zod?: boolean | ConfigWithOverrides,
+    zod?: boolean | ZodOptions,
 
     /**
      * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.

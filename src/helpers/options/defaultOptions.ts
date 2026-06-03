@@ -103,6 +103,7 @@ const defaultOptions = {
       overrides: {},
     },
     zod: {
+      mini: false,
       overrides: {},
     },
     vue: {

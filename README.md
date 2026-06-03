@@ -539,6 +539,7 @@ export default defineConfig(
         overrides?: Overrides,
       },
       zod?: boolean | {
+        mini?: boolean,
         overrides?: Overrides,
       },
       astro?: boolean | {

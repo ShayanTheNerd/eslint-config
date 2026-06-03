@@ -278,8 +278,8 @@ importers:
         specifier: 5.6.0
         version: 5.6.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
       eslint-plugin-playwright:
-        specifier: 2.8.0
-        version: 2.8.0(eslint@10.0.2(jiti@2.7.0))
+        specifier: 2.7.1
+        version: 2.7.1(eslint@10.0.2(jiti@2.7.0))
       eslint-plugin-promise:
         specifier: 7.2.1
         version: 7.2.1(eslint@10.0.2(jiti@2.7.0))
@@ -293,8 +293,8 @@ importers:
         specifier: 2.5.0
         version: 2.5.0(eslint@10.0.2(jiti@2.7.0))(globals@17.6.0)
       eslint-plugin-zod:
-        specifier: 3.3.0
-        version: 3.3.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
+        specifier: 4.6.0
+        version: 4.6.0(eslint@10.0.2(jiti@2.7.0))(oxlint@1.50.0)(typescript@6.0.3)
       globals:
         specifier: 17.6.0
         version: 17.6.0
@@ -323,6 +323,9 @@ importers:
       eslint:
         specifier: 10.0.2
         version: 10.0.2(jiti@2.7.0)
+      eslint-plugin-zod-mini:
+        specifier: 1.3.0
+        version: 1.3.0(eslint@10.0.2(jiti@2.7.0))(oxlint@1.50.0)(typescript@6.0.3)
       eslint-typegen:
         specifier: 2.3.1
         version: 2.3.1(eslint@10.0.2(jiti@2.7.0))
@@ -609,6 +612,10 @@ packages:
   '@eslint-community/regexpp@4.12.2':
     resolution: {integrity: sha512-EriSTlt5OC9/7SXkRSCAhfSxxoSUgBm33OH+IkwbdpgoqsSsUg7y3uh+IICI/Qg4BBWr3U2i39RpmycbxMq4ew==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
+
+  '@eslint-zod/utils@2.2.0':
+    resolution: {integrity: sha512-U++LaftAa71jBuCqvaY3FE6PRS/cjb9Meg+/Q3TmwPL6RdQhqopjHNKI3RoHCGs1COyn6GLg0HR6mEnfbwN5Mg==}
+    engines: {node: ^20 || ^22 || >=24}
 
   '@eslint/compat@2.1.0':
     resolution: {integrity: sha512-LgaSCymEpw7tF53xvDw9SNsraPb1IBHxpdABIOM0hW8UAlP8znrjYtuxfR58FSJ3L9BhwD+FaPRFQpZq84Nh6g==}
@@ -2205,8 +2212,8 @@ packages:
     peerDependencies:
       eslint: ^8.45.0 || ^9.0.0 || ^10.0.0
 
-  eslint-plugin-playwright@2.8.0:
-    resolution: {integrity: sha512-BRCXbnX20l/ZPOOi1jEqNvqU/UjXpkZRJaghQxSM2kjAvsDph8+osn9u1iMmvoa9Cegbp9d0Skh7vro7242t+Q==}
+  eslint-plugin-playwright@2.7.1:
+    resolution: {integrity: sha512-IGwSjYN6N5E0I+xbRpmLXXRKQfiRaEEGEasMWKmIoiLFe+izb81EKBMGSjD/NzlXrWGx/Ys7zDOkgYEHQT2g6Q==}
     engines: {node: '>=16.9.0'}
     peerDependencies:
       eslint: '>=8.40.0'
@@ -2244,13 +2251,33 @@ packages:
       eslint: ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
       globals: '>= 13.12.1'
 
-  eslint-plugin-zod@3.3.0:
-    resolution: {integrity: sha512-r+togyS94xGc45ulYWsrGWF4Dqi/34a+oLia6cfpX6C6zUaxFXqVDV0AEokW0MNuqXuatIv+0F5qKFPv1RBNQw==}
+  eslint-plugin-zod-mini@1.3.0:
+    resolution: {integrity: sha512-i2LaM61NlCQ/adFAIo6aPPCZA4eBDQcbVrVc9madIDjkQvAAdC5giIvf0PrKe8/cT+CDhKnynWtz25d8p8ANRw==}
     engines: {node: ^20 || ^22 || >=24}
     peerDependencies:
-      eslint: ^9
+      eslint: ^9 || ^10
+      oxlint: ^1.59.0
       zod: ^4
     peerDependenciesMeta:
+      eslint:
+        optional: true
+      oxlint:
+        optional: true
+      zod:
+        optional: true
+
+  eslint-plugin-zod@4.6.0:
+    resolution: {integrity: sha512-mvl3qWcrjbAK444vUTWeJyf3rvayXnYnQpXmsjz5V/UQALZ6QaZaiGxi+BJZhwpUh9Er3aqIr3fwXvYAIFHgOg==}
+    engines: {node: ^20 || ^22 || >=24}
+    peerDependencies:
+      eslint: ^9 || ^10
+      oxlint: ^1.59.0
+      zod: ^4
+    peerDependenciesMeta:
+      eslint:
+        optional: true
+      oxlint:
+        optional: true
       zod:
         optional: true
 
@@ -4056,6 +4083,15 @@ snapshots:
 
   '@eslint-community/regexpp@4.12.2': {}
 
+  '@eslint-zod/utils@2.2.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)':
+    dependencies:
+      '@typescript-eslint/utils': 8.60.1(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
+      esquery: 1.7.0
+    transitivePeerDependencies:
+      - eslint
+      - supports-color
+      - typescript
+
   '@eslint/compat@2.1.0(eslint@10.0.2(jiti@2.7.0))':
     dependencies:
       '@eslint/core': 1.2.1
@@ -5587,7 +5623,7 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-playwright@2.8.0(eslint@10.0.2(jiti@2.7.0)):
+  eslint-plugin-playwright@2.7.1(eslint@10.0.2(jiti@2.7.0)):
     dependencies:
       eslint: 10.0.2(jiti@2.7.0)
       globals: 17.6.0
@@ -5629,11 +5665,24 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-zod@3.3.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3):
+  eslint-plugin-zod-mini@1.3.0(eslint@10.0.2(jiti@2.7.0))(oxlint@1.50.0)(typescript@6.0.3):
     dependencies:
+      '@eslint-zod/utils': 2.2.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
       '@typescript-eslint/utils': 8.60.1(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
+    optionalDependencies:
       eslint: 10.0.2(jiti@2.7.0)
-      esquery: 1.7.0
+      oxlint: 1.50.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
+  eslint-plugin-zod@4.6.0(eslint@10.0.2(jiti@2.7.0))(oxlint@1.50.0)(typescript@6.0.3):
+    dependencies:
+      '@eslint-zod/utils': 2.2.0(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
+      '@typescript-eslint/utils': 8.60.1(eslint@10.0.2(jiti@2.7.0))(typescript@6.0.3)
+    optionalDependencies:
+      eslint: 10.0.2(jiti@2.7.0)
+      oxlint: 1.50.0
     transitivePeerDependencies:
       - supports-color
       - typescript
