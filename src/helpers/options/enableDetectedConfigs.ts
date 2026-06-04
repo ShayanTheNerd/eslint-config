@@ -1,11 +1,13 @@
 import type { Options } from '#types/index.d.ts';
 
-import { isPackageDetected, addDetectedPackage, logDetectedPackages } from '#helpers/isPackageDetected.ts';
+import { isPackageDetected, logDetectedPackages } from '#helpers/isPackageDetected.ts';
 
 function enableDetectedConfigs(options: Options): Options {
   options.configs ??= {};
   options.configs.test ??= {};
 
+  options.configs.packageJson ??= true;
+  options.configs.markdown ??= true;
   options.configs.html ??= false;
   options.configs.css ??= false;
   options.configs.tailwind ??= false;
@@ -13,12 +15,6 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.importX ??= true;
   options.configs.stylistic ??= true;
   options.configs.perfectionist ??= true;
-
-  options.configs.packageJson ??= true;
-  addDetectedPackage('package.json');
-
-  options.configs.markdown ??= true;
-  addDetectedPackage('markdown');
 
   options.configs.vue ??= isPackageDetected('vue', options);
   options.configs.nuxt ??= isPackageDetected('nuxt', options);
