@@ -32,15 +32,61 @@ import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 
+/** Valid argument combinations for the `defineConfig` function. */
+type DefineConfigArguments =
+  | []
+  | [options: Options]
+  | [configs: ConfigObject[]]
+  | [options: Options, configs: ConfigObject[]];
+
 /**
- * Define ESLint configuration based on the provided options and any number of Flat Config Objects.
+ * Define your ESLint configuration based on the provided options and/or custom Flat Config Objects.
  *
- * @param {Options} options - Options to configure and customize the config
- * @param {...ConfigObject} configs - Additional Flat Config Objects to extend the default config
- *
+ * @param {...DefineConfigArguments} args The configuration options and/or custom Flat Config objects.
  * @returns {Linter.Config[]} The merged ESLint configuration array
+ *
+ * @example
+ * defineConfig();
+ * // or
+ * defineConfig({ autoDetectDeps: 'verbose' });
+ * // or
+ * defineConfig([
+ *   {
+ *     name: 'custom',
+ *     rules: {
+ *       'no-console': 'error',
+ *     },
+ *   },
+ *   { ... },
+ * ]);
+ * // or
+ * defineConfig(
+ *   { autoDetectDeps: 'verbose' },
+ *   [
+ *     {
+ *       name: 'custom',
+ *       rules: {
+ *         'no-console': 'error',
+ *       },
+ *     },
+ *     { ... },
+ *   ],
+ * );
  */
-function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter.Config[] {
+function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
+  let options: Options = {};
+  let configs: ConfigObject[] = [];
+
+  /* Destructuing here instead of within the function signature allows for better alignment with `args` in JSDoc. */
+  const [firstArgument, secondArgument] = args;
+
+  if (Array.isArray(firstArgument)) {
+    configs = firstArgument;
+  } else if (firstArgument) {
+    options = firstArgument;
+    configs = secondArgument ?? [];
+  }
+
   const mergedOptions = mergeWithDefaults(options);
   const {
     gitignore,
@@ -77,12 +123,13 @@ function defineConfig(options: Options = {}, ...configs: ConfigObject[]): Linter
       },
     },
   } = mergedOptions;
+
   const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
   const oxlintConfigPath = oxlint ? path.resolve(oxlint || defaultOptions.configs.oxlint) : '';
   const oxlintOverrides = oxlint
     ? eslintPluginOXLint
       .buildFromOxlintConfigFile(oxlintConfigPath)
-      .filter((config) => config.name !== 'oxlint/vue-svelte-exceptions')
+      .filter((config) => config.name !== 'oxlint/vue-svelte-exceptions') // [TODO] Required?
     : [];
 
   const configObjects = [
