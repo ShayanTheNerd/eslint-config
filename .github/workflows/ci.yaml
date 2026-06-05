@@ -26,3 +26,13 @@ jobs:
 
       - name: Run the Validations
         run: pnpm run ci:validate
+
+      - name: Verify the Documentation is Up to Date
+        run: |
+          pnpm generate:docs
+          if git diff --quiet README.md; then
+            echo "✅ Documentation is up to date."
+          else
+            echo '::error title=Stale Documentation::❌ Documentation is not up to date. Make sure to run `pnpm generate:docs` before committing the changes.'
+            exit 1
+          fi

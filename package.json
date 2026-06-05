@@ -65,13 +65,15 @@
     "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "lint:oxlint": "oxlint --fix",
-    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports && pnpm generate:docs"
+    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
     "**/*.{json,jsonc,yaml}": "pnpm format",
+    "pnpm-lock.yaml": "pnpm generate:types && pnpm generate:docs",
+    "src/types/**/*.d.ts": "pnpm generate:docs",
     "{**/*.ts,package.json}": "pnpm lint"
   },
   "dependencies": {
