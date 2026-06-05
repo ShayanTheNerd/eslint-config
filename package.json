@@ -71,11 +71,8 @@
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
-    "**/*.{js,ts}": "pnpm lint",
-    "**/*.{json,jsonc,yaml,yml}": "pnpm format",
-    "eslint.config.ts": "pnpm lint",
-    "package.json": "pnpm lint:eslint",
-    "prettier.config.ts": "pnpm format"
+    "**/*.{json,jsonc,yaml}": "pnpm format",
+    "{**/*.ts,package.json}": "pnpm lint"
   },
   "dependencies": {
     "@eslint/css": "1.3.0",
