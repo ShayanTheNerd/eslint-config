@@ -13,20 +13,17 @@ const restrictedExportsFolders = [
 ] as const;
 
 const globs = {
-  css: '**/*.css',
-  html: '**/*.html',
-  ts: '**/*.?([mc])ts?(x)',
   src: `**/*.${srcExtensions}`,
-  packageJson: '**/package.json',
-  markdown: '**/*.md',
-
   restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
 
+  packageJson: '**/package.json',
+  markdown: '**/*.md',
+  html: '**/*.html',
+  css: '**/*.css',
+  astro: '**/*.astro',
   vue: `**/*.${vueExtensions}`,
   vueServerComponents: `**/*.server.${vueExtensions}`,
   vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
-
-  astro: '**/*.astro',
 
   storybook: `**/*.(story|stories).${srcExtensions}`,
   test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,

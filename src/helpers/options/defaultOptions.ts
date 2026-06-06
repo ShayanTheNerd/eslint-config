@@ -2,19 +2,14 @@ import type { Options } from '#types/index.d.ts';
 
 const defaultOptions = {
   autoDetectDeps: true,
-  gitignore: '.gitignore',
   env: 'node',
+  gitignore: '.gitignore',
   packageDir: '.',
   tsConfig: false,
 
   global: {
     basePath: '.',
     ignores: [],
-    linterOptions: {
-      noInlineConfig: false,
-      reportUnusedInlineConfigs: 'warn',
-      reportUnusedDisableDirectives: 'warn',
-    },
     globals: {
       worker: true,
       commonjs: false,
@@ -32,26 +27,63 @@ const defaultOptions = {
       astro: true,
       custom: {},
     },
-    settings: {},
+    linterOptions: {
+      noInlineConfig: false,
+      reportUnusedInlineConfigs: 'warn',
+      reportUnusedDisableDirectives: 'warn',
+    },
     rules: {},
+    settings: {},
   },
 
   configs: {
-    packageJson: {
+    astro: {
       overrides: {},
     },
-    markdown: {
-      language: 'gfm',
-      frontmatter: 'yaml',
-      allowedHtmlTags: [],
-      overrides: {},
-    },
-    oxlint: '.oxlintrc.json',
     base: {
       functionStyle: 'declaration',
       maxDepth: 3,
       maxNestedCallbacks: 3,
       preferNamedExports: true,
+      overrides: {},
+    },
+    css: {
+      allowedRelativeFontUnits: ['rem', 'em'],
+      useBaseline: false,
+      overrides: {},
+    },
+    html: {
+      idNamingConvention: 'snake_case',
+      useBaseline: false,
+      overrides: {},
+    },
+    importX: {
+      overrides: {},
+    },
+    markdown: {
+      allowedHtmlTags: [],
+      frontmatter: 'yaml',
+      language: 'gfm',
+      overrides: {},
+    },
+    nuxt: {
+      icon: {
+        component: 'Icon',
+      },
+      image: false,
+      ui: {
+        prefix: 'U',
+      },
+    },
+    oxlint: '.oxlintrc.json',
+    packageJson: {
+      overrides: {},
+    },
+    perfectionist: {
+      sortType: 'line-length',
+      overrides: {},
+    },
+    promise: {
       overrides: {},
     },
     stylistic: {
@@ -68,42 +100,35 @@ const defaultOptions = {
       trailingComma: 'always-multiline',
       overrides: {},
     },
-    html: {
-      idNamingConvention: 'snake_case',
-      useBaseline: false,
-      overrides: {},
-    },
-    css: {
-      allowedRelativeFontUnits: ['rem', 'em'],
-      useBaseline: false,
-      overrides: {},
-    },
     tailwind: {
       config: '',
+      cwd: undefined,
       entryPoint: '',
       ignoredUnknownClasses: [],
       multilineSort: true,
       overrides: {},
+    },
+    test: {
+      maxNestedDescribe: 1,
+      testFunction: 'test',
+      cypress: {
+        overrides: {},
+      },
+      playwright: {
+        overrides: {},
+      },
+      storybook: {
+        overrides: {},
+      },
+      vitest: {
+        overrides: {},
+      },
     },
     typescript: {
       allowedDefaultProjects: [],
       methodSignatureStyle: 'method',
       removeUnusedImports: true,
       typeDefinitionStyle: 'interface',
-      overrides: {},
-    },
-    promise: {
-      overrides: {},
-    },
-    importX: {
-      overrides: {},
-    },
-    perfectionist: {
-      sortType: 'line-length',
-      overrides: {},
-    },
-    zod: {
-      mini: false,
       overrides: {},
     },
     vue: {
@@ -165,33 +190,9 @@ const defaultOptions = {
       // vOnHandlerStyle: ['method', 'inline-function'], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
       overrides: {},
     },
-    nuxt: {
-      icon: {
-        component: 'Icon',
-      },
-      image: false,
-      ui: {
-        prefix: 'U',
-      },
-    },
-    astro: {
+    zod: {
+      mini: false,
       overrides: {},
-    },
-    test: {
-      maxNestedDescribe: 1,
-      testFunction: 'test',
-      cypress: {
-        overrides: {},
-      },
-      playwright: {
-        overrides: {},
-      },
-      storybook: {
-        overrides: {},
-      },
-      vitest: {
-        overrides: {},
-      },
     },
   },
 } satisfies Options;
