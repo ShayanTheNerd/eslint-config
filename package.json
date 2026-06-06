@@ -51,8 +51,9 @@
     "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
     "git:gitmessage": "git config --local commit.template \".gitmessage\"",
     "update:actions": "actions-up --yes",
+    "update:deps": "pnpm update --latest --interactive && pnpm generate:types",
     "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
-    "inspect": "eslint-config-inspector",
+    "inspect": "pnpm build:package && eslint-config-inspector",
     "build:inspector": "eslint-config-inspector build --config=./scripts/configs/eslint.config.reference.ts --outDir=./netlify/eslint-config-inspector",
     "preview:inspector": "serve ./netlify/eslint-config-inspector",
     "generate:types": "node ./scripts/generateEslintTypes.ts",
@@ -61,7 +62,7 @@
     "build:package": "tsdown",
     "watch:package": "tsdown --watch --publint=false",
     "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
-    "format": "prettier --write '**/*.{json,jsonc,yaml,yml}' --cache",
+    "format": "prettier --write '**/*.{json,jsonc,yaml}' --cache",
     "lint": "pnpm lint:oxlint && pnpm lint:eslint",
     "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "lint:oxlint": "oxlint --fix",
@@ -125,8 +126,8 @@
     "unplugin-unused": "0.5.7"
   },
   "peerDependencies": {
-    "eslint": "^10.0.0",
-    "oxlint": "^1.50.0"
+    "eslint": "^10.4.0",
+    "oxlint": "^1.68.0"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0"
