@@ -41,18 +41,20 @@ const startMarker = '<!-- START_AUTO-GENERATED_API_REFERENCE -->' as const;
 const endMarker = '<!-- END_AUTO-GENERATED_API_REFERENCE -->' as const;
 const markerContentRegex = new RegExp(`${startMarker}.*?${endMarker}`, 's');
 const readmePath = path.resolve('README.md');
+const styledReadmeFile = styleText('blue', 'README.md');
 
 let readmeContent = await fs.readFile(readmePath, 'utf8');
 
 const readmeContentHasMarkers = markerContentRegex.test(readmeContent);
 if (readmeContentHasMarkers) {
   readmeContent = readmeContent.replace(markerContentRegex, `${startMarker}${codeBlock}  ${endMarker}`);
+  console.info(`${styleText('green', '✔')} Updated the API Reference section in "${styledReadmeFile}".`);
 } else {
-  const errorMessage = styleText('red', 'Markers for the auto-generated API reference not found');
+  const errorMessage = styleText('red', 'Markers not found!');
   const markersStructure = styleText('bgBlack', `${startMarker}\n...\n${endMarker}`);
-  const styledReadmePath = styleText('blue', readmePath);
-  throw new Error(`${errorMessage}\nEnsure the markers are present in "${styledReadmePath}":\n${markersStructure}`);
+  throw new Error(
+    `${errorMessage}\nMake sure the markers are present in the API Reference section of "${styledReadmeFile}":\n${markersStructure}`,
+  );
 }
 
 await fs.writeFile(readmePath, readmeContent, 'utf8');
-console.info(`${styleText('green', '✔')} API Reference updated in README.md.`);
