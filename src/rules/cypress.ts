@@ -10,7 +10,6 @@ const cypressRules = {
   'cypress/no-force': 'error',
   'cypress/no-pause': 'error',
   'cypress/no-unnecessary-waiting': 'error',
-  'cypress/no-xpath': 'error',
   'cypress/unsafe-to-chain-command': 'error',
 } satisfies PluginRules<'cypress'>;
 
