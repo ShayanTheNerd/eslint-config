@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintPluginCSS from '@eslint/css';
 import { mergeConfigs } from 'eslint-flat-config-utils';
@@ -29,9 +29,9 @@ function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
     languageOptions: {
       tolerant: true,
       customSyntax: isEnabled(tailwind) ? tailwindSyntax : undefined,
-    } as Linter.LanguageOptions,
+    },
     rules: getCSSRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incompatible types */
   return mergeConfigs(cssConfig, overrides);

@@ -1,7 +1,9 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-interface StylisticOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'@stylistic'>;
+
+interface StylisticOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Add parentheses around arrow function parameters.
    *
@@ -25,6 +27,7 @@ interface StylisticOptions extends ConfigWithOverrides {
    * - [@stylistic/indent-binary-ops](https://eslint.style/rules/indent-binary-ops)
    * - [perfectionist/sort-imports: `maxLineLength` option](https://perfectionist.dev/rules/sort-imports#maxlinelength)
    * - [better-tailwindcss/enforce-consistent-line-wrapping: `indent` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md#indent)
+   * - [better-tailwindcss/enforce-consistent-line-wrapping: `tabWidth` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-consistent-line-wrapping.md#tabwidth)
    *
    * @default 2
   */

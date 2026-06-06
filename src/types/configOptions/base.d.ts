@@ -1,10 +1,10 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { CoreRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 type MaxDepthOptions = RuleOptions<'max-depth'>;
 type MaxNestedCallbacksOptions = RuleOptions<'max-nested-callbacks'>;
 
-interface BaseOptions extends ConfigWithOverrides {
+interface BaseOptions extends ConfigWithOverrides<CoreRules> {
   /**
    * Enforce the consistent use of either function declarations or function expressions.
    *

@@ -1,4 +1,4 @@
-import type { ConfigObject } from '#types/index.d.ts';
+import type { Linter } from 'eslint';
 import type { PluginRules } from '#types/eslintRules.d.ts';
 
 import { globs } from '#helpers/globs.ts';
@@ -12,7 +12,7 @@ function getVueComponentNamesConfig() {
       'vue/multi-word-component-names': 'off',
       'vue/component-definition-name-casing': 'off',
     } satisfies PluginRules<'vue'>,
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   return vueComponentNamesConfig;
 }

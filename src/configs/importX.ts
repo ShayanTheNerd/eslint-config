@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginImportX from 'eslint-plugin-import-x';
@@ -18,14 +18,14 @@ function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
   const { overrides } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
   const importXConfig = {
-    name: 'shayanthenerd/imports',
+    name: 'shayanthenerd/import-x',
     files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
     plugins: {
       'import-x': eslintPluginImportX,
     },
     settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : undefined,
     rules: getImportXRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incompatible types */
   return mergeConfigs(importXConfig, overrides);

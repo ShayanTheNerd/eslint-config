@@ -1,7 +1,9 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-interface CSSOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'css'>;
+
+interface CSSOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * An array of relative font units that are allowed to be used.
    *

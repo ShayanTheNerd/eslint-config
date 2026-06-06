@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintPluginVue from 'eslint-plugin-vue';
 import typescriptESLint from 'typescript-eslint';
@@ -75,7 +75,7 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
 
       'vue/define-props-destructuring': isEnabled(vue) ? vueRules['vue/define-props-destructuring'] : 'off',
     },
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   return oxlintOverridesConfig;
 }

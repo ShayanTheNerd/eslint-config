@@ -1,7 +1,29 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-interface MarkdownOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'markdown'>;
+
+interface MarkdownOptions extends ConfigWithOverrides<ConfigRules> {
+  /**
+   * List of HTML tags that are allowed in Markdown files.
+   *
+   * New items extend the defaults instead of overriding them.
+   *
+   * @default ['u', 'br', 'rp', 'rt', 'kbd', 'sub', 'sup', 'mark', 'ruby', 'small', 'details', 'summary']
+   *
+   * @see [markdown/no-html: `allowed` option](https://github.com/eslint/markdown/blob/main/docs/rules/no-html.md#options)
+   */
+  allowedHtmlTags?: RuleOptions<'markdown/no-html'>['allowed'],
+
+  /**
+   * Enable support for frontmatter in Markdown files.
+   *
+   * @default 'yaml'
+   *
+   * @see [@eslint/markdown: `languageOptions.frontmatter` option](https://github.com/eslint/markdown#enabling-front-matter-in-both-commonmark-and-gfm)
+   */
+  frontmatter?: false | 'json' | 'toml' | 'yaml',
+
   /**
    * Specify the Markdown flavor. (GFM: GitHub-Flavored Markdown)
    *
@@ -17,26 +39,6 @@ interface MarkdownOptions extends ConfigWithOverrides {
    * @see [@eslint/markdown: `language` option](https://github.com/eslint/markdown#languages)
    */
   language?: 'gfm' | 'commonmark',
-
-  /**
-   * Enable support for frontmatter in Markdown files.
-   *
-   * @default 'yaml'
-   *
-   * @see [@eslint/markdown: `languageOptions.frontmatter` option](https://github.com/eslint/markdown#enabling-front-matter-in-both-commonmark-and-gfm)
-   */
-  frontmatter?: false | 'json' | 'toml' | 'yaml',
-
-  /**
-   * List of HTML tags that are allowed in Markdown files.
-   *
-   * New items extend the defaults instead of overriding them.
-   *
-   * @default ['u', 'br', 'rp', 'rt', 'kbd', 'sub', 'sup', 'mark', 'ruby', 'small', 'details', 'summary']
-   *
-   * @see [markdown/no-html: `allowed` option](https://github.com/eslint/markdown/blob/main/docs/rules/no-html.md#options)
-   */
-  allowedHtmlTags?: RuleOptions<'markdown/no-html'>['allowed'],
 }
 
 export type { MarkdownOptions };

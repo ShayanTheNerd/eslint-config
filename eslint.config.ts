@@ -11,12 +11,5 @@ export default defineConfig(
         '@typescript-eslint/no-unsafe-type-assertion': 'off',
       },
     },
-    {
-      name: 'src/rules/disables',
-      files: ['./src/rules/*.ts'],
-      rules: {
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-      },
-    },
   ],
 );

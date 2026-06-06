@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginStorybook from 'eslint-plugin-storybook';
@@ -21,10 +21,11 @@ function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig 
     name: 'shayanthenerd/storybook',
     files: [globs.storybook],
     plugins: {
+      /* @ts-expect-errors — Incompatible types */
       storybook: eslintPluginStorybook,
     },
     rules: getStorybookRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(storybookConfig, overrides);

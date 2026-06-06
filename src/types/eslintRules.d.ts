@@ -17,8 +17,4 @@ type RuleOptions<RuleName extends RuleNames, Index extends (0 | 1 | 2) = 0> = No
   RuleConfigs<RuleName>[Index]
 >;
 
-export type {
-  CoreRules,
-  PluginRules,
-  RuleOptions,
-};
+export type { CoreRules, PluginRules, RuleOptions };

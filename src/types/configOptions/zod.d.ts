@@ -1,10 +1,11 @@
+import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
 
-interface ZodOptions extends ConfigWithOverrides {
+interface BaseZodOptions {
   /**
    * Whether to opt into [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) when using Zod Mini (`zod/mini`).
    *
-  * _eslint-plugin-zod-mini_ enforces a subset of _eslint-plugin-zod_ rules, which are available under the `zod-mini` namespace.
+   * _eslint-plugin-zod-mini_ enforces a subset of _eslint-plugin-zod_ rules, which are available under the `zod-mini` namespace.
    *
    * @default false
    *
@@ -12,5 +13,12 @@ interface ZodOptions extends ConfigWithOverrides {
    */
   mini?: boolean,
 }
+
+type ConfigRulesZod = PluginRules<'zod'>;
+type ConfigRulesZodMini = PluginRules<'zod-mini'>;
+
+type ZodOptions =
+  | (BaseZodOptions & { mini?: true } & ConfigWithOverrides<ConfigRulesZodMini>)
+  | (BaseZodOptions & ConfigWithOverrides<ConfigRulesZod> & ({ mini?: false } | { mini?: undefined }));
 
 export type { ZodOptions };

@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import { parser as eslintParserTypeScript, plugin as eslintPluginTypeScript } from 'typescript-eslint';
@@ -37,7 +37,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfi
       },
     },
     rules: getTypeScriptRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incompatible types */
   return mergeConfigs(typescriptConfig, overrides);

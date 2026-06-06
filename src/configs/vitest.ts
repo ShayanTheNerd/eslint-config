@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintPluginVitest from '@vitest/eslint-plugin';
 import { mergeConfigs } from 'eslint-flat-config-utils';
@@ -24,7 +24,7 @@ function getVitestConfig(options: DeepNonNullable<Options>): VitestConfig {
       vitest: eslintPluginVitest,
     },
     rules: getVitestRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(vitestConfig, overrides);

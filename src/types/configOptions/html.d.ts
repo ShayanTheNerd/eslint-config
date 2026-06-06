@@ -1,7 +1,9 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-interface HTMLOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'@html-eslint'>;
+
+interface HTMLOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Enforce consistent naming convention for `id` attribute values.
    *

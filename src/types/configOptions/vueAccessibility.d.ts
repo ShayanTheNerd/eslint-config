@@ -6,7 +6,7 @@ interface VueAccessibilityOptions {
   /**
    * Names of components that should be considered accessible child elements.
    *
-   * New items extend the defaults, they don't override it.
+   * New items extend the defaults instead of overriding them.
    *
    * @default ['img', 'picture', 'NuxtImg', 'NuxtPicture', 'UBadge']
    *
@@ -17,7 +17,7 @@ interface VueAccessibilityOptions {
   /**
    * Names of components that render an `<a>` element.
    *
-   * New items extend the defaults, they don't override it.
+   * New items extend the defaults instead of overriding them.
    *
    * @default ['RouterLink', 'NuxtLink', 'ULink']
    *
@@ -28,7 +28,7 @@ interface VueAccessibilityOptions {
   /**
    * Names of components that render an `<img>` element.
    *
-   * New items extend the defaults, they don't override it.
+   * New items extend the defaults instead of overriding them.
    *
    * @default ['NuxtImg']
    *

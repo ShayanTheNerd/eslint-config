@@ -1,4 +1,4 @@
-import type { ConfigObject } from '#types/index.d.ts';
+import type { Linter } from 'eslint';
 import type { CoreRules } from '#types/eslintRules.d.ts';
 
 import { globs } from '#helpers/globs.ts';
@@ -17,7 +17,7 @@ function getRestrictedExports() {
         },
       }],
     } satisfies Pick<CoreRules, 'no-restricted-exports'>,
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   return restrictedExportsConfig;
 }

@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintPluginAstro from 'eslint-plugin-astro';
 import { mergeConfigs } from 'eslint-flat-config-utils';
@@ -37,7 +37,7 @@ function getAstroConfig(options: DeepNonNullable<Options>): AstroConfig {
       },
     },
     rules: getAstroRules(),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(astroConfig, overrides);

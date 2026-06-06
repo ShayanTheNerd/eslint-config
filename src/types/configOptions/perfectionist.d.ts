@@ -1,9 +1,11 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 type SortTypeOptions = RuleOptions<'perfectionist/sort-imports'>['type'];
 
-interface PerfectionistOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'perfectionist'>;
+
+interface PerfectionistOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * The type of sorting.
    *

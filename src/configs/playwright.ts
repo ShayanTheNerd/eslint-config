@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
-import type { FlatConfig } from 'typescript-eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginPlaywright from 'eslint-plugin-playwright';
@@ -25,10 +24,10 @@ function getPlaywrightConfig(options: DeepNonNullable<Options>): PlaywrightConfi
       playwright: eslintPluginPlaywright,
     },
     languageOptions: {
-      globals: eslintPluginPlaywright.configs['flat/recommended'].languageOptions?.globals as FlatConfig.GlobalsConfig,
+      globals: eslintPluginPlaywright.configs['flat/recommended'].languageOptions?.globals,
     },
     rules: getPlaywrightRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(playwrightConfig, overrides);

@@ -1,6 +1,5 @@
 import type { Linter } from 'eslint';
-import type { ConfigWithExtends } from 'typescript-eslint';
-import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { CSSOptions } from '#types/configOptions/css.d.ts';
 import type { VueOptions } from '#types/configOptions/vue.d.ts';
 import type { ZodOptions } from '#types/configOptions/zod.d.ts';
@@ -14,26 +13,19 @@ import type { StylisticOptions } from '#types/configOptions/stylistic.d.ts';
 import type { TypeScriptOptions } from '#types/configOptions/typescript.d.ts';
 import type { PerfectionistOptions } from '#types/configOptions/perfectionist.d.ts';
 
-type ConfigObject = ConfigWithExtends & { rules?: Linter.RulesRecord };
+type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
-type ConfigOverrides = Pick<ConfigObject, 'name' | 'files' | 'rules' | 'ignores' | 'plugins' | 'settings'>;
-
-interface ConfigWithOverrides {
+interface ConfigWithOverrides<ConfigRules extends Linter.RulesRecord> {
   /**
-   * Override the configuration.
+   * Override the current configuration object.
    *
-   * The properties of this object are merged with and take precedence over the default configuration.
-   *
-   * There is no guarantee that the resulting configuration works correctly — it depends on the options you provide.
+   * The properties of this object are merged with and take precedence over the properties of the default configuration object.
    *
    * @see [eslint-flat-config-utils: `mergeConfigs`](https://jsr.io/@antfu/eslint-flat-config-utils/doc/~/mergeConfigs)
    */
   overrides?: ConfigOverrides & {
-    rules?: Linter.RulesRecord,
-    languageOptions?: {
-      parser?: DeepNonNullable<ConfigObject>['languageOptions']['parser'],
-      globals?: DeepNonNullable<ConfigObject>['languageOptions']['globals'],
-    },
+    /** The rules to override in the current configuration object. */
+    rules?: ConfigRules,
   },
 }
 
@@ -259,7 +251,7 @@ interface Options {
      *
      * @see [ESLint Configuration: Shared Settings](https://eslint.org/docs/latest/use/configure/configuration-files#configuring-shared-settings)
     */
-    settings?: ConfigObject['settings'],
+    settings?: Linter.Config['settings'],
 
     /**
      * The available rules.
@@ -314,14 +306,14 @@ interface Options {
      *
      * @default true
      */
-    promise?: boolean | ConfigWithOverrides,
+    promise?: boolean | ConfigWithOverrides<PluginRules<'promise'>>,
 
     /**
      * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
      *
      * @default true
      */
-    importX?: boolean | ConfigWithOverrides,
+    importX?: boolean | ConfigWithOverrides<PluginRules<'import-x'>>,
 
     /**
      * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.
@@ -342,7 +334,7 @@ interface Options {
      *
      * @default true
      */
-    packageJson?: boolean | ConfigWithOverrides,
+    packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>>,
 
     /**
      * Use [@eslint/markdown](https://github.com/eslint/markdown) to enforce best practices for Markdown files.
@@ -384,7 +376,7 @@ interface Options {
      *
      * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
      */
-    astro?: boolean | ConfigWithOverrides,
+    astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
 
     /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
@@ -411,4 +403,4 @@ interface Options {
   },
 }
 
-export type { Options, ConfigObject, ConfigWithOverrides };
+export type { Options, ConfigWithOverrides };

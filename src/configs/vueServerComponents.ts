@@ -1,4 +1,4 @@
-import type { ConfigObject } from '#types/index.d.ts';
+import type { Linter } from 'eslint';
 import type { PluginRules } from '#types/eslintRules.d.ts';
 
 import { globs } from '#helpers/globs.ts';
@@ -10,7 +10,7 @@ function getVueServerComponentsConfig() {
     rules: {
       'vue/no-multiple-template-root': 'error',
     } satisfies Pick<PluginRules<'vue'>, 'vue/no-multiple-template-root'>,
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   return vueServerComponentsConfig;
 }

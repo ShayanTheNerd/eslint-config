@@ -1,6 +1,7 @@
 import type { Linter } from 'eslint';
+import type { ConfigWithExtends } from 'typescript-eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import eslintPluginVue from 'eslint-plugin-vue';
 import { mergeConfigs } from 'eslint-flat-config-utils';
@@ -15,7 +16,7 @@ import { getVueAccessibilityRules } from '#rules/vueAccessibility.ts';
 
 const vueSetupConfig = eslintPluginVue.configs['flat/recommended'].find((config) => {
   return config.name === 'vue/base/setup-for-vue';
-}) as ConfigObject;
+}) as ConfigWithExtends;
 vueSetupConfig.name = 'setup';
 
 type VueRules = ReturnType<typeof getVueRules>;
@@ -50,7 +51,7 @@ function getVueConfig(options: DeepNonNullable<Options>): VueConfig {
       ...getVueRules(options),
       ...(accessibility && getVueAccessibilityRules(options)),
     },
-  } satisfies ConfigObject;
+  } satisfies ConfigWithExtends;
 
   /* @ts-expect-error — Incompatible types */
   return mergeConfigs(vueConfig, overrides);

@@ -1,5 +1,5 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 import type { VueAccessibilityOptions } from '#types/configOptions/vueAccessibility.d.ts';
 
 interface BlockLang {
@@ -29,7 +29,9 @@ type SFCBlock =
 
 type VBindStyleSameNameShorthandOptions = RuleOptions<'vue/v-bind-style', 1>['sameNameShorthand'];
 
-interface VueOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'vue'> & PluginRules<'vuejs-accessibility'>;
+
+interface VueOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Use [eslint-plugin-vuejs-accessibility](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility) to enforce accessibility standards in SFCs.
    *
@@ -139,7 +141,7 @@ interface VueOptions extends ConfigWithOverrides {
    *
    * This is useful for ignoring components that are globally registered or defined in a way that ESLint cannot detect.
    *
-   * New items extend the defaults, they don't override it.
+   * New items extend the defaults instead of overriding them.
    *
    * @default
    * [

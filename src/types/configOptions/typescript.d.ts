@@ -1,13 +1,15 @@
-import type { RuleOptions } from '#types/eslintRules.d.ts';
 import type { ConfigWithOverrides } from '#types/index.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-interface TypeScriptOptions extends ConfigWithOverrides {
+type ConfigRules = PluginRules<'@typescript-eslint'>;
+
+interface TypeScriptOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Globs of files to allow running with the default project compiler options despite not being matched by the project service (_tsconfig.json_).
    *
    * The matched files may not also be included in their nearest _tsconfig.json_ file.
    *
-   * New items extend the defaults, they don't override it.
+   * New items extend the defaults instead of overriding them.
    *
    * @default ['{prettier,eslint}.config.?([mc])ts']
    *

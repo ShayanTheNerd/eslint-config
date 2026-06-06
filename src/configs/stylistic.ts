@@ -1,6 +1,6 @@
 import type { Linter } from 'eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginStylistic from '@stylistic/eslint-plugin';
@@ -24,7 +24,7 @@ function getStylisticConfig(options: DeepNonNullable<Options>): StylisticConfig 
       '@stylistic': eslintPluginStylistic,
     },
     rules: getStylisticRules(options),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incompatible types */
   return mergeConfigs(stylisticConfig, overrides);

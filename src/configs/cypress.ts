@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
-import type { FlatConfig } from 'typescript-eslint';
+import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { Options, ConfigObject } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginCypress from 'eslint-plugin-cypress';
@@ -25,10 +24,10 @@ function getCypressConfig(options: DeepNonNullable<Options>): CypressConfig {
       cypress: eslintPluginCypress,
     },
     languageOptions: {
-      globals: eslintPluginCypress.configs.recommended.languageOptions?.globals as FlatConfig.GlobalsConfig,
+      globals: eslintPluginCypress.configs.recommended.languageOptions?.globals,
     },
     rules: getCypressRules(),
-  } satisfies ConfigObject;
+  } satisfies Linter.Config;
 
   /* @ts-expect-error — Incorrect type inference */
   return mergeConfigs(cypressConfig, overrides);

@@ -1,5 +1,5 @@
 import type { Linter } from 'eslint';
-import type { Options, ConfigObject } from '#types/index.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import eslintPluginOXLint from 'eslint-plugin-oxlint';
 import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
@@ -36,8 +36,8 @@ import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 type DefineConfigArguments =
   | []
   | [options: Options]
-  | [configs: ConfigObject[]]
-  | [options: Options, configs: ConfigObject[]];
+  | [configs: Linter.Config[]]
+  | [options: Options, configs: Linter.Config[]];
 
 /**
  * Define your ESLint configuration based on the provided options and/or custom Flat Config Objects.
@@ -75,7 +75,7 @@ type DefineConfigArguments =
  */
 function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   let options: Options = {};
-  let configs: ConfigObject[] = [];
+  let configs: Linter.Config[] = [];
 
   /* Destructuing here instead of within the function signature allows for better alignment with `args` in JSDoc. */
   const [firstArgument, secondArgument] = args;
