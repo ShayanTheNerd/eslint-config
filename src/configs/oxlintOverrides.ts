@@ -62,6 +62,9 @@ function getOXLintOverridesConfig(options: DeepNonNullable<Options>): Linter.Con
       '@typescript-eslint/method-signature-style': isEnabled(typescript)
         ? typescriptRules['@typescript-eslint/method-signature-style']
         : 'off',
+      '@typescript-eslint/no-unused-vars': isEnabled(typescript)
+        ? typescriptRules['@typescript-eslint/no-unused-vars']
+        : 'off',
 
       'playwright/max-nested-describe': isEnabled(playwright)
         ? playwrightRules['playwright/max-nested-describe']

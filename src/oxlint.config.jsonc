@@ -45,7 +45,7 @@
     "eslint/no-sequences": ["error", { "allowInParentheses": false }],
     "eslint/no-ternary": "off",
     "eslint/no-undefined": "off",
-    "eslint/no-unused-vars": ["error", { "ignoreUsingDeclarations": true }],
+    "eslint/no-unused-vars": "off",
     "eslint/prefer-arrow-callback": ["warn", { "allowUnboundThis": true }],
     "eslint/prefer-destructuring": ["warn", { "array": false }],
     "eslint/prefer-regex-literals": ["warn", { "disallowRedundantWrapping": true }],
