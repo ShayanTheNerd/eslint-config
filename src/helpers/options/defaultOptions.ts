@@ -75,7 +75,6 @@ const defaultOptions = {
         prefix: 'U',
       },
     },
-    oxlint: '.oxlintrc.json',
     packageJson: {
       overrides: {},
     },

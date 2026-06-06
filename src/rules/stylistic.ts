@@ -84,7 +84,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
       allowInterfaceStart: true,
       afterHashbangComment: true,
       applyDefaultIgnorePatterns: false,
-      ignorePattern: '@ts|eslint|oxlint',
+      ignorePattern: '@ts|eslint',
     }],
     '@stylistic/max-len': ['warn', {
       tabWidth: indent,

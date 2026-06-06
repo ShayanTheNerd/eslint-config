@@ -269,19 +269,6 @@ interface Options {
    */
   configs?: {
     /**
-     * Use [eslint-plugin-oxlint](https://github.com/oxc-project/eslint-plugin-oxlint) to disable rules that are already handled by OXLint.
-     *
-     * Provide the path to your OXLint configuration file (relative to the current working directory) or set to `false` to disable it.
-     *
-     * Enabling OXLint improves performance and feedback loops.
-     *
-     * It will fall back to the default value if set to an empty string (`''`).
-     *
-     * @default '.oxlintrc.json'
-     */
-    oxlint?: false | string,
-
-    /**
      * Customize some of the JavaScript (core) rules.
      *
      * JavaScript rules cannot be turned off.

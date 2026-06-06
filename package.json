@@ -8,9 +8,7 @@
     "eslint-config",
     "eslint-flat-config",
     "eslint-config-vue",
-    "eslint-config-typescript",
-    "oxlint",
-    "oxlint-config"
+    "eslint-config-typescript"
   ],
   "homepage": "https://eslintconfig.netlify.app",
   "bugs": {
@@ -37,7 +35,6 @@
   },
   "exports": {
     ".": "./dist/index.mjs",
-    "./oxlint": "./dist/oxlint.config.jsonc",
     "./package.json": "./package.json",
     "./prettier": "./dist/prettier.config.mjs",
     "./types/*": "./dist/types/*"
@@ -61,11 +58,9 @@
     "check:types": "tsc",
     "build:package": "tsdown",
     "watch:package": "tsdown --watch --publint=false",
-    "check:exports": "attw --pack --profile=esm-only --exclude-entrypoints=./oxlint",
+    "check:exports": "attw --pack --profile=esm-only",
     "format": "prettier --write '**/*.{json,jsonc,yaml}' --cache",
-    "lint": "pnpm lint:oxlint && pnpm lint:eslint",
-    "lint:eslint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
-    "lint:oxlint": "oxlint --fix",
+    "lint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
   "simple-git-hooks": {
@@ -92,7 +87,6 @@
     "eslint-plugin-cypress": "6.4.1",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-oxlint": "1.68.0",
     "eslint-plugin-package-json": "1.3.0",
     "eslint-plugin-perfectionist": "5.9.0",
     "eslint-plugin-playwright": "2.10.4",
@@ -115,7 +109,6 @@
     "eslint-plugin-zod-mini": "1.4.0",
     "eslint-typegen": "2.3.1",
     "nano-staged": "1.0.2",
-    "oxlint": "1.68.0",
     "prettier": "3.8.3",
     "publint": "0.3.21",
     "serve": "14.2.6",
@@ -126,8 +119,7 @@
     "unplugin-unused": "0.5.7"
   },
   "peerDependencies": {
-    "eslint": "^10.4.0",
-    "oxlint": "^1.68.0"
+    "eslint": "^10.4.0"
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0"

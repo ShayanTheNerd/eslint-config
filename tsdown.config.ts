@@ -5,7 +5,6 @@ import { syncJsrExports } from './scripts/syncJsrExports.ts';
 export default defineConfig({
   unbundle: true,
   entry: ['./src/index.ts', './src/prettier.config.ts'],
-  copy: ['./src/oxlint.config.jsonc'],
   deps: {
     neverBundle: ['prettier'],
     skipNodeModulesBundle: true,
@@ -13,7 +12,6 @@ export default defineConfig({
   exports: {
     customExports(packageExports) {
       packageExports['./types/*'] = './dist/types/*';
-      packageExports['./oxlint'] = './dist/oxlint.config.jsonc';
       packageExports['./prettier'] = './dist/prettier.config.mjs';
       delete packageExports['./prettier.config'];
 

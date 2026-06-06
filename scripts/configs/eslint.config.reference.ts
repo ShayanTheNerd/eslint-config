@@ -5,7 +5,6 @@ import { defineConfig } from '../../src/index.ts';
 const config: Linter.Config[] = defineConfig({
   autoDetectDeps: false,
   configs: {
-    oxlint: 'src/oxlint.config.jsonc',
     typescript: true,
     promise: true,
     importX: true,

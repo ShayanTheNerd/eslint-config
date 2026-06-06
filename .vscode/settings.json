@@ -5,7 +5,6 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "oxc.lint.run": "onSave",
   "eslint.run": "onSave",
   "eslint.format.enable": true,
   "eslint.validate": ["javascript", "typescript", "json", "markdown"],
@@ -14,7 +13,6 @@
     "source.sortImports": "never",
     "source.organizeImports": "never",
     "source.removeUnusedImports": "never",
-    "source.fixAll.oxc": "explicit",
     "source.fixAll.eslint": "explicit"
   },
   "[markdown]": {
@@ -58,6 +56,6 @@
     "README.md": "LICENSE",
     ".gitignore": ".gitattributes, .gitmessage",
     "*.mjs": "$(capture).mjs.map, $(capture).d.mts",
-    "package.json": ".editorconfig, .oxlintrc.json, eslint.config.ts, jsr.json, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
+    "package.json": ".editorconfig, eslint.config.ts, jsr.json, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
   }
 }

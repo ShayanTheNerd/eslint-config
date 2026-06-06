@@ -1,9 +1,7 @@
 import type { Linter } from 'eslint';
 import type { Options } from '#types/index.d.ts';
 
-import eslintPluginOXLint from 'eslint-plugin-oxlint';
 import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
-import path from 'node:path';
 
 import { getCSSConfig } from '#configs/css.ts';
 import { getVueConfig } from '#configs/vue.ts';
@@ -24,9 +22,7 @@ import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedExports } from '#configs/restrictedExports.ts';
-import { getOXLintOverridesConfig } from '#configs/oxlintOverrides.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
@@ -103,7 +99,6 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       html,
       nuxt,
       astro,
-      oxlint,
       importX,
       promise,
       markdown,
@@ -123,14 +118,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       },
     },
   } = mergedOptions;
-
   const ignorePatterns = getIgnorePatterns({ gitignore, patterns: ignores });
-  const oxlintConfigPath = oxlint ? path.resolve(oxlint || defaultOptions.configs.oxlint) : '';
-  const oxlintOverrides = oxlint
-    ? eslintPluginOXLint
-      .buildFromOxlintConfigFile(oxlintConfigPath)
-      .filter((config) => config.name !== 'oxlint/vue-svelte-exceptions') // [TODO] Required?
-    : [];
 
   const configObjects = [
     {
@@ -165,13 +153,10 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(cypress) && getCypressConfig(mergedOptions),
     isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
 
-    ...oxlintOverrides,
-    oxlint && getOXLintOverridesConfig(mergedOptions),
-
     ...configs,
-  ].filter(Boolean) as Linter.Config[];
+  ].filter(Boolean);
 
-  const eslintConfig = defineESLintConfig(configObjects);
+  const eslintConfig = defineESLintConfig(configObjects as Linter.Config[]);
 
   return eslintConfig;
 }

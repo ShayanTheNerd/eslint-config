@@ -5,7 +5,6 @@
   "license": "MIT",
   "exports": {
     ".": "./dist/index.mjs",
-    "./oxlint": "./dist/oxlint.config.jsonc",
     "./package.json": "./package.json",
     "./prettier": "./dist/prettier.config.mjs",
     "./types/*": "./dist/types/*"
