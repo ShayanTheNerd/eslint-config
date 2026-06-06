@@ -5,8 +5,8 @@ node_modules
 src/types/eslint-schema.d.ts
 
 # Build outputs
-**/dist
-**/netlify
+dist
+netlify
 
 # Operating system and development environment
 **/.idea

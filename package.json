@@ -46,7 +46,7 @@
   "scripts": {
     "prepublishOnly": "pnpm build:package",
     "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
-    "git:gitmessage": "git config --local commit.template \".gitmessage\"",
+    "git:gitmessage": "git config --local commit.template '.gitmessage'",
     "update:actions": "actions-up --yes",
     "update:deps": "pnpm update --latest --interactive && pnpm generate:types",
     "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",

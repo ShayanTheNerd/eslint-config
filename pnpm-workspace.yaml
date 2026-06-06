@@ -4,7 +4,6 @@ savePrefix: ''
 shellEmulator: true
 
 allowBuilds:
-  '@shayanthenerd/eslint-config': true
   esbuild: true
   simple-git-hooks: true
   unrs-resolver: true
