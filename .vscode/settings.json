@@ -41,8 +41,9 @@
   "files.associations": {
     ".gitmessage": "git-commit"
   },
-  "[git-commit]": {
-    "editor.rulers": [50, 72]
+  "[git-commit][scminput]": {
+    "editor.rulers": [50, 72],
+    "editor.wordWrap": "off"
   },
 
   "workbench.editor.customLabels.patterns": {
