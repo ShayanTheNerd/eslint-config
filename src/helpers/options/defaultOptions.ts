@@ -7,7 +7,7 @@ const defaultOptions = {
   packageDir: '.',
   tsConfig: false,
 
-  global: {
+  project: {
     basePath: '.',
     ignores: [],
     globals: {

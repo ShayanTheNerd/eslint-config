@@ -23,7 +23,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
         overrides,
       },
     },
-    global: {
+    project: {
       globals: {
         bun,
         node,

@@ -118,13 +118,13 @@ interface Options {
     filename?: string,
   },
 
-  /*** Global ***/
+  /*** Project ***/
   /**
-   * Global configuration options applied to all files. Individual configurations will override these.
+   * Configuration options applied to all files. Individual configurations will override these.
    *
    * @default
    * {
-   *   name: 'shayanthenerd/eslint-config',
+   *   name: 'shayanthenerd/project',
    *   basePath: '.',
    *   linterOptions: {
    *     noInlineConfig: false,
@@ -138,7 +138,7 @@ interface Options {
    *   },
    * }
    */
-  global?: {
+  project?: {
     /**
      * A name for the configuration object. This is used in error messages and [config inspector](https://github.com/eslint/config-inspector) to help identify which configuration object is being used.
      *

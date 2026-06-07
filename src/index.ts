@@ -86,7 +86,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   const mergedOptions = mergeWithDefaults(options);
   const {
     gitignore,
-    global: {
+    project: {
       rules,
       ignores,
       settings,
@@ -122,7 +122,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
 
   const configObjects = [
     {
-      name: 'shayanthenerd/global',
+      name: 'shayanthenerd/project',
       rules,
       linterOptions,
       ...((Object.keys(settings).length > 0) && { settings }),
