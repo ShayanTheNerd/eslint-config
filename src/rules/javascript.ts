@@ -84,7 +84,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'complexity': 'warn',
     'consistent-return': 'error',
     'consistent-this': 'error',
-    'curly': ['warn', 'multi-line'],
+    'curly': 'warn',
     'default-case': 'warn',
     'default-case-last': 'warn',
     'default-param-last': 'warn',

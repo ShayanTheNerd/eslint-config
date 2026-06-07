@@ -11,5 +11,12 @@ export default defineConfig(
         '@typescript-eslint/no-unsafe-type-assertion': 'off',
       },
     },
+    {
+      name: 'src/disables/rules-configs',
+      files: ['./src/rules/*.ts', './src/configs/{restrictedExports,vueComponentNames,vueServerComponents}.ts'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': 'off',
+      },
+    },
   ],
 );
