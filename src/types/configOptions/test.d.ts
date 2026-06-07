@@ -28,6 +28,20 @@ interface TestOptions {
   testFunction?: RuleOptions<'vitest/consistent-test-it'>['fn'],
 
   /**
+   * Use [eslint-plugin-cypress](https://github.com/cypress-io/eslint-plugin-cypress) to enforce best practices and code styles for Cypress tests.
+   *
+   * @default false // `true` if "cypress" is detected in the dependencies when `autoDetectDeps` is enabled
+   */
+  cypress?: boolean | ConfigWithOverrides<CypressConfigRules>,
+
+  /**
+   * Use [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright) to enforce best practices and code styles for Playwright tests.
+   *
+   * @default false // `true` if "@playwright/test" is detected in the dependencies when `autoDetectDeps` is enabled
+  */
+  playwright?: boolean | ConfigWithOverrides<PlaywrightConfigRules>,
+
+  /**
    * Use [eslint-plugin-storybook](https://github.com/storybookjs/eslint-plugin-storybook) to enforce best practices and code styles for Storybook stories and tests.
    *
    * @default false // `true` if "storybook" is detected in the dependencies when `autoDetectDeps` is enabled
@@ -40,20 +54,6 @@ interface TestOptions {
    * @default false // `true` if "vitest" is detected in the dependencies when `autoDetectDeps` is enabled
   */
   vitest?: boolean | ConfigWithOverrides<VitestConfigRules>,
-
-  /**
-   * Use [eslint-plugin-playwright](https://github.com/playwright-community/eslint-plugin-playwright) to enforce best practices and code styles for Playwright tests.
-   *
-   * @default false // `true` if "@playwright/test" is detected in the dependencies when `autoDetectDeps` is enabled
-  */
-  playwright?: boolean | ConfigWithOverrides<PlaywrightConfigRules>,
-
-  /**
-   * Use [eslint-plugin-cypress](https://github.com/cypress-io/eslint-plugin-cypress) to enforce best practices and code styles for Cypress tests.
-   *
-   * @default false // `true` if "cypress" is detected in the dependencies when `autoDetectDeps` is enabled
-   */
-  cypress?: boolean | ConfigWithOverrides<CypressConfigRules>,
 }
 
 export type { TestOptions };

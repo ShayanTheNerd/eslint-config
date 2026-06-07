@@ -3,8 +3,8 @@ import { defineConfig } from 'tsdown';
 import { syncJsrExports } from './scripts/syncJsrExports.ts';
 
 export default defineConfig({
-  unbundle: true,
   entry: ['./src/index.ts', './src/prettier.config.ts'],
+  unbundle: true,
   deps: {
     neverBundle: ['prettier'],
     skipNodeModulesBundle: true,

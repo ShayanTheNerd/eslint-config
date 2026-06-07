@@ -62,7 +62,7 @@ const defaultIgnorePatterns = [
   '**/.history',
   '**/.DS_Store',
 
-  // Documentation
+  /* Documentation */
   '**/LICENSE*',
   '**/CHANGELOG*.md',
   '**/CODEOWNERS.md',

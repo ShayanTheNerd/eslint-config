@@ -43,6 +43,20 @@ interface Options {
   autoDetectDeps?: boolean | 'verbose',
 
   /**
+   * Specify the runtime environment to correctly resolve its built-in modules
+  *
+  * This is used by
+  *
+  * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
+  * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
+  *
+  * to recognize the environment’s built-in modules.
+  *
+  * @default 'node'
+  */
+  env?: 'bun' | 'deno' | 'node' | 'browser',
+
+  /**
    * Path to the _.gitignore_ file (relative to the current working directory).
    *
    * ESLint will ignore files and directories found in your _.gitignore_ file. Set to `false` to disable this behavior.
@@ -70,20 +84,6 @@ interface Options {
   packageDir?: string,
 
   /**
-   * Specify the runtime environment to correctly resolve its built-in modules
-  *
-  * This is used by
-  *
-  * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
-  * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
-  *
-  * to recognize the environment’s built-in modules.
-  *
-  * @default 'node'
-  */
-  env?: 'bun' | 'deno' | 'node' | 'browser',
-
-  /**
    * The path and the name of the root TypeScript config file.
    *
    * If you don't use TypeScript, provide the path and the name of the root JavaScript config file.
@@ -96,17 +96,6 @@ interface Options {
    */
   tsConfig?: false | {
     /**
-     * The directory of the root TypeScript config file.
-     *
-      * If you don't use TypeScript, provide the directory of the root JavaScript config file.
-     *
-     * It will fall back to the default value if set to an empty string (`''`).
-     *
-     * @default '.'
-     */
-    rootDir: string,
-
-    /**
      * The name of the root TypeScript config file.
      *
      * If you don't use TypeScript, provide the name of the root JavaScript config file.
@@ -116,6 +105,17 @@ interface Options {
      * @default 'tsconfig.json'
      */
     filename?: string,
+
+    /**
+     * The directory of the root TypeScript config file.
+     *
+      * If you don't use TypeScript, provide the directory of the root JavaScript config file.
+     *
+     * It will fall back to the default value if set to an empty string (`''`).
+     *
+     * @default '.'
+     */
+    rootDir: string,
   },
 
   /*** Project ***/
@@ -124,32 +124,21 @@ interface Options {
    *
    * @default
    * {
-   *   name: 'shayanthenerd/project',
    *   basePath: '.',
-   *   linterOptions: {
-   *     noInlineConfig: false,
-   *     reportUnusedInlineConfigs: 'warn',
-   *     reportUnusedDisableDirectives: 'warn'
-   *   }
    *   languageOptions: {
    *     parserOptions: {},
    *     sourceType: 'module',
    *     ecmaVersion: 'latest',
    *   },
+   *   linterOptions: {
+   *     noInlineConfig: false,
+   *     reportUnusedInlineConfigs: 'warn',
+   *     reportUnusedDisableDirectives: 'warn'
+   *   }
+   *   name: 'shayanthenerd/project',
    * }
    */
   project?: {
-    /**
-     * A name for the configuration object. This is used in error messages and [config inspector](https://github.com/eslint/config-inspector) to help identify which configuration object is being used.
-     *
-     * It will fall back to the default value if set to an empty string (`''`).
-     *
-     * @default 'shayanthenerd/eslint-config'
-     *
-     * @see [ESLint Configuration: Naming Conventions](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-naming-conventions)
-     */
-    name?: string,
-
     /**
      * The base path for resolving `files` and `ignores` patterns.
      *
@@ -164,53 +153,53 @@ interface Options {
     basePath?: string,
 
     /**
-     * Patterns that ESLint should ignore globally. These patterns are resolved relative to the current working directory.
-     *
-     * @see [ESLint Configuration: Globally Ignoring Files](https://eslint.org/docs/latest/use/configure/configuration-files#globally-ignoring-files-with-ignores)
-     */
-    ignores?: string[],
-
-    /**
      * Specify global variables.
      *
      * @default
      * {
-     *   worker: true,
-     *   commonjs: false,
+     *   astro: false, // `true` if `configs.astro` is enabled
+     *   audioWorklet: false, // `true` if `env` is set to `browser`
+     *   browser: true, // `true` if `env` is set to `browser`
      *   bun: false, // `true` if `env` is set to `bun`
+     *   commonjs: false,
      *   deno: false, // `true` if `env` is set to `deno`
      *   node: true,
      *   nodeBuiltin: false, // `true` if `env` is set to `node`
-     *   browser: true, // `true` if `env` is set to `browser`
      *   serviceworker: false, // `true` if `env` is set to `browser`
      *   sharedWorker: false, // `true` if `env` is set to `browser`
-     *   webextension: false, // `true` if `env` is set to `browser`
-     *   audioWorklet: false, // `true` if `env` is set to `browser`
      *   vitest: false,
      *   vue: false, // `true` if `configs.vue` is enabled
-     *   astro: false, // `true` if `configs.astro` is enabled
+     *   webextension: false, // `true` if `env` is set to `browser`
+     *   worker: true,
      *   custom: {},
      * }
      *
      * @see [Language Options: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
      */
     globals?: {
-      worker?: boolean,
-      commonjs?: boolean,
+      astro?: boolean,
+      audioWorklet?: boolean,
+      browser?: boolean,
       bun?: boolean,
+      commonjs?: boolean,
       deno?: boolean,
       node?: boolean,
       nodeBuiltin?: boolean,
-      browser?: boolean,
       serviceworker?: boolean,
       sharedWorker?: boolean,
-      webextension?: boolean,
-      audioWorklet?: boolean,
       vitest?: boolean,
       vue?: boolean,
-      astro?: boolean,
+      webextension?: boolean,
+      worker?: boolean,
       custom?: Linter.LanguageOptions['globals'],
     },
+
+    /**
+     * Patterns that ESLint should ignore globally. These patterns are resolved relative to the current working directory.
+     *
+     * @see [ESLint Configuration: Globally Ignoring Files](https://eslint.org/docs/latest/use/configure/configuration-files#globally-ignoring-files-with-ignores)
+     */
+    ignores?: string[],
 
     /**
      * Specify the linting process.
@@ -247,11 +236,15 @@ interface Options {
     },
 
     /**
-     * Settings shared across all rules. Use this to specify information that should be available to every rule.
+     * A name for the configuration object. This is used in error messages and [config inspector](https://github.com/eslint/config-inspector) to help identify which configuration object is being used.
      *
-     * @see [ESLint Configuration: Shared Settings](https://eslint.org/docs/latest/use/configure/configuration-files#configuring-shared-settings)
-    */
-    settings?: Linter.Config['settings'],
+     * It will fall back to the default value if set to an empty string (`''`).
+     *
+     * @default 'shayanthenerd/eslint-config'
+     *
+     * @see [ESLint Configuration: Naming Conventions](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-naming-conventions)
+     */
+    name?: string,
 
     /**
      * The available rules.
@@ -259,6 +252,13 @@ interface Options {
      * @see [ESLint Configuration: Rules](https://eslint.org/docs/latest/use/configure/configuration-files#configuring-rules)
     */
     rules?: Linter.RulesRecord,
+
+    /**
+     * Settings shared across all rules. Use this to specify information that should be available to every rule.
+     *
+     * @see [ESLint Configuration: Shared Settings](https://eslint.org/docs/latest/use/configure/configuration-files#configuring-shared-settings)
+    */
+    settings?: Linter.Config['settings'],
   },
 
   /*** Configs ***/
@@ -269,11 +269,97 @@ interface Options {
    */
   configs?: {
     /**
+     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
+     *
+     * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
+
+    /**
      * Customize some of the JavaScript (core) rules.
      *
      * JavaScript rules cannot be turned off.
      */
     base?: BaseOptions,
+
+    /**
+     * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
+     *
+     * @default false
+     */
+    css?: boolean | CSSOptions,
+
+    /**
+     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
+     *
+     * @default false
+     */
+    html?: boolean | HTMLOptions,
+
+    /**
+     * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
+     *
+     * @default true
+     */
+    importX?: boolean | ConfigWithOverrides<PluginRules<'import-x'>>,
+
+    /**
+     * Use [@eslint/markdown](https://github.com/eslint/markdown) to enforce best practices for Markdown files.
+     *
+     * @default true
+     */
+    markdown?: boolean | MarkdownOptions,
+
+    /**
+     * Whether [Nuxt](https://nuxt.com) is used in the project.
+     *
+     * Enforce best practices and the use of Nuxt-specific components over their standard counterparts. For example, `<NuxtLink>` must be used instead of `<a>`, and `<NuxtTime>` instead of `<time>`.
+     *
+     * **This configuration requires `configs.vue` to be enabled.**
+     *
+     * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    nuxt?: boolean | NuxtOptions,
+
+    /**
+     * Use [eslint-plugin-package-json](https://github.com/JoshuaKGoldberg/eslint-plugin-package-json) to ensure _package.json_ files are consistent, readable, and valid.
+     *
+     * @default true
+     */
+    packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>>,
+
+    /**
+     * Use [eslint-plugin-perfectionist](https://perfectionist.dev) to sort imports, exports, maps, union types, etc.
+     *
+     * @default true
+     */
+    perfectionist?: boolean | PerfectionistOptions,
+
+    /**
+     * Use [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise) to enforce best practices for JavaScript promises.
+     *
+     * @default true
+     */
+    promise?: boolean | ConfigWithOverrides<PluginRules<'promise'>>,
+
+    /**
+     * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.
+     *
+     * @default true
+     */
+    stylistic?: boolean | StylisticOptions,
+
+    /**
+     * Use [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss) to sort Tailwind classes, check for unused or conflicting ones, and enforce best practices.
+     *
+     * @default false
+     */
+    tailwind?: false | TailwindOptions,
+
+    /**
+     * Configuration options for the testing tools.
+     */
+    test?: TestOptions,
 
     /**
      * Use [typescript-eslint](https://typescript-eslint.io) to enforce TypeScript-specific rules.
@@ -289,83 +375,6 @@ interface Options {
     typescript?: boolean | TypeScriptOptions,
 
     /**
-     * Use [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise) to enforce best practices for JavaScript promises.
-     *
-     * @default true
-     */
-    promise?: boolean | ConfigWithOverrides<PluginRules<'promise'>>,
-
-    /**
-     * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
-     *
-     * @default true
-     */
-    importX?: boolean | ConfigWithOverrides<PluginRules<'import-x'>>,
-
-    /**
-     * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.
-     *
-     * @default true
-     */
-    stylistic?: boolean | StylisticOptions,
-
-    /**
-     * Use [eslint-plugin-perfectionist](https://perfectionist.dev) to sort imports, exports, maps, union types, etc.
-     *
-     * @default true
-     */
-    perfectionist?: boolean | PerfectionistOptions,
-
-    /**
-     * Use [eslint-plugin-package-json](https://github.com/JoshuaKGoldberg/eslint-plugin-package-json) to ensure _package.json_ files are consistent, readable, and valid.
-     *
-     * @default true
-     */
-    packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>>,
-
-    /**
-     * Use [@eslint/markdown](https://github.com/eslint/markdown) to enforce best practices for Markdown files.
-     *
-     * @default true
-     */
-    markdown?: boolean | MarkdownOptions,
-
-    /**
-     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
-     *
-     * @default false
-     */
-    html?: boolean | HTMLOptions,
-
-    /**
-     * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
-     *
-     * @default false
-     */
-    css?: boolean | CSSOptions,
-
-    /**
-     * Use [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss) to sort Tailwind classes, check for unused or conflicting ones, and enforce best practices.
-     *
-     * @default false
-     */
-    tailwind?: false | TailwindOptions,
-
-    /**
-     * Use [eslint-plugin-zod](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod) or [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) to enforce best practices for Zod schemas.
-     *
-     * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
-     */
-    zod?: boolean | ZodOptions,
-
-    /**
-     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
-     *
-     * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
-     */
-    astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
-
-    /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
      *
      * @default false // `true` if "vue" is detected in the dependencies when `autoDetectDeps` is enabled
@@ -373,20 +382,11 @@ interface Options {
     vue?: boolean | VueOptions,
 
     /**
-     * Whether [Nuxt](https://nuxt.com) is used in the project.
+     * Use [eslint-plugin-zod](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod) or [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) to enforce best practices for Zod schemas.
      *
-     * Enforce best practices and the use of Nuxt-specific components over their standard counterparts. For example, `<NuxtLink>` must be used instead of `<a>`, and `<NuxtTime>` instead of `<time>`.
-     *
-     * **This configuration requires `configs.vue` to be enabled.**
-     *
-     * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
+     * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
      */
-    nuxt?: boolean | NuxtOptions,
-
-    /**
-     * Configuration options for the testing tools.
-     */
-    test?: TestOptions,
+    zod?: boolean | ZodOptions,
   },
 }
 
