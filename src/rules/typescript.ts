@@ -1,6 +1,6 @@
 import type { Options } from '#types/index.d.ts';
+import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
@@ -16,32 +16,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
   const noUnusedVarsOptions = getJavaScriptRules(options)['no-unused-vars'][1];
 
   const tsRules = {
-    /* Disabled ESLint core rules (handled by TypeScript or @typescript-eslint) */
-    'constructor-super': 'off',
-    'default-param-last': 'off',
-    'dot-notation': 'off',
-    'getter-return': 'off',
-    'no-class-assign': 'off',
-    'no-const-assign': 'off',
-    'no-dupe-args': 'off',
-    'no-dupe-class-members': 'off',
-    'no-dupe-keys': 'off',
-    'no-func-assign': 'off',
-    'no-implied-eval': 'off',
-    'no-import-assign': 'off',
-    'no-new-native-nonconstructor': 'off',
-    'no-obj-calls': 'off',
-    'no-redeclare': 'off',
-    'no-setter-return': 'off',
-    'no-this-before-super': 'off',
-    'no-undef': 'off',
-    'no-unreachable': 'off',
-    'no-unsafe-negation': 'off',
-    'no-unused-private-class-members': 'off',
-    'no-unused-vars': 'off',
-    'prefer-destructuring': 'off',
-    'prefer-promise-reject-errors': 'off',
-
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
@@ -181,7 +155,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
         },
       },
     ],
-  } satisfies CoreRules & PluginRules<'@typescript-eslint'>;
+  } satisfies PluginRules<'@typescript-eslint'>;
 
   return tsRules;
 }
