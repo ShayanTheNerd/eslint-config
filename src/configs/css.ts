@@ -33,7 +33,7 @@ function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
     rules: getCSSRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(cssConfig, overrides);
 }
 

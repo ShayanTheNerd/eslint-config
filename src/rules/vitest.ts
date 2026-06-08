@@ -76,7 +76,7 @@ function getVitestRules(options: DeepNonNullable<Options>) {
     'vitest/valid-expect-in-promise': 'error',
     'vitest/warn-todo': 'error',
 
-    /* @ts-expect-error — Incorrect index signature type. */
+    /* @ts-expect-error -- Incorrect index signature type. */
     'vitest/valid-title': ['error', { allowArguments: true }],
   } satisfies PluginRules<'vitest'>;
 

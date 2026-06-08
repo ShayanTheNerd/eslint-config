@@ -27,7 +27,7 @@ function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
     rules: getImportXRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(importXConfig, overrides);
 }
 

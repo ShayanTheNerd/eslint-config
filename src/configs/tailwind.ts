@@ -74,7 +74,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): TailwindConfig {
     rules: getTailwindRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(tailwindConfig, overrides);
 }
 

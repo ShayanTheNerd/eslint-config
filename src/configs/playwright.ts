@@ -29,7 +29,7 @@ function getPlaywrightConfig(options: DeepNonNullable<Options>): PlaywrightConfi
     rules: getPlaywrightRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(playwrightConfig, overrides);
 }
 

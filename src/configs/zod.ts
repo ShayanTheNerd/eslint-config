@@ -25,7 +25,7 @@ function getZodConfig(options: DeepNonNullable<Options>): ZodConfig {
     rules: getZodRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(zodConfig, overrides);
 }
 

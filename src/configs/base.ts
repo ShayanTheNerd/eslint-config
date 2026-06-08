@@ -79,7 +79,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
     rules: getJavaScriptRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(baseConfig, overrides);
 }
 

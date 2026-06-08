@@ -29,7 +29,7 @@ function getPackageJsonConfig(options: DeepNonNullable<Options>): PackageJsonCon
     rules: getPackageJsonRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(packageJsonConfig, overrides);
 }
 

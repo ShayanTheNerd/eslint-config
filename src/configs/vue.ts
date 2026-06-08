@@ -53,7 +53,7 @@ function getVueConfig(options: DeepNonNullable<Options>): VueConfig {
     },
   } satisfies ConfigWithExtends;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(vueConfig, overrides);
 }
 

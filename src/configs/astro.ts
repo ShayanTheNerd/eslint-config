@@ -39,7 +39,7 @@ function getAstroConfig(options: DeepNonNullable<Options>): AstroConfig {
     rules: getAstroRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(astroConfig, overrides);
 }
 

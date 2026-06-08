@@ -36,7 +36,7 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Perfectionis
     rules: getPerfectionistRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(perfectionistConfig, overrides);
 }
 

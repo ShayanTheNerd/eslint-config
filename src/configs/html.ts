@@ -29,7 +29,7 @@ function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
     rules: getHTMLRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(htmlConfig, overrides);
 }
 

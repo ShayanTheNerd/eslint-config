@@ -26,7 +26,7 @@ function getStylisticConfig(options: DeepNonNullable<Options>): StylisticConfig 
     rules: getStylisticRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(stylisticConfig, overrides);
 }
 

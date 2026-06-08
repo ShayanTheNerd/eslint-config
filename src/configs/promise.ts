@@ -3,7 +3,7 @@ import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
-/* @ts-expect-error — https://github.com/eslint-community/eslint-plugin-promise/issues/488 */
+/* @ts-expect-error -- https://github.com/eslint-community/eslint-plugin-promise/issues/488 */
 import eslintPluginPromise from 'eslint-plugin-promise';
 
 import { globs } from '#helpers/globs.ts';
@@ -27,7 +27,7 @@ function getPromiseConfig(options: DeepNonNullable<Options>): PromiseConfig {
     rules: getPromiseRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(promiseConfig, overrides);
 }
 

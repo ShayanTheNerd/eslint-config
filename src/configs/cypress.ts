@@ -29,7 +29,7 @@ function getCypressConfig(options: DeepNonNullable<Options>): CypressConfig {
     rules: getCypressRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(cypressConfig, overrides);
 }
 

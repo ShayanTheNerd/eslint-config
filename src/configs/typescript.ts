@@ -39,7 +39,7 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfi
     rules: getTypeScriptRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incompatible types */
+  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(typescriptConfig, overrides);
 }
 

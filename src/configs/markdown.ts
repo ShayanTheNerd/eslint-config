@@ -31,7 +31,7 @@ function getMarkdownConfig(options: DeepNonNullable<Options>): MarkdownConfig {
     rules: getMarkdownRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(markdownConfig, overrides);
 }
 

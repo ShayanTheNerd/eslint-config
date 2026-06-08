@@ -21,13 +21,13 @@ function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig 
     name: 'shayanthenerd/storybook',
     files: [globs.storybook],
     plugins: {
-      /* @ts-expect-errors — Incompatible types */
+      /* @ts-expect-errors -- Incompatible types */
       storybook: eslintPluginStorybook,
     },
     rules: getStorybookRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(storybookConfig, overrides);
 }
 

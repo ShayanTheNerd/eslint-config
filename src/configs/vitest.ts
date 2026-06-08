@@ -26,7 +26,7 @@ function getVitestConfig(options: DeepNonNullable<Options>): VitestConfig {
     rules: getVitestRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error — Incorrect type inference */
+  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(vitestConfig, overrides);
 }
 
