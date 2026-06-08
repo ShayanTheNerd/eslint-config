@@ -37,14 +37,11 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
     '@stylistic/function-call-argument-newline': ['warn', 'consistent'],
     '@stylistic/generator-star-spacing': ['warn', 'after'],
     '@stylistic/implicit-arrow-linebreak': ['warn', 'beside'],
-    '@stylistic/indent': [
-      'warn',
-      indent,
-      {
-        tabLength: indent,
-        SwitchCase: 1,
-      },
-    ],
+    '@stylistic/indent': ['warn', indent, {
+      tabLength: indent,
+      SwitchCase: 1,
+      flatTernaryExpressions: true,
+    }],
     '@stylistic/indent-binary-ops': ['warn', indent],
     '@stylistic/jsx-closing-bracket-location': 'warn',
     '@stylistic/jsx-closing-tag-location': 'warn',
@@ -106,7 +103,6 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
         requireLast: trailingComma !== 'never',
       },
     }],
-    '@stylistic/multiline-ternary': ['warn', 'always-multiline'],
     '@stylistic/new-parens': 'warn',
     '@stylistic/no-confusing-arrow': 'warn',
     '@stylistic/no-extra-semi': 'warn',
