@@ -5,9 +5,6 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type StylisticRules = PluginRules<'@stylistic'>;
-type TailwindRules = PluginRules<'better-tailwindcss'> & Pick<StylisticRules, '@stylistic/max-len'>;
-
 function getTailwindRules(options: DeepNonNullable<Options>) {
   const { tailwind, stylistic } = options.configs;
   const {
@@ -18,29 +15,26 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
   const isTailwindV4 = isEnabled(tailwind) && tailwind.entryPoint;
 
   const tailwindRules = {
+    'better-tailwindcss/enforce-canonical-classes': 'warn',
+    'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'strict' }],
     'better-tailwindcss/enforce-consistent-line-wrapping': [
       multilineSort ? 'warn' : 'off',
       {
         indent,
+        tabWidth: indent,
+        strictness: 'loose',
         preferSingleLine: true,
         printWidth: maxLineLength,
       },
     ],
-    'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'strict' }],
-    'better-tailwindcss/enforce-canonical-classes': 'warn',
+    'better-tailwindcss/enforce-consistent-variant-order': 'warn',
+    // 'better-tailwindcss/enforce-logical-properties': 'warn', // https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/380
     'better-tailwindcss/no-duplicate-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
-    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', {
-      detectComponentClasses: true,
-      ignore: userIgnoredUnknownClasses,
-    }],
+    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', { ignore: userIgnoredUnknownClasses }],
     'better-tailwindcss/no-conflicting-classes': 'error',
-  } satisfies TailwindRules;
-
-  if (isEnabled(stylistic)) {
-    (tailwindRules as TailwindRules)['@stylistic/max-len'] = 'off';
-  }
+  } satisfies PluginRules<'better-tailwindcss'>;
 
   return tailwindRules;
 }
