@@ -48,6 +48,8 @@ function getVueRules(options: DeepNonNullable<Options>) {
   const isStyleLangImplicit = blockLang.style === 'implicit';
 
   const vueRules = {
+    '@stylistic/max-len': 'off',
+
     /* Base Rules (Enabling Correct ESLint Parsing) */
     'vue/jsx-uses-vars': 'error',
     'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
@@ -369,7 +371,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/slot-name-casing': 'warn',
     'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
     // 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
-  } satisfies PluginRules<'vue'>;
+  } satisfies PluginRules<'vue'> & Pick<PluginRules<'@stylistic'>, '@stylistic/max-len'>;
 
   return vueRules;
 }
