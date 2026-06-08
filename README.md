@@ -1,27 +1,21 @@
-# @shayanthenerd/eslint-config &nbsp;&nbsp; [![npm-version-badge]][npm-version] [![jsr-version-badge]][jsr-version] [![license-badge]][license]
+# @shayanthenerd/eslint-config &nbsp; [![license-badge]][license] [![npm-version-badge]][npmx] [![jsr-version-badge]][jsr]
 
-A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style.
+ESLint configuration for enforcing best practices and maintaining a consistent coding style. [Explore configurations][online-preview]!
 
-- **Performant**: Powered by [OXLint (OXC Linter)][oxlint] for rapid linting
-- **Flat Config**: Type-safe interface with `extends` and `overrides` for every plugin
-- **Comprehensive**: Dependency detection with support for TypeScript, Astro, Vue & Nuxt, Tailwind, Storybook, Vitest, etc.
-- **Automatic Formatting**: Fine-grained control over formatting with [ESLint Stylistic][plugin-stylistic], eliminating the need for Prettier
-- **Smart Defaults**: Respects your _.gitignore_ file and provides reasonable, opinionated, yet [highly customizable](#customization) defaults
-- **Developer-friendly**: Easy to use and well-documented with JSDoc
-- **Modern**: Requires ESLint version ^10.0.0 and Node.js version ^20.19.0 (ESM-only)
-
-> [!NOTE]
-> This configuration is designed with a flexible API for easy customization. However, it remains a **personal config**. While its primary goal is to enforce best practices and maintain code consistency, some rules—particularly stylistic ones—are rather opinionated. <br /> If the available customization and override options still don't meet your requirements, feel free to fork the project and tailor it to your needs.
+- **Flexible**: [Highly-customizable options](#customization) and configurations with sensible defaults.
+- **Smart**: Context-aware linting with [automatic dependency detection](#automatic-dependency-detection) and _.gitignore_ recognition.
+- **Comprehensive**: [Supports popular plugins](#plugin-support) for TypeScript, Astro, Vue & Nuxt, Tailwind, Zod, Vitest, Markdown, and more.
+- **Type-safe**: [Fully-typed and well-documented API](#api-reference) with `overrides` support for every built-in configuration object.
+- **Modern**: Requires ESLint ^10.4.0 and Node.js ^20.19.0 (ESM-only)
 
 ## Table of Contents
 - [Plugin Support](#plugin-support)
 - [Installation and Configuration](#installation-and-configuration)
-- [Automatic Dependency Detection](#automatic-dependency-detection)
-- [Formatting](#formatting)
-- [VS Code Integration](#vs-code-integration)
 - [Customization](#customization)
-  - [OXLint](#oxlint)
-  - [ESLint](#eslint)
+- [Automatic Dependency Detection](#automatic-dependency-detection)
+- [Framework and Tool Integrations](#framework-and-tool-integrations)
+- [IDE Support](#ide-support)
+- [Formatting](#formatting)
 - [API Reference](#api-reference)
 - [Versioning Policy](#versioning-policy)
 - [Roadmap to v1.0.0](#roadmap-to-v100)
@@ -37,7 +31,7 @@ Legend:
 - ⬛ Disabled by default
 - 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`)
 
-| Category                                                     | Support | Status |
+| Category                                                     | Support | Activation |
 | :----------------------------------------------------------- | :-----: | :----: |
 | **Languages**                                                |         |        |
 | [JavaScript][eslint]                                         |    ✅    |   ◻️    |
@@ -61,173 +55,184 @@ Legend:
 | [Playwright][plugin-playwright]                              |    ✅    |   🔎    |
 | **Miscellaneous**                                            |         |        |
 | [_package.json_][plugin-package-json]                        |    ✅    |   ◻️    |
-| [OXLint][oxlint]                                             |    ✅    |   ◻️    |
-| [promise][plugin-promise]                                    |    ✅    |   ◻️    |
-| [Import][plugin-import]                                      |    ✅    |   ◻️    |
+| [promises][plugin-promise]                                   |    ✅    |   ◻️    |
+| [Imports][plugin-import-x]                                   |    ✅    |   ◻️    |
 | [Zod][plugin-zod]                                            |    ✅    |   🔎    |
 | [Node][plugin-node]                                          |    ⌛️    |   N/A  |
-| [JSDoc][plugin-jsdoc]                                        |    ⌛️    |   N/A  |
 | [Unicorn][plugin-unicorn]                                    |    ⌛️    |   N/A  |
 
 ## Installation and Configuration
-1. Install the package alongside ESLint and OXLint:
-```shell
-npm i -D @shayanthenerd/eslint-config eslint oxlint
-```
+1. Install the package and ESLint as dev dependencies:
+   ```shell
+   npm i -D @shayanthenerd/eslint-config eslint
+   ```
 
-2. Create an ESLint config file (_eslint.config.js_) at the root of your project:
-```js
-import { defineConfig } from '@shayanthenerd/eslint-config';
+2. Create an ESLint configuration file (_eslint.config.js_) at the root of your project:
+   ```js title="eslint.config.js"
+   import { defineConfig } from '@shayanthenerd/eslint-config';
 
-export default defineConfig();
-```
+   export default defineConfig();
+   ```
 
-Alternatively, you can use a TypeScript file (_eslint.config.ts_). Depending on your Node.js version, [additional setup][eslint-config-ts-setup] may be required.
+   Note: TypeScript configuration files (_eslint.config.ts_) are also supported. Node.js versions below v22.18.0 may require [additional setup][eslint-config-ts-setup].
 
-If you're using Nuxt, install [@nuxt/eslint][eslint-nuxt] as a dev dependency:
-```shell
-npm i -D @nuxt/eslint
-```
-
-Then, update your ESLint config file:
-```js
-import { defineConfig } from '@shayanthenerd/eslint-config';
-
-import eslintConfigNuxt from './.nuxt/eslint.config.mjs';
-
-const eslintConfig = defineConfig();
-
-export default eslintConfigNuxt(eslintConfig);
-```
-
-> [!NOTE]
-> The Nuxt config relies on the Vue config, so make sure it's enabled (either automatically or manually).
-
-3. If you're not using OXLint, set `configs.oxlint` to `false` in your ESLint config and skip this step. Otherwise, create an OXLint config file (_.oxlintrc.json_) at the root of your project:
-```jsonc
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json", // Optional
-
-  "extends": ["./node_modules/@shayanthenerd/eslint-config/dist/oxlint.config.jsonc"],
-
-  /* Customize based on your development environment. */
-  "env": {
-    "worker": false,
-    "commonjs": false,
-    "bun": false,
-    "deno": false,
-    "node": true,
-    "nodeBuiltin": true,
-    "browser": true,
-    "serviceworker": false,
-    "sharedWorker": false,
-    "webextension": false,
-    "audioWorklet": false,
-    "vitest": true,
-    "vue": true,
-    "astro": true
-  },
-
-  "categories": {
-    "correctness": "error",
-    "suspicious": "error",
-    "restriction": "error",
-    "pedantic": "error",
-    "perf": "warn",
-    "style": "warn",
-    "nursery": "error"
-  }
-}
-```
-
-Due to [the limitation of OXLint][oxlint-shared-config-limitations], only `rules`, `plugins`, and `overrides` can be extended. Check out [OXLint config reference][oxlint-config-reference] for more details.
-
-4. Add the following scripts to your _package.json_ file:
-```json
-{
-  "scripts": {
-    "lint": "npm run lint:oxlint && npm run lint:eslint",
-    "lint:inspect": "npx @eslint/config-inspector",
-    "lint:ci": "pnpm lint:oxlint --format=github && pnpm lint:eslint",
-    "lint:oxlint": "oxlint --fix",
-    "lint:eslint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
-  }
-}
-```
+3. Add the following scripts to your _package.json_:
+   ```json title="package.json"
+   {
+     "scripts": {
+       "lint:inspect": "npx @eslint/config-inspector",
+       "lint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
+     }
+   }
+   ```
 
 ---
 
-That's it! You can now run OXLint and ESLint in your project:
-```shell
-npm run lint
+After installation:
+- Use `npm run lint` to lint and fix files.
+- Use `npm run lint:inspect` to see a visual breakdown of your configuration.
+- See [IDE Support](#ide-support) for editor integration.
+- See [Customization](#customization) for advanced configuration.
+- See [Formatting](#formatting) for formatting options and Prettier integration.
+
+## Customization
+`defineConfig()` supports both simple and advanced use cases:
+```js title="eslint.config.js"
+import eslintPluginYaml from 'eslint-plugin-yaml';
+import * as eslintPluginRegexp from 'eslint-plugin-regexp';
+
+import { defineConfig } from '@shayanthenerd/eslint-config';
+
+// Use the default configuration:
+export default defineConfig();
+
+// Customize the built-in configurations:
+export default defineConfig({
+  autoDetectDeps: false,
+  configs: {
+    stylistic: false,
+    markdown: {
+      language: 'commonmark',
+    },
+  },
+});
+
+// Use custom configuration objects:
+export default defineConfig([
+  {
+    files: ['**/*.yaml', '**/*.yml'],
+    ignores: ['**/*.schema.yaml', '**/*.schema.yml'],
+    extends: [eslintPluginYaml.configs.recommended],
+  },
+  eslintPluginRegexp.configs['flat/recommended'],
+]);
+
+// Customize the built-in configurations and use custom configuration objects:
+export default defineConfig(
+  {
+    autoDetectDeps: 'verbose',
+    configs: {
+      typescript: {
+        typeDefinitionStyle: 'type',
+        overrides: {
+          rules: {
+            '@typescript-eslint/explicit-module-boundary-types': 'off',
+          },
+        },
+      },
+    },
+  },
+  [
+    {
+      files: ['**/*.yaml', '**/*.yml'],
+      ignores: ['**/*.schema.yaml', '**/*.schema.yml'],
+      extends: [eslintPluginYaml.configs.recommended],
+    },
+    eslintPluginRegexp.configs['flat/recommended'],
+  ],
+);
 ```
 
-To get a visual breakdown of your configuration, run:
-```shell
-npm run lint:inspect
-```
-
-## Automatic Dependency Detection
-This package automatically detects dependencies in your project and enables the corresponding ESLint configurations for them. This is powered by [local-pkg][local-pkg], which scans your _node_modules_ directory instead of _package.json_. <br />
-> [!IMPORTANT]
-> This behavior is particularly noticeable with package managers that use a flat _node_modules_ structure, such as **NPM** or **Bun**. <br />
-A concrete example is `eslint-plugin-storybook`, which is a dependency of this package. Since the plugin transitively depends on `storybook`, NPM and Bun hoist `storybook` to the root of your _node_modules_. As a result, the ESLint configuration for `storybook` will be automatically enabled, even if you haven't explicitly installed it. <br />
-Using a package manager with strict dependency resolution, such as **PNPM**, prevents this issue by hiding transitive dependencies from the root of your _node_modules_.
-
-To opt out of this behavior, you can either set `autoDetectDeps: false` in the options object or explicitly disable any unwanted configurations that were automatically enabled.
-
-Unlike other plugins, the configuration for Tailwind isn't automatically enabled upon dependency detection, because you must explicitly provide the path to your Tailwind entry point (config file), or the ESLint configuration won't work as expected.
-
-Stylistic, Perfectionist, ImportX, and core (JavaScript) rules are enabled by default.
-
-## Formatting
-This config uses [ESLint Stylistic][plugin-stylistic] to format JavaScript and TypeScript files (`?([mc])[jt]s?(x)`) as well as Astro (similar to JSX/TSX) and the `<script>` blocks in Vue components. HTML and the `<template>` blocks in Vue components are formatted with [html-eslint][plugin-html] and [eslint-plugin-vue][plugin-vue], respectively. For other files such as CSS, JSON, and Markdown, you'll need Prettier. To make this easier, a customizable [shared Prettier configuration][prettier-shared-config] is provided. Here's how to set it up:
-
-1. Install Prettier:
-```shell
-npm i -D prettier
-```
-
-2. Create a Prettier config file in the root of your project (_prettier.config.js_):
-```js
-import prettierConfig from '@shayanthenerd/eslint-config/prettier';
-
-/** @type {import('prettier').Config} */
-export default {
-  ...prettierConfig,
-  semi: false, // Override `semi` from the shared config
-};
-```
-
-Or if you prefer using TypeScript (_prettier.config.ts_):
+Every built-in configuration accepts an `overrides` option. These values are merged into the generated configuration and take precedence over the defaults.
 ```ts
-import type { Config } from 'prettier';
+import type { ESLint, Linter } from 'eslint';
 
-import prettierConfig from '@shayanthenerd/eslint-config/prettier';
-
-export default {
-  ...prettierConfig,
-  semi: true, // Override `semi` from the shared config
-} satisfies Config;
-```
-
-3. To prevent conflicts with ESLint, Prettier should be configured to only format files other than JavaScript, TypeScript, Astro, HTML, and Vue. Hence, add the following script to your _package.json_ file:
-```json
-{
-  "scripts": {
-    "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
-  }
+interface Overrides {
+  name?: string,
+  files?: (string | string[])[],
+  ignores?: string[],
+  plugins?: Record<string, ESLint.Plugin>,
+  languageOptions?: Linter.Config['languageOptions'],
+  settings?: Record<string, unknown>,
+  rules?: ConfigRules, // The available rules in the current configuration object
 }
 ```
 
-## VS Code Integration
-Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-oxlint], and [Prettier][extension-prettier]. Then, add the following in the _.vscode/settings.json_ file of your project:
-```jsonc
+## Automatic Dependency Detection
+[local-pkg][local-pkg] is used to detect installed dependencies and automatically enable the relevant integrations. Package managers that hoist transitive dependencies (such as NPM and Bun) may sometimes cause an integration to get enabled unexpectedly. This is because **_local-pkg_ scans _node_modules_ instead of _package.json_.**
+
+PNPM's strict dependency resolution avoids this issue.
+
+> [!NOTE]
+> For example, `eslint-plugin-storybook` depends on `storybook`, which is hoisted by NPM and Bun. As a result, the integration for `storybook` will be enabled automatically, even if you haven't explicitly installed it.
+
+To opt out of this behavior, either [globally disable automatic dependency detection](#customization) or manually disable the unwanted integrations that were enabled automatically.
+
+## Framework and Tool Integrations
+### Tailwind
+The Tailwind integration isn't automatically enabled because ESLint needs to know where to locate your Tailwind configuration.
+```js title="eslint.config.js"
+import { defineConfig } from '@shayanthenerd/eslint-config';
+
+export default defineConfig({
+  configs: {
+    tailwind: {
+      /* Either option is sufficient, but both can be provided. */
+      config: './tailwind.config.js',
+      entryPoint: './app/assets/styles/app.css',
+    },
+  },
+});
+```
+
+For editor integration, to avoid inconsistent diagnostics and auto-fixes from the [Tailwind CSS IntelliSense VS Code extension][extension-tailwind], add the following settings to _.vscode/settings.json_:
+```json title=".vscode/settings.json"
+{
+  "tailwindCSS.lint.cssConflict": "ignore",
+  "tailwindCSS.lint.recommendedVariantOrder": "ignore",
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+
+  "eslint.rules.customizations": [
+    { "rule": "better-tailwindcss/*", "severity": "off", "fixable": true },
+    { "rule": "better-tailwindcss/no-restricted-classes", "severity": "warn", "fixable": true },
+    { "rule": "better-tailwindcss/no-conflicting-classes", "severity": "error", "fixable": false },
+    { "rule": "better-tailwindcss/no-unknown-classes", "severity": "warn", "fixable": false }
+  ]
+}
+```
+
+### Nuxt
+Nuxt support is already included through the Vue integration, so you don’t need to install or configure [@nuxt/eslint][eslint-nuxt] manually. If you need additional rules tailored to Nuxt, refer to the plugin’s documentation for setup instructions.
+
+> [!TIP]
+> `configs.nuxt` only includes options for Nuxt Image, Nuxt UI, and the `<Icon>` component. Vue's rules and `overrides` can be configured via `configs.vue`.
+
+### Markdown
+Markdown linting is powered by [@eslint/markdown][plugin-md].
+
+By default, the plugin uses GitHub Flavored Markdown (GFM). You can [switch to CommonMark](#customization) if you prefer, but rules related to tables, label references, and other GFM syntax will be disabled because CommonMark doesn't support them.
+
+> [!NOTE]
+> Fenced code blocks inside Markdown files are not linted by @eslint/markdown.
+
+## IDE Support
+Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][extension-prettier]. Then add the following in _.vscode/settings.json_:
+```jsonc title=".vscode/settings.json"
 {
   /* Enforce Unix-like line endings (LF). */
   "files.eol": "\n",
 
-  /* Enforce either tabs or spaces for indentation. */
+  /* Enforce 2 spaces for indentation. */
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
@@ -238,20 +243,12 @@ Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-ox
     "source.organizeImports": "never",
     "source.removeUnusedImports": "never",
 
-    /* Apply OXLint and ESLint automatic fixes on file save. */
-    "source.fixAll.oxc": "explicit",
+    /* Apply ESLint fixes when saving files. */
     "source.fixAll.eslint": "explicit"
   },
-  "oxc.lint.run": "onSave",
-  "eslint.run": "onSave",
-  "editor.formatOnSave": true,
-  "eslint.format.enable": true,
 
-  /* Format and lint JavaScript, TypeScript, HTML, and Vue files with ESLint, while everything else is formatted with Prettier. */
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro][{**/package.json}]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
+  "eslint.run": "onSave",
+  "eslint.format.enable": true,
   "eslint.validate": [
     "javascript",
     "typescript",
@@ -262,14 +259,11 @@ Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-ox
     "html",
     "css",
     "tailwindcss",
-    "vue",
-    "astro"
+    "astro",
+    "vue"
   ],
 
-  /* Adjust these based on the features you're using to silently auto-fix the stylistic rules in your IDE. */
-  "tailwindCSS.lint.cssConflict": "ignore", // Only if you're using the Tailwind config
-  "tailwindCSS.lint.recommendedVariantOrder": "ignore", // Only if you're using the Tailwind config
-  "tailwindCSS.lint.suggestCanonicalClasses": "ignore", // Only if you're using the Tailwind config
+  /* Adjust these based on the features you're using to silently auto-fix the stylistic rules. */
   "eslint.rules.customizations": [
     { "rule": "*styl*", "severity": "off", "fixable": true },
     { "rule": "*sort*", "severity": "off", "fixable": true },
@@ -283,108 +277,113 @@ Install VS Code extensions for [ESLint][extension-eslint], [OXLint][extension-ox
     { "rule": "package-json/order-properties", "severity": "off", "fixable": true },
     { "rule": "vue/max-len", "severity": "off", "fixable": true },
     { "rule": "vue/comma-dangle", "severity": "off", "fixable": true },
-    { "rule": "vue/space-in-parens", "severity": "off", "fixable": true },
-    { "rule": "better-tailwindcss/*", "severity": "off", "fixable": true },
-    { "rule": "better-tailwindcss/no-restricted-classes", "severity": "warn", "fixable": true },
-    { "rule": "better-tailwindcss/no-conflicting-classes", "severity": "error", "fixable": false },
-    { "rule": "better-tailwindcss/no-unknown-classes", "severity": "warn", "fixable": false }
+    { "rule": "vue/space-in-parens", "severity": "off", "fixable": true }
   ]
 }
 ```
 
-## Customization
-### OXLint
-Since OXLint and ESLint use separate config files, customizations made in your ESLint config will not apply to OXLint. However, you can still customize OXLint rules in your _.oxlintrc.json_ file. Here's an example:
-```jsonc
+> [!TIP]
+> These settings match the default behavior of this configuration. If you've customized any formatting or stylistic rules, update the corresponding editor settings to keep them consistent.
+
+## Formatting
+This configuration uses [ESLint Stylistic][plugin-stylistic] to format:
+- JavaScript and TypeScript (_js_, _cjs_, _mjs_, _jsx_, _ts_, _cts_, _mts_, _tsx_),
+- Astro (similar to _jsx_/_tsx_), and
+- Vue's `<script>` blocks.
+
+HTML and Vue's `<template>` blocks are formatted with [@html-eslint/eslint-plugin][plugin-html] and [eslint-plugin-vue][plugin-vue], respectively.
+
+For file types not handled by ESLint Stylistic—such as CSS, JSON, Yaml, and Markdown—you can use Prettier. To simplify the setup, this package also provides a customizable [shared Prettier configuration][prettier-shared-config].
+
+1. Install Prettier as a dev dependency:
+   ```shell
+   npm i -D prettier
+   ```
+
+2. Create a Prettier config file in the root of your project (_prettier.config.js_):
+   ```js title="prettier.config.js"
+   import prettierConfig from '@shayanthenerd/eslint-config/prettier';
+
+   /** @type {import('prettier').Config} */
+   export default {
+     ...prettierConfig,
+     semi: false, // Override `semi` from the shared config
+   };
+   ```
+
+   Or if you prefer using TypeScript (_prettier.config.ts_):
+   ```ts title="prettier.config.ts"
+   import type { Config } from 'prettier';
+
+   import prettierConfig from '@shayanthenerd/eslint-config/prettier';
+
+   export default {
+     ...prettierConfig,
+     semi: true, // Override `semi` from the shared config
+   } satisfies Config;
+   ```
+
+### Using ESLint Stylistic with Prettier
+In this setup, Prettier formats everything that ESLint Stylistic doesn't. To prevent overlaps and potential race conditions, Prettier should only target files that ESLint Stylistic doesn't format.
+
+_package.json_:
+```json title="package.json"
 {
-  /* Base configuration */
-
-  "options": {
-    "reportUnusedDisableDirectives": "warn"
+  "scripts": {
+    "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
+  }
+}
+```
+_.vscode/settings.json_:
+```json title=".vscode/settings.json"
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro][{**/package.json}]": {
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
-
-  "rules": {
-    /* Globally override rules. */
-    "oxlint/no-named-as-default-member": "warn"
-  },
-
-  "overrides": [
-    /* Override rules for specific files. */
-    {
-      "files": ["app/**/*.tsx"],
-      "ignores": ["app/app.tsx"],
-      "rules": {
-        "oxlint/max-depth": ["error", { "max": 5 }],
-        "oxlint/explicit-function-return-type": "off"
-      }
-    }
-  ],
-
-  /* OXLint respects the ignore patterns defined in `.gitignore` and `.eslintignore` files by default. */
-  "ignorePatterns": ["**/*.min.*"]
 }
 ```
 
-### ESLint
-`defineConfig` takes the `options` object as the first argument. `options` is thoroughly documented with JSDoc and provides many options for rule customizations. In addition, each config object in `options.configs` accepts an `overrides` option:
-```ts
-interface Overrides {
-  name: '',
-  files: [],
-  ignores: [],
-  plugins: {},
-  settings: {},
-  languageOptions: {
-    parser: {},
-    globals: {},
-  },
-  rules: {},
+### Using Prettier Alone
+If you prefer to use Prettier as the only formatter, [disable the stylistic configuration](#customization) and let Prettier handle all formatting. Note that **this approach provides less granular control over the formatting options**.
+
+_package.json_:
+```json title="package.json"
+{
+  "scripts": {
+    "format": "prettier --write . --cache"
+  }
+}
+```
+_.vscode/settings.json_:
+```json title=".vscode/settings.json"
+{
+  "eslint.format.enable": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "never"
+  }
 }
 ```
 
-`overrides` is merged with the default config, taking precedence over its properties. However, there is no guarantee that the resulting configuration works correctly — it depends on the options you provide.
-
-`defineConfig` also accepts any number of custom ESLint Flat Configs (_eslint.config.js_):
-```js
-import eslintPluginYaml from 'eslint-plugin-yaml';
-import * as eslintPluginRegexp from 'eslint-plugin-regexp';
-import { defineConfig } from '@shayanthenerd/eslint-config';
-
-export default defineConfig(
-  /* The options object: */
-  {
-    env: 'bun',
-    configs: {
-      typescript: {
-        typeDefinitionStyle: 'type',
-        overrides: {
-          rules: {
-            '@typescript-eslint/no-unsafe-type-assertion': 'off',
-          },
-        },
-      },
-    },
-  },
-
-  /* ESLint Flat Configs: */
-  {
-    files: ['**/*.yaml', '**/*.yml'],
-    ignores: ['**/*.schema.yaml', '**/*.schema.yml'],
-    extends: [pluginYaml.configs.recommended],
-  },
-  regexpPlugin.configs['flat/recommended'],
-);
-```
+When using this approach:
+- Avoid running `lint` and `format` scripts on the same files simultaneously.
+- Use either ESLint fixes or Prettier formatting when saving files, but not both.
 
 ## API Reference
 <details>
-  <summary>The API reference</summary>
-  Some types are omitted or aliased for brevity.
+  <summary>
+    <!-- eslint-disable-next-line markdown/no-html -->
+    The API reference of the <code>options</code> object passed to <code>defineConfig</code>
+  </summary><br />
+
+  <small>Some types are omitted or aliased for brevity.</small>
 
   <!-- START_AUTO-GENERATED_API_REFERENCE -->
   ```ts
-  import type { Linter } from 'eslint';
-  import type { FlatConfig } from 'typescript-eslint';
+  import type { ESLint, Linter } from 'eslint';
 
   type VueAttributeCategory =
     | 'SLOT'
@@ -407,107 +406,61 @@ export default defineConfig(
     name?: string,
     files?: (string | string[])[],
     ignores?: string[],
-    plugins?: FlatConfig.Plugins,
-    languageOptions?: {
-      parser: FlatConfig.LanguageOptions.parser,
-      globals: FlatConfig.LanguageOptions.globals,
-    },
+    plugins?: Record<string, ESLint.Plugin>,
+    languageOptions?: Linter.Config['languageOptions'],
     settings?: Record<string, unknown>,
-    rules?: Linter.RulesRecord,
+    rules?: ConfigRules, // The available rules in the current configuration object
   }
 
   interface Options {
     autoDetectDeps?: boolean | 'verbose',
+    env?: 'browser' | 'bun' | 'deno' | 'node',
     gitignore?: false | string,
     packageDir?: string,
-    env?: 'bun' | 'deno' | 'node' | 'browser',
     tsConfig?: false | {
-      rootDir: string,
       filename?: string,
+      rootDir: string,
     },
-  
-    global?: {
-      name?: string,
+
+    project?: {
       basePath?: string,
-      ignores?: string[],
       globals?: {
-        worker?: boolean,
-        commonjs?: boolean,
+        astro?: boolean,
+        audioWorklet?: boolean,
+        browser?: boolean,
         bun?: boolean,
+        commonjs?: boolean,
         deno?: boolean,
         node?: boolean,
         nodeBuiltin?: boolean,
-        browser?: boolean,
         serviceworker?: boolean,
         sharedWorker?: boolean,
-        webextension?: boolean,
-        audioWorklet?: boolean,
         vitest?: boolean,
         vue?: boolean,
-        astro?: boolean,
+        webextension?: boolean,
+        worker?: boolean,
         custom?: Record<string, 'off' | boolean | 'readable' | 'readonly' | 'writable' | 'writeable'>,
       },
+      ignores?: string[],
       linterOptions?: {
         noInlineConfig?: boolean,
-        reportUnusedInlineConfigs?: 'off' | 'warn' | 'error',
         reportUnusedDisableDirectives?: 'off' | 'warn' | 'error',
+        reportUnusedInlineConfigs?: 'off' | 'warn' | 'error',
       },
-      settings?: Record<string, unknown>,
+      name?: string,
       rules?: Linter.RulesRecord,
+      settings?: Record<string, unknown>,
     },
-  
+
     configs?: {
-      oxlint?: false | string,
+      astro?: boolean | {
+        overrides?: Overrides,
+      },
       base?: {
         functionStyle?: 'expression' | 'declaration',
         maxDepth?: number,
         maxNestedCallbacks?: number,
         preferNamedExports?: boolean,
-        overrides?: Overrides,
-      },
-      typescript?: boolean | {
-        allowedDefaultProjects?: string[],
-        methodSignatureStyle?: 'method' | 'property',
-        removeUnusedImports?: boolean,
-        typeDefinitionStyle?: 'type' | 'interface',
-        overrides?: Overrides,
-      },
-      promise?: boolean | {
-        overrides?: Overrides,
-      },
-      importX?: boolean | {
-        overrides?: Overrides,
-      },
-      stylistic?: boolean | {
-        arrowParens?: 'always' | 'as-needed',
-        indent?: number,
-        jsxQuotes?: 'prefer-double' | 'prefer-single',
-        maxAttributesPerLine?: number,
-        maxConsecutiveEmptyLines?: number,
-        maxLineLength?: number,
-        memberDelimiterStyle?: 'semi' | 'comma',
-        quotes?: 'double' | 'single' | 'backtick',
-        selfCloseVoidHTMLElements?: 'never' | 'always',
-        semi?: 'never' | 'always',
-        trailingComma?: 'never' | 'always' | 'only-multiline' | 'always-multiline',
-        overrides?: Overrides,
-      },
-      perfectionist?: boolean | {
-        sortType?: 'custom' | 'natural' | 'unsorted' | 'line-length' | 'alphabetical' | 'subgroup-order',
-        overrides?: Overrides,
-      },
-      packageJson?: boolean | {
-        overrides?: Overrides,
-      },
-      markdown?: boolean | {
-        language?: 'gfm' | 'commonmark',
-        frontmatter?: false | 'json' | 'toml' | 'yaml',
-        allowedHtmlTags?: string[],
-        overrides?: Overrides,
-      },
-      html?: boolean | {
-        idNamingConvention?: 'camelCase' | 'kebab-case' | 'PascalCase' | 'snake_case',
-        useBaseline?: false | number | 'newly' | 'widely',
         overrides?: Overrides,
       },
       css?: boolean | {
@@ -529,24 +482,89 @@ export default defineConfig(
         useBaseline?: false | number | 'newly' | 'widely',
         overrides?: Overrides,
       },
+      html?: boolean | {
+        idNamingConvention?: 'camelCase' | 'kebab-case' | 'PascalCase' | 'snake_case',
+        useBaseline?: false | number | 'newly' | 'widely',
+        overrides?: Overrides,
+      },
+      importX?: boolean | {
+        overrides?: Overrides,
+      },
+      markdown?: boolean | {
+        allowedHtmlTags?: string[],
+        frontmatter?: false | 'json' | 'toml' | 'yaml',
+        language?: 'gfm' | 'commonmark',
+        overrides?: Overrides,
+      },
+      nuxt?: boolean | {
+        icon?: boolean | {
+          component?: string,
+        },
+        image?: boolean,
+        ui?: boolean | {
+          prefix?: string,
+        },
+      },
+      packageJson?: boolean | {
+        overrides?: Overrides,
+      },
+      perfectionist?: boolean | {
+        sortType?: 'custom' | 'natural' | 'unsorted' | 'line-length' | 'alphabetical' | 'subgroup-order',
+        overrides?: Overrides,
+      },
+      promise?: boolean | {
+        overrides?: Overrides,
+      },
+      stylistic?: boolean | {
+        arrowParens?: 'always' | 'as-needed',
+        indent?: number,
+        jsxQuotes?: 'prefer-double' | 'prefer-single',
+        maxAttributesPerLine?: number,
+        maxConsecutiveEmptyLines?: number,
+        maxLineLength?: number,
+        memberDelimiterStyle?: 'semi' | 'comma',
+        quotes?: 'double' | 'single' | 'backtick',
+        selfCloseVoidHTMLElements?: 'never' | 'always',
+        semi?: 'never' | 'always',
+        trailingComma?: 'never' | 'always' | 'only-multiline' | 'always-multiline',
+        overrides?: Overrides,
+      },
       tailwind?: false | {
         config: string,
+        cwd?: string,
         entryPoint?: string,
         ignoredUnknownClasses?: string[],
         multilineSort?: boolean,
         overrides?: Overrides,
       } | {
         config?: string,
+        cwd?: string,
         entryPoint: string,
         ignoredUnknownClasses?: string[],
         multilineSort?: boolean,
         overrides?: Overrides,
       },
-      zod?: boolean | {
-        mini?: boolean,
-        overrides?: Overrides,
+      test?: {
+        maxNestedDescribe?: number,
+        testFunction?: 'it' | 'test',
+        cypress?: boolean | {
+          overrides?: Overrides,
+        },
+        playwright?: boolean | {
+          overrides?: Overrides,
+        },
+        storybook?: boolean | {
+          overrides?: Overrides,
+        },
+        vitest?: boolean | {
+          overrides?: Overrides,
+        },
       },
-      astro?: boolean | {
+      typescript?: boolean | {
+        allowedDefaultProjects?: string[],
+        methodSignatureStyle?: 'method' | 'property',
+        removeUnusedImports?: boolean,
+        typeDefinitionStyle?: 'type' | 'interface',
         overrides?: Overrides,
       },
       vue?: boolean | {
@@ -559,8 +577,8 @@ export default defineConfig(
         attributeHyphenation?: 'never' | 'always',
         attributesOrder?: (VueAttributeCategory | VueAttributeCategory[])[],
         blockLang?: {
-          style?: 'css' | 'scss' | 'postcss' | 'implicit',
           script?: 'js' | 'ts' | 'jsx' | 'tsx' | 'implicit',
+          style?: 'css' | 'scss' | 'postcss' | 'implicit',
         },
         blocksOrder?: (
           | 'docs'
@@ -592,38 +610,17 @@ export default defineConfig(
           message: string,
         })[],
         restrictedStaticAttributes?: (string | {
-          key: string,
-          value: true | string,
           element: string,
+          key: string,
           message: string,
+          value: true | string,
         })[],
         vForDelimiterStyle?: 'in' | 'of',
         overrides?: Overrides,
       },
-      nuxt?: boolean | {
-        icon?: boolean | {
-          component?: string,
-        },
-        image?: boolean,
-        ui?: boolean | {
-          prefix?: string,
-        },
-      },
-      test?: {
-        maxNestedDescribe?: number,
-        testFunction?: 'it' | 'test',
-        storybook?: boolean | {
-          overrides?: Overrides,
-        },
-        vitest?: boolean | {
-          overrides?: Overrides,
-        },
-        playwright?: boolean | {
-          overrides?: Overrides,
-        },
-        cypress?: boolean | {
-          overrides?: Overrides,
-        },
+      zod?: boolean | {
+        mini?: boolean,
+        overrides?: Overrides,
       },
     },
   }
@@ -632,8 +629,8 @@ export default defineConfig(
 </details>
 
 ## Versioning Policy
-This project adheres to [The Semantic Versioning Standard][semver]. However, to facilitate rapid development and fast iteration, the following changes are considered non-breaking:
-- Upgrades to dependency versions
+This project adheres to [The Semantic Versioning Standard][semver]. However, to facilitate rapid development and fast iteration, **the following changes are considered non-breaking**:
+- Updates to dependency versions
 - Modifications to rule options
 - Enabling or disabling rules and plugins
 
@@ -642,12 +639,12 @@ Under this policy, minor updates may introduce new linting errors, which could b
 You can find a list of all available versions and their changelogs on the [releases page][releases].
 
 ## Roadmap to v1.0.0
-- [ ] Integrate additional ESLint plugins such as [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], [eslint-plugin-jsdoc][plugin-jsdoc] etc.
-- [ ] Add support for other frameworks and file types, including React, Next, Astro, and Markdown.
-- [ ] Develop a starter wizard to automate the setup of OXLint, ESLint, Prettier, and other configurations.
+- [ ] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], and more.
+- [ ] Add support for other React, Next, Astro, and Markdown.
+- [ ] Develop an interactive starter wizard to quickly scaffold the configurations for ESLint, Prettier, etc.
 
 ## Contribution Guide
-Any form of contribution is always appreciated! Please check out the [CONTRIBUTING.md][contributing] file.
+Contributions of all kinds are welcome. Please check out the [CONTRIBUTING.md][contributing] file.
 
 ## Credits
 This project was inspired by the work of [Anthony Fu][antfu], whose generous contributions to the JavaScript and the ESLint ecosystem were instrumental in making it possible.
@@ -656,25 +653,24 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [MIT][license] License © 2025-PRESENT — [Shayan Zamani][ShayanTheNerd]
 
 <!-- Badges -->
-[jsr-version]: https://jsr.io/badges/@shayanthenerd/eslint-config
-[jsr-version-badge]: https://jsr.io/badges/@shayanthenerd/eslint-config?logoColor=EEEEEE&labelColor=545A61&color=545A61
+[jsr]: https://jsr.io/badges/@shayanthenerd/eslint-config
+[jsr-version-badge]: https://jsr.io/badges/@shayanthenerd/eslint-config?logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
 [license]: ./LICENSE
-[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?labelColor=545A61&color=545A61
-[npm-version]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
-[npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=EEEEEE&labelColor=545A61&color=545A61
+[license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
+[npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
+[npmx]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
 
 <!-- Editor Extensions -->
 [extension-eslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
-[extension-oxlint]: https://marketplace.visualstudio.com/items?itemName=oxc.oxc-vscode
 [extension-prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[extension-tailwind]: https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss
 
 <!-- ESLint Plugins -->
 [plugin-astro]: https://ota-meshi.github.io/eslint-plugin-astro
 [plugin-css]: https://github.com/eslint/css
 [plugin-cypress]: https://github.com/cypress-io/eslint-plugin-cypress
 [plugin-html]: https://html-eslint.org
-[plugin-import]: https://github.com/un-ts/eslint-plugin-import-x
-[plugin-jsdoc]: https://github.com/gajus/eslint-plugin-jsdoc
+[plugin-import-x]: https://github.com/un-ts/eslint-plugin-import-x
 [plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 [plugin-md]: https://github.com/eslint/markdown
 [plugin-next]: https://nextjs.org/docs/app/api-reference/config/eslint#eslint-plugin
@@ -693,18 +689,16 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-vitest]: https://github.com/vitest-dev/eslint-plugin-vitest
 [plugin-vue]: https://eslint.vuejs.org
 [plugin-vue-a11y]: https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility
-[plugin-zod]: https://github.com/marcalexiei/eslint-plugin-zod
+[plugin-zod]: https://github.com/marcalexiei/eslint-zod
 
 <!-- References -->
 [antfu]: https://github.com/antfu
 [contributing]: ./.github/CONTRIBUTING.md
 [eslint]: https://eslint.org
+[online-preview]: https://eslintconfig.netlify.app
 [eslint-config-ts-setup]: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files
 [eslint-nuxt]: https://eslint.nuxt.com
 [local-pkg]: https://github.com/antfu-collective/local-pkg
-[oxlint]: https://oxc.rs/docs/guide/usage/linter
-[oxlint-config-reference]: https://oxc.rs/docs/guide/usage/linter/config-file-reference
-[oxlint-shared-config-limitations]: https://oxc.rs/docs/guide/usage/linter/nested-config#extending-configuration-files
 [prettier-shared-config]: https://prettier.io/docs/sharing-configurations
 [releases]: https://github.com/ShayanTheNerd/eslint-config/releases
 [semver]: https://semver.org

@@ -10,13 +10,12 @@ const project = new Project({ tsConfigFilePath: 'tsconfig.json' });
 const projectTypes = project.addSourceFileAtPath('src/types/index.d.ts');
 const optionsInterface = projectTypes.getInterfaceOrThrow('Options');
 const nonNullableOptionsType = optionsInterface.getType().getNonNullableType();
-const options = expandType(projectTypes, nonNullableOptionsType).replaceAll('"', '\'').replaceAll('\n', '\n  ');
+const options = expandType(projectTypes, nonNullableOptionsType).replaceAll('"', '\'').replace(/\n(?!\n)/g, '\n  ');
 const vueAttrCategoryUnion = getVueAttrCategoryUnion(optionsInterface);
 
 const codeBlock = `
   \`\`\`ts
-  import type { Linter } from 'eslint';
-  import type { FlatConfig } from 'typescript-eslint';
+  import type { ESLint, Linter } from 'eslint';
 
   type VueAttributeCategory =${vueAttrCategoryUnion ? `\n    ${vueAttrCategoryUnion}` : ' undefined'};
 
@@ -24,13 +23,10 @@ const codeBlock = `
     name?: string,
     files?: (string | string[])[],
     ignores?: string[],
-    plugins?: FlatConfig.Plugins,
-    languageOptions?: {
-      parser: FlatConfig.LanguageOptions.parser,
-      globals: FlatConfig.LanguageOptions.globals,
-    },
+    plugins?: Record<string, ESLint.Plugin>,
+    languageOptions?: Linter.Config['languageOptions'],
     settings?: Record<string, unknown>,
-    rules?: Linter.RulesRecord,
+    rules?: ConfigRules, // The available rules in the current configuration object
   }
 
   interface Options ${options}
