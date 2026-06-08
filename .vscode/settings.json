@@ -47,7 +47,7 @@
   "workbench.editor.customLabels.patterns": {
     "**/src/rules/*.ts": "rules/${filename}.ts",
     "**/src/configs/*.ts": "configs/${filename}.ts",
-    "**/src/types/configOptions/*.ts": "options/${filename}.d.ts"
+    "**/src/types/options/*.ts": "options/${filename}.d.ts"
   },
 
   "explorer.fileNesting.enabled": true,

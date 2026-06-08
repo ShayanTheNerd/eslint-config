@@ -1,6 +1,6 @@
 import type { ConfigWithOverrides } from '#types/index.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
-import type { VueAccessibilityOptions } from '#types/configOptions/vueAccessibility.d.ts';
+import type { VueAccessibilityOptions } from '#types/options/vueAccessibility.d.ts';
 
 interface BlockLang {
   style?: 'css' | 'scss' | 'postcss' | 'implicit',

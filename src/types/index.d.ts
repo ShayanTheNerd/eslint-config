@@ -1,17 +1,17 @@
 import type { Linter } from 'eslint';
+import type { CSSOptions } from '#types/options/css.d.ts';
+import type { VueOptions } from '#types/options/vue.d.ts';
+import type { ZodOptions } from '#types/options/zod.d.ts';
 import type { PluginRules } from '#types/eslintRules.d.ts';
-import type { CSSOptions } from '#types/configOptions/css.d.ts';
-import type { VueOptions } from '#types/configOptions/vue.d.ts';
-import type { ZodOptions } from '#types/configOptions/zod.d.ts';
-import type { BaseOptions } from '#types/configOptions/base.d.ts';
-import type { HTMLOptions } from '#types/configOptions/html.d.ts';
-import type { NuxtOptions } from '#types/configOptions/nuxt.d.ts';
-import type { TestOptions } from '#types/configOptions/test.d.ts';
-import type { MarkdownOptions } from '#types/configOptions/markdown.d.ts';
-import type { TailwindOptions } from '#types/configOptions/tailwind.d.ts';
-import type { StylisticOptions } from '#types/configOptions/stylistic.d.ts';
-import type { TypeScriptOptions } from '#types/configOptions/typescript.d.ts';
-import type { PerfectionistOptions } from '#types/configOptions/perfectionist.d.ts';
+import type { BaseOptions } from '#types/options/base.d.ts';
+import type { HTMLOptions } from '#types/options/html.d.ts';
+import type { NuxtOptions } from '#types/options/nuxt.d.ts';
+import type { TestOptions } from '#types/options/test.d.ts';
+import type { MarkdownOptions } from '#types/options/markdown.d.ts';
+import type { TailwindOptions } from '#types/options/tailwind.d.ts';
+import type { StylisticOptions } from '#types/options/stylistic.d.ts';
+import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
+import type { PerfectionistOptions } from '#types/options/perfectionist.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
