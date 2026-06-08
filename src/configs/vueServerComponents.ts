@@ -9,7 +9,7 @@ function getVueServerComponentsConfig() {
     files: [globs.vueServerComponents],
     rules: {
       'vue/no-multiple-template-root': 'error',
-    } satisfies Pick<PluginRules<'vue'>, 'vue/no-multiple-template-root'>,
+    } satisfies PluginRules<'vue'>,
   } satisfies Linter.Config;
 
   return vueServerComponentsConfig;

@@ -1,4 +1,4 @@
-function isEnabled<T>(option: T): option is Exclude<T, boolean> {
+function isEnabled<Type>(option: Type): option is Exclude<Type, boolean> {
   return Boolean(option);
 }
 

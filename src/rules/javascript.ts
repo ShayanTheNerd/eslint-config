@@ -94,7 +94,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
       ignoreClassesWithImplements: 'public-fields',
     }],
     'complexity': 'warn',
-    'consistent-return': [typescript ? 'off' : 'error', { treatUndefinedAsUnspecified: true }],
+    'consistent-return': typescript ? 'off' : 'error',
     'consistent-this': 'error',
     'curly': 'warn',
     'default-case': 'warn',

@@ -10,10 +10,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getPackageJsonRules } from '#rules/packageJson.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type PackageJsonRules = ReturnType<typeof getPackageJsonRules>;
-type PackageJsonConfig = Linter.Config & { rules: PackageJsonRules };
-
-function getPackageJsonConfig(options: DeepNonNullable<Options>): PackageJsonConfig {
+function getPackageJsonConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { packageJson } = options.configs;
   const { overrides } = isEnabled(packageJson) ? packageJson : defaultOptions.configs.packageJson;
 
@@ -29,7 +26,6 @@ function getPackageJsonConfig(options: DeepNonNullable<Options>): PackageJsonCon
     rules: getPackageJsonRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(packageJsonConfig, overrides);
 }
 

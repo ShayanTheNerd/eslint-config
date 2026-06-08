@@ -1,10 +1,8 @@
 type Tail<Tuple> = Tuple extends [unknown, ...(infer LastItems)] ? LastItems : never;
 
-type DeepNonNullable<T> =
-  T extends object
-    ? T extends (...args: unknown[]) => unknown
-      ? T
-      : { [K in keyof T]-?: DeepNonNullable<NonNullable<T[K]>> }
-    : NonNullable<T>;
+type DeepNonNullable<Type> =
+  Type extends Function ? Type /* eslint-disable-line @typescript-eslint/no-unsafe-function-type */
+    : Type extends object ? { [Key in keyof Type]-?: DeepNonNullable<NonNullable<Type[Key]>> }
+      : NonNullable<Type>;
 
 export type { Tail, DeepNonNullable };

@@ -7,27 +7,25 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginPromise from 'eslint-plugin-promise';
 
 import { globs } from '#helpers/globs.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getPromiseRules } from '#rules/promise.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type PromiseRules = ReturnType<typeof getPromiseRules>;
-type PromiseConfig = Linter.Config & { rules: PromiseRules };
-
-function getPromiseConfig(options: DeepNonNullable<Options>): PromiseConfig {
+function getPromiseConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue, astro, promise } = options.configs;
   const { overrides } = isEnabled(promise) ? promise : defaultOptions.configs.promise;
 
   const promiseConfig = {
     name: 'shayanthenerd/promise',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
     plugins: {
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
       promise: eslintPluginPromise as ESLint.Plugin,
     },
     rules: getPromiseRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(promiseConfig, overrides);
 }
 

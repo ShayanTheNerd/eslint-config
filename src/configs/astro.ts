@@ -12,10 +12,7 @@ import { getAstroRules } from '#rules/astro.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type AstroRules = ReturnType<typeof getAstroRules>;
-type AstroConfig = Linter.Config & { rules: AstroRules };
-
-function getAstroConfig(options: DeepNonNullable<Options>): AstroConfig {
+function getAstroConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { astro } = options.configs;
   const { overrides } = isEnabled(astro) ? astro : defaultOptions.configs.astro;
 
@@ -39,7 +36,6 @@ function getAstroConfig(options: DeepNonNullable<Options>): AstroConfig {
     rules: getAstroRules(),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(astroConfig, overrides);
 }
 

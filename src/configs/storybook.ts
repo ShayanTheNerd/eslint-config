@@ -1,4 +1,4 @@
-import type { Linter } from 'eslint';
+import type { ESLint, Linter } from 'eslint';
 import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
@@ -10,10 +10,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getStorybookRules } from '#rules/storybook.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type StorybookRules = ReturnType<typeof getStorybookRules>;
-type StorybookConfig = Linter.Config & { rules: StorybookRules };
-
-function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig {
+function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { storybook } = options.configs.test;
   const { overrides } = isEnabled(storybook) ? storybook : defaultOptions.configs.test.storybook;
 
@@ -21,13 +18,12 @@ function getStorybookConfig(options: DeepNonNullable<Options>): StorybookConfig 
     name: 'shayanthenerd/storybook',
     files: [globs.storybook],
     plugins: {
-      /* @ts-expect-errors -- Incompatible types */
-      storybook: eslintPluginStorybook,
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+      storybook: eslintPluginStorybook as unknown as ESLint.Plugin,
     },
     rules: getStorybookRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(storybookConfig, overrides);
 }
 

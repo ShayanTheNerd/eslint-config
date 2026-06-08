@@ -2,6 +2,7 @@ import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
 
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
@@ -351,7 +352,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
         isNuxtIconEnabled && `^${nuxtIconComponent}$`,
         isNuxtUIEnabled && `^${nuxtUIPrefix}`,
         ...userIgnoredUndefinedComponents,
-      ].filter(Boolean),
+      ].filter(isTruthy),
     }],
     'vue/no-unused-refs': 'error',
     'vue/no-unused-emit-declarations': 'error',

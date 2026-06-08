@@ -10,10 +10,7 @@ import { getHTMLRules } from '#rules/html.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type HTMLRules = ReturnType<typeof getHTMLRules>;
-type HTMLConfig = Linter.Config & { rules: HTMLRules };
-
-function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
+function getHTMLConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { html } = options.configs;
   const { overrides } = isEnabled(html) ? html : defaultOptions.configs.html;
 
@@ -29,7 +26,6 @@ function getHTMLConfig(options: DeepNonNullable<Options>): HTMLConfig {
     rules: getHTMLRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(htmlConfig, overrides);
 }
 

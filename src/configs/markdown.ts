@@ -10,10 +10,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getMarkdownRules } from '#rules/markdown.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type MarkdownRules = ReturnType<typeof getMarkdownRules>;
-type MarkdownConfig = Linter.Config & { rules: MarkdownRules };
-
-function getMarkdownConfig(options: DeepNonNullable<Options>): MarkdownConfig {
+function getMarkdownConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { markdown } = options.configs;
   const { language, frontmatter, overrides } = isEnabled(markdown) ? markdown : defaultOptions.configs.markdown;
 
@@ -31,7 +28,6 @@ function getMarkdownConfig(options: DeepNonNullable<Options>): MarkdownConfig {
     rules: getMarkdownRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incorrect type inference */
   return mergeConfigs(markdownConfig, overrides);
 }
 

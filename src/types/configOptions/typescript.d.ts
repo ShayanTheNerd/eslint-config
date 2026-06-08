@@ -27,9 +27,9 @@ interface TypeScriptOptions extends ConfigWithOverrides<ConfigRules> {
   methodSignatureStyle?: RuleOptions<'@typescript-eslint/method-signature-style'>,
 
   /**
-   * Automatically remove unused imports.
+   * Automatically remove unused imports (requires `@typescript-eslint/no-unused-vars`).
    *
-   * If set to `false`, unused imports will only be reported as errors.
+   * If set to `false`, unused imports will only be reported.
    *
    * @default true
    *

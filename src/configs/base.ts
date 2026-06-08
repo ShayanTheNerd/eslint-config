@@ -7,13 +7,11 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import { parser as eslintParserTypeScript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 
-type JavaScriptRules = ReturnType<typeof getJavaScriptRules>;
-type BaseConfig = Linter.Config & { rules: JavaScriptRules };
-
-function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
+function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {
     env,
     configs: {
@@ -46,7 +44,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
 
   const baseConfig = {
     name: 'shayanthenerd/base',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
     languageOptions: {
       parser: eslintParserTypeScript,
       parserOptions: {
@@ -79,8 +77,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): BaseConfig {
     rules: getJavaScriptRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
-  return mergeConfigs(baseConfig, overrides);
+  return mergeConfigs(baseConfig as Linter.Config, overrides);
 }
 
 export { getBaseConfig };

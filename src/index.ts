@@ -3,6 +3,7 @@ import type { Options } from '#types/index.d.ts';
 
 import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
 
+import { isTruthy } from '#utils/isTruthy.ts';
 import { getCSSConfig } from '#configs/css.ts';
 import { getVueConfig } from '#configs/vue.ts';
 import { getZodConfig } from '#configs/zod.ts';
@@ -73,7 +74,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   let options: Options = {};
   let configs: Linter.Config[] = [];
 
-  /* Destructuing here instead of within the function signature allows for better alignment with `args` in JSDoc. */
+  /* Destructuring here instead of within the function signature allows for better alignment with `args` in JSDoc. */
   const [firstArgument, secondArgument] = args;
 
   if (Array.isArray(firstArgument)) {
@@ -154,9 +155,9 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
 
     ...configs,
-  ].filter(Boolean);
+  ].filter(isTruthy);
 
-  const eslintConfig = defineESLintConfig(configObjects as Linter.Config[]);
+  const eslintConfig = defineESLintConfig(configObjects);
 
   return eslintConfig;
 }

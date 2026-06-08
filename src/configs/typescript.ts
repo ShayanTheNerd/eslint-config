@@ -7,21 +7,19 @@ import { parser as eslintParserTypeScript, plugin as eslintPluginTypeScript } fr
 import path from 'node:path';
 
 import { globs } from '#helpers/globs.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getTypeScriptRules } from '#rules/typescript.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type TypeScriptRules = ReturnType<typeof getTypeScriptRules>;
-type TypeScriptConfig = Linter.Config & { rules: TypeScriptRules };
-
-function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfig {
+function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { tsConfig, configs: { vue, astro, typescript } } = options;
   const { allowedDefaultProjects } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
   const { overrides } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
 
   const typescriptConfig = {
     name: 'shayanthenerd/typescript',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
     plugins: {
       '@typescript-eslint': eslintPluginTypeScript,
     },
@@ -39,7 +37,6 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): TypeScriptConfi
     rules: getTypeScriptRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(typescriptConfig, overrides);
 }
 

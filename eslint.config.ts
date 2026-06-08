@@ -4,15 +4,14 @@ export default defineConfig(
   { autoDetectDeps: 'verbose' },
   [
     {
-      name: 'src/disables',
+      name: 'src/disables/complexity',
       files: ['./src/**/*.ts'],
       rules: {
-        'complexity': 'off',
-        '@typescript-eslint/no-unsafe-type-assertion': 'off',
+        complexity: 'off',
       },
     },
     {
-      name: 'src/disables/rules-configs',
+      name: 'src/disables/explicit-module-boundary-types',
       files: ['./src/rules/*.ts', './src/configs/{restrictedExports,vueComponentNames,vueServerComponents}.ts'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',

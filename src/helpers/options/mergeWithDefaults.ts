@@ -24,6 +24,8 @@ const mergeOptions = createDefu((object, key, value): boolean => {
 function mergeWithDefaults(options: Options): DeepNonNullable<Options> {
   const optionsWithDetectedConfigs = enableDetectedConfigs(options);
   const mergedOptions = mergeOptions(optionsWithDetectedConfigs, defaultOptions);
+
+  /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
   return mergedOptions as DeepNonNullable<Options>;
 }
 

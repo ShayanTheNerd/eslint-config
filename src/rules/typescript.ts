@@ -23,7 +23,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
         descriptionFormat: '^ -- .+ $',
       },
     }],
-    '@typescript-eslint/consistent-return': ['error', { treatUndefinedAsUnspecified: true }],
+    '@typescript-eslint/consistent-return': 'error',
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'warn',
     '@typescript-eslint/no-array-delete': 'error',

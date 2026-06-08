@@ -6,20 +6,18 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginImportX from 'eslint-plugin-import-x';
 
 import { globs } from '#helpers/globs.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getImportXRules } from '#rules/importX.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type ImportXRules = ReturnType<typeof getImportXRules>;
-type ImportXConfig = Linter.Config & { rules: ImportXRules };
-
-function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
+function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue, astro, importX, typescript } = options.configs;
   const { overrides } = isEnabled(importX) ? importX : defaultOptions.configs.importX;
 
   const importXConfig = {
     name: 'shayanthenerd/import-x',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
     plugins: {
       'import-x': eslintPluginImportX,
     },
@@ -27,7 +25,6 @@ function getImportXConfig(options: DeepNonNullable<Options>): ImportXConfig {
     rules: getImportXRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(importXConfig, overrides);
 }
 

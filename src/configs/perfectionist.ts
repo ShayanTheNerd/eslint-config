@@ -6,20 +6,18 @@ import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginPerfectionist from 'eslint-plugin-perfectionist';
 
 import { globs } from '#helpers/globs.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getPerfectionistRules } from '#rules/perfectionist.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type PerfectionistRules = ReturnType<typeof getPerfectionistRules>;
-type PerfectionistConfig = Linter.Config & { rules: PerfectionistRules };
-
-function getPerfectionistConfig(options: DeepNonNullable<Options>): PerfectionistConfig {
+function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue, astro, perfectionist } = options.configs;
   const { sortType, overrides } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
 
   const perfectionistConfig = {
     name: 'shayanthenerd/perfectionist',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(Boolean),
+    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
     plugins: {
       perfectionist: eslintPluginPerfectionist,
     },
@@ -36,7 +34,6 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Perfectionis
     rules: getPerfectionistRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(perfectionistConfig, overrides);
 }
 

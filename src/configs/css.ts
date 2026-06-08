@@ -11,10 +11,7 @@ import { getCSSRules } from '#rules/css.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type CSSRules = ReturnType<typeof getCSSRules>;
-type CSSConfig = Linter.Config & { rules: CSSRules };
-
-function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
+function getCSSConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { css, tailwind } = options.configs;
   const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
   const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;
@@ -33,7 +30,6 @@ function getCSSConfig(options: DeepNonNullable<Options>): CSSConfig {
     rules: getCSSRules(options),
   } satisfies Linter.Config;
 
-  /* @ts-expect-error -- Incompatible types */
   return mergeConfigs(cssConfig, overrides);
 }
 
