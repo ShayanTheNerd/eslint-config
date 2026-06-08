@@ -19,6 +19,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': 'error',
+    '@typescript-eslint/consistent-return': ['error', { treatUndefinedAsUnspecified: true }],
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'warn',
     '@typescript-eslint/no-array-delete': 'error',
@@ -91,7 +92,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     /* Stylistic Type-Checked */
     '@typescript-eslint/adjacent-overload-signatures': 'warn',
     '@typescript-eslint/array-type': 'warn',
-    '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/class-literal-property-style': 'warn',
     '@typescript-eslint/consistent-generic-constructors': 'warn',
     '@typescript-eslint/consistent-indexed-object-style': 'warn',
@@ -99,7 +99,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/consistent-type-definitions': ['warn', typeDefinitionStyle],
     '@typescript-eslint/dot-notation': 'warn',
     '@typescript-eslint/no-confusing-non-null-assertion': 'warn',
-    '@typescript-eslint/no-empty-function': 'error',
     '@typescript-eslint/no-inferrable-types': 'warn',
     '@typescript-eslint/non-nullable-type-assertion-style': 'error',
     '@typescript-eslint/prefer-find': 'warn',
