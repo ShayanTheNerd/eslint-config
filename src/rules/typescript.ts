@@ -18,7 +18,11 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
   const tsRules = {
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
-    '@typescript-eslint/ban-ts-comment': 'error',
+    '@typescript-eslint/ban-ts-comment': ['warn', {
+      'ts-expect-error': {
+        descriptionFormat: '^ -- .+ $',
+      },
+    }],
     '@typescript-eslint/consistent-return': ['error', { treatUndefinedAsUnspecified: true }],
     '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/explicit-member-accessibility': 'warn',
