@@ -1,6 +1,6 @@
 import type { Options } from '#types/index.d.ts';
+import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
 
 import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
@@ -8,14 +8,8 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
 import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
 
-type ImportXRules = PluginRules<'import-x'>;
-type VueRules =
-  & PluginRules<'vue'>
-  & Pick<CoreRules, 'no-undef' | 'no-useless-assignment'>
-  & Pick<ImportXRules, 'import-x/default' | 'import-x/no-unresolved'>;
-
 function getVueRules(options: DeepNonNullable<Options>) {
-  const { typescript, stylistic, tailwind, vue, nuxt } = options.configs;
+  const { typescript, stylistic, vue, nuxt } = options.configs;
   const {
     indent,
     trailingComma,
@@ -54,14 +48,9 @@ function getVueRules(options: DeepNonNullable<Options>) {
   const isStyleLangImplicit = blockLang.style === 'implicit';
 
   const vueRules = {
-    'no-undef': 'off',
-    'no-useless-assignment': 'off',
-    'import-x/default': 'off',
-    'import-x/no-unresolved': 'off',
-
     /* Base Rules (Enabling Correct ESLint Parsing) */
     'vue/jsx-uses-vars': 'error',
-    'vue/comment-directive': 'error',
+    'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
 
     /* Priority A: Essential */
     'vue/multi-word-component-names': 'error',
@@ -137,7 +126,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/valid-v-cloak': 'error',
     'vue/valid-v-else-if': 'error',
     'vue/valid-v-else': 'error',
-    'vue/valid-v-for': 'error',
+    'vue/valid-v-for': ['error', { allowEmptyAlias: true }],
     'vue/valid-v-html': 'error',
     'vue/valid-v-if': 'error',
     'vue/valid-v-is': 'error',
@@ -211,22 +200,19 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/func-call-spacing': 'warn',
     'vue/key-spacing': 'warn',
     'vue/keyword-spacing': 'warn',
-    'vue/max-len': [
-      tailwind ? 'off' : 'warn',
-      {
-        tabWidth: indent,
-        code: maxLineLength,
-        template: Infinity,
-        ignoreUrls: true,
-        ignoreStrings: true,
-        ignoreComments: true,
-        ignoreRegExpLiterals: true,
-        ignoreTrailingComments: true,
-        ignoreTemplateLiterals: true,
-        ignoreHTMLTextContents: true,
-        ignoreHTMLAttributeValues: true,
-      },
-    ],
+    'vue/max-len': ['warn', {
+      tabWidth: indent,
+      code: maxLineLength,
+      template: Infinity,
+      ignoreUrls: true,
+      ignoreStrings: true,
+      ignoreComments: true,
+      ignoreRegExpLiterals: true,
+      ignoreTrailingComments: true,
+      ignoreTemplateLiterals: true,
+      ignoreHTMLTextContents: true,
+      ignoreHTMLAttributeValues: true,
+    }],
     'vue/multiline-ternary': ['warn', 'always-multiline'],
     'vue/no-console': ['warn', {
       allow: ['info', 'warn', 'error', 'table', 'group', 'groupEnd', 'groupCollapsed'],
@@ -354,8 +340,14 @@ function getVueRules(options: DeepNonNullable<Options>) {
         ...userIgnoredUndefinedComponents,
       ].filter(isTruthy),
     }],
-    'vue/no-unused-refs': 'error',
+    'vue/no-undef-directives': nuxt ? 'off' : 'error', // Can't resolve globally-regsitered directives in Nuxt.
     'vue/no-unused-emit-declarations': 'error',
+    'vue/no-unused-properties': ['error', {
+      groups: ['setup', 'props', 'data', 'inject', 'asyncData', 'computed', 'methods'],
+      deepData: true,
+      unreferencedOptions: ['returnAsUnreferenced'],
+    }],
+    'vue/no-unused-refs': 'error',
     'vue/no-use-v-else-with-v-for': 'error',
     'vue/no-useless-mustaches': 'error',
     'vue/no-useless-v-bind': 'error',
@@ -364,8 +356,10 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/prefer-define-options': 'warn',
     'vue/prefer-prop-type-boolean-first': 'warn',
     'vue/prefer-separate-static-class': 'warn',
+    'vue/prefer-single-event-payload': 'warn',
     'vue/prefer-true-attribute-shorthand': ['warn', preferVBindTrueShorthand],
     'vue/prefer-use-template-ref': 'warn',
+    'vue/prefer-v-model': 'warn',
     'vue/require-default-export': 'error',
     'vue/require-emit-validator': 'error',
     'vue/require-expose': 'error',
@@ -375,7 +369,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/slot-name-casing': 'warn',
     'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
     // 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
-  } satisfies VueRules;
+  } satisfies PluginRules<'vue'>;
 
   return vueRules;
 }
