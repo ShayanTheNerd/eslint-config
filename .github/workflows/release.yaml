@@ -55,7 +55,7 @@ jobs:
           echo "tag=v$clean_version" >> $GITHUB_OUTPUT
 
       - name: Publish to the NPM Registry
-        run: pnpm publish
+        run: pnpm publish --access public --no-git-checks
 
       - name: Publish to the JSR Registry
         run: pnpx jsr publish
