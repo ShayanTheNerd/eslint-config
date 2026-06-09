@@ -11,7 +11,6 @@ export default defineConfig({
   },
   exports: {
     customExports(packageExports) {
-      packageExports['./types/*'] = './dist/types/*';
       packageExports['./prettier'] = './dist/prettier.config.mjs';
       delete packageExports['./prettier.config'];
 

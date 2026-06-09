@@ -1,7 +1,6 @@
 {
   "name": "@shayanthenerd/eslint-config",
   "version": "0.20.0",
-  "license": "MIT",
   "description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
   "keywords": [
     "eslint",
@@ -20,6 +19,7 @@
     "url": "git+https://github.com/ShayanTheNerd/eslint-config.git"
   },
   "funding": "https://buymeacoffee.com/shayanthenerd",
+  "license": "MIT",
   "author": {
     "name": "Shayan Zamani",
     "email": "dev.shayan.zamani@gmail.com",
@@ -36,8 +36,7 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json",
-    "./prettier": "./dist/prettier.config.mjs",
-    "./types/*": "./dist/types/*"
+    "./prettier": "./dist/prettier.config.mjs"
   },
   "types": "./dist/index.d.mts",
   "files": [

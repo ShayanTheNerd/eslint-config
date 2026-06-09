@@ -6,7 +6,6 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json",
-    "./prettier": "./dist/prettier.config.mjs",
-    "./types/*": "./dist/types/*"
+    "./prettier": "./dist/prettier.config.mjs"
   }
 }
