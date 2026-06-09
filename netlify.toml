@@ -1,5 +1,7 @@
 [build.environment]
   NODE_VERSION = "26"
+  COREPACK_ENABLE = "0" # Semver ranges (e.g., `^11.0.0`) aren't supported by Corepack
+  PNPM_VERSION = "11.5.2" # Fallback version instead of `devEngines.packageManager.version`
 
 [build]
   command = "pnpm run build:inspector"
