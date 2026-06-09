@@ -1,10 +1,15 @@
 {
   "$schema": "https://jsr.io/schema/config-file.v1.json",
   "name": "@shayanthenerd/eslint-config",
-  "version": "0.21.0",
+  "version": "0.22.0",
   "license": "MIT",
   "publish": {
-    "include": ["jsr.json", "README.md", "dist/**/*.mjs", "dist/**/*.d.mts"]
+    "include": [
+      "jsr.json",
+      "README.md",
+      "dist/**/*.mjs",
+      "dist/**/*.d.mts"
+    ]
   },
   "exports": {
     ".": "./dist/index.mjs",
