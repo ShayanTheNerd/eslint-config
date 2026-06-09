@@ -1,8 +1,0 @@
-{
-  "backend": "static",
-  "jsonSerializableMethods": [
-    "devframe:agent:list-tools",
-    "devframe:agent:list-resources",
-    "devframe:agent:read-resource"
-  ]
-}
