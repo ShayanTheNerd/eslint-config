@@ -49,7 +49,7 @@ jobs:
           new_version=$(pnpm version ${{ github.event.inputs.version }} --no-git-tag-version)
           clean_version=$(jq -r .version package.json)
           jq --arg version "$clean_version" '.version = $version' jsr.json > jsr.json.tmp && mv jsr.json.tmp jsr.json
-          git commit -am "chore: release $new_version"
+          git commit -am "chore: release $new_version" --no-verify
           git tag -am "Release $new_version" $new_version
           git push --follow-tags
           echo "tag=$new_version" >> $GITHUB_OUTPUT
