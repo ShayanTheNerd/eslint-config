@@ -67,7 +67,7 @@
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
-    "**/*.{json,jsonc,yaml}": "pnpm format",
+    "**/*.{json,jsonc,yaml}!pnpm-lock.yaml": "pnpm format",
     "pnpm-lock.yaml": "pnpm generate:types && pnpm generate:docs",
     "src/types/**/*.d.ts": "pnpm generate:docs",
     "{**/*.ts,package.json}": "pnpm lint"
@@ -98,7 +98,7 @@
     "globals": "17.6.0",
     "local-pkg": "1.2.1",
     "tailwind-csstree": "0.3.2",
-    "typescript-eslint": "8.60.1"
+    "typescript-eslint": "8.61.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.3",
