@@ -48,7 +48,6 @@ jobs:
         run: |
           pnpm version ${{ github.event.inputs.version }} --no-git-tag-version
           clean_version=$(jq -r .version package.json)
-          jq --arg version "$clean_version" '.version = $version' jsr.json > jsr.json.tmp && mv jsr.json.tmp jsr.json
           git commit -am "chore: release v$clean_version" --no-verify
           git tag -am "Release v$clean_version" "v$clean_version"
           git push --follow-tags
@@ -56,9 +55,6 @@ jobs:
 
       - name: Publish to the NPM Registry
         run: pnpm publish --access public --no-git-checks
-
-      - name: Publish to the JSR Registry
-        run: pnpx jsr publish --allow-slow-types
 
       - name: Generate a Changelog
         id: changelog

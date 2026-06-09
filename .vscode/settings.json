@@ -56,6 +56,6 @@
     "README.md": "LICENSE",
     ".gitignore": ".gitattributes, .gitmessage",
     "*.mjs": "$(capture).mjs.map, $(capture).d.mts",
-    "package.json": ".editorconfig, eslint.config.ts, jsr.json, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
+    "package.json": ".editorconfig, eslint.config.ts, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
   }
 }

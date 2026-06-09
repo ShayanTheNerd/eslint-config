@@ -1,4 +1,4 @@
-# @shayanthenerd/eslint-config &nbsp; [![license-badge]][license] [![npm-version-badge]][npmx] [![jsr-version-badge]][jsr]
+# @shayanthenerd/eslint-config &nbsp; [![license-badge]][license] [![npm-version-badge]][npmx]
 
 ESLint configuration for enforcing best practices and maintaining a consistent coding style. [Explore configurations][online-preview]!
 
@@ -653,8 +653,6 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [MIT][license] License © 2025-PRESENT — [Shayan Zamani][ShayanTheNerd]
 
 <!-- Badges -->
-[jsr]: https://jsr.io/badges/@shayanthenerd/eslint-config
-[jsr-version-badge]: https://jsr.io/badges/@shayanthenerd/eslint-config?logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
 [license]: ./LICENSE
 [license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
 [npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
