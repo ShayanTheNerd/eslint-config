@@ -10,7 +10,7 @@ const fallbackMessage = `Falling back to default ignore patterns. You can suppre
 function resolveGitignorePatterns(gitignorePath: string): string[] {
   const gitignoreAbsolutePath = path.resolve(process.cwd(), gitignorePath);
   const styledGitignorePath = styleText('blue', gitignoreAbsolutePath);
-  const gitignoreExists = fs.existsSync(gitignoreAbsolutePath);
+  const gitignoreExists = fs.existsSync(gitignoreAbsolutePath); // eslint-disable-line n/no-sync
   const gitignorePatterns: string[] = [];
 
   if (!gitignoreExists) {

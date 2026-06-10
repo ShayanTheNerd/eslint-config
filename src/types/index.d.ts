@@ -311,6 +311,15 @@ interface Options {
     markdown?: boolean | MarkdownOptions,
 
     /**
+     * Use [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n) to enforce Node.js best practices and catch common mistakes.
+     *
+     * Some rules depend on the specified Node.js version. Visit the documentation for [version-resolution options and project-specific configurations](https://github.com/eslint-community/eslint-plugin-n#configured-nodejs-version-range).
+     *
+     * @default true
+     */
+    node?: boolean | ConfigWithOverrides<PluginRules<'n'>>,
+
+    /**
      * Whether [Nuxt](https://nuxt.com) is used in the project.
      *
      * Enforce best practices and the use of Nuxt-specific components over their standard counterparts. For example, `<NuxtLink>` must be used instead of `<a>`, and `<NuxtTime>` instead of `<time>`.

@@ -58,7 +58,7 @@ Legend:
 | [promises][plugin-promise]                                   |    ✅    |   ◻️    |
 | [Imports][plugin-import-x]                                   |    ✅    |   ◻️    |
 | [Zod][plugin-zod]                                            |    ✅    |   🔎    |
-| [Node][plugin-node]                                          |    ⌛️    |   N/A  |
+| [Node][plugin-n]                                          |    ✅    |   ◻️    |
 | [Unicorn][plugin-unicorn]                                    |    ⌛️    |   N/A  |
 
 ## Installation and Configuration
@@ -224,6 +224,9 @@ By default, the plugin uses GitHub Flavored Markdown (GFM). You can [switch to C
 
 > [!NOTE]
 > Fenced code blocks inside Markdown files are not linted by @eslint/markdown.
+
+### Node.js
+Some rules depend on the specified Node.js version. Visit the documentation for [version-resolution options and project-specific configurations](https://github.com/eslint-community/eslint-plugin-n#configured-nodejs-version-range).
 
 ## IDE Support
 Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][extension-prettier]. Then add the following in _.vscode/settings.json_:
@@ -494,6 +497,9 @@ _.vscode/settings.json_:
         language?: 'gfm' | 'commonmark',
         overrides?: Overrides,
       },
+      node?: boolean | {
+        overrides?: Overrides,
+      },
       nuxt?: boolean | {
         icon?: boolean | {
           component?: string,
@@ -637,7 +643,7 @@ Under this policy, minor updates may introduce new linting errors, which could b
 You can find a list of all available versions and their changelogs on the [releases page][releases].
 
 ## Roadmap to v1.0.0
-- [ ] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-node], [eslint-plugin-unicorn][plugin-unicorn], and more.
+- [ ] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-n], [eslint-plugin-unicorn][plugin-unicorn], and more.
 - [ ] Add support for other React, Next, Astro, and Markdown.
 - [ ] Develop an interactive starter wizard to quickly scaffold the configurations for ESLint, Prettier, etc.
 
@@ -669,8 +675,8 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-import-x]: https://github.com/un-ts/eslint-plugin-import-x
 [plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 [plugin-md]: https://github.com/eslint/markdown
+[plugin-n]: https://github.com/eslint-community/eslint-plugin-n
 [plugin-next]: https://nextjs.org/docs/app/api-reference/config/eslint#eslint-plugin
-[plugin-node]: https://github.com/eslint-community/eslint-plugin-n
 [plugin-package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
 [plugin-perfectionist]: https://perfectionist.dev
 [plugin-playwright]: https://github.com/mskelton/eslint-plugin-playwright

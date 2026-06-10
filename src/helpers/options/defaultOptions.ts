@@ -66,6 +66,9 @@ const defaultOptions = {
       language: 'gfm',
       overrides: {},
     },
+    node: {
+      overrides: {},
+    },
     nuxt: {
       icon: {
         component: 'Icon',

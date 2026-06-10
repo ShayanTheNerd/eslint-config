@@ -10,6 +10,7 @@ import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
 import { getHTMLConfig } from '#configs/html.ts';
+import { getNodeConfig } from '#configs/node.ts';
 import { getAstroConfig } from '#configs/astro.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
@@ -98,6 +99,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       vue,
       zod,
       html,
+      node,
       nuxt,
       astro,
       importX,
@@ -138,6 +140,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
+    isEnabled(node) && getNodeConfig(mergedOptions),
     isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
     isEnabled(markdown) && getMarkdownConfig(mergedOptions),
     isEnabled(html) && getHTMLConfig(mergedOptions),

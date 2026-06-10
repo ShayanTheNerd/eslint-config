@@ -6,6 +6,7 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs ??= {};
   options.configs.test ??= {};
 
+  options.configs.node ??= true;
   options.configs.packageJson ??= true;
   options.configs.markdown ??= true;
   options.configs.html ??= false;
