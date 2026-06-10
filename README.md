@@ -1,6 +1,6 @@
 # @shayanthenerd/eslint-config &nbsp; [![license-badge]][license] [![npm-version-badge]][npmx]
 
-ESLint configuration for enforcing best practices and maintaining a consistent coding style. [Explore configurations][online-preview]!
+ESLint configuration for enforcing best practices and maintaining a consistent coding style. [Inspect configurations][online-preview]!
 
 - **Flexible**: [Highly-customizable options](#customization) and configurations with sensible defaults.
 - **Smart**: Context-aware linting with [automatic dependency detection](#automatic-dependency-detection) and _.gitignore_ recognition.
@@ -180,7 +180,7 @@ To opt out of this behavior, either [globally disable automatic dependency detec
 
 ## Framework and Tool Integrations
 ### Tailwind
-The Tailwind integration isn't automatically enabled because ESLint needs to know where to locate your Tailwind configuration.
+To enable the Tailwind integration, provide the location of your Tailwind configuration or CSS entry point.
 ```js title="eslint.config.js"
 import { defineConfig } from '@shayanthenerd/eslint-config';
 
@@ -195,7 +195,7 @@ export default defineConfig({
 });
 ```
 
-For editor integration, to avoid inconsistent diagnostics and auto-fixes from the [Tailwind CSS IntelliSense VS Code extension][extension-tailwind], add the following settings to _.vscode/settings.json_:
+For editor integration, to avoid inconsistent diagnostics from the [Tailwind CSS IntelliSense VS Code extension][extension-tailwind], add the following settings to _.vscode/settings.json_:
 ```json title=".vscode/settings.json"
 {
   "tailwindCSS.lint.cssConflict": "ignore",
@@ -346,31 +346,29 @@ _.vscode/settings.json_:
 ```
 
 ### Using Prettier Alone
-If you prefer to use Prettier as the only formatter, [disable the stylistic configuration](#customization) and let Prettier handle all formatting. Note that **this approach provides less granular control over the formatting options**.
+If you prefer to use Prettier as the only formatter, [disable the stylistic configuration](#customization) and let Prettier handle all formatting. Just make sure to avoid running `lint` and `format` scripts on the same files simultaneously.
 
 _package.json_:
 ```json title="package.json"
 {
   "scripts": {
-    "format": "prettier --write . --cache"
+    "format": "prettier --write . --cache",
+    "lint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
   }
 }
 ```
 _.vscode/settings.json_:
 ```json title=".vscode/settings.json"
 {
-  "eslint.format.enable": false,
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  /* On file save, code actions are run before format, so the following doesn't cause conflicts. */
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "never"
+    "source.fixAll.eslint": "explicit"
   }
 }
 ```
-
-When using this approach:
-- Avoid running `lint` and `format` scripts on the same files simultaneously.
-- Use either ESLint fixes or Prettier formatting when saving files, but not both.
 
 ## API Reference
 <details>
