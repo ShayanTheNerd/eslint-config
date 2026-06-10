@@ -45,9 +45,10 @@
   },
 
   "workbench.editor.customLabels.patterns": {
-    "**/src/rules/*.ts": "rules/${filename}.ts",
-    "**/src/configs/*.ts": "configs/${filename}.ts",
-    "**/src/types/options/*.ts": "options/${filename}.d.ts"
+    "**/*/*.*": "${dirname}/${filename}.${extname}",
+    "**/scripts/**/*.ts": "scripts/${filename}.${extname}",
+    "**/src/helpers/**/*.ts": "helpers/${filename}.${extname}",
+    "**/src/types/options/*.ts": "types/options/${filename}.${extname}"
   },
 
   "explorer.fileNesting.enabled": true,
