@@ -1,9 +1,36 @@
 import type { Options } from '#types/index.d.ts';
-import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+
+type IgnoredNonLogicalProperties = RuleOptions<'better-tailwindcss/enforce-logical-properties'>['ignore'];
+
+const ignoredNonLogicalProperties = [
+  '^top(?:-.+)?$',
+  '^bottom(?:-.+)?$',
+  '^pt-.+$',
+  '^pb-.+$',
+  '^-?mt-.+$',
+  '^-?mb-.+$',
+  '^border-t(?:-.+)?$',
+  '^border-b(?:-.+)?$',
+  '^w-.+$',
+  '^min-w-.+$',
+  '^max-w-.+$',
+  '^h-.+$',
+  '^min-h-.+$',
+  '^max-h-.+$',
+  '^overflow-x-.+$',
+  '^overflow-y-.+$',
+  '^overscroll-x-.+$',
+  '^overscroll-y-.+$',
+  '^scroll-pt-.+$',
+  '^scroll-pb-.+$',
+  '^scroll-mt-.+$',
+  '^scroll-mb-.+$',
+] satisfies IgnoredNonLogicalProperties;
 
 function getTailwindRules(options: DeepNonNullable<Options>) {
   const { tailwind, stylistic } = options.configs;
@@ -28,7 +55,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
       },
     ],
     'better-tailwindcss/enforce-consistent-variant-order': 'warn',
-    // 'better-tailwindcss/enforce-logical-properties': 'warn', // https://github.com/schoero/eslint-plugin-better-tailwindcss/issues/380
+    'better-tailwindcss/enforce-logical-properties': ['warn', { ignore: ignoredNonLogicalProperties }],
     'better-tailwindcss/no-duplicate-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
