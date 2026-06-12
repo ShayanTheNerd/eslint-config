@@ -14,6 +14,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     methodSignatureStyle,
   } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
   const noUnusedVarsOptions = getJavaScriptRules(options)['no-unused-vars'][1];
+  const preferDestructuringOptions = getJavaScriptRules(options)['prefer-destructuring'][1];
 
   const tsRules = {
     /* Strict Type-Checked */
@@ -117,7 +118,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
 
     /* Uncategorized */
     '@typescript-eslint/default-param-last': 'warn',
-    '@typescript-eslint/prefer-destructuring': ['warn', { array: false }],
+    '@typescript-eslint/prefer-destructuring': ['warn', preferDestructuringOptions],
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-useless-empty-export': 'error',
