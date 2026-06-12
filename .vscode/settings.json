@@ -45,10 +45,10 @@
   },
 
   "workbench.editor.customLabels.patterns": {
-    "**/*/*.*": "${dirname}/${filename}.${extname}",
     "**/scripts/**/*.ts": "scripts/${filename}.${extname}",
     "**/src/helpers/**/*.ts": "helpers/${filename}.${extname}",
-    "**/src/types/options/*.ts": "types/options/${filename}.${extname}"
+    "**/src/types/options/*.ts": "types/options/${filename}.${extname}",
+    "*/*/**/*.*": "${dirname}/${filename}.${extname}"
   },
 
   "explorer.fileNesting.enabled": true,

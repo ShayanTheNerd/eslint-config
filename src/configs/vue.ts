@@ -17,7 +17,7 @@ const baseVueConfig = eslintPluginVue.configs['flat/base'].find((config) => conf
 
 function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue } = options.configs;
-  const accessibility = isEnabled(vue) && isEnabled(vue.accessibility);
+  const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
   const { overrides } = isEnabled(vue) ? vue : defaultOptions.configs.vue;
 
   const vueConfig = {
@@ -25,7 +25,7 @@ function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
     files: [globs.vue],
     plugins: {
       vue: eslintPluginVue,
-      ...(accessibility && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
+      ...(isVueAccessibilityEnabled && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
     },
     processor: 'vue/vue',
     languageOptions: {
@@ -41,7 +41,7 @@ function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
     },
     rules: {
       ...getVueRules(options),
-      ...(accessibility && getVueAccessibilityRules(options)),
+      ...(isVueAccessibilityEnabled && getVueAccessibilityRules(options)),
     },
   } satisfies Linter.Config;
 
