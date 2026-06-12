@@ -3,6 +3,7 @@ import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginHTML from '@html-eslint/eslint-plugin';
 
 import { globs } from '#helpers/globs.ts';
@@ -11,7 +12,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getHTMLConfig(options: DeepNonNullable<Options>): Linter.Config {
-  const { html } = options.configs;
+  const { html, unicorn } = options.configs;
   const { overrides } = isEnabled(html) ? html : defaultOptions.configs.html;
 
   const htmlConfig = {
@@ -19,6 +20,7 @@ function getHTMLConfig(options: DeepNonNullable<Options>): Linter.Config {
     files: [globs.html],
     plugins: {
       '@html-eslint': eslintPluginHTML,
+      ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
     },
     languageOptions: {
       parser: eslintPluginHTML.configs['flat/recommended'].languageOptions.parser,

@@ -16,6 +16,7 @@ import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
 import { getPromiseConfig } from '#configs/promise.ts';
+import { getUnicornConfig } from '#configs/unicorn.ts';
 import { getMarkdownConfig } from '#configs/markdown.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
@@ -102,6 +103,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       node,
       nuxt,
       astro,
+      unicorn,
       importX,
       promise,
       markdown,
@@ -134,6 +136,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
 
     getBaseConfig(mergedOptions),
     isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
+    isEnabled(unicorn) && getUnicornConfig(mergedOptions),
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
     preferNamedExports && getRestrictedDefaultExports(),

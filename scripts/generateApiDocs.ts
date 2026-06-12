@@ -10,7 +10,7 @@ const project = new Project({ tsConfigFilePath: 'tsconfig.json' });
 const projectTypes = project.addSourceFileAtPath('src/types/index.d.ts');
 const optionsInterface = projectTypes.getInterfaceOrThrow('Options');
 const nonNullableOptionsType = optionsInterface.getType().getNonNullableType();
-const options = expandType(projectTypes, nonNullableOptionsType).replaceAll('"', '\'').replace(/\n(?!\n)/g, '\n  ');
+const options = expandType(projectTypes, nonNullableOptionsType).replaceAll('"', '\'').replaceAll(/\n(?!\n)/g, '\n  ');
 const vueAttrCategoryUnion = getVueAttrCategoryUnion(optionsInterface);
 
 const codeBlock = `

@@ -384,6 +384,13 @@ interface Options {
     typescript?: boolean | TypeScriptOptions,
 
     /**
+     * Use [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn) to enforce general best practices and catch common mistakes.
+     *
+     * @default true
+     */
+    unicorn?: boolean | ConfigWithOverrides<PluginRules<'unicorn'>>,
+
+    /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.
      *
      * @default false // `true` if "vue" is detected in the dependencies when `autoDetectDeps` is enabled

@@ -5,11 +5,15 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
+type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
-type HTMLRules = PluginRules<'@html-eslint'> & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
+type HTMLRules =
+  & PluginRules<'@html-eslint'>
+  & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
+  & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
 function getHTMLRules(options: DeepNonNullable<Options>) {
-  const { html, tailwind, stylistic } = options.configs;
+  const { html, unicorn, tailwind, stylistic } = options.configs;
   const { useBaseline, idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
   const {
     indent,
@@ -96,6 +100,10 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
 
   if (isEnabled(tailwind)) {
     (htmlRules as HTMLRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+  }
+
+  if (isEnabled(unicorn)) {
+    (htmlRules as HTMLRules)['unicorn/no-invalid-file-input-accept'] = 'error';
   }
 
   return htmlRules;

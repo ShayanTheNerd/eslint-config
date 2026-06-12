@@ -133,6 +133,9 @@ const defaultOptions = {
       typeDefinitionStyle: 'interface',
       overrides: {},
     },
+    unicorn: {
+      overrides: {},
+    },
     vue: {
       accessibility: {
         accessibleChildComponents: ['img', 'picture', 'NuxtImg', 'NuxtPicture', 'UBadge'],

@@ -571,6 +571,9 @@ _.vscode/settings.json_:
         typeDefinitionStyle?: 'type' | 'interface',
         overrides?: Overrides,
       },
+      unicorn?: boolean | {
+        overrides?: Overrides,
+      },
       vue?: boolean | {
         accessibility?: boolean | {
           accessibleChildComponents?: string[],
@@ -643,7 +646,7 @@ Under this policy, minor updates may introduce new linting errors, which could b
 You can find a list of all available versions and their changelogs on the [releases page][releases].
 
 ## Roadmap to v1.0.0
-- [ ] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-n], [eslint-plugin-unicorn][plugin-unicorn], and more.
+- [x] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-n], [eslint-plugin-unicorn][plugin-unicorn], and more.
 - [ ] Add support for other React, Next, Astro, and Markdown.
 - [ ] Develop an interactive starter wizard to quickly scaffold the configurations for ESLint, Prettier, etc.
 

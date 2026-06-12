@@ -28,6 +28,7 @@ const config: Linter.Config[] = defineConfig({
       vitest: true,
     },
     typescript: true,
+    unicorn: true,
     vue: true,
     zod: true,
   },

@@ -66,7 +66,7 @@ class TypeExpander {
 
     if (currentPath === 'env') {
       /* eslint-disable-next-line func-style */
-      const cleanForSort = (string: string) => string.replace(/^['"]|['"]$/g, '');
+      const cleanForSort = (string: string) => string.replaceAll(/^['"]|['"]$/g, '');
       unionTypes.sort((a, b) => cleanForSort(a).localeCompare(cleanForSort(b)));
     } else {
       unionTypes.sort((a, b) => a.length - b.length || a.localeCompare(b));
@@ -127,7 +127,7 @@ class TypeExpander {
             return indexA - indexB;
           } else if (indexA !== -1) {
             return -1;
-          } else if (indexB !== -1) {
+          } else if (indexB !== -1) { // eslint-disable-line no-negated-condition
             return 1;
           } else {
             return nameA.localeCompare(nameB);
@@ -143,7 +143,7 @@ class TypeExpander {
             return indexA - indexB;
           } else if (indexA !== -1) {
             return -1;
-          } else if (indexB !== -1) {
+          } else if (indexB !== -1) { // eslint-disable-line no-negated-condition
             return 1;
           } else {
             return nameA.localeCompare(nameB);

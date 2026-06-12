@@ -6,14 +6,15 @@ import { isEnabled } from '#utils/isEnabled.ts';
 
 function getJavaScriptRules(options: DeepNonNullable<Options>) {
   const {
+    unicorn,
     typescript,
     base: {
       maxDepth,
       functionStyle,
       maxNestedCallbacks,
-      preferNamedExports,
     },
   } = options.configs;
+  const isUnicornEnabled = isEnabled(unicorn);
   const isTypeScriptEnabled = isEnabled(typescript);
 
   const javascriptRules = {
@@ -144,14 +145,15 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-iterator': 'warn',
     'no-label-var': 'error',
     'no-lone-blocks': 'error',
-    'no-lonely-if': 'error',
+    'no-lonely-if': isUnicornEnabled ? 'off' : 'warn',
     'no-loop-func': 'warn',
     'no-multi-assign': ['error', { ignoreNonDeclaration: true }],
     'no-multi-str': 'error',
-    'no-nested-ternary': 'warn',
+    'no-negated-condition': 'warn',
+    'no-nested-ternary': isUnicornEnabled ? 'off' : 'warn',
     'no-new': 'error',
     'no-new-func': 'error',
-    'no-new-native-nonconstructor': isTypeScriptEnabled ? 'off' : 'error',
+    'no-new-native-nonconstructor': isTypeScriptEnabled || isUnicornEnabled ? 'off' : 'error',
     'no-new-wrappers': 'error',
     'no-nonoctal-decimal-escape': 'error',
     'no-obj-calls': isTypeScriptEnabled ? 'off' : 'error',
