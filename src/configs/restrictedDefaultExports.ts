@@ -3,10 +3,10 @@ import type { CoreRules } from '#types/eslintRules.d.ts';
 
 import { globs } from '#helpers/globs.ts';
 
-function getRestrictedExports() {
-  const restrictedExportsConfig = {
-    name: 'shayanthenerd/restricted-exports',
-    files: [globs.restrictedExports],
+function getRestrictedDefaultExports() {
+  const restrictedDefaultExportsConfig = {
+    name: 'shayanthenerd/restrict-default-exports',
+    files: [globs.restrictedDefaultExports],
     rules: {
       'no-restricted-exports': ['error', {
         restrictDefaultExports: {
@@ -19,7 +19,7 @@ function getRestrictedExports() {
     } satisfies Pick<CoreRules, 'no-restricted-exports'>,
   } satisfies Linter.Config;
 
-  return restrictedExportsConfig;
+  return restrictedDefaultExportsConfig;
 }
 
-export { getRestrictedExports };
+export { getRestrictedDefaultExports };

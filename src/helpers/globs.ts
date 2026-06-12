@@ -1,7 +1,7 @@
 const srcExtensions = '?([mc])[jt]s?(x)' as const;
 const vueExtensions = `{vue,${srcExtensions}}` as const;
 
-const restrictedExportsFolders = [
+const restrictedDefaultExportsFolderNames = [
   'shared',
   'dto?(s)',
   'model?(s)',
@@ -14,7 +14,7 @@ const restrictedExportsFolders = [
 
 const globs = {
   src: `**/*.${srcExtensions}`,
-  restrictedExports: `**/{${restrictedExportsFolders.join(',')}}/**/*.${srcExtensions}`,
+  restrictedDefaultExports: `**/{${restrictedDefaultExportsFolderNames.join(',')}}/**/*.${srcExtensions}`,
 
   packageJson: '**/package.json',
   markdown: '**/*.md',

@@ -12,7 +12,7 @@ export default defineConfig(
     },
     {
       name: 'src/disables/explicit-module-boundary-types',
-      files: ['./src/rules/*.ts', './src/configs/{restrictedExports,vueComponentNames,vueServerComponents}.ts'],
+      files: ['./src/rules/*.ts', './src/configs/{restrictedDefaultExports,vueComponentNames,vueServerComponents}.ts'],
       rules: {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
       },

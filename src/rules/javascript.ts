@@ -163,17 +163,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-proto': 'warn',
     'no-prototype-builtins': 'error',
     'no-regex-spaces': 'error',
-    'no-restricted-exports': [
-      preferNamedExports ? 'error' : 'off',
-      {
-        restrictDefaultExports: {
-          named: true,
-          namedFrom: true,
-          defaultFrom: true,
-          namespaceFrom: true,
-        },
-      },
-    ],
     'no-return-assign': ['error', 'always'],
     'no-script-url': 'error',
     'no-self-assign': 'error',

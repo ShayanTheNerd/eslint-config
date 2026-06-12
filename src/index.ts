@@ -24,11 +24,11 @@ import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
-import { getRestrictedExports } from '#configs/restrictedExports.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
+import { getRestrictedDefaultExports } from '#configs/restrictedDefaultExports.ts';
 
 /** Valid argument combinations for the `defineConfig` function. */
 type DefineConfigArguments =
@@ -131,12 +131,12 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       ...((Object.keys(settings).length > 0) && { settings }),
     },
     globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
-    getBaseConfig(mergedOptions),
 
+    getBaseConfig(mergedOptions),
     isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
-    preferNamedExports && getRestrictedExports(),
+    preferNamedExports && getRestrictedDefaultExports(),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 
