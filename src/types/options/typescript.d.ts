@@ -31,7 +31,7 @@ interface TypeScriptOptions extends ConfigWithOverrides<ConfigRules> {
    *
    * If set to `false`, unused imports will only be reported.
    *
-   * @default true
+   * @default false
    *
    * @see [@typescript-eslint/no-unused-vars: `enableAutofixRemoval.imports` option](https://typescript-eslint.io/rules/no-unused-vars/#enableautofixremovalimports)
    */

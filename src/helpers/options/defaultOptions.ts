@@ -129,7 +129,7 @@ const defaultOptions = {
     typescript: {
       allowedDefaultProjects: [],
       methodSignatureStyle: 'method',
-      removeUnusedImports: true,
+      removeUnusedImports: false,
       typeDefinitionStyle: 'interface',
       overrides: {},
     },
