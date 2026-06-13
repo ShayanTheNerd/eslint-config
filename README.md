@@ -461,7 +461,6 @@ _.vscode/settings.json_:
         functionStyle?: 'expression' | 'declaration',
         maxDepth?: number,
         maxNestedCallbacks?: number,
-        preferNamedExports?: boolean,
         overrides?: Overrides,
       },
       css?: boolean | {

@@ -29,7 +29,6 @@ import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
-import { getRestrictedDefaultExports } from '#configs/restrictedDefaultExports.ts';
 
 /** Valid argument combinations for the `defineConfig` function. */
 type DefineConfigArguments =
@@ -112,9 +111,6 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       typescript,
       packageJson,
       perfectionist,
-      base: {
-        preferNamedExports,
-      },
       test: {
         vitest,
         cypress,
@@ -139,7 +135,6 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(unicorn) && getUnicornConfig(mergedOptions),
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
-    preferNamedExports && getRestrictedDefaultExports(),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
 

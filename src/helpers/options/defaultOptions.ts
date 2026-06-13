@@ -44,7 +44,6 @@ const defaultOptions = {
       functionStyle: 'declaration',
       maxDepth: 3,
       maxNestedCallbacks: 3,
-      preferNamedExports: true,
       overrides: {},
     },
     css: {
