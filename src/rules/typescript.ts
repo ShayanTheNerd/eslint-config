@@ -130,7 +130,6 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
       requireDefaultForNonUnion: true,
       considerDefaultExhaustiveForUnions: true,
     }],
-    '@typescript-eslint/explicit-module-boundary-types': 'warn',
     '@typescript-eslint/no-unused-private-class-members': 'error',
     '@typescript-eslint/no-unnecessary-parameter-property-assignment': 'warn',
     '@typescript-eslint/method-signature-style': ['warn', methodSignatureStyle],

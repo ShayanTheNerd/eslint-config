@@ -10,12 +10,5 @@ export default defineConfig(
         complexity: 'off',
       },
     },
-    {
-      name: 'src/disables/explicit-module-boundary-types',
-      files: ['./src/rules/*.ts', './src/configs/{restrictedDefaultExports,vueComponentNames,vueServerComponents}.ts'],
-      rules: {
-        '@typescript-eslint/explicit-module-boundary-types': 'off',
-      },
-    },
   ],
 );
