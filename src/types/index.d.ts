@@ -86,19 +86,15 @@ interface Options {
   /**
    * The path and the name of the root TypeScript config file.
    *
-   * If you don't use TypeScript, provide the path and the name of the root JavaScript config file.
-   *
    * This is used by
    * - [better-tailwindcss: `tsconfig` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md#tsconfig)
    * - [perfectionist/sort-imports: `tsconfig` option](https://perfectionist.dev/rules/sort-imports#tsconfig)
    *
-   * @default undefined // `{ rootDir: '.', filename: 'tsconfig.json' }` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
+   * @default undefined // `{ rootDir: '.', filename: 'tsconfig.json' }` if TypeScript integration is enabled
    */
   tsConfig?: false | {
     /**
      * The name of the root TypeScript config file.
-     *
-     * If you don't use TypeScript, provide the name of the root JavaScript config file.
      *
      * It will fall back to the default value if set to an empty string (`''`).
      *
@@ -108,8 +104,6 @@ interface Options {
 
     /**
      * The directory of the root TypeScript config file.
-     *
-      * If you don't use TypeScript, provide the directory of the root JavaScript config file.
      *
      * It will fall back to the default value if set to an empty string (`''`).
      *

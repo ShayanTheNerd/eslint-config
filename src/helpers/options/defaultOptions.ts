@@ -5,7 +5,6 @@ const defaultOptions = {
   env: 'node',
   gitignore: '.gitignore',
   packageDir: '.',
-  tsConfig: false,
 
   project: {
     basePath: '.',

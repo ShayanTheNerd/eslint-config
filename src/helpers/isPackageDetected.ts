@@ -12,9 +12,8 @@ function logDetectedPackages(): void {
   if (detectedPackages.length > 0) {
     detectedPackages.sort();
     console.info(
-      styleText('green', '✔'),
-      'Automatic dependency detection enabled ESLint configurations for',
-      `${detectedPackages.map((packageName) => styleText('blue', packageName)).join(', ')}.`,
+      `${styleText('green', '✔')} Active ESLint integrations:`,
+      detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
     );
   }
 }
