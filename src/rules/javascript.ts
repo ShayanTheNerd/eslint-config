@@ -205,7 +205,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-useless-rename': 'error',
     'no-useless-return': 'error',
     'no-var': 'error',
-    'no-void': 'error',
+    'no-void': ['error', { allowAsStatement: true }],
     'no-with': 'error',
     'object-shorthand': 'warn',
     'operator-assignment': 'error',

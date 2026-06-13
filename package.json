@@ -107,7 +107,7 @@
     "@eslint/config-inspector": "3.0.4",
     "@types/node": "25.9.3",
     "actions-up": "1.14.2",
-    "eslint": "10.4.1",
+    "eslint": "10.5.0",
     "eslint-typegen": "2.3.1",
     "nano-staged": "1.0.2",
     "prettier": "3.8.4",
@@ -133,7 +133,7 @@
     },
     "packageManager": {
       "name": "pnpm",
-      "version": "^11.0.0",
+      "version": "11.6.0",
       "onFail": "warn"
     }
   },

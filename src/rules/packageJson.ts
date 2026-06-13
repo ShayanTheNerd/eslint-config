@@ -33,7 +33,6 @@ const packageJsonRules = {
   }],
   'package-json/restrict-top-level-properties': ['warn', {
     ban: [
-      { property: 'packageManager', message: 'use `devEngines.packageManager`.' },
       { property: 'bun', message: 'use bunfig.toml.' },
       { property: 'pnpm', message: 'use pnpm-workspace.yaml.' },
       { property: 'commitlint', message: 'use a dedicated config file.' },

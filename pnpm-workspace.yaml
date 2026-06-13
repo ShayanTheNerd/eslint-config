@@ -1,7 +1,10 @@
 engineStrict: true
 minimumReleaseAge: 100
-savePrefix: ''
 shellEmulator: true
+
+packageConfigs:
+  - match: ['*']
+    saveExact: true
 
 allowBuilds:
   esbuild: true
