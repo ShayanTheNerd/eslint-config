@@ -64,6 +64,9 @@ const defaultOptions = {
       language: 'gfm',
       overrides: {},
     },
+    next: {
+      overrides: {},
+    },
     node: {
       overrides: {},
     },

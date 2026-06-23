@@ -10,6 +10,7 @@ const config: Linter.Config[] = defineConfig({
     html: true,
     importX: true,
     markdown: true,
+    next: true,
     node: true,
     nuxt: {
       image: true,

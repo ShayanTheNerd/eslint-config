@@ -75,6 +75,7 @@
     "@eslint/css": "1.3.0",
     "@eslint/markdown": "8.0.2",
     "@html-eslint/eslint-plugin": "0.62.0",
+    "@next/eslint-plugin-next": "16.2.9",
     "@stylistic/eslint-plugin": "5.10.0",
     "@vitest/eslint-plugin": "1.6.20",
     "astro-eslint-parser": "2.0.0",

@@ -7,6 +7,7 @@ function enableDetectedConfigs(options: Options): Options {
     typescript: isPackageDetected('typescript', options),
     zod: isPackageDetected('zod', options),
     astro: isPackageDetected('astro', options),
+    next: isPackageDetected('next', options),
     vue: isPackageDetected('vue', options),
     nuxt: isPackageDetected('nuxt', options),
     nuxtUI: isPackageDetected('@nuxt/ui', options),
@@ -36,6 +37,7 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.zod ??= autoDetectedDeps.zod;
   options.configs.vue ??= autoDetectedDeps.vue;
   options.configs.nuxt ??= autoDetectedDeps.nuxt;
+  options.configs.next ??= autoDetectedDeps.next;
   options.configs.astro ??= autoDetectedDeps.astro;
   options.configs.test.vitest ??= autoDetectedDeps.vitest;
   options.configs.test.cypress ??= autoDetectedDeps.cypress;

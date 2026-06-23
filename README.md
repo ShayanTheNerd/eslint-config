@@ -45,7 +45,7 @@ Legend:
 | **Frameworks**                                               |         |            |
 | [Astro][plugin-astro] ([JSX accessibility][plugin-jsx-a11y]) |    ✅    |     🔎      |
 | [React][plugin-react] ([hooks][plugin-react-hooks])          |    ⌛️    |     N/A    |
-| [Next][plugin-next]                                          |    ⌛️    |     N/A    |
+| [Next][plugin-next]                                          |    ✅    |     🔎      |
 | [Vue & Nuxt][plugin-vue] ([accessibility][plugin-vue-a11y])  |    ✅    |     🔎      |
 | [Tailwind][plugin-tailwind]                                  |    ✅    |     ⬛      |
 | **Testing Tools**                                            |         |            |
@@ -496,6 +496,9 @@ _.vscode/settings.json_:
         language?: 'gfm' | 'commonmark',
         overrides?: Overrides,
       },
+      next?: boolean | {
+        overrides?: Overrides,
+      },
       node?: boolean | {
         overrides?: Overrides,
       },
@@ -678,7 +681,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 [plugin-md]: https://github.com/eslint/markdown
 [plugin-n]: https://github.com/eslint-community/eslint-plugin-n
-[plugin-next]: https://nextjs.org/docs/app/api-reference/config/eslint#eslint-plugin
+[plugin-next]: https://github.com/vercel/next.js/tree/HEAD/packages/eslint-plugin-next
 [plugin-package-json]: https://github.com/JoshuaKGoldberg/eslint-plugin-package-json
 [plugin-perfectionist]: https://perfectionist.dev
 [plugin-playwright]: https://github.com/mskelton/eslint-plugin-playwright

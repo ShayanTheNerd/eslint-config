@@ -10,6 +10,7 @@ import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
 import { getHTMLConfig } from '#configs/html.ts';
+import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
 import { getAstroConfig } from '#configs/astro.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
@@ -99,6 +100,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       vue,
       zod,
       html,
+      next,
       node,
       nuxt,
       astro,
@@ -146,6 +148,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(tailwind) && getTailwindConfig(mergedOptions),
     isEnabled(zod) && getZodConfig(mergedOptions),
     isEnabled(astro) && getAstroConfig(mergedOptions),
+    isEnabled(next) && getNextConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
     isEnabled(vue) && getVueComponentNamesConfig(),
     (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),

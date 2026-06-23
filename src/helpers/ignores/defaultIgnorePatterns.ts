@@ -8,6 +8,7 @@ const defaultIgnorePatterns = [
 
   /* Auto-generated type definitions */
   '**/typegen.d.ts',
+  '**/next-env.d.ts',
   '**/components.d.ts',
   '**/auto-import?(s).d.ts',
 

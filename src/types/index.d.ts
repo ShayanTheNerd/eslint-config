@@ -305,6 +305,13 @@ interface Options {
     markdown?: boolean | MarkdownOptions,
 
     /**
+     * Use [@next/eslint-plugin-next](https://github.com/vercel/next.js/tree/HEAD/packages/eslint-plugin-next) to enforce Next.js best practices and catch common mistakes.
+     *
+     * @default false // `true` if "next" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    next?: boolean | ConfigWithOverrides<PluginRules<'next'>>,
+
+    /**
      * Use [eslint-plugin-n](https://github.com/eslint-community/eslint-plugin-n) to enforce Node.js best practices and catch common mistakes.
      *
      * Some rules depend on the specified Node.js version. Visit the documentation for [version-resolution options and project-specific configurations](https://github.com/eslint-community/eslint-plugin-n#configured-nodejs-version-range).
