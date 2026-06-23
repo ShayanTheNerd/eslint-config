@@ -32,34 +32,34 @@ Legend:
 - 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`)
 
 | Category                                                     | Support | Activation |
-| :----------------------------------------------------------- | :-----: | :----: |
-| **Languages**                                                |         |        |
-| [JavaScript][eslint]                                         |    ✅    |   ◻️    |
-| [TypeScript][plugin-ts]                                      |    ✅    |   🔎    |
-| [Markdown][plugin-md]                                        |    ✅    |   ◻️    |
-| [HTML][plugin-html]                                          |    ✅    |   ⬛    |
-| [CSS][plugin-css]                                            |    ✅    |   ⬛    |
-| **Formatting**                                               |         |        |
-| [Stylistic][plugin-stylistic]                                |    ✅    |   ◻️    |
-| [Perfectionist][plugin-perfectionist]                        |    ✅    |   ◻️    |
-| **Frameworks**                                               |         |        |
-| [Astro][plugin-astro] ([JSX accessibility][plugin-jsx-a11y]) |    ✅    |   🔎    |
-| [React][plugin-react] ([hooks][plugin-react-hooks])          |    ⌛️    |   N/A  |
-| [Next][plugin-next]                                          |    ⌛️    |   N/A  |
-| [Vue & Nuxt][plugin-vue] ([accessibility][plugin-vue-a11y])  |    ✅    |   🔎    |
-| [Tailwind][plugin-tailwind]                                  |    ✅    |   ⬛    |
-| **Testing Tools**                                            |         |        |
-| [Storybook][plugin-storybook]                                |    ✅    |   🔎    |
-| [Vitest][plugin-vitest]                                      |    ✅    |   🔎    |
-| [Cypress][plugin-cypress]                                    |    ✅    |   🔎    |
-| [Playwright][plugin-playwright]                              |    ✅    |   🔎    |
-| **Miscellaneous**                                            |         |        |
-| [_package.json_][plugin-package-json]                        |    ✅    |   ◻️    |
-| [promises][plugin-promise]                                   |    ✅    |   ◻️    |
-| [Imports][plugin-import-x]                                   |    ✅    |   ◻️    |
-| [Zod][plugin-zod]                                            |    ✅    |   🔎    |
-| [Node][plugin-n]                                          |    ✅    |   ◻️    |
-| [Unicorn][plugin-unicorn]                                    |    ⌛️    |   N/A  |
+| :----------------------------------------------------------- | :-----: | :--------: |
+| **Languages**                                                |         |            |
+| [JavaScript][eslint]                                         |    ✅    |     ◻️      |
+| [TypeScript][plugin-ts]                                      |    ✅    |     🔎      |
+| [Markdown][plugin-md]                                        |    ✅    |     ◻️      |
+| [HTML][plugin-html]                                          |    ✅    |     ⬛      |
+| [CSS][plugin-css]                                            |    ✅    |     ⬛      |
+| **Formatting**                                               |         |            |
+| [Stylistic][plugin-stylistic]                                |    ✅    |     ◻️      |
+| [Perfectionist][plugin-perfectionist]                        |    ✅    |     ◻️      |
+| **Frameworks**                                               |         |            |
+| [Astro][plugin-astro] ([JSX accessibility][plugin-jsx-a11y]) |    ✅    |     🔎      |
+| [React][plugin-react] ([hooks][plugin-react-hooks])          |    ⌛️    |     N/A    |
+| [Next][plugin-next]                                          |    ⌛️    |     N/A    |
+| [Vue & Nuxt][plugin-vue] ([accessibility][plugin-vue-a11y])  |    ✅    |     🔎      |
+| [Tailwind][plugin-tailwind]                                  |    ✅    |     ⬛      |
+| **Testing Tools**                                            |         |            |
+| [Storybook][plugin-storybook]                                |    ✅    |     🔎      |
+| [Vitest][plugin-vitest]                                      |    ✅    |     🔎      |
+| [Cypress][plugin-cypress]                                    |    ✅    |     🔎      |
+| [Playwright][plugin-playwright]                              |    ✅    |     🔎      |
+| **Miscellaneous**                                            |         |            |
+| [_package.json_][plugin-package-json]                        |    ✅    |     ◻️      |
+| [promises][plugin-promise]                                   |    ✅    |     ◻️      |
+| [Imports][plugin-import-x]                                   |    ✅    |     ◻️      |
+| [Zod][plugin-zod]                                            |    ✅    |     🔎      |
+| [Node][plugin-n]                                             |    ✅    |     ◻️      |
+| [Unicorn][plugin-unicorn]                                    |    ✅    |     ◻️      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
