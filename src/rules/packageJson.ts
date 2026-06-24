@@ -13,7 +13,7 @@ const packageJsonRules = {
   'package-json/require-bugs': 'warn',
   'package-json/require-description': ['warn', { ignorePrivate: true }],
   'package-json/require-devEngines': 'warn',
-  'package-json/require-engines': ['warn', { ignorePrivate: true }],
+  'package-json/require-engines': 'warn',
   'package-json/require-exports': ['error', { ignorePrivate: true }],
   'package-json/require-files': ['error', { ignorePrivate: true }],
   'package-json/require-homepage': 'warn',

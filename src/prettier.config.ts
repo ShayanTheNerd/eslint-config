@@ -15,7 +15,7 @@ const prettierConfig: Config = {
   printWidth: 120,
   proseWrap: 'preserve',
   quoteProps: 'consistent',
-  rangeEnd: Number.POSITIVE_INFINITY,
+  rangeEnd: Infinity,
   rangeStart: 0,
   requirePragma: false,
   semi: true,

@@ -118,7 +118,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'max-params': ['warn', { countThis: 'always' }],
     'new-cap': 'warn',
     'no-array-constructor': 'error',
-    'no-bitwise': ['error', { int32Hint: true }],
     'no-caller': 'error',
     'no-console': ['warn', {
       allow: ['info', 'warn', 'error', 'table', 'group', 'groupEnd', 'groupCollapsed'],
@@ -208,7 +207,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-void': ['error', { allowAsStatement: true }],
     'no-with': 'error',
     'object-shorthand': 'warn',
-    'operator-assignment': 'error',
+    'operator-assignment': 'warn',
     'prefer-arrow-callback': ['warn', { allowUnboundThis: true }],
     'prefer-const': 'error',
     'prefer-destructuring': [isTypeScriptEnabled ? 'off' : 'warn', { object: true, array: false }],
