@@ -1,6 +1,26 @@
 import type { Type, SourceFile } from 'ts-morph';
 
 class TypeExpander {
+  private static getIndent(depth: number): string {
+    return '  '.repeat(depth);
+  }
+
+  private static getPrimitiveType(type: Type): string | undefined {
+    /* eslint-disable @stylistic/max-statements-per-line, @stylistic/padding-line-between-statements */
+    if (type.isUnknown()) { return 'unknown'; }
+    if (type.isNull()) { return 'null'; }
+    if (type.isUndefined()) { return 'undefined'; }
+    if (type.isString()) { return 'string'; }
+    if (type.isNumber()) { return 'number'; }
+    if (type.isBoolean()) { return 'boolean'; }
+    if (type.isStringLiteral() || type.isNumberLiteral() || type.isBooleanLiteral()) {
+      return type.getText();
+    }
+    /* eslint-enable @stylistic/max-statements-per-line, @stylistic/padding-line-between-statements */
+
+    return undefined;
+  }
+
   private readonly projectTypes: SourceFile;
 
   public constructor(projectTypes: SourceFile) {
@@ -31,26 +51,6 @@ class TypeExpander {
     }
 
     return type.getText(this.projectTypes);
-  }
-
-  private static getIndent(depth: number): string {
-    return '  '.repeat(depth);
-  }
-
-  private static getPrimitiveType(type: Type): string | undefined {
-    /* eslint-disable @stylistic/max-statements-per-line, @stylistic/padding-line-between-statements */
-    if (type.isUnknown()) { return 'unknown'; }
-    if (type.isNull()) { return 'null'; }
-    if (type.isUndefined()) { return 'undefined'; }
-    if (type.isString()) { return 'string'; }
-    if (type.isNumber()) { return 'number'; }
-    if (type.isBoolean()) { return 'boolean'; }
-    if (type.isStringLiteral() || type.isNumberLiteral() || type.isBooleanLiteral()) {
-      return type.getText();
-    }
-    /* eslint-enable @stylistic/max-statements-per-line, @stylistic/padding-line-between-statements */
-
-    return undefined;
   }
 
   private expandUnionType(type: Type, depth: number, path: string[]): string {
