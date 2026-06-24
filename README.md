@@ -58,6 +58,7 @@ Legend:
 | [Promises][plugin-promise]                                                                            |     ✅      |
 | [Imports][plugin-import-x]                                                                            |     ✅      |
 | [Unicorn][plugin-unicorn]                                                                             |     ✅      |
+| [Baseline][plugin-baseline]                                                                           |     ✅      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
@@ -462,27 +463,10 @@ _.vscode/settings.json_:
         overrides?: Overrides,
       },
       css?: boolean | {
-        allowedRelativeFontUnits?: (
-          | '%'
-          | 'ch'
-          | 'em'
-          | 'ex'
-          | 'ic'
-          | 'lh'
-          | 'cap'
-          | 'rch'
-          | 'rem'
-          | 'rex'
-          | 'ric'
-          | 'rlh'
-          | 'rcap'
-        )[],
-        useBaseline?: false | number | 'newly' | 'widely',
         overrides?: Overrides,
       },
       html?: boolean | {
         idNamingConvention?: 'camelCase' | 'kebab-case' | 'PascalCase' | 'snake_case',
-        useBaseline?: false | number | 'newly' | 'widely',
         overrides?: Overrides,
       },
       importX?: boolean | {
@@ -525,7 +509,6 @@ _.vscode/settings.json_:
           headingComponents?: string[],
           imageComponents?: string[],
         },
-        useBaseline?: false | number | 'newly' | 'widely',
         overrides?: Overrides,
       },
       stylistic?: boolean | {
@@ -537,7 +520,7 @@ _.vscode/settings.json_:
         maxLineLength?: number,
         memberDelimiterStyle?: 'semi' | 'comma',
         quotes?: 'double' | 'single' | 'backtick',
-        selfCloseVoidHTMLElements?: 'never' | 'always',
+        selfCloseVoidHtmlElements?: 'never' | 'always',
         semi?: 'never' | 'always',
         trailingComma?: 'never' | 'always' | 'only-multiline' | 'always-multiline',
         overrides?: Overrides,
@@ -581,6 +564,23 @@ _.vscode/settings.json_:
         overrides?: Overrides,
       },
       unicorn?: boolean | {
+        overrides?: Overrides,
+      },
+      useBaseline?: boolean | {
+        baseline?: number | 'newly' | 'widely',
+        css?: {
+          allowedAtRules?: AllowedAtRules,
+          allowedFunctions?: AllowedFunctions,
+          allowedMediaConditions?: AllowedMediaConditions,
+          allowedProperties?: AllowedProperties,
+          allowedPropertyValues?: AllowedPropertyValues,
+          allowedSelectors?: AllowedSelectors,
+          allowedUnits?: AllowedUnits,
+        },
+        javascript?: {
+          ignoredFeatures?: string[],
+          ignoredNodeTypes?: string[],
+        },
         overrides?: Overrides,
       },
       vue?: boolean | {
@@ -681,6 +681,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 
 <!-- ESLint Plugins -->
 [plugin-astro]: https://ota-meshi.github.io/eslint-plugin-astro
+[plugin-baseline]: https://baselinejs.vercel.app
 [plugin-css]: https://github.com/eslint/css
 [plugin-cypress]: https://github.com/cypress-io/eslint-plugin-cypress
 [plugin-html]: https://html-eslint.org

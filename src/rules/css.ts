@@ -53,9 +53,17 @@ const allowedPhysicalProperties = [
   'contain-intrinsic-height',
 ] satisfies PhysicalProperties;
 
-function getCSSRules(options: DeepNonNullable<Options>) {
-  const { css } = options.configs;
-  const { useBaseline, allowedRelativeFontUnits } = isEnabled(css) ? css : defaultOptions.configs.css;
+function getCssRules(options: DeepNonNullable<Options>) {
+  const { useBaseline } = options.configs;
+  const {
+    allowedAtRules: userAllowedAtRules,
+    allowedFunctions: userAllowedFunctions,
+    allowedMediaConditions: userAllowedMediaConditions,
+    allowedProperties: userAllowedProperties,
+    allowedPropertyValues: userAllowedPropertyValues,
+    allowedSelectors: userAllowedSelectors,
+    allowedUnits: userAllowedUnits,
+  } = isEnabled(useBaseline) ? useBaseline.css : defaultOptions.configs.useBaseline.css;
 
   const cssRules = {
     'css/font-family-fallbacks': 'warn',
@@ -72,11 +80,25 @@ function getCSSRules(options: DeepNonNullable<Options>) {
       allowUnits: allowedPhysicalUnits,
       allowProperties: allowedPhysicalProperties,
     }],
-    'css/relative-font-units': ['warn', { allowUnits: allowedRelativeFontUnits }],
-    'css/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
+    'css/relative-font-units': ['warn', {
+      allowUnits: ['cap', 'ch', 'em', 'ex', 'ic', 'lh', 'rcap', 'rch', 'rem', 'ric', 'rlh'],
+    }],
+    'css/use-baseline': isEnabled(useBaseline) ? [
+      'warn',
+      {
+        available: useBaseline.baseline,
+        allowAtRules: userAllowedAtRules,
+        allowFunctions: userAllowedFunctions,
+        allowMediaConditions: userAllowedMediaConditions,
+        allowProperties: userAllowedProperties,
+        allowPropertyValues: userAllowedPropertyValues,
+        allowSelectors: userAllowedSelectors,
+        allowUnits: userAllowedUnits,
+      },
+    ] : 'off',
   } satisfies PluginRules<'css'>;
 
   return cssRules;
 }
 
-export { getCSSRules };
+export { getCssRules };

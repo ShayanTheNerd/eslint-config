@@ -2,7 +2,7 @@ import type { Options } from '#types/index.d.ts';
 
 const defaultOptions = {
   autoDetectDeps: true,
-  env: 'node',
+  env: 'browser',
   gitignore: '.gitignore',
   packageDir: '.',
 
@@ -46,13 +46,10 @@ const defaultOptions = {
       overrides: {},
     },
     css: {
-      allowedRelativeFontUnits: ['rem', 'em'],
-      useBaseline: false,
       overrides: {},
     },
     html: {
       idNamingConvention: 'snake_case',
-      useBaseline: false,
       overrides: {},
     },
     importX: {
@@ -95,7 +92,6 @@ const defaultOptions = {
         headingComponents: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
         imageComponents: ['Img', 'LazyImg', 'Image', 'LazyImage', 'NextImage', 'LazyNextImage'],
       },
-      useBaseline: false,
       overrides: {},
     },
     stylistic: {
@@ -108,7 +104,7 @@ const defaultOptions = {
       memberDelimiterStyle: 'comma',
       quotes: 'single',
       semi: 'always',
-      selfCloseVoidHTMLElements: 'always',
+      selfCloseVoidHtmlElements: 'always',
       trailingComma: 'always-multiline',
       overrides: {},
     },
@@ -144,6 +140,23 @@ const defaultOptions = {
       overrides: {},
     },
     unicorn: {
+      overrides: {},
+    },
+    useBaseline: {
+      baseline: 'widely',
+      css: {
+        allowedAtRules: [],
+        allowedFunctions: [],
+        allowedMediaConditions: [],
+        allowedProperties: [],
+        allowedPropertyValues: {},
+        allowedSelectors: [],
+        allowedUnits: [],
+      },
+      javascript: {
+        ignoredFeatures: [],
+        ignoredNodeTypes: [],
+      },
       overrides: {},
     },
     vue: {
