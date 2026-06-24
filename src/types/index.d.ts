@@ -1,16 +1,15 @@
 import type { Linter } from 'eslint';
-import type { CSSOptions } from '#types/options/css.d.ts';
 import type { VueOptions } from '#types/options/vue.d.ts';
 import type { ZodOptions } from '#types/options/zod.d.ts';
-import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { BaseOptions } from '#types/options/base.d.ts';
-import type { HTMLOptions } from '#types/options/html.d.ts';
 import type { NuxtOptions } from '#types/options/nuxt.d.ts';
 import type { TestOptions } from '#types/options/test.d.ts';
 import type { ReactOptions } from '#types/options/react.d.ts';
+import type { BaselineOptions } from '#types/options/baseline.d.ts';
 import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
@@ -43,17 +42,15 @@ interface Options {
   autoDetectDeps?: boolean | 'verbose',
 
   /**
-   * Specify the runtime environment to correctly resolve its built-in modules
-  *
-  * This is used by
-  *
-  * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
-  * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
-  *
-  * to recognize the environment’s built-in modules.
-  *
-  * @default 'node'
-  */
+   * Specify the runtime environment.
+   *
+   * This is used by
+   * - `configs.useBaseline` option (disabled when `env` is set to a value other than `'browser'`)
+   * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
+   * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
+   *
+   * @default 'browser'
+   */
   env?: 'bun' | 'deno' | 'node' | 'browser',
 
   /**
@@ -281,14 +278,23 @@ interface Options {
      *
      * @default false
      */
-    css?: boolean | CSSOptions,
+    css?: boolean | ConfigWithOverrides<PluginRules<'css'>>,
 
     /**
      * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
      *
      * @default false
      */
-    html?: boolean | HTMLOptions,
+    html?: boolean | (ConfigWithOverrides<PluginRules<'@html-eslint'>> & {
+      /**
+       * Enforce consistent naming convention for `id` attribute values.
+       *
+       * @default 'snake_case'
+       *
+       * @see [@html-eslint/id-naming-convention](https://html-eslint.org/docs/rules/id-naming-convention)
+       */
+      idNamingConvention?: Exclude<RuleOptions<'@html-eslint/id-naming-convention'>, 'regex'>,
+    }),
 
     /**
      * Use [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to organize imports and exports, and detect related issues.
@@ -406,6 +412,13 @@ interface Options {
      * @default true
      */
     unicorn?: boolean | ConfigWithOverrides<PluginRules<'unicorn'>>,
+
+    /**
+     * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of baseline features.
+     *
+     * @default true // `false` if `env` is set to a value other than `'browser'`
+     */
+    useBaseline?: boolean | BaselineOptions,
 
     /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.

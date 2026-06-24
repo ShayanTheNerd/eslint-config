@@ -33,6 +33,7 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.importX ??= true;
   options.configs.stylistic ??= true;
   options.configs.perfectionist ??= true;
+  options.configs.useBaseline ??= options.env === 'browser';
 
   options.configs.typescript ??= autoDetectedDeps.typescript;
   options.configs.zod ??= autoDetectedDeps.zod;

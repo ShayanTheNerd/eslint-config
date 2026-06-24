@@ -1,6 +1,29 @@
 import type { Type, SourceFile } from 'ts-morph';
 
 class TypeExpander {
+  private static readonly baselineCssTypeOverrides = {
+    allowedAtRules: 'AllowedAtRules',
+    allowedFunctions: 'AllowedFunctions',
+    allowedMediaConditions: 'AllowedMediaConditions',
+    allowedProperties: 'AllowedProperties',
+    allowedPropertyValues: 'AllowedPropertyValues',
+    allowedSelectors: 'AllowedSelectors',
+    allowedUnits: 'AllowedUnits',
+  } as const;
+
+  private static isBaselineCssPath(path: string[]): boolean {
+    return path.at(-3) === 'configs' && path.at(-2) === 'useBaseline' && path.at(-1) === 'css';
+  }
+
+  private static getBaselineCssTypeOverride(path: string[], propName: string): string | undefined {
+    if (!this.isBaselineCssPath(path)) {
+      return undefined;
+    }
+
+    /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
+    return this.baselineCssTypeOverrides[propName as keyof typeof this.baselineCssTypeOverrides];
+  }
+
   private static getIndent(depth: number): string {
     return '  '.repeat(depth);
   }
@@ -177,6 +200,12 @@ class TypeExpander {
 
       const props = sortedProperties.map((prop) => {
         const propName = prop.getName();
+
+        const baselineCssTypeOverride = TypeExpander.getBaselineCssTypeOverride(path, propName);
+
+        if (baselineCssTypeOverride) {
+          return `${innerIndent}${propName}${prop.isOptional() ? '?' : ''}: ${baselineCssTypeOverride},`;
+        }
 
         if (propName === 'overrides') {
           return `${innerIndent}${propName}?: Overrides,`;

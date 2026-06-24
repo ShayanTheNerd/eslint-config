@@ -85,6 +85,7 @@
     "eslint-flat-config-utils": "3.2.0",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-astro": "2.1.0",
+    "eslint-plugin-baseline-js": "0.6.2",
     "eslint-plugin-better-tailwindcss": "4.6.0",
     "eslint-plugin-cypress": "6.4.1",
     "eslint-plugin-import-x": "4.17.0",

@@ -47,17 +47,6 @@ interface ReactOptions extends ConfigWithOverrides<ConfigRules> {
      */
     imageComponents?: RuleOptions<'jsx-a11y/img-redundant-alt'>['components'],
   },
-
-  /**
-   * Enforce the use of baseline features.
-   *
-   * Aside from `'widely'` and `'newly'`, it can also be set to a numeric baseline year, such as `2025` (minimum is `2000`), to allow features that became baseline newly available that year or earlier.
-   *
-   * @default false
-   *
-   * @see [@html-eslint/react/use-baseline](https://html-eslint.org/docs/react/rules/use-baseline)
-   */
-  useBaseline?: false | RuleOptions<'@html-eslint/react/use-baseline'>['available'],
 }
 
 export type { ReactOptions };

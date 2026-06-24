@@ -18,8 +18,8 @@ type HtmlRules =
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
 function getHtmlRules(options: DeepNonNullable<Options>) {
-  const { html, unicorn, tailwind, stylistic } = options.configs;
-  const { useBaseline, idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
+  const { html, unicorn, tailwind, stylistic, useBaseline } = options.configs;
+  const { idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
   const {
     indent,
     maxLineLength,
@@ -55,7 +55,7 @@ function getHtmlRules(options: DeepNonNullable<Options>) {
     '@html-eslint/require-li-container': 'error',
     '@html-eslint/require-meta-charset': 'error',
     '@html-eslint/svg-require-viewbox': 'error',
-    '@html-eslint/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
+    '@html-eslint/use-baseline': isEnabled(useBaseline) ? ['warn', { available: useBaseline.baseline }] : 'off',
 
     /* SEO */
     '@html-eslint/no-multiple-h1': 'error',

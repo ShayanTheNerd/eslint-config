@@ -19,6 +19,7 @@ import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
 import { getPromiseConfig } from '#configs/promise.ts';
 import { getUnicornConfig } from '#configs/unicorn.ts';
+import { getBaselineConfig } from '#configs/baseline.ts';
 import { getMarkdownConfig } from '#configs/markdown.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
@@ -113,6 +114,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       tailwind,
       stylistic,
       typescript,
+      useBaseline,
       packageJson,
       perfectionist,
       test: {

@@ -26,14 +26,12 @@ type ReactRules =
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
-  const { html, react, unicorn, tailwind } = options.configs;
+  const { react, unicorn, tailwind, useBaseline } = options.configs;
   const {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
     headingComponents: userHeadingComponents,
-  } = isEnabled(react) && isEnabled(react.accessibility)
-    ? react.accessibility : defaultOptions.configs.react.accessibility;
-  const { useBaseline } = isEnabled(html) ? html : defaultOptions.configs.html;
+  } = isEnabled(react) && isEnabled(react.accessibility) ? react.accessibility : defaultOptions.configs.react.accessibility; // eslint-disable-line @stylistic/max-len
 
   const reactRules = {
     /*** @eslint/react ***/
@@ -177,7 +175,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
 
     /*** @html-eslint/react ***/
     '@html-eslint/react/no-invalid-attr-value': 'error',
-    '@html-eslint/react/use-baseline': useBaseline ? ['warn', { available: useBaseline }] : 'off',
+    '@html-eslint/react/use-baseline': isEnabled(useBaseline) ? ['warn', { available: useBaseline.baseline }] : 'off',
     '@html-eslint/react/no-ineffective-attrs': 'warn',
     '@html-eslint/react/no-obsolete-attrs': 'error',
     '@html-eslint/react/no-obsolete-tags': 'error',

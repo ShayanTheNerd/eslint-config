@@ -31,6 +31,7 @@ const config: Linter.Config[] = defineConfig({
     },
     typescript: true,
     unicorn: true,
+    useBaseline: true,
     vue: true,
     zod: true,
   },

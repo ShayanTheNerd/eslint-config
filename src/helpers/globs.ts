@@ -13,6 +13,7 @@ const globs = {
   vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
   storybook: `**/*.(story|stories).${srcExtensions}`,
   test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,
+  coverage: '**/coverage/**',
 } as const;
 
 export { globs };
