@@ -1,7 +1,10 @@
 import { defineConfig } from './dist/index.mjs';
 
 export default defineConfig(
-  { autoDetectDeps: 'verbose' },
+  {
+    env: 'node',
+    autoDetectDeps: 'verbose',
+  },
   [
     {
       name: 'src/disables/complexity',
