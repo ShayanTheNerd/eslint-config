@@ -5,10 +5,15 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
+type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
+type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
+type HtmlRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
+
 type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
+
 type HTMLRules =
-  & PluginRules<'@html-eslint'>
+  & HtmlRules
   & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
