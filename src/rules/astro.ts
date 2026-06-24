@@ -32,6 +32,7 @@ const astroRules = {
   'astro/no-unused-css-selector': 'warn',
 
   /* Stylistic Issues */
+  'astro/no-omitted-end-tags': 'warn',
   'astro/prefer-class-list-directive': 'warn',
   'astro/prefer-split-class-list': 'warn',
 
