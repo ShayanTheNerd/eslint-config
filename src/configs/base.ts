@@ -56,7 +56,7 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
       },
       globals: {
         ...globals.builtin,
-        ...globals.es2026,
+        ...globals.es2027,
         ...(worker && globals.worker),
         ...(commonjs && globals.commonjs),
         ...((bun && env === 'bun') && globals.bunBuiltin),
