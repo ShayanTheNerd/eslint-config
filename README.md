@@ -25,41 +25,39 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 
 ## Plugin Support
 Legend:
-- ✅ Supported
-- ⌛️ In progress
-- ◻️ Enabled by default
-- ⬛ Disabled by default
+- ✅ Enabled by default
+- ❌ Disabled by default
 - 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`)
 
-| Category                                                     | Support | Activation |
-| :----------------------------------------------------------- | :-----: | :--------: |
-| **Languages**                                                |         |            |
-| [JavaScript][eslint]                                         |    ✅    |     ◻️      |
-| [TypeScript][plugin-ts]                                      |    ✅    |     🔎      |
-| [Markdown][plugin-md]                                        |    ✅    |     ◻️      |
-| [HTML][plugin-html]                                          |    ✅    |     ⬛      |
-| [CSS][plugin-css]                                            |    ✅    |     ⬛      |
-| **Formatting**                                               |         |            |
-| [Stylistic][plugin-stylistic]                                |    ✅    |     ◻️      |
-| [Perfectionist][plugin-perfectionist]                        |    ✅    |     ◻️      |
-| **Frameworks**                                               |         |            |
-| [Astro][plugin-astro] ([JSX accessibility][plugin-jsx-a11y]) |    ✅    |     🔎      |
-| [React][plugin-react] ([hooks][plugin-react-hooks])          |    ⌛️    |     N/A    |
-| [Next][plugin-next]                                          |    ✅    |     🔎      |
-| [Vue & Nuxt][plugin-vue] ([accessibility][plugin-vue-a11y])  |    ✅    |     🔎      |
-| [Tailwind][plugin-tailwind]                                  |    ✅    |     ⬛      |
-| **Testing Tools**                                            |         |            |
-| [Storybook][plugin-storybook]                                |    ✅    |     🔎      |
-| [Vitest][plugin-vitest]                                      |    ✅    |     🔎      |
-| [Cypress][plugin-cypress]                                    |    ✅    |     🔎      |
-| [Playwright][plugin-playwright]                              |    ✅    |     🔎      |
-| **Miscellaneous**                                            |         |            |
-| [_package.json_][plugin-package-json]                        |    ✅    |     ◻️      |
-| [promises][plugin-promise]                                   |    ✅    |     ◻️      |
-| [Imports][plugin-import-x]                                   |    ✅    |     ◻️      |
-| [Zod][plugin-zod]                                            |    ✅    |     🔎      |
-| [Node][plugin-n]                                             |    ✅    |     ◻️      |
-| [Unicorn][plugin-unicorn]                                    |    ✅    |     ◻️      |
+| Category                                                                                              | Activation |
+| :---------------------------------------------------------------------------------------------------- | :--------: |
+| **Languages**                                                                                         |            |
+| [JavaScript][eslint]                                                                                  |     ✅      |
+| [TypeScript][plugin-ts]                                                                               |     🔎      |
+| [Markdown][plugin-md]                                                                                 |     ✅      |
+| [HTML][plugin-html]                                                                                   |     ❌      |
+| [CSS][plugin-css]                                                                                     |     ❌      |
+| **Formatting**                                                                                        |            |
+| [Stylistic][plugin-stylistic]                                                                         |     ✅      |
+| [Perfectionist][plugin-perfectionist]                                                                 |     ✅      |
+| **Frameworks & Libraries**                                                                            |            |
+| [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y])                                          |     🔎      |
+| [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y], [@html-eslint/react][plugin-html-react]) |     🔎      |
+| [Next][plugin-next]                                                                                   |     🔎      |
+| [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                       |     🔎      |
+| [Tailwind][plugin-tailwind]                                                                           |     ❌      |
+| [Zod & Zod Mini][plugin-zod]                                                                          |     🔎      |
+| **Testing Tools**                                                                                     |            |
+| [Storybook][plugin-storybook]                                                                         |     🔎      |
+| [Vitest][plugin-vitest]                                                                               |     🔎      |
+| [Cypress][plugin-cypress]                                                                             |     🔎      |
+| [Playwright][plugin-playwright]                                                                       |     🔎      |
+| **Miscellaneous**                                                                                     |            |
+| [_package.json_][plugin-package-json]                                                                 |     ✅      |
+| [Node][plugin-n]                                                                                      |     ✅      |
+| [Promises][plugin-promise]                                                                            |     ✅      |
+| [Imports][plugin-import-x]                                                                            |     ✅      |
+| [Unicorn][plugin-unicorn]                                                                             |     ✅      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
@@ -521,6 +519,15 @@ _.vscode/settings.json_:
       promise?: boolean | {
         overrides?: Overrides,
       },
+      react?: boolean | {
+        accessibility?: boolean | {
+          anchorComponents?: string[],
+          headingComponents?: string[],
+          imageComponents?: string[],
+        },
+        useBaseline?: false | number | 'newly' | 'widely',
+        overrides?: Overrides,
+      },
       stylistic?: boolean | {
         arrowParens?: 'always' | 'as-needed',
         indent?: number,
@@ -649,7 +656,7 @@ You can find a list of all available versions and their changelogs on the [relea
 
 ## Roadmap to v1.0.0
 - [x] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-n], [eslint-plugin-unicorn][plugin-unicorn], and more.
-- [ ] Add support for other React, Next, Astro, and Markdown.
+- [x] Add support for React, Next, Astro, and Markdown.
 - [ ] Develop an interactive starter wizard to quickly scaffold the configurations for ESLint, Prettier, etc.
 
 ## Contribution Guide
@@ -677,6 +684,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-css]: https://github.com/eslint/css
 [plugin-cypress]: https://github.com/cypress-io/eslint-plugin-cypress
 [plugin-html]: https://html-eslint.org
+[plugin-html-react]: https://html-eslint.org/docs/react/getting-started
 [plugin-import-x]: https://github.com/un-ts/eslint-plugin-import-x
 [plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
 [plugin-md]: https://github.com/eslint/markdown
@@ -687,7 +695,6 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-playwright]: https://github.com/mskelton/eslint-plugin-playwright
 [plugin-promise]: https://github.com/eslint-community/eslint-plugin-promise
 [plugin-react]: https://eslint-react.xyz
-[plugin-react-hooks]: https://react.dev/reference/eslint-plugin-react-hooks
 [plugin-storybook]: https://storybook.js.org/docs/configure/integration/eslint-plugin
 [plugin-stylistic]: https://eslint.style
 [plugin-tailwind]: https://github.com/schoero/eslint-plugin-better-tailwindcss

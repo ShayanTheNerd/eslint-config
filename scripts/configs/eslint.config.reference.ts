@@ -18,6 +18,7 @@ const config: Linter.Config[] = defineConfig({
     packageJson: true,
     perfectionist: true,
     promise: true,
+    react: true,
     stylistic: true,
     tailwind: {
       entryPoint: '',

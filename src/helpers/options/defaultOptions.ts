@@ -89,6 +89,15 @@ const defaultOptions = {
     promise: {
       overrides: {},
     },
+    react: {
+      accessibility: {
+        anchorComponents: ['Link', 'NextLink', 'NavLink'],
+        headingComponents: ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'],
+        imageComponents: ['Img', 'LazyImg', 'Image', 'LazyImage', 'NextImage', 'LazyNextImage'],
+      },
+      useBaseline: false,
+      overrides: {},
+    },
     stylistic: {
       arrowParens: 'always',
       indent: 2,

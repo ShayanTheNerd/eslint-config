@@ -7,6 +7,7 @@ import type { BaseOptions } from '#types/options/base.d.ts';
 import type { HTMLOptions } from '#types/options/html.d.ts';
 import type { NuxtOptions } from '#types/options/nuxt.d.ts';
 import type { TestOptions } from '#types/options/test.d.ts';
+import type { ReactOptions } from '#types/options/react.d.ts';
 import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
@@ -351,6 +352,13 @@ interface Options {
      * @default true
      */
     promise?: boolean | ConfigWithOverrides<PluginRules<'promise'>>,
+
+    /**
+     * Use [@eslint-react/eslint-plugin](https://eslint-react.xyz), [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y), and [@html-eslint/eslint-plugin-react](https://html-eslint.org/docs/react/getting-started) to enforce React best practices and accessibility guidelines.
+     *
+     * @default false // `true` if "react" is detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    react?: boolean | ReactOptions,
 
     /**
      * Use [@stylistic/eslint-plugin](https://eslint.style) to enforce stylistic rules such as indentation, line length, spacing, quotes, semicolons, etc.

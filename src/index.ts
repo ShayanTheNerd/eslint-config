@@ -13,6 +13,7 @@ import { getHTMLConfig } from '#configs/html.ts';
 import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
 import { getAstroConfig } from '#configs/astro.ts';
+import { getReactConfig } from '#configs/react.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
 import { getCypressConfig } from '#configs/cypress.ts';
 import { getImportXConfig } from '#configs/importX.ts';
@@ -103,6 +104,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       next,
       node,
       nuxt,
+      react,
       astro,
       unicorn,
       importX,
@@ -148,6 +150,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(tailwind) && getTailwindConfig(mergedOptions),
     isEnabled(zod) && getZodConfig(mergedOptions),
     isEnabled(astro) && getAstroConfig(mergedOptions),
+    isEnabled(react) && getReactConfig(mergedOptions),
     isEnabled(next) && getNextConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
     isEnabled(vue) && getVueComponentNamesConfig(),
