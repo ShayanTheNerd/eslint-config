@@ -105,7 +105,7 @@ interface StylisticOptions extends ConfigWithOverrides<ConfigRules> {
    *
    * @default 'always'
    */
-  selfCloseVoidHTMLElements?: 'never' | 'always',
+  selfCloseVoidHtmlElements?: 'never' | 'always',
 
   /**
    * Add semicolons at the end of statements.

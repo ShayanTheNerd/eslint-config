@@ -16,7 +16,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     maxLineLength,
     maxAttributesPerLine,
     maxConsecutiveEmptyLines,
-    selfCloseVoidHTMLElements,
+    selfCloseVoidHtmlElements,
   } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
   const {
     blockLang,
@@ -153,7 +153,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/html-self-closing': ['error', {
       html: {
         normal: 'never',
-        void: selfCloseVoidHTMLElements,
+        void: selfCloseVoidHtmlElements,
       },
     }],
     'vue/max-attributes-per-line': ['warn', {

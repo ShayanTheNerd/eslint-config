@@ -4,12 +4,12 @@ import type { Options } from '#types/index.d.ts';
 import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
 
 import { isTruthy } from '#utils/isTruthy.ts';
-import { getCSSConfig } from '#configs/css.ts';
+import { getCssConfig } from '#configs/css.ts';
 import { getVueConfig } from '#configs/vue.ts';
 import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaseConfig } from '#configs/base.ts';
-import { getHTMLConfig } from '#configs/html.ts';
+import { getHtmlConfig } from '#configs/html.ts';
 import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
 import { getAstroConfig } from '#configs/astro.ts';
@@ -141,12 +141,13 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(importX) && getImportXConfig(mergedOptions),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
+    isEnabled(useBaseline) && getBaselineConfig(mergedOptions),
 
     isEnabled(node) && getNodeConfig(mergedOptions),
     isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),
     isEnabled(markdown) && getMarkdownConfig(mergedOptions),
-    isEnabled(html) && getHTMLConfig(mergedOptions),
-    isEnabled(css) && getCSSConfig(mergedOptions),
+    isEnabled(html) && getHtmlConfig(mergedOptions),
+    isEnabled(css) && getCssConfig(mergedOptions),
     isEnabled(tailwind) && getTailwindConfig(mergedOptions),
     isEnabled(zod) && getZodConfig(mergedOptions),
     isEnabled(astro) && getAstroConfig(mergedOptions),

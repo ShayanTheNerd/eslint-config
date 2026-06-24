@@ -12,7 +12,6 @@ import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
 import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
-import type { PerfectionistOptions } from '#types/options/perfectionist.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
@@ -344,7 +343,16 @@ interface Options {
      *
      * @default true
      */
-    perfectionist?: boolean | PerfectionistOptions,
+    perfectionist?: boolean | (ConfigWithOverrides<PluginRules<'perfectionist'>> & {
+      /**
+       * The type of sorting.
+       *
+       * @default 'line-length'
+       *
+       * @see [Perfectionist Settings: `type` option](https://perfectionist.dev/guide/getting-started#settings)
+       */
+      sortType?: Exclude<RuleOptions<'perfectionist/sort-imports'>['type'], 'type-import-first'>,
+    }),
 
     /**
      * Use [eslint-plugin-promise](https://github.com/eslint-community/eslint-plugin-promise) to enforce best practices for JavaScript promises.

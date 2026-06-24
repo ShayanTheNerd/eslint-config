@@ -7,17 +7,17 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
 type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
-type HtmlRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
+type HtmlOnlyRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
 
 type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
 
-type HTMLRules =
-  & HtmlRules
+type HtmlRules =
+  & HtmlOnlyRules
   & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
-function getHTMLRules(options: DeepNonNullable<Options>) {
+function getHtmlRules(options: DeepNonNullable<Options>) {
   const { html, unicorn, tailwind, stylistic } = options.configs;
   const { useBaseline, idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
   const {
@@ -25,7 +25,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
     maxLineLength,
     maxAttributesPerLine,
     maxConsecutiveEmptyLines,
-    selfCloseVoidHTMLElements,
+    selfCloseVoidHtmlElements,
   } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
 
   const htmlRules = {
@@ -47,7 +47,7 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
     '@html-eslint/require-button-type': 'error',
     '@html-eslint/require-closing-tags': ['warn', {
       selfClosingCustomPatterns: ['-'],
-      selfClosing: selfCloseVoidHTMLElements,
+      selfClosing: selfCloseVoidHtmlElements,
     }],
     '@html-eslint/require-details-summary': 'error',
     '@html-eslint/require-doctype': 'error',
@@ -101,17 +101,17 @@ function getHTMLRules(options: DeepNonNullable<Options>) {
     '@html-eslint/no-multiple-empty-lines': ['warn', { max: maxConsecutiveEmptyLines }],
     '@html-eslint/no-trailing-spaces': 'warn',
     '@html-eslint/quotes': ['warn', 'double', { enforceTemplatedAttrValue: true }],
-  } satisfies HTMLRules;
+  } satisfies HtmlOnlyRules;
 
   if (isEnabled(tailwind)) {
-    (htmlRules as HTMLRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+    (htmlRules as HtmlRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
   }
 
   if (isEnabled(unicorn)) {
-    (htmlRules as HTMLRules)['unicorn/no-invalid-file-input-accept'] = 'error';
+    (htmlRules as HtmlRules)['unicorn/no-invalid-file-input-accept'] = 'error';
   }
 
   return htmlRules;
 }
 
-export { getHTMLRules };
+export { getHtmlRules };
