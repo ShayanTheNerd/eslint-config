@@ -12,8 +12,7 @@ interface NuxtOptions {
     /**
      * The name of the icon component.
      *
-     * This is used by
-     * [vue/no-undef-components](https://eslint.vuejs.org/rules/no-undef-components)
+     * This is used by [vue/no-undef-components](https://eslint.vuejs.org/rules/no-undef-components)
      * to detect the icon component.
      *
      * It will fall back to the default value if set to an empty string (`''`).
