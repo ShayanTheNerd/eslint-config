@@ -49,7 +49,7 @@ interface TestOptions {
   storybook?: boolean | ConfigWithOverrides<StorybookConfigRules>,
 
   /**
-   * Use [eslint-plugin-vitest](https://github.com/vitest-dev/eslint-plugin-vitest) to enforce best practices and code styles for Vitest tests.
+   * Use [@vitest/eslint-plugin](https://github.com/vitest-dev/eslint-plugin-vitest) to enforce best practices and code styles for Vitest tests.
    *
    * @default false // `true` if "vitest" is detected in the dependencies when `autoDetectDeps` is enabled
   */

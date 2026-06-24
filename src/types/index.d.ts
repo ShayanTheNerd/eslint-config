@@ -263,7 +263,7 @@ interface Options {
    */
   configs?: {
     /**
-     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) to enforce Astro best practices and accessibility guidelines.
+     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) and [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) to enforce Astro best practices and accessibility guidelines.
      *
      * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
      */
@@ -372,11 +372,11 @@ interface Options {
     test?: TestOptions,
 
     /**
-     * Use [typescript-eslint](https://typescript-eslint.io) to enforce TypeScript-specific rules.
+     * Use [@typescript-eslint](https://typescript-eslint.io) to enforce TypeScript-specific rules.
      *
      * Setting this to `false` doesn't prevent ESLint from linting TypeScript files.
      *
-     * This enables
+     * This allows
      * - [eslint-plugin-import-x](https://github.com/un-ts/eslint-plugin-import-x) to better understand imports from TypeScript files such as ".ts", ".tsx", etc.
      * - [eslint-plugin-vue](https://eslint.vuejs.org) to enforce TypeScript-specific rules in the `<script setup lang="ts">` of Vue SFCs.
      *
@@ -399,7 +399,7 @@ interface Options {
     vue?: boolean | VueOptions,
 
     /**
-     * Use [eslint-plugin-zod](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod) or [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) to enforce best practices for Zod schemas.
+     * Use [eslint-plugin-zod](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod) or [eslint-plugin-zod-mini](https://github.com/marcalexiei/eslint-zod/tree/main/plugins/eslint-plugin-zod-mini) to enforce best practices for defining Zod schemas.
      *
      * @default false // `true` if "zod" is detected in the dependencies when `autoDetectDeps` is enabled
      */
