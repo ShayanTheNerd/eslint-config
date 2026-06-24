@@ -27,7 +27,7 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 Legend:
 - ✅ Enabled by default
 - ❌ Disabled by default
-- 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`)
+- 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`, `env: 'browser'` for Baseline)
 
 | Category                                                                                              | Activation |
 | :---------------------------------------------------------------------------------------------------- | :--------: |
@@ -58,7 +58,7 @@ Legend:
 | [Promises][plugin-promise]                                                                            |     ✅      |
 | [Imports][plugin-import-x]                                                                            |     ✅      |
 | [Unicorn][plugin-unicorn]                                                                             |     ✅      |
-| [Baseline][plugin-baseline]                                                                           |     ✅      |
+| [Baseline][plugin-baseline]                                                                           |     🔎      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
