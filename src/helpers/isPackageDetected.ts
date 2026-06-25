@@ -12,7 +12,7 @@ function logDetectedPackages(): void {
   if (detectedPackages.length > 0) {
     detectedPackages.sort();
     console.info(
-      `${styleText('green', '✔')} Active ESLint integrations:`,
+      `${styleText('green', '✔')} ESLint integrations enabled via dependency detection:`,
       detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
     );
   }
