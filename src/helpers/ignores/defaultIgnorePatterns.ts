@@ -6,10 +6,11 @@ const defaultIgnorePatterns = [
   '**/bower_components',
   '**/package-lock.json',
 
-  /* Auto-generated type definitions */
+  /* Auto-generated files */
   '**/typegen.d.ts',
   '**/next-env.d.ts',
   '**/components.d.ts',
+  '**/routeTree.gen.ts',
   '**/auto-import?(s).d.ts',
 
   /* Build outputs */
