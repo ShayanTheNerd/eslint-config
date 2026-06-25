@@ -17,7 +17,7 @@ function getHtmlConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const htmlConfig = {
     name: 'shayanthenerd/html',
-    files: [globs.src, globs.html],
+    files: [globs.html],
     plugins: {
       '@html-eslint': eslintPluginHtml,
       ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
