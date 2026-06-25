@@ -27,7 +27,7 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 Legend:
 - ✅ Enabled by default
 - ❌ Disabled by default
-- 🔎 [Automatically detected](#automatic-dependency-detection) (`autoDetectDeps: true`, `env: 'browser'` for Baseline)
+- 🔎 [Automatically detected](#automatic-dependency-detection)
 
 | Category                                                                                              | Activation |
 | :---------------------------------------------------------------------------------------------------- | :--------: |
@@ -174,6 +174,8 @@ PNPM's strict dependency resolution avoids this issue.
 
 > [!NOTE]
 > For example, `eslint-plugin-storybook` depends on `storybook`, which is hoisted by NPM and Bun. As a result, the integration for `storybook` will be enabled automatically, even if you haven't explicitly installed it.
+
+`configs.useBaseline` is automatically enabled when `autoDetectDeps: true` and `env: 'browser'` (both are the defaults).
 
 To opt out of this behavior, either [globally disable automatic dependency detection](#customization) or manually disable the unwanted integrations that were enabled automatically.
 
