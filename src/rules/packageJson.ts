@@ -1,4 +1,68 @@
-import type { PluginRules } from '#types/eslintRules.d.ts';
+import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
+
+/**
+  Sorting object properties within arrays isn't supported yet.
+  @see https://github.com/michaelfaith/eslint-plugin-package-json/issues/1967
+*/
+const collectionSortPatterns = [
+  {
+    key: 'author',
+    order: ['name', 'email', 'url'],
+  },
+  {
+    key: 'bugs',
+    order: ['email', 'url'],
+  },
+  'config',
+  // {
+  //   key: 'contributors.*',
+  //   order: ['name', 'email', 'url'],
+  // },
+  'dependencies',
+  'devEngines',
+  // {
+  //   key: 'devEngines.*',
+  //   order: ['name', 'version', 'onFail'],
+  // },
+  'devDependencies',
+  'directories',
+  {
+    key: 'dist',
+    order: ['shasum', 'tarball'],
+  },
+  'engines',
+  'exports',
+  // {
+  //   key: 'funding.*',
+  //   order: ['type', 'url'],
+  // },
+  'husky',
+  'husky.hooks',
+  // {
+  //   key: 'license.*',
+  //   order: ['type', 'url'],
+  // },
+  'lint-staged',
+  // {
+  //   key: 'maintainers.*',
+  //   order: ['name', 'email', 'url'],
+  // },
+  'nano-staged',
+  'optionalDependencies',
+  'overrides',
+  'peerDependencies',
+  'peerDependenciesMeta',
+  {
+    key: 'repository',
+    order: ['type', 'url', 'directory'],
+  },
+  'release',
+  'simple-git-hooks',
+  // {
+  //   key: 'workspaces.*',
+  //   order: ['packages', 'nohoist'],
+  // },
+] satisfies RuleOptions<'package-json/sort-collections'>;
 
 const packageJsonRules = {
   'package-json/bin-name-casing': 'warn',
@@ -42,21 +106,7 @@ const packageJsonRules = {
     ],
   }],
   'package-json/scripts-name-casing': 'warn',
-  'package-json/sort-collections': ['warn', [
-    'config',
-    'dependencies',
-    'devDependencies',
-    'exports',
-    'husky',
-    'husky.hooks',
-    'lint-staged',
-    'nano-staged',
-    'optionalDependencies',
-    'overrides',
-    'peerDependencies',
-    'peerDependenciesMeta',
-    'simple-git-hooks',
-  ]],
+  'package-json/sort-collections': ['warn', collectionSortPatterns],
   'package-json/specify-peers-locally': 'warn',
   'package-json/unique-dependencies': 'error',
   'package-json/valid-author': 'error',
