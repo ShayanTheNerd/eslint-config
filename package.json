@@ -58,7 +58,7 @@
     "build:package": "tsdown",
     "watch:package": "tsdown --watch --publint=false",
     "check:exports": "attw --pack --profile=esm-only",
-    "format": "prettier --write '**/*.{json,jsonc,yaml}' '!**/pnpm-lock.yaml' --cache",
+    "format": "prettier --write '**/*.{json,yaml}' '!pnpm-lock.yaml' --cache",
     "lint": "eslint --fix --cache --cache-location=./node_modules/.cache/.eslintcache",
     "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
@@ -66,7 +66,7 @@
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
-    "**/*.{json,jsonc,yaml}!pnpm-lock.yaml": "pnpm format",
+    "**/*.{json,yaml}!pnpm-lock.yaml": "pnpm format",
     "pnpm-lock.yaml": "pnpm generate:types && pnpm generate:docs",
     "src/types/**/*.d.ts": "pnpm generate:docs",
     "{**/*.ts,package.json}": "pnpm lint"
@@ -131,14 +131,14 @@
     "node": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0"
   },
   "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "11.9.0",
+      "onFail": "warn"
+    },
     "runtime": {
       "name": "node",
       "version": "^22.22.3 || ^24.15.0 || ^26.0.0",
-      "onFail": "warn"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": "11.8.0",
       "onFail": "warn"
     }
   },
