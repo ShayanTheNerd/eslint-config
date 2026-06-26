@@ -11,7 +11,6 @@ import { globs } from '#helpers/globs.ts';
 import { getVueRules } from '#rules/vue.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
-import { getVueAccessibilityRules } from '#rules/vueAccessibility.ts';
 
 const baseVueConfig = eslintPluginVue.configs['flat/base'].find((config) => config.languageOptions?.parser);
 
@@ -39,10 +38,7 @@ function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
         },
       },
     },
-    rules: {
-      ...getVueRules(options),
-      ...(isVueAccessibilityEnabled && getVueAccessibilityRules(options)),
-    },
+    rules: getVueRules(options),
   } satisfies Linter.Config;
 
   return mergeConfigs(vueConfig, overrides);

@@ -8,6 +8,9 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
 import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
 
+type StylisticRules = PluginRules<'@stylistic'>;
+type VueAndNuxtRules = PluginRules<'vue'> & Pick<StylisticRules, '@stylistic/max-len'>;
+
 function getVueRules(options: DeepNonNullable<Options>) {
   const { typescript, stylistic, vue, nuxt } = options.configs;
   const {
@@ -34,22 +37,57 @@ function getVueRules(options: DeepNonNullable<Options>) {
     ignoredUndefinedComponents: userIgnoredUndefinedComponents,
     restrictedStaticAttributes: userRestrictedStaticAttributes,
   } = isEnabled(vue) ? vue : defaultOptions.configs.vue;
+  const {
+    imageComponents: userImageComponents,
+    anchorComponents: userAnchorComponents,
+    accessibleChildComponents: userAccessibleChildComponents,
+  } = isEnabled(vue) && isEnabled(vue.accessibility) ? vue.accessibility : defaultOptions.configs.vue.accessibility;
   const isNuxtEnabled = isEnabled(nuxt);
   const isNuxtImageEnabled = isNuxtEnabled ? nuxt.image : undefined;
   const isNuxtUIEnabled = isNuxtEnabled ? nuxt.ui : undefined;
   const nuxtUIPrefix = isNuxtEnabled && isEnabled(nuxt.ui) ? nuxt.ui.prefix : defaultOptions.configs.nuxt.ui.prefix;
   const isNuxtIconEnabled = isNuxtEnabled ? nuxt.icon : undefined;
-  const nuxtIconComponent = isNuxtEnabled && isEnabled(nuxt.icon)
-    ? nuxt.icon.component
-    : defaultOptions.configs.nuxt.icon.component;
+  const nuxtIconComponent = isNuxtEnabled && isEnabled(nuxt.icon) ? nuxt.icon.component : defaultOptions.configs.nuxt.icon.component; // eslint-disable-line @stylistic/max-len
   const restrictedVueElements = isNuxtUIEnabled ? getRestrictedVueElements(nuxtUIPrefix) : [];
   const restrictedVueInputs = isNuxtUIEnabled ? getRestrictedVueInputs(nuxtUIPrefix) : [];
   const isScriptLangTS = blockLang.script === 'ts';
   const isStyleLangImplicit = blockLang.style === 'implicit';
 
-  const vueRules = {
-    '@stylistic/max-len': 'off',
+  const vueAccessibilityRules = {
+    'vuejs-accessibility/alt-text': ['error', { img: userImageComponents }],
+    'vuejs-accessibility/anchor-has-content': ['error', {
+      components: userAnchorComponents,
+      accessibleChildren: userAccessibleChildComponents,
+    }],
+    'vuejs-accessibility/aria-props': 'error',
+    'vuejs-accessibility/aria-role': 'error',
+    'vuejs-accessibility/aria-unsupported-elements': 'error',
+    'vuejs-accessibility/form-control-has-label': ['error', {
+      labelComponents: isNuxtUIEnabled ? [`${nuxtUIPrefix}FormField`] : undefined,
+    }],
+    'vuejs-accessibility/heading-has-content': 'error',
+    'vuejs-accessibility/iframe-has-title': 'error',
+    'vuejs-accessibility/interactive-supports-focus': 'error',
+    'vuejs-accessibility/label-has-for': ['error', {
+      allowChildren: true,
+      required: {
+        some: ['nesting', 'id'],
+      },
+      controlComponents: ['input', 'output', 'meter', 'select', 'textarea', 'progress'],
+    }],
+    'vuejs-accessibility/media-has-caption': 'error',
+    'vuejs-accessibility/no-access-key': 'warn',
+    'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
+    'vuejs-accessibility/no-autofocus': 'warn',
+    'vuejs-accessibility/no-distracting-elements': 'warn',
+    'vuejs-accessibility/no-redundant-roles': 'warn',
+    'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
+    'vuejs-accessibility/no-static-element-interactions': 'error',
+    'vuejs-accessibility/role-has-required-aria-props': 'error',
+    'vuejs-accessibility/tabindex-no-positive': 'error',
+  } satisfies PluginRules<'vuejs-accessibility'>;
 
+  const vueAndNuxtRules = {
     /* Base Rules (Enabling Correct ESLint Parsing) */
     'vue/jsx-uses-vars': 'error',
     'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
@@ -342,7 +380,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
         ...userIgnoredUndefinedComponents,
       ].filter(isTruthy),
     }],
-    'vue/no-undef-directives': nuxt ? 'off' : 'error', // Can't resolve globally-regsitered directives in Nuxt.
+    'vue/no-undef-directives': isNuxtEnabled ? 'off' : 'error', // Can't resolve globally-regsitered directives in Nuxt.
     'vue/no-unused-emit-declarations': 'error',
     'vue/no-unused-properties': ['error', {
       groups: ['setup', 'props', 'data', 'inject', 'asyncData', 'computed', 'methods'],
@@ -371,7 +409,17 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/slot-name-casing': 'warn',
     'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
     // 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
-  } satisfies PluginRules<'vue'> & Pick<PluginRules<'@stylistic'>, '@stylistic/max-len'>;
+  } satisfies VueAndNuxtRules;
+
+  if (isEnabled(stylistic)) {
+    (vueAndNuxtRules as VueAndNuxtRules)['@stylistic/max-len'] = 'off';
+  }
+
+  const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
+  const vueRules = {
+    ...vueAndNuxtRules,
+    ...(isVueAccessibilityEnabled && vueAccessibilityRules),
+  };
 
   return vueRules;
 }

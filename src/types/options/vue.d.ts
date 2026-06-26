@@ -1,6 +1,7 @@
 import type { ConfigWithOverrides } from '#types/index.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
-import type { VueAccessibilityOptions } from '#types/options/vueAccessibility.d.ts';
+
+type AnchorHasContentRuleOptions = RuleOptions<'vuejs-accessibility/anchor-has-content'>;
 
 interface BlockLang {
   style?: 'css' | 'scss' | 'postcss' | 'implicit',
@@ -37,7 +38,40 @@ interface VueOptions extends ConfigWithOverrides<ConfigRules> {
    *
    * @default true
    */
-  accessibility?: boolean | VueAccessibilityOptions,
+  accessibility?: boolean | {
+    /**
+     * Names of components that should be considered accessible child elements.
+     *
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default ['img', 'picture', 'NuxtImg', 'NuxtPicture', 'UBadge']
+     *
+     * @see [vuejs-accessibility/anchor-has-content: `accessibleChildren` option](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/rules/anchor-has-content#%F0%9F%94%A7-options)
+     */
+    accessibleChildComponents?: AnchorHasContentRuleOptions['accessibleChildren'],
+
+    /**
+     * Names of components that render an `<a>` element.
+     *
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default ['RouterLink', 'NuxtLink', 'ULink']
+     *
+     * @see [vuejs-accessibility/anchor-has-content: `components` option](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/rules/anchor-has-content#%F0%9F%94%A7-options)
+     */
+    anchorComponents?: AnchorHasContentRuleOptions['components'],
+
+    /**
+     * Names of components that render an `<img>` element.
+     *
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default ['NuxtImg']
+     *
+     * @see [vuejs-accessibility/alt-text: `img` option](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/rules/alt-text#%F0%9F%94%A7-options)
+     */
+    imageComponents?: RuleOptions<'vuejs-accessibility/alt-text'>['img'],
+  },
 
   /**
    * Enforce the use of specific attributes such as `scoped` and `module` on top-level `<style>` blocks.
