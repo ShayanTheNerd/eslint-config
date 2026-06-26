@@ -16,9 +16,8 @@ type ReactRulesNotPrefixedWithX = Pick<PluginRules<'@eslint-react'>, ReactRuleNa
 type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
 
-type ReactRules =
+type ReactAndHtmlReactRules =
   & HtmlReactRules
-  & PluginRules<'jsx-a11y'>
   & ReactRulesNotPrefixedWithX
   & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
@@ -33,7 +32,49 @@ function getReactRules(options: DeepNonNullable<Options>) {
     headingComponents: userHeadingComponents,
   } = isEnabled(react) && isEnabled(react.accessibility) ? react.accessibility : defaultOptions.configs.react.accessibility; // eslint-disable-line @stylistic/max-len
 
-  const reactRules = {
+  const jsxA11yRules = {
+    'jsx-a11y/alt-text': ['error', { img: userImageComponents }],
+    'jsx-a11y/anchor-ambiguous-text': 'warn',
+    'jsx-a11y/anchor-has-content': ['error', { components: userAnchorComponents }],
+    'jsx-a11y/anchor-is-valid': ['error', {
+      specialLink: ['to'],
+      components: userAnchorComponents,
+    }],
+    'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
+    'jsx-a11y/aria-props': 'error',
+    'jsx-a11y/aria-proptypes': 'error',
+    'jsx-a11y/aria-role': 'error',
+    'jsx-a11y/aria-unsupported-elements': 'error',
+    'jsx-a11y/autocomplete-valid': 'error',
+    'jsx-a11y/click-events-have-key-events': 'error',
+    'jsx-a11y/control-has-associated-label': 'error',
+    'jsx-a11y/heading-has-content': ['error', { components: userHeadingComponents }],
+    'jsx-a11y/html-has-lang': 'error',
+    'jsx-a11y/iframe-has-title': 'error',
+    'jsx-a11y/img-redundant-alt': ['error', { components: userImageComponents }],
+    'jsx-a11y/interactive-supports-focus': 'error',
+    'jsx-a11y/label-has-associated-control': 'error',
+    'jsx-a11y/lang': 'error',
+    'jsx-a11y/media-has-caption': 'error',
+    'jsx-a11y/mouse-events-have-key-events': 'error',
+    'jsx-a11y/no-access-key': 'warn',
+    'jsx-a11y/no-aria-hidden-on-focusable': 'error',
+    'jsx-a11y/no-autofocus': 'warn',
+    'jsx-a11y/no-distracting-elements': 'warn',
+    'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
+    'jsx-a11y/no-noninteractive-element-interactions': 'error',
+    'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
+    'jsx-a11y/no-noninteractive-tabindex': 'error',
+    'jsx-a11y/no-redundant-roles': 'warn',
+    'jsx-a11y/no-static-element-interactions': 'warn',
+    'jsx-a11y/prefer-tag-over-role': 'warn',
+    'jsx-a11y/role-has-required-aria-props': 'warn',
+    'jsx-a11y/role-supports-aria-props': 'warn',
+    'jsx-a11y/scope': 'error',
+    'jsx-a11y/tabindex-no-positive': 'error',
+  } satisfies PluginRules<'jsx-a11y'>;
+
+  const reactAndHtmlReactRules = {
     /*** @eslint/react ***/
     /* X Rules */
     '@eslint-react/error-boundaries': 'error',
@@ -132,47 +173,6 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/naming-convention-id-name': 'warn',
     '@eslint-react/naming-convention-ref-name': 'warn',
 
-    /*** jsx-a11y ***/
-    'jsx-a11y/alt-text': ['error', { img: userImageComponents }],
-    'jsx-a11y/anchor-ambiguous-text': 'warn',
-    'jsx-a11y/anchor-has-content': ['error', { components: userAnchorComponents }],
-    'jsx-a11y/anchor-is-valid': ['error', {
-      specialLink: ['to'],
-      components: userAnchorComponents,
-    }],
-    'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
-    'jsx-a11y/aria-props': 'error',
-    'jsx-a11y/aria-proptypes': 'error',
-    'jsx-a11y/aria-role': 'error',
-    'jsx-a11y/aria-unsupported-elements': 'error',
-    'jsx-a11y/autocomplete-valid': 'error',
-    'jsx-a11y/click-events-have-key-events': 'error',
-    'jsx-a11y/control-has-associated-label': 'error',
-    'jsx-a11y/heading-has-content': ['error', { components: userHeadingComponents }],
-    'jsx-a11y/html-has-lang': 'error',
-    'jsx-a11y/iframe-has-title': 'error',
-    'jsx-a11y/img-redundant-alt': ['error', { components: userImageComponents }],
-    'jsx-a11y/interactive-supports-focus': 'error',
-    'jsx-a11y/label-has-associated-control': 'error',
-    'jsx-a11y/lang': 'error',
-    'jsx-a11y/media-has-caption': 'error',
-    'jsx-a11y/mouse-events-have-key-events': 'error',
-    'jsx-a11y/no-access-key': 'warn',
-    'jsx-a11y/no-aria-hidden-on-focusable': 'error',
-    'jsx-a11y/no-autofocus': 'warn',
-    'jsx-a11y/no-distracting-elements': 'warn',
-    'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
-    'jsx-a11y/no-noninteractive-element-interactions': 'error',
-    'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
-    'jsx-a11y/no-noninteractive-tabindex': 'error',
-    'jsx-a11y/no-redundant-roles': 'warn',
-    'jsx-a11y/no-static-element-interactions': 'warn',
-    'jsx-a11y/prefer-tag-over-role': 'warn',
-    'jsx-a11y/role-has-required-aria-props': 'warn',
-    'jsx-a11y/role-supports-aria-props': 'warn',
-    'jsx-a11y/scope': 'error',
-    'jsx-a11y/tabindex-no-positive': 'error',
-
     /*** @html-eslint/react ***/
     '@html-eslint/react/no-invalid-attr-value': 'error',
     '@html-eslint/react/use-baseline': isEnabled(useBaseline) ? ['warn', { available: useBaseline.baseline }] : 'off',
@@ -181,15 +181,21 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@html-eslint/react/no-obsolete-tags': 'error',
     '@html-eslint/react/classname-spacing': ['warn', { callees: commonCallees }],
     '@html-eslint/react/no-duplicate-classname': ['warn', { callees: commonCallees }],
-  } satisfies ReactRules;
+  } satisfies ReactAndHtmlReactRules;
 
   if (isEnabled(tailwind)) {
-    (reactRules as ReactRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+    (reactAndHtmlReactRules as ReactAndHtmlReactRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
   }
 
   if (isEnabled(unicorn)) {
-    (reactRules as ReactRules)['unicorn/no-invalid-file-input-accept'] = 'error';
+    (reactAndHtmlReactRules as ReactAndHtmlReactRules)['unicorn/no-invalid-file-input-accept'] = 'error';
   }
+
+  const isReactAccessibilityEnabled = isEnabled(react) && isEnabled(react.accessibility);
+  const reactRules = {
+    ...reactAndHtmlReactRules,
+    ...(isReactAccessibilityEnabled && jsxA11yRules),
+  };
 
   return reactRules;
 }

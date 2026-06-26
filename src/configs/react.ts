@@ -22,8 +22,9 @@ function getReactConfig(options: DeepNonNullable<Options>): Linter.Config {
     files: [globs.src],
     plugins: {
       '@eslint-react': eslintPluginReact,
+      '@html-eslint/react': eslintPluginHtmlReact,
       ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
-      ...(isEnabled(accessibility) && { 'jsx-a11y': eslintPluginJsxA11y, '@html-eslint/react': eslintPluginHtmlReact }),
+      ...(isEnabled(accessibility) && { 'jsx-a11y': eslintPluginJsxA11y }),
     },
     rules: getReactRules(options),
   } satisfies Linter.Config;
