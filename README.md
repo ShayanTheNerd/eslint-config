@@ -230,7 +230,15 @@ By default, the plugin uses GitHub Flavored Markdown (GFM). You can [switch to C
 Some rules depend on the specified Node.js version. Visit the documentation for [version-resolution options and project-specific configurations](https://github.com/eslint-community/eslint-plugin-n#configured-nodejs-version-range).
 
 ## IDE Support
-Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][extension-prettier]. Then add the following in _.vscode/settings.json_:
+Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][extension-prettier].
+> [!TIP]
+> In case you're using PNPM without `shamefullyHoist: true`, add the following to your _pnpm-workspace.yaml_ and run `pnpm install --yes` so ESLint's VS Code extension works as expected:
+> ```yaml title="pnpm-workspace.yaml"
+> publicHoistPattern:
+>   - '*eslint*'
+> ```
+
+You can also add the following to your _.vscode/settings.json_:
 ```jsonc title=".vscode/settings.json"
 {
   /* Enforce Unix-like line endings (LF). */
@@ -285,9 +293,6 @@ Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][ext
   ]
 }
 ```
-
-> [!TIP]
-> These settings match the default behavior of this configuration. If you've customized any formatting or stylistic rules, update the corresponding editor settings to keep them consistent.
 
 ## Formatting
 This configuration uses [ESLint Stylistic][plugin-stylistic] to format:
