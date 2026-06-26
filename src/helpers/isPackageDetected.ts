@@ -8,12 +8,14 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 const detectedPackages: string[] = [];
 
-function logDetectedPackages(): void {
-  if (detectedPackages.length > 0) {
-    detectedPackages.sort();
+function logDetectedPackages(disabledConfigs: Record<string, boolean>): void {
+  const nonDisabledDetectedPackages = detectedPackages.filter((packageName) => !disabledConfigs[packageName]);
+
+  if (nonDisabledDetectedPackages.length > 0) {
+    nonDisabledDetectedPackages.sort();
     console.info(
       `${styleText('green', '✔')} ESLint integrations enabled via dependency detection:`,
-      detectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
+      nonDisabledDetectedPackages.map((packageName) => styleText('blue', packageName)).join(', '),
     );
   }
 }

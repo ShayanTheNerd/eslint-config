@@ -1,9 +1,27 @@
 import type { Options } from '#types/index.d.ts';
 
+import { isEnabled } from '#utils/isEnabled.ts';
 import { isPackageDetected, logDetectedPackages } from '#helpers/isPackageDetected.ts';
 
 function enableDetectedConfigs(options: Options): Options {
-  const autoDetectedDeps = {
+  const explicitlyDisabledConfigs = {
+    'typescript': options.configs?.typescript === false,
+    'zod': options.configs?.zod === false,
+    'astro': options.configs?.astro === false,
+    'react': options.configs?.react === false,
+    'next': options.configs?.next === false,
+    'vue': options.configs?.vue === false,
+    'nuxt': options.configs?.nuxt === false,
+    '@nuxt/ui': isEnabled(options.configs?.nuxt) && options.configs?.nuxt?.ui === false,
+    '@nuxt/icon': isEnabled(options.configs?.nuxt) && options.configs?.nuxt?.icon === false,
+    '@nuxt/image': isEnabled(options.configs?.nuxt) && options.configs?.nuxt?.image === false,
+    'vitest': options.configs?.test?.vitest === false,
+    'cypress': options.configs?.test?.cypress === false,
+    'storybook': options.configs?.test?.storybook === false,
+    '@playwright/test': options.configs?.test?.playwright === false,
+  };
+
+  const autoDetectedPackages = {
     typescript: isPackageDetected('typescript', options),
     zod: isPackageDetected('zod', options),
     astro: isPackageDetected('astro', options),
@@ -35,17 +53,17 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.perfectionist ??= true;
   options.configs.useBaseline ??= options.env === 'browser';
 
-  options.configs.typescript ??= autoDetectedDeps.typescript;
-  options.configs.zod ??= autoDetectedDeps.zod;
-  options.configs.astro ??= autoDetectedDeps.astro;
-  options.configs.vue ??= autoDetectedDeps.vue;
-  options.configs.nuxt ??= autoDetectedDeps.nuxt;
-  options.configs.react ??= autoDetectedDeps.react;
-  options.configs.next ??= autoDetectedDeps.next;
-  options.configs.test.vitest ??= autoDetectedDeps.vitest;
-  options.configs.test.cypress ??= autoDetectedDeps.cypress;
-  options.configs.test.storybook ??= autoDetectedDeps.storybook;
-  options.configs.test.playwright ??= autoDetectedDeps.playwright;
+  options.configs.typescript ??= autoDetectedPackages.typescript;
+  options.configs.zod ??= autoDetectedPackages.zod;
+  options.configs.astro ??= autoDetectedPackages.astro;
+  options.configs.vue ??= autoDetectedPackages.vue;
+  options.configs.nuxt ??= autoDetectedPackages.nuxt;
+  options.configs.react ??= autoDetectedPackages.react;
+  options.configs.next ??= autoDetectedPackages.next;
+  options.configs.test.vitest ??= autoDetectedPackages.vitest;
+  options.configs.test.cypress ??= autoDetectedPackages.cypress;
+  options.configs.test.storybook ??= autoDetectedPackages.storybook;
+  options.configs.test.playwright ??= autoDetectedPackages.playwright;
 
   options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : undefined;
 
@@ -59,13 +77,13 @@ function enableDetectedConfigs(options: Options): Options {
       options.configs.nuxt = {};
     }
 
-    options.configs.nuxt.ui ??= autoDetectedDeps.nuxtUI;
-    options.configs.nuxt.icon ??= autoDetectedDeps.nuxtIcon;
-    options.configs.nuxt.image ??= autoDetectedDeps.nuxtImage;
+    options.configs.nuxt.ui ??= autoDetectedPackages.nuxtUI;
+    options.configs.nuxt.icon ??= autoDetectedPackages.nuxtIcon;
+    options.configs.nuxt.image ??= autoDetectedPackages.nuxtImage;
   }
 
   if (options.autoDetectDeps === 'verbose') {
-    logDetectedPackages();
+    logDetectedPackages(explicitlyDisabledConfigs);
   }
 
   return options;
