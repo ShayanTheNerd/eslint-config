@@ -6,7 +6,7 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 - **Smart**: Context-aware linting with [automatic dependency detection](#automatic-dependency-detection) and _.gitignore_ recognition.
 - **Comprehensive**: [Supports useful plugins](#plugin-support) for TypeScript, React & Next, Vue & Nuxt, Astro, Tailwind, and more.
 - **Type-safe**: [Fully-typed and well-documented API](#api-reference) with `overrides` support for built-in configuration objects.
-- **Modern**: Requires ESLint ^10.4.0 and Node.js ^20.19.0 (ESM-only)
+- **Modern**: Requires ESLint ^10.6.0 and Node.js ^20.19.0 (ESM-only)
 
 ## Table of Contents
 - [Plugin Support](#plugin-support)

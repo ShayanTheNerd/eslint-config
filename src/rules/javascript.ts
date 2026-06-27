@@ -30,7 +30,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-compare-neg-zero': 'error',
     'no-cond-assign': 'error',
     'no-const-assign': isTypeScriptEnabled ? 'off' : 'error',
-    'no-constant-binary-expression': 'error',
+    'no-constant-binary-expression': ['error', { checkRelationalComparisons: true }],
     'no-constant-condition': 'error',
     'no-constructor-return': 'error',
     'no-control-regex': 'error',
