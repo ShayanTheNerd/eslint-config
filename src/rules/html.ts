@@ -36,6 +36,7 @@ function getHtmlRules(options: DeepNonNullable<Options>) {
     '@html-eslint/no-duplicate-id': 'error',
     '@html-eslint/no-duplicate-in-head': 'error',
     '@html-eslint/no-ineffective-attrs': 'warn',
+    '@html-eslint/no-inline-styles': ['warn', { allowExpressions: true }],
     '@html-eslint/no-invalid-attr-value': 'error',
     '@html-eslint/no-invalid-entity': 'error',
     '@html-eslint/no-nested-interactive': 'error',
