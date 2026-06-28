@@ -25,40 +25,40 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 
 ## Plugin Support
 Legend:
-- ✅ Enabled by default
-- ❌ Disabled by default
-- 🔎 [Automatically detected](#automatic-dependency-detection)
+- ✅ — **Enabled** by default
+- ⚙️ — **Opt-in** (requires manual configuration)
+- 🔍 — [**Automatically detected**](#automatic-dependency-detection) (based on project dependencies)
 
 | Category                                                                                              | Activation |
 | :---------------------------------------------------------------------------------------------------- | :--------: |
 | **Languages**                                                                                         |            |
 | [JavaScript][eslint]                                                                                  |     ✅      |
-| [TypeScript][plugin-ts]                                                                               |     🔎      |
+| [TypeScript][plugin-ts]                                                                               |     🔍      |
 | [Markdown][plugin-md]                                                                                 |     ✅      |
-| [HTML][plugin-html]                                                                                   |     ❌      |
-| [CSS][plugin-css]                                                                                     |     ❌      |
+| [HTML][plugin-html]                                                                                   |     ⚙️      |
+| [CSS][plugin-css]                                                                                     |     ⚙️      |
 | **Formatting**                                                                                        |            |
 | [Stylistic][plugin-stylistic]                                                                         |     ✅      |
 | [Perfectionist][plugin-perfectionist]                                                                 |     ✅      |
 | **Frameworks & Libraries**                                                                            |            |
-| [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y])                                          |     🔎      |
-| [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y], [@html-eslint/react][plugin-html-react]) |     🔎      |
-| [Next][plugin-next]                                                                                   |     🔎      |
-| [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                       |     🔎      |
-| [Tailwind][plugin-tailwind]                                                                           |     ❌      |
-| [Zod & Zod Mini][plugin-zod]                                                                          |     🔎      |
+| [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y])                                          |     🔍      |
+| [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y], [@html-eslint/react][plugin-html-react]) |     🔍      |
+| [Next][plugin-next]                                                                                   |     🔍      |
+| [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                       |     🔍      |
+| [Tailwind][plugin-tailwind]                                                                           |     ⚙️      |
+| [Zod & Zod Mini][plugin-zod]                                                                          |     🔍      |
 | **Testing Tools**                                                                                     |            |
-| [Storybook][plugin-storybook]                                                                         |     🔎      |
-| [Vitest][plugin-vitest]                                                                               |     🔎      |
-| [Cypress][plugin-cypress]                                                                             |     🔎      |
-| [Playwright][plugin-playwright]                                                                       |     🔎      |
+| [Storybook][plugin-storybook]                                                                         |     🔍      |
+| [Vitest][plugin-vitest]                                                                               |     🔍      |
+| [Cypress][plugin-cypress]                                                                             |     🔍      |
+| [Playwright][plugin-playwright]                                                                       |     🔍      |
 | **Miscellaneous**                                                                                     |            |
 | [_package.json_][plugin-package-json]                                                                 |     ✅      |
 | [Node][plugin-n]                                                                                      |     ✅      |
 | [Promises][plugin-promise]                                                                            |     ✅      |
 | [Imports][plugin-import-x]                                                                            |     ✅      |
 | [Unicorn][plugin-unicorn]                                                                             |     ✅      |
-| [Baseline][plugin-baseline]                                                                           |     🔎      |
+| [Baseline][plugin-baseline]                                                                           |     🔍      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
