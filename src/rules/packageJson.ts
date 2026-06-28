@@ -1,7 +1,7 @@
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 /**
-  Sorting object properties within arrays isn't supported yet.
+  Using a wildcard to target all objects within an array isn't supported yet.
   @see https://github.com/michaelfaith/eslint-plugin-package-json/issues/1967
 */
 const collectionSortPatterns = [
@@ -39,7 +39,7 @@ const collectionSortPatterns = [
   'husky',
   'husky.hooks',
   // {
-  //   key: 'license.*',
+  //   key: 'licenses.*',
   //   order: ['type', 'url'],
   // },
   'lint-staged',
