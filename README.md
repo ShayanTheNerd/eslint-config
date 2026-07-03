@@ -231,8 +231,9 @@ Some rules depend on the specified Node.js version. Visit the documentation for 
 
 ## IDE Support
 Install the VS Code extensions for [ESLint][extension-eslint] and [Prettier][extension-prettier].
+
 > [!TIP]
-> In case you're using PNPM without `shamefullyHoist: true`, add the following to your _pnpm-workspace.yaml_ and run `pnpm install --yes` so ESLint's VS Code extension works as expected:
+> In case you're using PNPM without `shamefullyHoist: true` and ESLint's VS Code extension isn't working as expected, add the following to your _pnpm-workspace.yaml_ and run `pnpm install --yes`:
 > ```yaml title="pnpm-workspace.yaml"
 > publicHoistPattern:
 >   - '*eslint*'
