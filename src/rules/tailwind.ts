@@ -20,6 +20,7 @@ const rawNonLogicalTailwindUtilityPatterns = [
   'h-.+',
   'min-h-.+',
   'max-h-.+',
+  'size-.+',
   'overflow-x-.+',
   'overflow-y-.+',
   'overscroll-x-.+',
