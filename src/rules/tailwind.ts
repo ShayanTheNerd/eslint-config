@@ -5,32 +5,33 @@ import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type IgnoredNonLogicalProperties = RuleOptions<'better-tailwindcss/enforce-logical-properties'>['ignore'];
-
-const ignoredNonLogicalProperties = [
-  '^top(?:-.+)?$',
-  '^bottom(?:-.+)?$',
-  '^pt-.+$',
-  '^pb-.+$',
-  '^-?mt-.+$',
-  '^-?mb-.+$',
-  '^border-t(?:-.+)?$',
-  '^border-b(?:-.+)?$',
-  '^w-.+$',
-  '^min-w-.+$',
-  '^max-w-.+$',
-  '^h-.+$',
-  '^min-h-.+$',
-  '^max-h-.+$',
-  '^overflow-x-.+$',
-  '^overflow-y-.+$',
-  '^overscroll-x-.+$',
-  '^overscroll-y-.+$',
-  '^scroll-pt-.+$',
-  '^scroll-pb-.+$',
-  '^scroll-mt-.+$',
-  '^scroll-mb-.+$',
-] satisfies IgnoredNonLogicalProperties;
+const rawNonLogicalTailwindUtilityPatterns = [
+  '-?top(?:-.+)?',
+  '-?bottom(?:-.+)?',
+  'pt-.+',
+  'pb-.+',
+  '-?mt-.+',
+  '-?mb-.+',
+  'border-t(?:-.+)?',
+  'border-b(?:-.+)?',
+  'w-.+',
+  'min-w-.+',
+  'max-w-.+',
+  'h-.+',
+  'min-h-.+',
+  'max-h-.+',
+  'overflow-x-.+',
+  'overflow-y-.+',
+  'overscroll-x-.+',
+  'overscroll-y-.+',
+  'scroll-pt-.+',
+  'scroll-pb-.+',
+  '-?scroll-mt-.+',
+  '-?scroll-mb-.+',
+] satisfies RuleOptions<'better-tailwindcss/enforce-logical-properties'>['ignore'];
+const nonLogicalTailwindUtilityPatterns = rawNonLogicalTailwindUtilityPatterns.map((pattern) => {
+  return `^(?:\\S+:)*(?:!${pattern}|${pattern}!?)$`;
+});
 
 function getTailwindRules(options: DeepNonNullable<Options>) {
   const { tailwind, stylistic } = options.configs;
@@ -55,7 +56,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
       },
     ],
     'better-tailwindcss/enforce-consistent-variant-order': 'warn',
-    'better-tailwindcss/enforce-logical-properties': ['warn', { ignore: ignoredNonLogicalProperties }],
+    'better-tailwindcss/enforce-logical-properties': ['warn', { ignore: nonLogicalTailwindUtilityPatterns }],
     'better-tailwindcss/no-duplicate-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
