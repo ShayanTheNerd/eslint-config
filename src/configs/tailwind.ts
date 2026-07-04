@@ -15,7 +15,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getTailwindRules } from '#rules/tailwind.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-const astroAttribute = {
+const astroAttributes = {
   kind: SelectorKind.Attribute,
   name: '^class:list$',
   match: [
@@ -24,46 +24,70 @@ const astroAttribute = {
   ],
 } satisfies Selector;
 
-const vueAttributes = [
-  {
-    kind: SelectorKind.Attribute,
-    name: '^v-bind:ui$',
-    match: [
-      { type: MatcherType.ObjectValue },
-    ],
-  },
-  {
-    kind: SelectorKind.Attribute,
-    name: '^(?:v-bind:)?(activeClass|inactiveClass|active-class|inactive-class)$',
-    match: [
-      { type: MatcherType.String },
-      { type: MatcherType.ObjectKey },
-    ],
-  },
-] satisfies Selector[];
+const vueAttributes = {
+  kind: SelectorKind.Attribute,
+  name: '^(?:v-bind:)?(exactActiveClass|activeClass|inactiveClass|active-class|inactive-class)$',
+  match: [
+    { type: MatcherType.String },
+    { type: MatcherType.ObjectKey },
+  ],
+} satisfies Selector;
+
+const nuxtUiAttributes = {
+  kind: SelectorKind.Attribute,
+  name: '^v-bind:ui$',
+  match: [
+    { type: MatcherType.ObjectValue },
+  ],
+} satisfies Selector;
+
+const nuxtUiAppConfigClassPathPattern = [
+  'ui\\.',
+  '(?!(?:colors|icons)(?:\\.|\\[|$))',
+  '(?!.*\\.defaultVariants(?:\\.|\\[|$))',
+  '(?!.*\\.compoundVariants\\[\\d+\\]\\.(?!(?:class|className)(?:\\.|\\[|$))[^.\\[]+(?:\\.|\\[|$))',
+  '.+',
+].join('');
+
+const nuxtUiAppConfigUiFields = {
+  kind: SelectorKind.Callee,
+  name: '^defineAppConfig$',
+  match: [
+    {
+      type: MatcherType.ObjectValue,
+      path: `^${nuxtUiAppConfigClassPathPattern}$`,
+    },
+    {
+      type: MatcherType.AnonymousFunctionReturn,
+      match: [
+        { type: MatcherType.String },
+        { type: MatcherType.ObjectKey },
+      ],
+    },
+  ],
+} satisfies Selector;
 
 function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {
     tsConfig,
     configs: {
       vue,
+      nuxt,
       html,
       astro,
       tailwind,
     },
   } = options;
-  const {
-    cwd,
-    config,
-    entryPoint,
-    overrides,
-  } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
+  const { cwd, config, overrides, entryPoint } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
 
   const tsconfig = tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined;
+  const isNuxtUiEnabled = isEnabled(nuxt) && isEnabled(nuxt.ui);
   const selectors = [
     ...getDefaultSelectors(),
-    ...(isEnabled(vue) ? vueAttributes : []),
-    isEnabled(astro) ? astroAttribute : undefined,
+    isEnabled(astro) ? astroAttributes : undefined,
+    isEnabled(vue) ? vueAttributes : undefined,
+    isNuxtUiEnabled ? nuxtUiAttributes : undefined,
+    isNuxtUiEnabled ? nuxtUiAppConfigUiFields : undefined,
   ].filter(isTruthy);
 
   const tailwindConfig = {
