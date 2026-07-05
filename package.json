@@ -72,20 +72,20 @@
     "{**/*.ts,package.json}": "pnpm lint"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "5.10.2",
+    "@eslint-react/eslint-plugin": "5.11.2",
     "@eslint/css": "1.4.0",
     "@eslint/markdown": "8.0.3",
     "@html-eslint/eslint-plugin": "0.63.0",
     "@html-eslint/eslint-plugin-react": "0.63.0",
     "@next/eslint-plugin-next": "16.2.10",
     "@stylistic/eslint-plugin": "5.10.0",
-    "@vitest/eslint-plugin": "1.6.20",
+    "@vitest/eslint-plugin": "1.6.21",
     "astro-eslint-parser": "2.1.0",
     "defu": "6.1.7",
     "eslint-flat-config-utils": "3.2.0",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-astro": "2.1.1",
-    "eslint-plugin-baseline-js": "0.6.2",
+    "eslint-plugin-baseline-js": "0.7.0",
     "eslint-plugin-better-tailwindcss": "4.6.1",
     "eslint-plugin-cypress": "6.4.2",
     "eslint-plugin-import-x": "4.17.1",
@@ -99,7 +99,7 @@
     "eslint-plugin-unicorn": "70.0.0",
     "eslint-plugin-vue": "10.9.2",
     "eslint-plugin-vuejs-accessibility": "2.5.0",
-    "eslint-plugin-zod": "4.7.0",
+    "eslint-plugin-zod": "4.7.1",
     "eslint-plugin-zod-mini": "1.4.0",
     "globals": "17.7.0",
     "local-pkg": "1.2.1",
@@ -133,7 +133,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.9.0",
+      "version": "11.10.0",
       "onFail": "warn"
     },
     "runtime": {
