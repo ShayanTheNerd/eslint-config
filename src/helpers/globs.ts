@@ -9,6 +9,7 @@ const globs = {
   css: '**/*.css',
   astro: '**/*.astro',
   vue: `**/*.${vueExtensions}`,
+  vueMiddlewares: `**/middleware?(s)/**/*.${srcExtensions}`,
   vueServerComponents: `**/*.server.${vueExtensions}`,
   vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
   storybook: `**/*.(story|stories).${srcExtensions}`,

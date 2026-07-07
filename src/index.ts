@@ -28,12 +28,13 @@ import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
+import { getVueMiddlewaresConfig } from '#configs/vueMiddlewares.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
 import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
 import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 
-/** Valid argument combinations for the `defineConfig` function. */
+/** Valid argument combinations for `defineConfig`. */
 type DefineConfigArguments =
   | []
   | [options: Options]
@@ -156,6 +157,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(react) && getReactConfig(mergedOptions),
     isEnabled(next) && getNextConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
+    isEnabled(vue) && getVueMiddlewaresConfig(),
     isEnabled(vue) && getVueComponentNamesConfig(),
     (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
 
