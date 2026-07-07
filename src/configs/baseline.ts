@@ -14,7 +14,12 @@ function getBaselineConfig(options: DeepNonNullable<Options>) {
 
   const baselineConfig = {
     name: 'shayanthenerd/baseline',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     ignores: [globs.test, globs.coverage],
     plugins: {
       /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */

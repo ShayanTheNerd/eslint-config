@@ -18,7 +18,12 @@ function getZodConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const zodConfig = {
     name: `shayanthenerd/${mini ? 'zod-mini' : 'zod'}`,
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: mini ? { 'zod-mini': eslintPluginZodMini } : { zod: eslintPluginZod },
     rules: getZodRules(options),
   } satisfies Linter.Config;

@@ -17,7 +17,12 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Confi
 
   const perfectionistConfig = {
     name: 'shayanthenerd/perfectionist',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       perfectionist: eslintPluginPerfectionist,
     },

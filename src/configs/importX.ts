@@ -17,7 +17,12 @@ function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const importXConfig = {
     name: 'shayanthenerd/import-x',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       'import-x': eslintPluginImportX,
     },

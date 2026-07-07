@@ -18,7 +18,12 @@ function getPromiseConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const promiseConfig = {
     name: 'shayanthenerd/promise',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       /* eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion */
       promise: eslintPluginPromise as ESLint.Plugin,

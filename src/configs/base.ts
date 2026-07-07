@@ -44,7 +44,12 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const baseConfig = {
     name: 'shayanthenerd/base',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     languageOptions: {
       parser: eslintParserTypeScript,
       parserOptions: {

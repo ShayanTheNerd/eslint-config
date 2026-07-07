@@ -17,7 +17,12 @@ function getStylisticConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const stylisticConfig = {
     name: 'shayanthenerd/stylistic',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       '@stylistic': eslintPluginStylistic,
     },

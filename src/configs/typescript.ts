@@ -19,7 +19,12 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const typescriptConfig = {
     name: 'shayanthenerd/typescript',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       '@typescript-eslint': eslintPluginTypeScript,
     },

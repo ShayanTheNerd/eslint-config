@@ -19,7 +19,12 @@ function getNodeConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const nodeConfig = {
     name: 'shayanthenerd/node',
-    files: [globs.src, isEnabled(vue) ? globs.vue : '', isEnabled(astro) ? globs.astro : ''].filter(isTruthy),
+    files: [
+      globs.src,
+      globs.jsxLike,
+      isEnabled(vue) ? globs.vue : '',
+      isEnabled(astro) ? globs.astro : '',
+    ].filter(isTruthy),
     plugins: {
       n: eslintPluginNode,
     },

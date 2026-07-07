@@ -94,6 +94,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
     name: 'shayanthenerd/tailwind',
     files: [
       globs.src,
+      globs.jsxLike,
       isEnabled(vue) ? globs.vue : '',
       isEnabled(html) ? globs.html : '',
       isEnabled(astro) ? globs.astro : '',
