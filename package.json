@@ -4,10 +4,7 @@
   "description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
   "keywords": [
     "eslint",
-    "eslint-config",
-    "eslint-flat-config",
-    "eslint-config-vue",
-    "eslint-config-typescript"
+    "eslint-config"
   ],
   "homepage": "https://eslintconfig.netlify.app",
   "bugs": {
@@ -110,7 +107,7 @@
     "@arethetypeswrong/cli": "0.18.4",
     "@eslint/config-inspector": "3.0.4",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
-    "@types/node": "26.1.0",
+    "@types/node": "26.1.1",
     "actions-up": "1.16.0",
     "eslint": "10.6.0",
     "eslint-typegen": "2.3.1",
