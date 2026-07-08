@@ -18,7 +18,7 @@ type ConfigRulesZod = PluginRules<'zod'>;
 type ConfigRulesZodMini = PluginRules<'zod-mini'>;
 
 type ZodOptions =
-  | (BaseZodOptions & { mini?: true } & ConfigWithOverrides<ConfigRulesZodMini>)
+  | (BaseZodOptions & ConfigWithOverrides<ConfigRulesZodMini> & { mini?: true })
   | (BaseZodOptions & ConfigWithOverrides<ConfigRulesZod> & ({ mini?: false } | { mini?: undefined }));
 
 export type { ZodOptions };
