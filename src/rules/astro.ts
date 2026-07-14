@@ -21,7 +21,6 @@ const astroRules = {
   'astro/no-exports-from-components': 'error',
   'astro/no-prerender-export-outside-pages': 'error',
   'astro/no-unused-define-vars-in-style': 'warn',
-  'astro/valid-compile': 'error',
 
   /* Security Vulnerability */
   'astro/no-set-html-directive': 'warn',
@@ -32,7 +31,6 @@ const astroRules = {
   'astro/no-unused-css-selector': 'warn',
 
   /* Stylistic Issues */
-  'astro/no-omitted-end-tags': 'warn',
   'astro/prefer-class-list-directive': 'warn',
   'astro/prefer-split-class-list': 'warn',
 
