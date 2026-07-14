@@ -69,7 +69,7 @@
     "{**/*.ts,package.json}": "pnpm lint"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "5.14.5",
+    "@eslint-react/eslint-plugin": "5.14.10",
     "@eslint/css": "1.4.0",
     "@eslint/markdown": "8.0.3",
     "@html-eslint/eslint-plugin": "0.64.0",
@@ -77,18 +77,18 @@
     "@next/eslint-plugin-next": "16.2.10",
     "@stylistic/eslint-plugin": "5.10.0",
     "@vitest/eslint-plugin": "1.6.23",
-    "astro-eslint-parser": "2.1.0",
+    "astro-eslint-parser": "3.0.0",
     "defu": "6.1.7",
     "eslint-flat-config-utils": "3.2.0",
     "eslint-import-resolver-typescript": "4.4.5",
-    "eslint-plugin-astro": "2.1.1",
+    "eslint-plugin-astro": "3.0.0",
     "eslint-plugin-baseline-js": "0.7.0",
     "eslint-plugin-better-tailwindcss": "4.6.1",
-    "eslint-plugin-cypress": "6.4.2",
+    "eslint-plugin-cypress": "6.4.3",
     "eslint-plugin-import-x": "4.17.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-n": "18.2.2",
-    "eslint-plugin-package-json": "1.5.0",
+    "eslint-plugin-package-json": "1.6.0",
     "eslint-plugin-perfectionist": "5.10.0",
     "eslint-plugin-playwright": "2.10.5",
     "eslint-plugin-promise": "7.3.0",
@@ -101,11 +101,11 @@
     "globals": "17.7.0",
     "local-pkg": "1.2.1",
     "tailwind-csstree": "0.3.3",
-    "typescript-eslint": "8.63.0"
+    "typescript-eslint": "8.64.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
-    "@eslint/config-inspector": "3.0.4",
+    "@eslint/config-inspector": "3.1.0",
     "@types/eslint-plugin-jsx-a11y": "6.10.1",
     "@types/node": "26.1.1",
     "actions-up": "1.16.0",
@@ -117,7 +117,7 @@
     "serve": "14.2.6",
     "simple-git-hooks": "2.13.1",
     "ts-morph": "28.0.0",
-    "tsdown": "0.22.4",
+    "tsdown": "0.22.7",
     "typescript": "6.0.3",
     "unplugin-unused": "0.5.7"
   },
@@ -130,7 +130,7 @@
   "devEngines": {
     "packageManager": {
       "name": "pnpm",
-      "version": "11.11.0",
+      "version": "11.13.0",
       "onFail": "warn"
     },
     "runtime": {
