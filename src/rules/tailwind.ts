@@ -45,7 +45,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
 
   const tailwindRules = {
     'better-tailwindcss/enforce-canonical-classes': 'warn',
-    'better-tailwindcss/enforce-consistent-class-order': ['warn', { order: 'strict' }],
+    'better-tailwindcss/enforce-consistent-class-order': 'warn',
     'better-tailwindcss/enforce-consistent-line-wrapping': [
       multilineSort ? 'warn' : 'off',
       {
