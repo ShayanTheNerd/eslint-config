@@ -5,8 +5,10 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
+type MarkdownRules = PluginRules<'markdown'> & Pick<PluginRules<'unicorn'>, 'unicorn/no-missing-local-resource'>;
+
 function getMarkdownRules(options: DeepNonNullable<Options>) {
-  const { markdown } = options.configs;
+  const { unicorn, markdown } = options.configs;
   const {
     language,
     allowedHtmlTags: userAllowedHtmlTags,
@@ -53,7 +55,11 @@ function getMarkdownRules(options: DeepNonNullable<Options>) {
     'markdown/no-unused-definitions': isCommonMark ? 'off' : 'warn',
     'markdown/require-alt-text': 'warn',
     'markdown/table-column-count': [isCommonMark ? 'off' : 'error', { checkMissingCells: true }],
-  } satisfies PluginRules<'markdown'>;
+  } satisfies MarkdownRules;
+
+  if (isEnabled(unicorn)) {
+    (markdownRules as MarkdownRules)['unicorn/no-missing-local-resource'] = 'error';
+  }
 
   return markdownRules;
 }

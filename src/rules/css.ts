@@ -5,8 +5,11 @@ import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-type PhysicalUnits = RuleOptions<'css/prefer-logical-properties'>['allowUnits'];
-type PhysicalProperties = RuleOptions<'css/prefer-logical-properties'>['allowProperties'];
+type UnicornRules = Pick<
+  PluginRules<'unicorn'>,
+  'unicorn/prefer-explicit-viewport-units' | 'unicorn/no-shorthand-property-overrides'
+>;
+type CssRules = UnicornRules & PluginRules<'css'>;
 
 const allowedPhysicalUnits = [
   'cqh',
@@ -19,7 +22,7 @@ const allowedPhysicalUnits = [
   'svw',
   'vh',
   'vw',
-] satisfies PhysicalUnits;
+] satisfies RuleOptions<'css/prefer-logical-properties'>['allowUnits'];
 const allowedPhysicalProperties = [
   'top',
   'bottom',
@@ -51,10 +54,10 @@ const allowedPhysicalProperties = [
   'scroll-margin-bottom',
   'contain-intrinsic-width',
   'contain-intrinsic-height',
-] satisfies PhysicalProperties;
+] satisfies RuleOptions<'css/prefer-logical-properties'>['allowProperties'];
 
 function getCssRules(options: DeepNonNullable<Options>) {
-  const { useBaseline } = options.configs;
+  const { unicorn, tailwind, useBaseline } = options.configs;
   const {
     allowedAtRules: userAllowedAtRules,
     allowedFunctions: userAllowedFunctions,
@@ -96,7 +99,12 @@ function getCssRules(options: DeepNonNullable<Options>) {
         allowUnits: userAllowedUnits,
       },
     ] : 'off',
-  } satisfies PluginRules<'css'>;
+  } satisfies CssRules;
+
+  if (isEnabled(unicorn)) {
+    (cssRules as CssRules)['unicorn/no-shorthand-property-overrides'] = 'warn';
+    (cssRules as CssRules)['unicorn/prefer-explicit-viewport-units'] = 'warn';
+  }
 
   return cssRules;
 }

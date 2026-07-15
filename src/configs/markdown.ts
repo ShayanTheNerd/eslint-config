@@ -4,6 +4,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import eslintPluginMarkdown from '@eslint/markdown';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 import { globs } from '#helpers/globs.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
@@ -11,7 +12,7 @@ import { getMarkdownRules } from '#rules/markdown.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getMarkdownConfig(options: DeepNonNullable<Options>): Linter.Config {
-  const { markdown } = options.configs;
+  const { unicorn, markdown } = options.configs;
   const { language, frontmatter, overrides } = isEnabled(markdown) ? markdown : defaultOptions.configs.markdown;
 
   const markdownConfig = {
@@ -19,6 +20,7 @@ function getMarkdownConfig(options: DeepNonNullable<Options>): Linter.Config {
     files: [globs.markdown],
     plugins: {
       markdown: eslintPluginMarkdown,
+      ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
     },
     language: `markdown/${language}`,
     languageOptions: {
