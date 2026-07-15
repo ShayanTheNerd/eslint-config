@@ -72,7 +72,7 @@ function getCssRules(options: DeepNonNullable<Options>) {
     'css/no-empty-blocks': 'error',
     'css/no-important': 'warn',
     'css/no-invalid-at-rule-placement': 'error',
-    'css/no-invalid-at-rules': 'error',
+    'css/no-invalid-at-rules': isEnabled(tailwind) ? 'off' : 'error', // Reports many Tailwind-related false positives.
     'css/no-invalid-named-grid-areas': 'error',
     'css/no-invalid-properties': ['error', { allowUnknownVariables: true }],
     'css/no-unmatchable-selectors': 'error',
