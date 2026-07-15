@@ -1,6 +1,6 @@
 {
   "name": "@shayanthenerd/eslint-config",
-  "version": "0.27.2",
+  "version": "0.28.0",
   "description": "A modern, flexible ESLint configuration for enforcing best practices and maintaining a consistent coding style",
   "keywords": [
     "eslint",
