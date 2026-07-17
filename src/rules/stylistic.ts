@@ -170,7 +170,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
         blankLine: 'never',
       },
       {
-        prev: ['var', 'let', 'const', 'using'],
+        prev: ['const', 'let', 'using', 'var'],
         next: 'block-like',
         blankLine: 'any',
       },
@@ -180,9 +180,14 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
         blankLine: 'always',
       },
       {
+        prev: ['if', 'switch', 'try', 'for', 'while', 'do', 'with'],
+        next: ['break', 'continue', 'return', 'throw'],
+        blankLine: 'any',
+      },
+      {
         prev: ['case', 'default'],
         next: ['case', 'default'],
-        blankLine: 'any',
+        blankLine: 'never',
       },
     ],
     '@stylistic/quote-props': ['warn', 'consistent-as-needed'],
