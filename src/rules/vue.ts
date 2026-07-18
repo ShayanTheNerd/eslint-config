@@ -9,7 +9,11 @@ import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
 import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
 
 type StylisticRules = PluginRules<'@stylistic'>;
-type VueAndNuxtRules = PluginRules<'vue'> & Pick<StylisticRules, '@stylistic/max-len'>;
+type TypeScriptRules = PluginRules<'@typescript-eslint'>;
+type VueAndNuxtRules =
+  & PluginRules<'vue'>
+  & Pick<StylisticRules, '@stylistic/max-len'>
+  & Pick<TypeScriptRules, '@typescript-eslint/no-useless-default-assignment'>;
 
 function getVueRules(options: DeepNonNullable<Options>) {
   const { typescript, stylistic, vue, nuxt } = options.configs;
@@ -88,6 +92,9 @@ function getVueRules(options: DeepNonNullable<Options>) {
   } satisfies PluginRules<'vuejs-accessibility'>;
 
   const vueAndNuxtRules = {
+    /* Reports a false positive when `true` is used as the default value for the destructured optional boolean props. */
+    '@typescript-eslint/no-useless-default-assignment': 'off',
+
     /* Base Rules (Enabling Correct ESLint Parsing) */
     'vue/jsx-uses-vars': 'error',
     'vue/comment-directive': ['error', { reportUnusedDisableDirectives: true }],
@@ -96,7 +103,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/multi-word-component-names': 'error',
     'vue/no-arrow-functions-in-watch': 'warn',
     'vue/no-async-in-computed-properties': ['error', {
-      ignoredObjectNames: ['z'],
+      ignoredObjectNames: ['z', 'zod'],
     }],
     'vue/no-child-content': 'error',
     'vue/no-computed-properties-in-data': 'error',
