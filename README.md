@@ -80,7 +80,7 @@ Legend:
    {
      "scripts": {
        "lint:inspect": "npx @eslint/config-inspector",
-       "lint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
+       "lint": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
      }
    }
    ```
@@ -363,7 +363,7 @@ _package.json_:
 {
   "scripts": {
     "format": "prettier --write . --cache",
-    "lint": "eslint --fix --cache --cache-location='node_modules/.cache/.eslintcache'"
+    "lint": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
   }
 }
 ```
@@ -427,7 +427,7 @@ _.vscode/settings.json_:
     packageDir?: string,
     tsConfig?: false | {
       filename?: string,
-      rootDir: string,
+      rootDir?: string,
     },
 
     project?: {

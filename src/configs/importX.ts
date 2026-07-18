@@ -26,7 +26,7 @@ function getImportXConfig(options: DeepNonNullable<Options>): Linter.Config {
     plugins: {
       'import-x': eslintPluginImportX,
     },
-    settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : undefined,
+    settings: isEnabled(typescript) ? eslintPluginImportX.flatConfigs.typescript.settings : {},
     rules: getImportXRules(options),
   } satisfies Linter.Config;
 

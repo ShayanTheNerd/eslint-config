@@ -87,9 +87,18 @@ interface Options {
    * - [better-tailwindcss: `tsconfig` option](https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/settings/settings.md#tsconfig)
    * - [perfectionist/sort-imports: `tsconfig` option](https://perfectionist.dev/rules/sort-imports#tsconfig)
    *
-   * @default undefined // `{ rootDir: '.', filename: 'tsconfig.json' }` if TypeScript integration is enabled
+   * @default false // `{ rootDir: options.packageDir ?? '.', filename: 'tsconfig.json' }` if TypeScript integration is enabled
    */
   tsConfig?: false | {
+    /**
+     * The directory of the root TypeScript config file.
+     *
+     * It will fall back to the default value if set to an empty string (`''`).
+     *
+     * @default options.packageDir ?? '.'
+     */
+    rootDir?: string,
+
     /**
      * The name of the root TypeScript config file.
      *
@@ -98,15 +107,6 @@ interface Options {
      * @default 'tsconfig.json'
      */
     filename?: string,
-
-    /**
-     * The directory of the root TypeScript config file.
-     *
-     * It will fall back to the default value if set to an empty string (`''`).
-     *
-     * @default '.'
-     */
-    rootDir: string,
   },
 
   /*** Project ***/

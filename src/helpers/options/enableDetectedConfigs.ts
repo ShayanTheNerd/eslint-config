@@ -1,6 +1,7 @@
 import type { Options } from '#types/index.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isPackageDetected, logDetectedPackages } from '#helpers/isPackageDetected.ts';
 
 function enableDetectedConfigs(options: Options): Options {
@@ -65,9 +66,24 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.test.storybook ??= autoDetectedPackages.storybook;
   options.configs.test.playwright ??= autoDetectedPackages.playwright;
 
-  options.tsConfig ??= options.configs.typescript ? { rootDir: '.', filename: 'tsconfig.json' } : undefined;
+  const isTypeScriptEnabled = isEnabled(options.configs.typescript);
 
-  if (options.configs.vue && options.configs.typescript) {
+  if (isTypeScriptEnabled) {
+    const defaultTsConfigRootDir = options.packageDir ?? defaultOptions.packageDir;
+    const defaultTsConfigFilename = 'tsconfig.json' as const;
+
+    if (options.tsConfig === undefined) {
+      options.tsConfig = {
+        rootDir: defaultTsConfigRootDir,
+        filename: defaultTsConfigFilename,
+      };
+    } else if (options.tsConfig !== false) {
+      options.tsConfig.rootDir ??= defaultTsConfigRootDir;
+      options.tsConfig.filename ??= defaultTsConfigFilename;
+    }
+  }
+
+  if (isTypeScriptEnabled && options.configs.vue) {
     options.configs.vue = options.configs.vue === true ? {} : options.configs.vue;
     options.configs.vue.blockLang = { script: 'ts' };
   }

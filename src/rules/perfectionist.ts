@@ -123,7 +123,7 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
     'perfectionist/sort-named-exports': 'warn',
     'perfectionist/sort-imports': ['warn', {
       environment: env === 'bun' ? 'bun' : 'node',
-      tsconfig: tsConfig || undefined,
+      tsconfig: tsConfig || { rootDir: '' },
       sortSideEffects: true,
       fallbackSort: {
         order: 'asc',

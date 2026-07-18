@@ -15,7 +15,7 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 function getNodeConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { tsConfig, configs: { vue, node, astro } } = options;
   const { overrides } = isEnabled(node) ? node : defaultOptions.configs.node;
-  const tsconfig = tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined;
+  const tsconfigPath = tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined;
 
   const nodeConfig = {
     name: 'shayanthenerd/node',
@@ -29,9 +29,7 @@ function getNodeConfig(options: DeepNonNullable<Options>): Linter.Config {
       n: eslintPluginNode,
     },
     settings: {
-      n: {
-        tsconfigPath: tsconfig,
-      },
+      n: tsconfigPath ? { tsconfigPath } : undefined,
     },
     rules: getNodeRules(options),
   } satisfies Linter.Config;

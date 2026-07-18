@@ -80,7 +80,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
   } = options;
   const { cwd, config, overrides, entryPoint } = isEnabled(tailwind) ? tailwind : defaultOptions.configs.tailwind;
 
-  const tsconfig = tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined;
+  const tsconfigPath = tsConfig ? path.resolve(tsConfig.rootDir, tsConfig.filename) : undefined;
   const isNuxtUiEnabled = isEnabled(nuxt) && isEnabled(nuxt.ui);
   const selectors = [
     ...getDefaultSelectors(),
@@ -105,10 +105,10 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
     settings: {
       'better-tailwindcss': {
         cwd,
-        tsconfig,
         selectors,
         entryPoint,
         tailwindConfig: config,
+        tsconfig: tsconfigPath,
         detectComponentClasses: true,
       },
     },

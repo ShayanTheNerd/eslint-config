@@ -131,9 +131,9 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   const configObjects = [
     {
       name: 'shayanthenerd/project',
-      rules,
       linterOptions,
-      ...((Object.keys(settings).length > 0) && { settings }),
+      settings,
+      rules,
     },
     globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
