@@ -16,8 +16,8 @@ const baseVueConfig = eslintPluginVue.configs['flat/base'].find((config) => conf
 
 function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue } = options.configs;
-  const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
   const { overrides } = isEnabled(vue) ? vue : defaultOptions.configs.vue;
+  const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
 
   const vueConfig = {
     name: 'shayanthenerd/vue',

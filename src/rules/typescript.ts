@@ -16,7 +16,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
   const noUnusedVarsOptions = getJavaScriptRules(options)['no-unused-vars'][1];
   const preferDestructuringOptions = getJavaScriptRules(options)['prefer-destructuring'][1];
 
-  const tsRules = {
+  const typescriptRules = {
     /* Strict Type-Checked */
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/ban-ts-comment': ['warn', {
@@ -161,7 +161,7 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
     ],
   } satisfies PluginRules<'@typescript-eslint'>;
 
-  return tsRules;
+  return typescriptRules;
 }
 
 export { getTypeScriptRules };
