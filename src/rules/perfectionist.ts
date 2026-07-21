@@ -58,7 +58,15 @@ const typeConstituentSortOptions = {
 
 const sortArrayIncludesOptions = {
   customGroups: literalCustomGroups,
-  groups: sharedTypeLikeGroups,
+  groups: [
+    'boolean-literal',
+    'number-literal',
+    'bigint-literal',
+    'string-literal',
+    'template-literal',
+    'literal',
+    'unknown',
+  ],
 } satisfies SortArrayIncludesOptions[number];
 
 const sortImportsCustomGroups = [
