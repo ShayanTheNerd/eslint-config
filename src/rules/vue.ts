@@ -51,7 +51,9 @@ function getVueRules(options: DeepNonNullable<Options>) {
   const isNuxtUIEnabled = isNuxtEnabled ? nuxt.ui : undefined;
   const nuxtUIPrefix = isNuxtEnabled && isEnabled(nuxt.ui) ? nuxt.ui.prefix : defaultOptions.configs.nuxt.ui.prefix;
   const isNuxtIconEnabled = isNuxtEnabled ? nuxt.icon : undefined;
-  const nuxtIconComponent = isNuxtEnabled && isEnabled(nuxt.icon) ? nuxt.icon.component : defaultOptions.configs.nuxt.icon.component; // eslint-disable-line @stylistic/max-len
+  const nuxtIconComponent = isNuxtEnabled && isEnabled(nuxt.icon)
+    ? nuxt.icon.component
+    : defaultOptions.configs.nuxt.icon.component;
   const restrictedVueElements = isNuxtUIEnabled ? getRestrictedVueElements(nuxtUIPrefix) : [];
   const restrictedVueInputs = isNuxtUIEnabled ? getRestrictedVueInputs(nuxtUIPrefix) : [];
   const isScriptLangTS = blockLang.script === 'ts';

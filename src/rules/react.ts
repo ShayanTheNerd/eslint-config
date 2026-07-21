@@ -30,7 +30,9 @@ function getReactRules(options: DeepNonNullable<Options>) {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
     headingComponents: userHeadingComponents,
-  } = isEnabled(react) && isEnabled(react.accessibility) ? react.accessibility : defaultOptions.configs.react.accessibility; // eslint-disable-line @stylistic/max-len
+  } = isEnabled(react) && isEnabled(react.accessibility)
+    ? react.accessibility
+    : defaultOptions.configs.react.accessibility;
 
   const jsxA11yRules = {
     'jsx-a11y/alt-text': ['error', { img: userImageComponents }],
