@@ -75,6 +75,7 @@
     "@html-eslint/eslint-plugin": "0.64.0",
     "@html-eslint/eslint-plugin-react": "0.64.0",
     "@next/eslint-plugin-next": "16.2.10",
+    "@nuxt/eslint-plugin": "1.16.0",
     "@stylistic/eslint-plugin": "5.10.0",
     "@vitest/eslint-plugin": "1.6.23",
     "astro-eslint-parser": "3.0.0",
@@ -100,6 +101,7 @@
     "eslint-plugin-zod-mini": "1.5.0",
     "globals": "17.7.0",
     "local-pkg": "1.2.1",
+    "nuxt-link-checker": "5.1.3",
     "tailwind-csstree": "0.3.3",
     "typescript-eslint": "8.65.0"
   },

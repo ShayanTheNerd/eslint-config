@@ -327,11 +327,9 @@ interface Options {
     node?: boolean | ConfigWithOverrides<PluginRules<'n'>>,
 
     /**
-     * Whether [Nuxt](https://nuxt.com) is used in the project.
+     * Use [@nuxt/eslint-plugin](https://eslint.nuxt.com/packages/plugin) and [nuxt-link-checker (ESLint plugin)](https://nuxtseo.com/docs/link-checker/guides/eslint) to enforce Nuxt best practices and catch broken links.
      *
-     * Enforce best practices and the use of Nuxt-specific components over their standard counterparts. For example, `<NuxtLink>` must be used instead of `<a>`, and `<NuxtTime>` instead of `<time>`.
-     *
-     * **This configuration requires `configs.vue` to be enabled.**
+     * Enforce best practices and the use of Nuxt-specific components over their counterparts. For example, `<NuxtLink>` must be used instead of `<a>`, and `<NuxtTime>` instead of `<time>`.
      *
      * @default false // `true` if "nuxt" is detected in the dependencies when `autoDetectDeps` is enabled
      */

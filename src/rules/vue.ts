@@ -10,7 +10,7 @@ import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.
 
 type StylisticRules = PluginRules<'@stylistic'>;
 type TypeScriptRules = PluginRules<'@typescript-eslint'>;
-type VueAndNuxtRules =
+type VueRules =
   & PluginRules<'vue'>
   & Pick<StylisticRules, '@stylistic/max-len'>
   & Pick<TypeScriptRules, '@typescript-eslint/no-useless-default-assignment'>;
@@ -93,7 +93,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vuejs-accessibility/tabindex-no-positive': 'error',
   } satisfies PluginRules<'vuejs-accessibility'>;
 
-  const vueAndNuxtRules = {
+  const vueRules = {
     /* Reports a false positive when `true` is used as the default value for the destructured optional boolean props. */
     '@typescript-eslint/no-useless-default-assignment': 'off',
 
@@ -418,19 +418,18 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/slot-name-casing': 'warn',
     'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
     // 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
-  } satisfies VueAndNuxtRules;
+  } satisfies VueRules;
 
   if (isEnabled(stylistic)) {
-    (vueAndNuxtRules as VueAndNuxtRules)['@stylistic/max-len'] = 'off';
+    (vueRules as VueRules)['@stylistic/max-len'] = 'off';
   }
 
   const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
-  const vueRules = {
-    ...vueAndNuxtRules,
+
+  return {
+    ...vueRules,
     ...(isVueAccessibilityEnabled && vueAccessibilityRules),
   };
-
-  return vueRules;
 }
 
 export { getVueRules };

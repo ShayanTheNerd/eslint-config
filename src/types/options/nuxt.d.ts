@@ -1,4 +1,9 @@
-interface NuxtOptions {
+import type { PluginRules } from '#types/eslintRules.d.ts';
+import type { ConfigWithOverrides } from '#types/index.d.ts';
+
+type ConfigRules = PluginRules<'nuxt'> | PluginRules<'link-checker'>;
+
+interface NuxtOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Whether [@nuxt/icon](https://nuxt.com/modules/icon) is used in the project.
    *

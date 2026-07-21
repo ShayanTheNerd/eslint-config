@@ -76,6 +76,7 @@ const defaultOptions = {
       ui: {
         prefix: 'U',
       },
+      overrides: {},
     },
     packageJson: {
       overrides: {},

@@ -12,6 +12,7 @@ import { getBaseConfig } from '#configs/base.ts';
 import { getHtmlConfig } from '#configs/html.ts';
 import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
+import { getNuxtConfigs } from '#configs/nuxt.ts';
 import { getAstroConfig } from '#configs/astro.ts';
 import { getReactConfig } from '#configs/react.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
@@ -28,11 +29,8 @@ import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
-import { getVueMiddlewaresConfig } from '#configs/vueMiddlewares.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
-import { getVueComponentNamesConfig } from '#configs/vueComponentNames.ts';
-import { getVueServerComponentsConfig } from '#configs/vueServerComponents.ts';
 
 /** Valid argument combinations for `defineConfig`. */
 type DefineConfigArguments =
@@ -157,9 +155,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(react) && getReactConfig(mergedOptions),
     isEnabled(next) && getNextConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
-    isEnabled(vue) && getVueMiddlewaresConfig(),
-    isEnabled(vue) && getVueComponentNamesConfig(),
-    (isEnabled(vue) && isEnabled(nuxt)) && getVueServerComponentsConfig(),
+    ...(isEnabled(nuxt) ? getNuxtConfigs(mergedOptions) : []),
 
     isEnabled(storybook) && getStorybookConfig(mergedOptions),
     isEnabled(vitest) && getVitestConfig(mergedOptions),

@@ -213,10 +213,7 @@ For editor integration, to avoid inconsistent diagnostics from the [Tailwind CS
 ```
 
 ### Nuxt
-Nuxt support is already included through the Vue integration, so you don’t need to install or configure [@nuxt/eslint][eslint-nuxt] manually. If you need additional rules tailored to Nuxt, refer to the plugin’s documentation for setup instructions.
-
-> [!TIP]
-> `configs.nuxt` only includes options for Nuxt Image, Nuxt UI, and the `<Icon>` component. Vue's rules and `overrides` can be configured via `configs.vue`.
+The required Nuxt configurations and rules are already included, so there's no need to install or configure the [@nuxt/eslint][eslint-nuxt] module.
 
 ### Markdown
 Markdown linting is powered by [@eslint/markdown][plugin-md].
@@ -500,6 +497,7 @@ _.vscode/settings.json_:
         ui?: boolean | {
           prefix?: string,
         },
+        overrides?: Overrides,
       },
       packageJson?: boolean | {
         overrides?: Overrides,
