@@ -277,7 +277,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
       multiline: true,
       consistent: true,
     }],
-    'vue/object-curly-spacing': ['warn', 'always', { emptyObjects: 'never' }],
+    'vue/object-curly-spacing': ['warn', 'always'],
     'vue/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
     'vue/object-shorthand': 'warn',
     'vue/operator-linebreak': ['error', 'none', {
