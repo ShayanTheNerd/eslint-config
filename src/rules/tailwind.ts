@@ -58,11 +58,12 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
     ],
     'better-tailwindcss/enforce-consistent-variant-order': 'warn',
     'better-tailwindcss/enforce-logical-properties': ['warn', { ignore: nonLogicalTailwindUtilityPatterns }],
-    'better-tailwindcss/no-duplicate-classes': 'error',
-    'better-tailwindcss/no-deprecated-classes': 'error',
-    'better-tailwindcss/no-unnecessary-whitespace': 'warn',
-    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', { ignore: userIgnoredUnknownClasses }],
+    'better-tailwindcss/no-concatenated-classes': 'error',
     'better-tailwindcss/no-conflicting-classes': 'error',
+    'better-tailwindcss/no-deprecated-classes': 'error',
+    'better-tailwindcss/no-duplicate-classes': 'error',
+    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', { ignore: userIgnoredUnknownClasses }],
+    'better-tailwindcss/no-unnecessary-whitespace': 'warn',
   } satisfies PluginRules<'better-tailwindcss'>;
 
   return tailwindRules;
