@@ -19,7 +19,7 @@ function getUnicornConfig(options: DeepNonNullable<Options>): Linter.Config {
     name: 'shayanthenerd/unicorn',
     files: [
       globs.src,
-      globs.jsxLike,
+      globs.jsxTsx,
       isEnabled(vue) ? globs.vue : '',
       isEnabled(astro) ? globs.astro : '',
     ].filter(isTruthy),

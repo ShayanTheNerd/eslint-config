@@ -16,7 +16,7 @@ function getNextConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const nextConfig = {
     name: 'shayanthenerd/next',
-    files: [globs.src, globs.jsxLike],
+    files: [globs.src, globs.jsxTsx],
     plugins: {
       next: eslintPluginNext,
     },

@@ -16,7 +16,7 @@ function getBaselineConfig(options: DeepNonNullable<Options>) {
     name: 'shayanthenerd/baseline',
     files: [
       globs.src,
-      globs.jsxLike,
+      globs.jsxTsx,
       isEnabled(vue) ? globs.vue : '',
       isEnabled(astro) ? globs.astro : '',
     ].filter(isTruthy),

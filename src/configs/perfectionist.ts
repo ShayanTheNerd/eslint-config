@@ -19,7 +19,7 @@ function getPerfectionistConfig(options: DeepNonNullable<Options>): Linter.Confi
     name: 'shayanthenerd/perfectionist',
     files: [
       globs.src,
-      globs.jsxLike,
+      globs.jsxTsx,
       isEnabled(vue) ? globs.vue : '',
       isEnabled(astro) ? globs.astro : '',
     ].filter(isTruthy),

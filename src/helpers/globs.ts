@@ -1,10 +1,10 @@
 const srcExtensions = '?([mc])[jt]s' as const;
-const jsxLikeExtensions = '[jt]sx' as const;
-const vueExtensions = `{vue,${srcExtensions},${jsxLikeExtensions}}` as const;
+const jsxTsxExtensions = '[jt]sx' as const;
+const vueExtensions = `{vue,${srcExtensions},${jsxTsxExtensions}}` as const;
 
 const globs = {
   src: `**/*.${srcExtensions}`,
-  jsxLike: `**/*.${jsxLikeExtensions}`,
+  jsxTsx: `**/*.${jsxTsxExtensions}`,
   packageJson: '**/package.json',
   markdown: '**/*.md',
   html: '**/*.html',
@@ -14,7 +14,7 @@ const globs = {
   vueMiddlewares: `**/middleware?(s)/**/*.${srcExtensions}`,
   vueServerComponents: `**/*.server.${vueExtensions}`,
   vueAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
-  storybook: `**/*.(story|stories).{${srcExtensions},${jsxLikeExtensions}}`,
+  storybook: `**/*.(story|stories).{${srcExtensions},${jsxTsxExtensions}}`,
   test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,
   coverage: '**/coverage/**',
 } as const;

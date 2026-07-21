@@ -19,7 +19,7 @@ function getReactConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const reactConfig = {
     name: 'shayanthenerd/react',
-    files: [globs.src, globs.jsxLike],
+    files: [globs.src, globs.jsxTsx],
     plugins: {
       '@eslint-react': eslintPluginReact,
       '@html-eslint/react': eslintPluginHtmlReact,
