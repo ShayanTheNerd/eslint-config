@@ -18,11 +18,10 @@ const defaultIgnorePatterns = [
   '**/dist',
   '**/build',
   '**/.data',
+  '**/public',
   '**/output',
   '**/.output',
   '**/.serverless',
-  '**/public/build',
-  '**/public/static',
   '**/.eslint-config-inspector',
 
   /* Cache */
