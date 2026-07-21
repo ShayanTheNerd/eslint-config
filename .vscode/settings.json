@@ -58,5 +58,32 @@
     ".gitignore": ".gitattributes, .gitmessage",
     "*.mjs": "$(capture).mjs.map, $(capture).d.mts",
     "package.json": ".editorconfig, eslint.config.ts, netlify.toml, pnpm-lock.yaml, pnpm-workspace.yaml, prettier.config.ts, tsconfig.json, tsdown.config.ts"
-  }
+  },
+
+  "vsicons.associations.files": [
+    { "extensions": ["astro.ts"], "icon": "astro", "filename": true },
+    { "extensions": ["base.ts", "base.d.ts", "javascript.ts"], "icon": "js", "filename": true },
+    { "extensions": ["baseline.ts", "baseline.d.ts"], "icon": "todo", "filename": true },
+    { "extensions": ["css.ts"], "icon": "css", "filename": true },
+    { "extensions": ["cypress.ts"], "icon": "cypress", "filename": true },
+    { "extensions": ["html.ts"], "icon": "html", "filename": true },
+    { "extensions": ["importX.ts"], "icon": "package", "filename": true },
+    { "extensions": ["markdown.ts", "markdown.d.ts"], "icon": "markdown", "filename": true },
+    { "extensions": ["next.ts"], "icon": "next", "filename": true },
+    { "extensions": ["node.ts"], "icon": "node", "filename": true },
+    { "extensions": ["nuxt.d.ts"], "icon": "nuxt", "filename": true },
+    { "extensions": ["packageJson.ts"], "icon": "json", "filename": true },
+    { "extensions": ["perfectionist.ts"], "icon": "prettier", "filename": true },
+    { "extensions": ["playwright.ts"], "icon": "playwright", "filename": true },
+    { "extensions": ["promise.ts"], "icon": "taskfile", "filename": true },
+    { "extensions": ["react.ts", "react.d.ts"], "icon": "reactjs", "filename": true },
+    { "extensions": ["storybook.ts"], "icon": "storybook", "filename": true },
+    { "extensions": ["stylistic.ts", "stylistic.d.ts"], "icon": "prettier", "filename": true },
+    { "extensions": ["tailwind.d.ts"], "icon": "tailwind", "filename": true },
+    { "extensions": ["test.d.ts"], "icon": "testts", "filename": true },
+    { "extensions": ["unicorn.ts"], "icon": "codemagic", "filename": true },
+    { "extensions": ["vitest.ts"], "icon": "vitest", "filename": true },
+    { "extensions": ["vue.d.ts", "vue.ts"], "icon": "vue", "filename": true },
+    { "extensions": ["zod.ts", "zod.d.ts"], "icon": "json_schema", "filename": true }
+  ]
 }
