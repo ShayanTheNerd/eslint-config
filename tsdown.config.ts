@@ -4,8 +4,7 @@ export default defineConfig({
   entry: ['./src/index.ts', './src/prettier.config.ts'],
   unbundle: true,
   deps: {
-    neverBundle: ['prettier'],
-    skipNodeModulesBundle: true,
+    neverBundle: true,
   },
   exports: {
     customExports(packageExports) {
