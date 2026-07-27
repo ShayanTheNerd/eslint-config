@@ -26,6 +26,7 @@ function getPlaywrightRules(options: DeepNonNullable<Options>) {
     'playwright/no-skipped-test': 'error',
     'playwright/no-slowed-test': 'warn',
     'playwright/no-standalone-expect': 'error',
+    'playwright/no-unnecessary-assertions': 'error',
     'playwright/no-unsafe-references': 'error',
     'playwright/no-unused-locators': 'warn',
     'playwright/no-useless-await': 'warn',
