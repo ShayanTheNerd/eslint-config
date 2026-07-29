@@ -2,14 +2,16 @@ name: CI
 
 on: [push, pull_request]
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   Validation:
-    name: Validate the Code
+    name: Validate the code
     runs-on: ubuntu-latest
     steps:
-      - name: Prepare the Environment
+      - name: Prepare the environment
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Install PNPM
@@ -21,18 +23,18 @@ jobs:
           cache: pnpm
           node-version: node
 
-      - name: Install the Dependencies
+      - name: Install the dependencies
         run: pnpm install --ignore-scripts
 
-      - name: Run the Validations
+      - name: Run the validations
         run: pnpm run ci:validate
 
-      - name: Verify the Documentation is Up to Date
+      - name: Verify the documentation is up to date
         run: |
           pnpm generate:docs
           if git diff --quiet README.md; then
-            echo "✅ Documentation is up to date."
+            echo "::notice::Documentation is up to date."
           else
-            echo '::error title=Stale Documentation::❌ Documentation is not up to date. Make sure to run `pnpm generate:docs` before committing the changes.'
+            echo '::error title=Outdated Documentation::Documentation is not up to date. Run `pnpm generate:docs` before committing the changes.'
             exit 1
           fi

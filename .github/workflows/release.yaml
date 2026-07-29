@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'The type of version-bump (patch, minor, or major)'
+        description: 'The type of version bump (patch, minor, or major)'
         required: true
         type: choice
         options:
@@ -12,30 +12,35 @@ on:
           - minor
           - major
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   release:
-    name: Release a New Version
+    name: Release a new version
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: write
 
     steps:
-      - name: Prepare the Environment
+      - name: Prepare the environment
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
-      - name: Install Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version: node
-          registry-url: 'https://registry.npmjs.org'
-
       - name: Install PNPM
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
-      - name: Install the Dependencies
+      - name: Install Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          cache: pnpm
+          node-version: node
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install the dependencies
         run: pnpm install --ignore-scripts
 
       - name: Configure Git
@@ -43,7 +48,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
 
-      - name: Bump the Version & Create a New Tag
+      - name: Bump the version and create a new tag
         id: version
         run: |
           pnpm version ${{ github.event.inputs.version }} --no-git-checks --no-git-tag-version
@@ -53,10 +58,10 @@ jobs:
           git push --follow-tags
           echo "tag=v$clean_version" >> $GITHUB_OUTPUT
 
-      - name: Publish to the NPM Registry
+      - name: Publish to the NPM registry
         run: pnpm run build:package && pnpm publish --ignore-scripts --no-git-checks --access=public
 
-      - name: Generate a Changelog
+      - name: Generate the changelog
         id: changelog
         uses: requarks/changelog-action@b78a3354a01f4a1affb484b9264b506a815c46b1 # v1.10.3
         with:
@@ -68,7 +73,7 @@ jobs:
           includeInvalidCommits: true
           restrictToTypes: feat,perf,fix,docs,refactor
 
-      - name: Create a Draft GitHub Release
+      - name: Draft a release in GitHub
         uses: ncipollo/release-action@339a81892b84b4eeb0f6e744e4574d79d0d9b8dd # v1.21.0
         with:
           draft: true
