@@ -1,3 +1,202 @@
+---
+lockfileVersion: '9.0'
+
+importers:
+
+  .:
+    configDependencies: {}
+    packageManagerDependencies:
+      '@pnpm/exe':
+        specifier: 11.16.0
+        version: 11.16.0
+      pnpm:
+        specifier: 11.16.0
+        version: 11.16.0
+
+packages:
+
+  '@pnpm/exe@11.16.0':
+    resolution: {integrity: sha512-IFYgRjkq7Ifhu0u9CNGm0oQXaLGUUjY1YBEHcxBAJZwe9YVBiaCS+Vgen4nYW9Ps76p5qGdG4z5JUzCgeehDwg==}
+    hasBin: true
+
+  '@pnpm/linux-arm64@11.16.0':
+    resolution: {integrity: sha512-jIMypV7+xakY9X0jWLnoR/3F4uvsyPiD0g29hLX9BZ+FRamluxtsm5QgmGYPBDDqBCn8PB7YAt7uyOTKlc8qtg==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@pnpm/linux-x64@11.16.0':
+    resolution: {integrity: sha512-lvPDytkAcCSwbJ+VkWlCA8EJKS/wjTEyczkrPqiqhF+dzRtbWWCyP9vo8C5bzgBM1TnMA3dUYUA8azgMuvxOpg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@pnpm/linuxstatic-arm64@11.16.0':
+    resolution: {integrity: sha512-nKAIW1tx2aA454cAuXfUsfdZqKMm0XOhjf3Zz9upOdSeOGe3WNaMHh+OrlPVnbSlDv3rIktZUxLKqV2F2mrHJQ==}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/linuxstatic-x64@11.16.0':
+    resolution: {integrity: sha512-/A45Or9CE7EfcDMl0PgrjxKbz2QGIT+px8CAfe7syfyHk4wM0B7A7fhSk7QDQbAf2PM8wQz4VWaTX+T7KpyTAw==}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@pnpm/macos-arm64@11.16.0':
+    resolution: {integrity: sha512-duS906AljpfS6jNVYDMu1mi/BMw4yOjHyEZ7UJAuByB5g573rL9ZajCE3k6YFoZ2kRwVvgPtoPfSs5UKrNMiJA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@pnpm/win-arm64@11.16.0':
+    resolution: {integrity: sha512-GdjiS+PLGVJS9NQRuv3Vj4YTLRK0JJKTioD9jlxOC6clMbtbPZuPK0mfFK4k6sMIIRFPjNGVXF1a4G1Eu5IUyg==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@pnpm/win-x64@11.16.0':
+    resolution: {integrity: sha512-zILD0GQ2W1tSTrkAemphb6QNc9sgHMIQ49Kh9tMMpCtKfgD5bX96YUBj8s32CR31wUJFGXK2dl5fMHaoU2yt1Q==}
+    cpu: [x64]
+    os: [win32]
+
+  '@reflink/reflink-darwin-arm64@0.1.19':
+    resolution: {integrity: sha512-ruy44Lpepdk1FqDz38vExBY/PVUsjxZA+chd9wozjUH9JjuDT/HEaQYA6wYN9mf041l0yLVar6BCZuWABJvHSA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@reflink/reflink-darwin-x64@0.1.19':
+    resolution: {integrity: sha512-By85MSWrMZa+c26TcnAy8SDk0sTUkYlNnwknSchkhHpGXOtjNDUOxJE9oByBnGbeuIE1PiQsxDG3Ud+IVV9yuA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@reflink/reflink-linux-arm64-gnu@0.1.19':
+    resolution: {integrity: sha512-7P+er8+rP9iNeN+bfmccM4hTAaLP6PQJPKWSA4iSk2bNvo6KU6RyPgYeHxXmzNKzPVRcypZQTpFgstHam6maVg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@reflink/reflink-linux-arm64-musl@0.1.19':
+    resolution: {integrity: sha512-37iO/Dp6m5DDaC2sf3zPtx/hl9FV3Xze4xoYidrxxS9bgP3S8ALroxRK6xBG/1TtfXKTvolvp+IjrUU6ujIGmA==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@reflink/reflink-linux-x64-gnu@0.1.19':
+    resolution: {integrity: sha512-jbI8jvuYCaA3MVUdu8vLoLAFqC+iNMpiSuLbxlAgg7x3K5bsS8nOpTRnkLF7vISJ+rVR8W+7ThXlXlUQ93ulkw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@reflink/reflink-linux-x64-musl@0.1.19':
+    resolution: {integrity: sha512-e9FBWDe+lv7QKAwtKOt6A2W/fyy/aEEfr0g6j/hWzvQcrzHCsz07BNQYlNOjTfeytrtLU7k449H1PI95jA4OjQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@reflink/reflink-win32-arm64-msvc@0.1.19':
+    resolution: {integrity: sha512-09PxnVIQcd+UOn4WAW73WU6PXL7DwGS6wPlkMhMg2zlHHG65F3vHepOw06HFCq+N42qkaNAc8AKIabWvtk6cIQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@reflink/reflink-win32-x64-msvc@0.1.19':
+    resolution: {integrity: sha512-E//yT4ni2SyhwP8JRjVGWr3cbnhWDiPLgnQ66qqaanjjnMiu3O/2tjCPQXlcGc/DEYofpDc9fvhv6tALQsMV9w==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+
+  '@reflink/reflink@0.1.19':
+    resolution: {integrity: sha512-DmCG8GzysnCZ15bres3N5AHCmwBwYgp0As6xjhQ47rAUTUXxJiK+lLUxaGsX3hd/30qUpVElh05PbGuxRPgJwA==}
+    engines: {node: '>= 10'}
+
+  detect-libc@2.1.2:
+    resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
+    engines: {node: '>=8'}
+
+  pnpm@11.16.0:
+    resolution: {integrity: sha512-t2fpqY/IeuwPQtrvzQ6ElBws20XXPE4eaIYPsr39vgMqtZIQVHnl4Fwjf3QMil/9u7UjhXl93CKWdFobu4g+jQ==}
+    engines: {node: '>=22.13'}
+    hasBin: true
+
+snapshots:
+
+  '@pnpm/exe@11.16.0':
+    dependencies:
+      '@reflink/reflink': 0.1.19
+      detect-libc: 2.1.2
+    optionalDependencies:
+      '@pnpm/linux-arm64': 11.16.0
+      '@pnpm/linux-x64': 11.16.0
+      '@pnpm/linuxstatic-arm64': 11.16.0
+      '@pnpm/linuxstatic-x64': 11.16.0
+      '@pnpm/macos-arm64': 11.16.0
+      '@pnpm/win-arm64': 11.16.0
+      '@pnpm/win-x64': 11.16.0
+
+  '@pnpm/linux-arm64@11.16.0':
+    optional: true
+
+  '@pnpm/linux-x64@11.16.0':
+    optional: true
+
+  '@pnpm/linuxstatic-arm64@11.16.0':
+    optional: true
+
+  '@pnpm/linuxstatic-x64@11.16.0':
+    optional: true
+
+  '@pnpm/macos-arm64@11.16.0':
+    optional: true
+
+  '@pnpm/win-arm64@11.16.0':
+    optional: true
+
+  '@pnpm/win-x64@11.16.0':
+    optional: true
+
+  '@reflink/reflink-darwin-arm64@0.1.19':
+    optional: true
+
+  '@reflink/reflink-darwin-x64@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-arm64-gnu@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-arm64-musl@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-x64-gnu@0.1.19':
+    optional: true
+
+  '@reflink/reflink-linux-x64-musl@0.1.19':
+    optional: true
+
+  '@reflink/reflink-win32-arm64-msvc@0.1.19':
+    optional: true
+
+  '@reflink/reflink-win32-x64-msvc@0.1.19':
+    optional: true
+
+  '@reflink/reflink@0.1.19':
+    optionalDependencies:
+      '@reflink/reflink-darwin-arm64': 0.1.19
+      '@reflink/reflink-darwin-x64': 0.1.19
+      '@reflink/reflink-linux-arm64-gnu': 0.1.19
+      '@reflink/reflink-linux-arm64-musl': 0.1.19
+      '@reflink/reflink-linux-x64-gnu': 0.1.19
+      '@reflink/reflink-linux-x64-musl': 0.1.19
+      '@reflink/reflink-win32-arm64-msvc': 0.1.19
+      '@reflink/reflink-win32-x64-msvc': 0.1.19
+
+  detect-libc@2.1.2: {}
+
+  pnpm@11.16.0: {}
+
+---
 lockfileVersion: '9.0'
 
 settings:
