@@ -46,7 +46,7 @@ jobs:
       - name: Bump the Version & Create a New Tag
         id: version
         run: |
-          pnpm version ${{ github.event.inputs.version }} --no-git-tag-version
+          pnpm version ${{ github.event.inputs.version }} --no-git-checks --no-git-tag-version
           clean_version=$(jq -r .version package.json)
           git commit -am "chore: release v$clean_version" --no-verify
           git tag -am "Release v$clean_version" "v$clean_version"
