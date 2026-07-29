@@ -1,9 +1,6 @@
 # Dependencies
 node_modules
 
-# Auto-generated type definitions
-src/types/eslint-schema.d.ts
-
 # Build outputs
 dist
 netlify

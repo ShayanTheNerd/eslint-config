@@ -4,6 +4,9 @@ export default defineConfig(
   {
     env: 'node',
     autoDetectDeps: 'verbose',
+    project: {
+      ignores: ['./src/types/eslint-schema.d.ts'],
+    },
   },
   [
     {

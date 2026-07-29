@@ -41,7 +41,7 @@
   ],
   "scripts": {
     "prepublishOnly": "pnpm build:package",
-    "prepare": "pnpm git:gitmessage && simple-git-hooks && pnpm generate:types",
+    "prepare": "pnpm git:gitmessage && simple-git-hooks",
     "git:gitmessage": "git config --local commit.template '.gitmessage'",
     "update:actions": "actions-up --yes",
     "update:deps": "pnpm update --latest && pnpm dedupe && pnpm generate:types && pnpm generate:docs",
@@ -57,7 +57,7 @@
     "check:exports": "attw --pack --profile=esm-only",
     "format": "prettier --write '**/*.{json,yaml}' '!pnpm-lock.yaml' --cache",
     "lint": "eslint --fix --max-warnings=0 --cache --cache-location=./node_modules/.cache/.eslintcache",
-    "ci:validate": "pnpm generate:types && pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
+    "ci:validate": "pnpm format && pnpm build:package && pnpm lint && pnpm check:types && pnpm build:inspector && pnpm build:package && pnpm check:exports"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged"
