@@ -40,7 +40,6 @@
     "./dist"
   ],
   "scripts": {
-    "prepublishOnly": "pnpm build:package",
     "prepare": "pnpm git:gitmessage && simple-git-hooks",
     "git:gitmessage": "git config --local commit.template '.gitmessage'",
     "update:actions": "actions-up --yes",

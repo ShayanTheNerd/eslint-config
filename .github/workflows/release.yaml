@@ -36,7 +36,7 @@ jobs:
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
 
       - name: Install the Dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
       - name: Configure Git
         run: |
@@ -54,7 +54,7 @@ jobs:
           echo "tag=v$clean_version" >> $GITHUB_OUTPUT
 
       - name: Publish to the NPM Registry
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm run build:package && pnpm publish --ignore-scripts --no-git-checks --access=public
 
       - name: Generate a Changelog
         id: changelog
