@@ -11,6 +11,7 @@ const defaultIgnorePatterns = [
   '**/next-env.d.ts',
   '**/components.d.ts',
   '**/routeTree.gen.ts',
+  '**/eslint-typegen.d.ts',
   '**/auto-import?(s).d.ts',
 
   /* Build outputs */
