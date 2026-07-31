@@ -18,7 +18,6 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 - [Formatting](#formatting)
 - [API Reference](#api-reference)
 - [Versioning Policy](#versioning-policy)
-- [Roadmap to v1.0.0](#roadmap-to-v100)
 - [Contribution Guide](#contribution-guide)
 - [Credits](#credits)
 - [License](#license)
@@ -659,11 +658,6 @@ This project adheres to [The Semantic Versioning Standard][semver]. However, to 
 Under this policy, minor updates may introduce new linting errors, which could break your project's build pipeline. To prevent this, it's recommended to use an exact version. Alternatively, you can use a tilde (`~`) version range in your _package.json_ file (e.g., `"@shayanthenerd/eslint-config": "~1.2.3"`), which will restrict updates to patches only, ensuring your project's build pipeline remains stable.
 
 You can find a list of all available versions and their changelogs on the [releases page][releases].
-
-## Roadmap to v1.0.0
-- [x] Add integration for ESLint plugins such as [eslint-plugin-n][plugin-n], [eslint-plugin-unicorn][plugin-unicorn], and more.
-- [x] Add support for React, Next, Astro, and Markdown.
-- [ ] Develop an interactive starter wizard to quickly scaffold the configurations for ESLint, Prettier, etc.
 
 ## Contribution Guide
 Contributions of all kinds are welcome. Please check out the [CONTRIBUTING.md][contributing] file.
