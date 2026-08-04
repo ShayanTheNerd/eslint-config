@@ -26,7 +26,7 @@ function getUnicornConfig(options: DeepNonNullable<Options>): Linter.Config {
     plugins: {
       unicorn: eslintPluginUnicorn,
     },
-    rules: getUnicornRules(),
+    rules: getUnicornRules(options),
   } satisfies Linter.Config;
 
   return mergeConfigs(astroConfig, overrides);

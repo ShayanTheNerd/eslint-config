@@ -10,7 +10,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     typescript,
     base: {
       maxDepth,
-      functionStyle,
       maxNestedCallbacks,
     },
   } = options.configs;
@@ -108,7 +107,6 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'eqeqeq': 'error',
     'func-name-matching': 'warn',
     'func-names': ['warn', 'as-needed'],
-    'func-style': ['warn', functionStyle, { allowTypeAnnotation: true }],
     'guard-for-in': 'warn',
     'grouped-accessor-pairs': ['warn', 'anyOrder', { enforceForTSTypes: true }],
     'init-declarations': 'error',

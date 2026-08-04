@@ -461,7 +461,6 @@ _.vscode/settings.json_:
         overrides?: Overrides,
       },
       base?: {
-        functionStyle?: 'expression' | 'declaration',
         maxDepth?: number,
         maxNestedCallbacks?: number,
         overrides?: Overrides,
@@ -569,6 +568,16 @@ _.vscode/settings.json_:
         overrides?: Overrides,
       },
       unicorn?: boolean | {
+        functionStyle?: {
+          callbacks?: 'ignore' | 'arrow-function' | 'function-expression',
+          default?: 'ignore' | 'declaration' | 'arrow-function' | 'function-expression',
+          defaultExport?: 'ignore' | 'declaration' | 'arrow-function' | 'function-expression',
+          namedExports?: 'ignore' | 'declaration' | 'arrow-function' | 'function-expression',
+          namedFunctions?: 'ignore' | 'declaration' | 'arrow-function' | 'function-expression',
+          objectProperties?: 'ignore' | 'method' | 'arrow-function' | 'function-expression',
+          reassignedVariables?: 'ignore' | 'arrow-function' | 'function-expression',
+          typedVariables?: 'ignore' | 'arrow-function' | 'function-expression',
+        },
         overrides?: Overrides,
       },
       useBaseline?: boolean | {

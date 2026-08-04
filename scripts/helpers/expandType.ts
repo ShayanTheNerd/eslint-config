@@ -88,7 +88,7 @@ class TypeExpander {
     const currentPath = path.join('.');
 
     if (currentPath === 'env') {
-      /* eslint-disable-next-line func-style */
+      /* eslint-disable-next-line unicorn/consistent-function-style */
       const cleanForSort = (string: string) => string.replaceAll(/^['"]|['"]$/g, '');
       unionTypes.sort((a, b) => cleanForSort(a).localeCompare(cleanForSort(b)));
     } else {

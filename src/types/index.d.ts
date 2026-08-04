@@ -1,7 +1,6 @@
 import type { Linter } from 'eslint';
 import type { VueOptions } from '#types/options/vue.d.ts';
 import type { ZodOptions } from '#types/options/zod.d.ts';
-import type { BaseOptions } from '#types/options/base.d.ts';
 import type { NuxtOptions } from '#types/options/nuxt.d.ts';
 import type { TestOptions } from '#types/options/test.d.ts';
 import type { ReactOptions } from '#types/options/react.d.ts';
@@ -271,7 +270,25 @@ interface Options {
      *
      * JavaScript rules cannot be turned off.
      */
-    base?: BaseOptions,
+    base?: ConfigWithOverrides<CoreRules> & {
+      /**
+       * Enforce a maximum depth that blocks can be nested to reduce code complexity.
+       *
+       * @default 3
+       *
+       * @see [max-depth](https://eslint.org/docs/latest/rules/max-depth)
+       */
+      maxDepth?: Exclude<RuleOptions<'max-depth'>, Record<string, unknown>>,
+
+      /**
+       * Enforce a maximum depth that callbacks can be nested to increase code clarity.
+       *
+       * @default 3
+       *
+       * @see [max-nested-callbacks](https://eslint.org/docs/latest/rules/max-nested-callbacks)
+       */
+      maxNestedCallbacks?: Exclude<RuleOptions<'max-nested-callbacks'>, Record<string, unknown>>,
+    },
 
     /**
      * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
@@ -409,7 +426,26 @@ interface Options {
      *
      * @default true
      */
-    unicorn?: boolean | ConfigWithOverrides<PluginRules<'unicorn'>>,
+    unicorn?: boolean | ConfigWithOverrides<PluginRules<'unicorn'>> & {
+      /**
+       * Enforce a consistent style across different function types.
+       *
+       * @default
+       *  {
+       *    callbacks: 'arrow-function',
+       *    default: 'declaration',
+       *    defaultExport: 'declaration',
+       *    namedExports: 'declaration',
+       *    namedFunctions: 'declaration',
+       *    objectProperties: 'method',
+       *    reassignedVariables: 'arrow-function',
+       *    typedVariables: 'arrow-function',
+       *  }
+       *
+       * @see [unicorn/consistent-function-style](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-function-style.md)
+       */
+      functionStyle?: Partial<RuleOptions<'unicorn/consistent-function-style'>>,
+    },
 
     /**
      * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of baseline features.

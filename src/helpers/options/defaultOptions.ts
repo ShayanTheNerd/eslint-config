@@ -41,7 +41,6 @@ const defaultOptions = {
       overrides: {},
     },
     base: {
-      functionStyle: 'declaration',
       maxDepth: 3,
       maxNestedCallbacks: 3,
       overrides: {},
@@ -142,6 +141,16 @@ const defaultOptions = {
       overrides: {},
     },
     unicorn: {
+      functionStyle: {
+        callbacks: 'arrow-function',
+        default: 'declaration',
+        defaultExport: 'declaration',
+        namedExports: 'declaration',
+        namedFunctions: 'declaration',
+        objectProperties: 'method',
+        reassignedVariables: 'arrow-function',
+        typedVariables: 'arrow-function',
+      },
       overrides: {},
     },
     useBaseline: {

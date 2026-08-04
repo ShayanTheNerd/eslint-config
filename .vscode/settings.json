@@ -63,7 +63,7 @@
   "vsicons.associations.folders": [{ "extensions": ["rules"], "icon": "template" }],
   "vsicons.associations.files": [
     { "extensions": ["astro.ts"], "icon": "astro", "filename": true },
-    { "extensions": ["base.ts", "base.d.ts", "javascript.ts"], "icon": "js", "filename": true },
+    { "extensions": ["base.ts", "javascript.ts"], "icon": "js", "filename": true },
     { "extensions": ["baseline.ts", "baseline.d.ts"], "icon": "todo", "filename": true },
     { "extensions": ["css.ts"], "icon": "css", "filename": true },
     { "extensions": ["cypress.ts"], "icon": "cypress", "filename": true },
