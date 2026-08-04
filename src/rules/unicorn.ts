@@ -24,6 +24,7 @@ const unicornRules = {
   'unicorn/explicit-length-check': 'warn',
   'unicorn/explicit-timer-delay': 'warn',
   'unicorn/isolated-functions': 'error',
+  'unicorn/iteration-fallback-style': 'error',
   'unicorn/new-for-builtins': 'error',
   'unicorn/no-abusive-eslint-disable': 'error',
   'unicorn/no-accessor-recursion': 'error',
