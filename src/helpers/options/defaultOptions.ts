@@ -143,11 +143,9 @@ const defaultOptions = {
     unicorn: {
       functionStyle: {
         callbacks: 'arrow-function',
-        default: 'declaration',
         defaultExport: 'declaration',
         namedExports: 'declaration',
         namedFunctions: 'declaration',
-        objectProperties: 'method',
         reassignedVariables: 'arrow-function',
         typedVariables: 'arrow-function',
       },

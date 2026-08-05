@@ -428,16 +428,18 @@ interface Options {
      */
     unicorn?: boolean | ConfigWithOverrides<PluginRules<'unicorn'>> & {
       /**
-       * Enforce a consistent style across different function types.
+       * Enforce a consistent style for different types of functions.
+       *
+       * Object properties and functions that don't match a specified role are ignored.
+       *
+       * New entries are merged with the defaults and take precedence over them.
        *
        * @default
        *  {
        *    callbacks: 'arrow-function',
-       *    default: 'declaration',
        *    defaultExport: 'declaration',
        *    namedExports: 'declaration',
        *    namedFunctions: 'declaration',
-       *    objectProperties: 'method',
        *    reassignedVariables: 'arrow-function',
        *    typedVariables: 'arrow-function',
        *  }
