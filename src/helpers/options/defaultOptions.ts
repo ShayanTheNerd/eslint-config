@@ -223,8 +223,9 @@ const defaultOptions = {
       preferVBindTrueShorthand: 'always',
       restrictedElements: [],
       restrictedStaticAttributes: [],
+      templateMaxLineLength: 130,
       vForDelimiterStyle: 'in',
-      // vOnHandlerStyle: ['method', 'inline-function'], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
+      // vOnHandlerStyle: ['method', 'inline'], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
       overrides: {},
     },
     zod: {

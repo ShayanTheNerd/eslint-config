@@ -245,6 +245,15 @@ interface VueOptions extends ConfigWithOverrides<ConfigRules> {
   restrictedStaticAttributes?: RuleOptions<'vue/no-restricted-static-attribute'>[],
 
   /**
+   * Maximum line length for `<template>` blocks (including comments).
+   *
+   * @default 130
+   *
+   * @see [vue/max-len: `template` option](https://eslint.vuejs.org/rules/max-len.html#options)
+   */
+  templateMaxLineLength?: Exclude<RuleOptions<'vue/max-len'>, number>['template'],
+
+  /**
    * The delimiter used in `v-for` directives.
    *
    * @default 'in'

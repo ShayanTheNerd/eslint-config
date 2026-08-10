@@ -65,7 +65,9 @@ interface StylisticOptions extends ConfigWithOverrides<ConfigRules> {
   maxConsecutiveEmptyLines?: RuleOptions<'@stylistic/no-multiple-empty-lines'>['max'],
 
   /**
-   * Maximum line length for the code. Strings, texts, and comments are ignored.
+   * Maximum line length for the code.
+   *
+   * Strings, texts, and comments are ignored.
    *
    * This is used by
    * - [vue/max-len](https://eslint.vuejs.org/rules/max-len)

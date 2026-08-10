@@ -645,6 +645,7 @@ _.vscode/settings.json_:
           message: string,
           value: true | string,
         })[],
+        templateMaxLineLength?: number,
         vForDelimiterStyle?: 'in' | 'of',
         overrides?: Overrides,
       },

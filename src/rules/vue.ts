@@ -33,6 +33,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     destructureProps,
     vForDelimiterStyle,
     attributeHyphenation,
+    templateMaxLineLength,
     allowedStyleAttributes,
     preferVBindTrueShorthand,
     componentNameCaseInTemplate,
@@ -252,7 +253,8 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/max-len': ['warn', {
       tabWidth: indent,
       code: maxLineLength,
-      template: Infinity,
+      template: templateMaxLineLength,
+      comments: templateMaxLineLength,
       ignoreUrls: true,
       ignoreStrings: true,
       ignoreComments: true,
