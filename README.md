@@ -79,7 +79,8 @@ Legend:
    {
      "scripts": {
        "lint:inspect": "npx @eslint/config-inspector",
-       "lint": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
+       "lint:check": "eslint --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
+       "lint:fix": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
      }
    }
    ```
@@ -87,7 +88,8 @@ Legend:
 ---
 
 After installation:
-- Use `npm run lint` to lint and fix files.
+- Use `npm run lint:fix` to lint and fix files.
+- Use `npm run lint:check` to lint files without fixing them (useful for CI).
 - Use `npm run lint:inspect` to see a visual breakdown of your configuration.
 - See [IDE Support](#ide-support) for editor integration.
 - See [Customization](#customization) for advanced configuration.
