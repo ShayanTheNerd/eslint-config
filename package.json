@@ -62,8 +62,15 @@
   },
   "nano-staged": {
     "**/*.{json,yaml}!pnpm-lock.yaml": "pnpm format",
-    "pnpm-lock.yaml": "pnpm generate:types && pnpm generate:docs",
-    "src/types/**/*.d.ts": "pnpm generate:docs",
+    "pnpm-lock.yaml": [
+      "pnpm generate:types",
+      "pnpm generate:docs",
+      "git add src/types/eslint-schema.d.ts README.md"
+    ],
+    "src/types/**/*.d.ts": [
+      "pnpm generate:docs",
+      "git add README.md"
+    ],
     "{**/*.ts,package.json}": "pnpm lint"
   },
   "dependencies": {
