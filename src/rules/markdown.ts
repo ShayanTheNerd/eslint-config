@@ -54,7 +54,7 @@ function getMarkdownRules(options: DeepNonNullable<Options>) {
     'markdown/no-space-in-emphasis': ['warn', { checkStrikethrough: !isCommonMark }],
     'markdown/no-unused-definitions': isCommonMark ? 'off' : 'warn',
     'markdown/require-alt-text': 'warn',
-    'markdown/table-column-count': [isCommonMark ? 'off' : 'error', { checkMissingCells: true }],
+    'markdown/table-column-count': isCommonMark ? 'off' : ['error', { checkMissingCells: true }],
   } satisfies MarkdownRules;
 
   if (isEnabled(unicorn)) {

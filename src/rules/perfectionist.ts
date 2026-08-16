@@ -130,7 +130,7 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
     'perfectionist/sort-named-imports': 'warn',
     'perfectionist/sort-named-exports': 'warn',
     'perfectionist/sort-imports': ['warn', {
-      environment: env === 'bun' ? 'bun' : 'node',
+      environment: env === 'bun' ? env : 'node',
       tsconfig: tsConfig || { rootDir: '' },
       sortSideEffects: true,
       fallbackSort: {

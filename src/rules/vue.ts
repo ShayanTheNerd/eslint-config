@@ -198,23 +198,23 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/html-end-tags': 'warn',
     'vue/html-indent': isEnabled(stylistic) ? ['warn', indent] : 'off',
     'vue/html-quotes': isEnabled(stylistic) ? 'warn' : 'off',
-    'vue/html-self-closing': [
-      isEnabled(stylistic) ? 'error' : 'off',
+    'vue/html-self-closing': isEnabled(stylistic) ? [
+      'error',
       {
         html: {
           normal: 'never',
           void: selfCloseVoidHtmlElements,
         },
       },
-    ],
-    'vue/max-attributes-per-line': [
-      isEnabled(stylistic) ? 'warn' : 'off',
+    ] : 'off',
+    'vue/max-attributes-per-line': isEnabled(stylistic) ? [
+      'warn',
       {
         singleline: {
           max: maxAttributesPerLine,
         },
       },
-    ],
+    ] : 'off',
     'vue/multiline-html-element-content-newline': isEnabled(stylistic) ? 'warn' : 'off',
     'vue/mustache-interpolation-spacing': isEnabled(stylistic) ? 'warn' : 'off',
     'vue/no-multi-spaces': isEnabled(stylistic) ? 'warn' : 'off',
@@ -256,8 +256,8 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/func-call-spacing': isEnabled(stylistic) ? 'warn' : 'off',
     'vue/key-spacing': isEnabled(stylistic) ? 'warn' : 'off',
     'vue/keyword-spacing': isEnabled(stylistic) ? 'warn' : 'off',
-    'vue/max-len': [
-      isEnabled(stylistic) ? 'warn' : 'off',
+    'vue/max-len': isEnabled(stylistic) ? [
+      'warn',
       {
         tabWidth: indent,
         code: maxLineLength,
@@ -272,7 +272,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
         ignoreHTMLTextContents: true,
         ignoreHTMLAttributeValues: true,
       },
-    ],
+    ] : 'off',
     'vue/multiline-ternary': isEnabled(stylistic) ? ['warn', 'always-multiline'] : 'off',
     'vue/no-console': ['warn', {
       allow: ['info', 'warn', 'error', 'table', 'group', 'groupEnd', 'groupCollapsed'],
@@ -284,18 +284,18 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/no-loss-of-precision': 'error',
     'vue/no-sparse-arrays': 'error',
     'vue/no-useless-concat': 'error',
-    'vue/object-curly-newline': [
-      isEnabled(stylistic) ? 'warn' : 'off',
+    'vue/object-curly-newline': isEnabled(stylistic) ? [
+      'warn',
       {
         multiline: true,
         consistent: true,
       },
-    ],
+    ] : 'off',
     'vue/object-curly-spacing': isEnabled(stylistic) ? ['warn', 'always'] : 'off',
     'vue/object-property-newline': isEnabled(stylistic) ? ['warn', { allowAllPropertiesOnSameLine: true }] : 'off',
     'vue/object-shorthand': 'warn',
-    'vue/operator-linebreak': [
-      isEnabled(stylistic) ? 'warn' : 'off',
+    'vue/operator-linebreak': isEnabled(stylistic) ? [
+      'warn',
       'none',
       {
         overrides: {
@@ -306,7 +306,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
           '&': 'before',
         },
       },
-    ],
+    ] : 'off',
     'vue/prefer-template': 'warn',
     'vue/quote-props': isEnabled(stylistic) ? ['warn', 'consistent-as-needed'] : 'off',
     'vue/space-in-parens': isEnabled(stylistic) ? 'warn' : 'off',

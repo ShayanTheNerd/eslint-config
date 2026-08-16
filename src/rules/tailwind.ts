@@ -46,8 +46,8 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
   const tailwindRules = {
     'better-tailwindcss/enforce-canonical-classes': 'warn',
     'better-tailwindcss/enforce-consistent-class-order': 'warn',
-    'better-tailwindcss/enforce-consistent-line-wrapping': [
-      multilineSort && isEnabled(stylistic) ? 'warn' : 'off',
+    'better-tailwindcss/enforce-consistent-line-wrapping': multilineSort && isEnabled(stylistic) ? [
+      'warn',
       {
         indent,
         tabWidth: indent,
@@ -55,14 +55,14 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
         preferSingleLine: true,
         printWidth: maxLineLength,
       },
-    ],
+    ] : 'off',
     'better-tailwindcss/enforce-consistent-variant-order': 'warn',
     'better-tailwindcss/enforce-logical-properties': ['warn', { ignore: nonLogicalTailwindUtilityPatterns }],
     'better-tailwindcss/no-concatenated-classes': 'error',
     'better-tailwindcss/no-conflicting-classes': 'error',
     'better-tailwindcss/no-deprecated-classes': 'error',
     'better-tailwindcss/no-duplicate-classes': 'error',
-    'better-tailwindcss/no-unknown-classes': [isTailwindV4 ? 'warn' : 'off', { ignore: userIgnoredUnknownClasses }],
+    'better-tailwindcss/no-unknown-classes': isTailwindV4 ? ['warn', { ignore: userIgnoredUnknownClasses }] : 'off',
     'better-tailwindcss/no-unnecessary-whitespace': 'warn',
   } satisfies PluginRules<'better-tailwindcss'>;
 
