@@ -33,7 +33,7 @@ function getAstroConfig(options: DeepNonNullable<Options>): Linter.Config {
         extraFileExtensions: ['.astro'],
       },
     },
-    rules: getAstroRules(),
+    rules: getAstroRules(options),
   } satisfies Linter.Config;
 
   return mergeConfigs(astroConfig, overrides);
