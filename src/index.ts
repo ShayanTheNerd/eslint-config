@@ -75,16 +75,16 @@ type DefineConfigArguments =
  */
 function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   let options: Options = {};
-  let configs: Linter.Config[] = [];
+  let userConfigs: Linter.Config[] = [];
 
   /* Destructuring here instead of within the function signature allows for better alignment with `args` in JSDoc. */
   const [firstArgument, secondArgument] = args;
 
   if (Array.isArray(firstArgument)) {
-    configs = firstArgument;
+    userConfigs = firstArgument;
   } else if (firstArgument) {
     options = firstArgument;
-    configs = secondArgument ?? [];
+    userConfigs = secondArgument ?? [];
   }
 
   const mergedOptions = mergeWithDefaults(options);
@@ -162,7 +162,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(cypress) && getCypressConfig(mergedOptions),
     isEnabled(playwright) && getPlaywrightConfig(mergedOptions),
 
-    ...configs,
+    ...userConfigs,
   ].filter(isTruthy);
 
   const eslintConfig = defineESLintConfig(configObjects);
