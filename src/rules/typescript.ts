@@ -3,7 +3,6 @@ import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
-import { getJavaScriptRules } from '#rules/javascript.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getTypescriptRules(options: DeepNonNullable<Options>) {
@@ -13,8 +12,6 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
     typeDefinitionStyle,
     methodSignatureStyle,
   } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
-  const noUnusedVarsOptions = getJavaScriptRules(options)['no-unused-vars'][1];
-  const preferDestructuringOptions = getJavaScriptRules(options)['prefer-destructuring'][1];
 
   const typescriptRules = {
     /* Strict Type-Checked */
@@ -72,7 +69,11 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-unsafe-return': 'error',
     '@typescript-eslint/no-unsafe-unary-minus': 'error',
     '@typescript-eslint/no-unused-vars': ['error', {
-      ...noUnusedVarsOptions,
+      args: 'all',
+      argsIgnorePattern: '^_',
+      varsIgnorePattern: '^_',
+      caughtErrorsIgnorePattern: '^_',
+      destructuredArrayIgnorePattern: '^_',
       enableAutofixRemoval: {
         imports: removeUnusedImports,
       },
@@ -119,7 +120,10 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
 
     /* Uncategorized */
     '@typescript-eslint/default-param-last': 'warn',
-    '@typescript-eslint/prefer-destructuring': ['warn', preferDestructuringOptions],
+    '@typescript-eslint/prefer-destructuring': ['warn', {
+      object: true,
+      array: false,
+    }],
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/consistent-type-imports': 'warn',
     '@typescript-eslint/no-useless-empty-export': 'error',
