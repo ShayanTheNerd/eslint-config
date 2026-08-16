@@ -63,12 +63,12 @@
   "vsicons.associations.folders": [{ "extensions": ["rules"], "icon": "template" }],
   "vsicons.associations.files": [
     { "extensions": ["astro.ts"], "icon": "astro", "filename": true },
-    { "extensions": ["base.ts", "javascript.ts"], "icon": "js", "filename": true },
     { "extensions": ["baseline.ts", "baseline.d.ts"], "icon": "todo", "filename": true },
     { "extensions": ["css.ts"], "icon": "css", "filename": true },
     { "extensions": ["cypress.ts"], "icon": "cypress", "filename": true },
     { "extensions": ["html.ts"], "icon": "html", "filename": true },
     { "extensions": ["importX.ts"], "icon": "package", "filename": true },
+    { "extensions": ["javascript.ts"], "icon": "js", "filename": true },
     { "extensions": ["markdown.ts", "markdown.d.ts"], "icon": "markdown", "filename": true },
     { "extensions": ["next.ts"], "icon": "next", "filename": true },
     { "extensions": ["node.ts"], "icon": "node", "filename": true },

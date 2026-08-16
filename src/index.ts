@@ -8,7 +8,6 @@ import { getCssConfig } from '#configs/css.ts';
 import { getVueConfig } from '#configs/vue.ts';
 import { getZodConfig } from '#configs/zod.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { getBaseConfig } from '#configs/base.ts';
 import { getHtmlConfig } from '#configs/html.ts';
 import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
@@ -25,6 +24,7 @@ import { getMarkdownConfig } from '#configs/markdown.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
+import { getJavascriptConfig } from '#configs/javascript.ts';
 import { getPlaywrightConfig } from '#configs/playwright.ts';
 import { getTypeScriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
@@ -135,7 +135,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     },
     globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
-    getBaseConfig(mergedOptions),
+    getJavascriptConfig(mergedOptions),
     isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
     isEnabled(unicorn) && getUnicornConfig(mergedOptions),
     isEnabled(promise) && getPromiseConfig(mergedOptions),

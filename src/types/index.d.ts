@@ -9,7 +9,7 @@ import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
 import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
-import type { CoreRules, PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
+import type { PluginRules, RuleOptions, JavascriptRules } from '#types/eslintRules.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
@@ -266,11 +266,11 @@ interface Options {
     astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
 
     /**
-     * Customize some of the JavaScript (core) rules.
+     * Customize JavaScript (core) rules and options.
      *
-     * JavaScript rules cannot be turned off.
+     * This configuration cannot be disabled.
      */
-    base?: ConfigWithOverrides<CoreRules> & {
+    javascript?: ConfigWithOverrides<JavascriptRules> & {
       /**
        * Enforce a maximum depth that blocks can be nested to reduce code complexity.
        *

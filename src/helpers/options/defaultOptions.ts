@@ -40,11 +40,6 @@ const defaultOptions = {
     astro: {
       overrides: {},
     },
-    base: {
-      maxDepth: 3,
-      maxNestedCallbacks: 3,
-      overrides: {},
-    },
     css: {
       overrides: {},
     },
@@ -53,6 +48,11 @@ const defaultOptions = {
       overrides: {},
     },
     importX: {
+      overrides: {},
+    },
+    javascript: {
+      maxDepth: 3,
+      maxNestedCallbacks: 3,
       overrides: {},
     },
     markdown: {

@@ -462,11 +462,6 @@ _.vscode/settings.json_:
       astro?: boolean | {
         overrides?: Overrides,
       },
-      base?: {
-        maxDepth?: number,
-        maxNestedCallbacks?: number,
-        overrides?: Overrides,
-      },
       css?: boolean | {
         overrides?: Overrides,
       },
@@ -475,6 +470,11 @@ _.vscode/settings.json_:
         overrides?: Overrides,
       },
       importX?: boolean | {
+        overrides?: Overrides,
+      },
+      javascript?: {
+        maxDepth?: number,
+        maxNestedCallbacks?: number,
         overrides?: Overrides,
       },
       markdown?: boolean | {

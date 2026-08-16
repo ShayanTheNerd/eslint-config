@@ -11,13 +11,13 @@ import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 
-function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
+function getJavascriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {
     env,
     configs: {
       vue,
       astro,
-      base: {
+      javascript: {
         overrides,
       },
     },
@@ -85,4 +85,4 @@ function getBaseConfig(options: DeepNonNullable<Options>): Linter.Config {
   return mergeConfigs(baseConfig as Linter.Config, overrides);
 }
 
-export { getBaseConfig };
+export { getJavascriptConfig };

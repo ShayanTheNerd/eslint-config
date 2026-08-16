@@ -1,6 +1,6 @@
 import type { Options } from '#types/index.d.ts';
-import type { CoreRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { JavascriptRules } from '#types/eslintRules.d.ts';
 
 import { isEnabled } from '#utils/isEnabled.ts';
 
@@ -8,7 +8,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
   const {
     unicorn,
     typescript,
-    base: {
+    javascript: {
       maxDepth,
       maxNestedCallbacks,
     },
@@ -226,7 +226,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'strict': 'error',
     'symbol-description': 'warn',
     'yoda': 'warn',
-  } satisfies CoreRules;
+  } satisfies JavascriptRules;
 
   return javascriptRules;
 }

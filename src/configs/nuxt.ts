@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint';
 import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
-import type { CoreRules, PluginRules } from '#types/eslintRules.d.ts';
+import type { PluginRules, JavascriptRules } from '#types/eslintRules.d.ts';
 
 import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginNuxt from '@nuxt/eslint-plugin';
@@ -22,7 +22,7 @@ const middlewaresConfig = {
   rules: {
     'consistent-return': 'off',
     '@typescript-eslint/consistent-return': 'off',
-  } satisfies CoreRules | PluginRules<'@typescript-eslint'>,
+  } satisfies JavascriptRules | PluginRules<'@typescript-eslint'>,
 } satisfies Linter.Config;
 
 const componentNamesConfig = {
