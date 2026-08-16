@@ -1,4 +1,8 @@
+import type { Options } from '#types/index.d.ts';
 import type { PluginRules } from '#types/eslintRules.d.ts';
+import type { DeepNonNullable } from '#types/helpers.d.ts';
+
+import { isEnabled } from '#utils/isEnabled.ts';
 
 type ImportXRules = PluginRules<'import-x'>;
 type StylisticRules = PluginRules<'@stylistic'>;
@@ -8,9 +12,6 @@ type AstroRules =
   & Pick<StylisticRules, '@stylistic/jsx-one-expression-per-line'>;
 
 const astroRules = {
-  'import-x/exports-last': 'off',
-  '@stylistic/jsx-one-expression-per-line': 'off',
-
   /* Possible Errors */
   'astro/missing-client-only-directive-value': 'error',
   'astro/no-conflict-set-directives': 'error',
@@ -73,7 +74,17 @@ const astroRules = {
   'astro/jsx-a11y/tabindex-no-positive': 'warn',
 } satisfies AstroRules;
 
-function getAstroRules() {
+function getAstroRules(options: DeepNonNullable<Options>) {
+  const { importX, stylistic } = options.configs;
+
+  if (isEnabled(importX)) {
+    (astroRules as AstroRules)['import-x/exports-last'] = 'off';
+  }
+
+  if (isEnabled(stylistic)) {
+    (astroRules as AstroRules)['@stylistic/jsx-one-expression-per-line'] = 'off';
+  }
+
   return astroRules;
 }
 
