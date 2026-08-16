@@ -25,7 +25,7 @@ type ReactAndHtmlReactRules =
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
-  const { react, unicorn, tailwind, useBaseline } = options.configs;
+  const { react, unicorn, tailwind, baseline } = options.configs;
   const {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
@@ -177,7 +177,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
 
     /*** @html-eslint/react ***/
     '@html-eslint/react/no-invalid-attr-value': 'error',
-    '@html-eslint/react/use-baseline': isEnabled(useBaseline) ? ['warn', { available: useBaseline.baseline }] : 'off',
+    '@html-eslint/react/use-baseline': isEnabled(baseline) ? ['warn', { available: baseline.baseline }] : 'off',
     '@html-eslint/react/no-ineffective-attrs': 'warn',
     '@html-eslint/react/no-obsolete-attrs': 'error',
     '@html-eslint/react/no-obsolete-tags': 'error',

@@ -176,7 +176,7 @@ PNPM's strict dependency resolution avoids this issue.
 > [!NOTE]
 > For example, `eslint-plugin-storybook` depends on `storybook`, which is hoisted by NPM and Bun. As a result, the integration for `storybook` will be enabled automatically, even if you haven't explicitly installed it.
 
-`configs.useBaseline` is automatically enabled when `autoDetectDeps: true` and `env: 'browser'` (both are the defaults).
+`configs.baseline` is automatically enabled when `autoDetectDeps: true` and `env: 'browser'` (both are the defaults).
 
 To opt out of this behavior, either [globally disable automatic dependency detection](#customization) or manually disable the unwanted integrations that were enabled automatically.
 
@@ -462,6 +462,23 @@ _.vscode/settings.json_:
       astro?: boolean | {
         overrides?: Overrides,
       },
+      baseline?: boolean | {
+        baseline?: number | 'newly' | 'widely',
+        css?: {
+          allowedAtRules?: AllowedAtRules,
+          allowedFunctions?: AllowedFunctions,
+          allowedMediaConditions?: AllowedMediaConditions,
+          allowedProperties?: AllowedProperties,
+          allowedPropertyValues?: AllowedPropertyValues,
+          allowedSelectors?: AllowedSelectors,
+          allowedUnits?: AllowedUnits,
+        },
+        javascript?: {
+          ignoredFeatures?: string[],
+          ignoredNodeTypes?: string[],
+        },
+        overrides?: Overrides,
+      },
       css?: boolean | {
         overrides?: Overrides,
       },
@@ -579,23 +596,6 @@ _.vscode/settings.json_:
           objectProperties?: 'ignore' | 'method' | 'arrow-function' | 'function-expression',
           reassignedVariables?: 'ignore' | 'arrow-function' | 'function-expression',
           typedVariables?: 'ignore' | 'arrow-function' | 'function-expression',
-        },
-        overrides?: Overrides,
-      },
-      useBaseline?: boolean | {
-        baseline?: number | 'newly' | 'widely',
-        css?: {
-          allowedAtRules?: AllowedAtRules,
-          allowedFunctions?: AllowedFunctions,
-          allowedMediaConditions?: AllowedMediaConditions,
-          allowedProperties?: AllowedProperties,
-          allowedPropertyValues?: AllowedPropertyValues,
-          allowedSelectors?: AllowedSelectors,
-          allowedUnits?: AllowedUnits,
-        },
-        javascript?: {
-          ignoredFeatures?: string[],
-          ignoredNodeTypes?: string[],
         },
         overrides?: Overrides,
       },

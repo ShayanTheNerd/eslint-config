@@ -12,7 +12,7 @@ class TypeExpander {
   } as const;
 
   private static isBaselineCssPath(path: string[]): boolean {
-    return path.at(-3) === 'configs' && path.at(-2) === 'useBaseline' && path.at(-1) === 'css';
+    return path.at(-3) === 'configs' && path.at(-2) === 'baseline' && path.at(-1) === 'css';
   }
 
   private static getBaselineCssTypeOverride(path: string[], propName: string): string | undefined {

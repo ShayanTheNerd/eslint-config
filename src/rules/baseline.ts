@@ -6,14 +6,14 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getBaselineRules(options: DeepNonNullable<Options>) {
-  const { useBaseline } = options.configs;
+  const baselineOption = options.configs.baseline;
   const {
     baseline,
     javascript: {
       ignoredFeatures: userIgnoredFeatures,
       ignoredNodeTypes: userIgnoredNodeTypes,
     },
-  } = isEnabled(useBaseline) ? useBaseline : defaultOptions.configs.useBaseline;
+  } = isEnabled(baselineOption) ? baselineOption : defaultOptions.configs.baseline;
 
   const baselineRules = {
     'baseline-js/no-atomics-pause': 'warn',

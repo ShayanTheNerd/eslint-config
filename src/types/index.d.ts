@@ -44,7 +44,7 @@ interface Options {
    * Specify the runtime environment.
    *
    * This is used by
-   * - `configs.useBaseline` option (disabled when `env` is set to a value other than `'browser'`)
+   * - `configs.baseline` option (disabled when `env` is set to a value other than `'browser'`)
    * - [ESLint: Specifying Globals](https://eslint.org/docs/latest/use/configure/language-options#using-configuration-files)
    * - [perfectionist/sort-imports: `env` option](https://perfectionist.dev/rules/sort-imports#environment)
    *
@@ -266,6 +266,13 @@ interface Options {
     astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
 
     /**
+     * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of baseline features.
+     *
+     * @default true // `false` if `env` is set to a value other than `'browser'`
+     */
+    baseline?: boolean | BaselineOptions,
+
+    /**
      * Customize JavaScript (core) rules and options.
      *
      * This configuration cannot be disabled.
@@ -448,13 +455,6 @@ interface Options {
        */
       functionStyle?: Partial<RuleOptions<'unicorn/consistent-function-style'>>,
     },
-
-    /**
-     * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of baseline features.
-     *
-     * @default true // `false` if `env` is set to a value other than `'browser'`
-     */
-    useBaseline?: boolean | BaselineOptions,
 
     /**
      * Use [eslint-plugin-vue](https://eslint.vuejs.org) to enforce Vue best practices, accessibility guidelines, stylistic rules, and identify mistakes.

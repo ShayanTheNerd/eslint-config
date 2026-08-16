@@ -109,11 +109,11 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       unicorn,
       importX,
       promise,
+      baseline,
       markdown,
       tailwind,
       stylistic,
       typescript,
-      useBaseline,
       packageJson,
       perfectionist,
       test: {
@@ -142,7 +142,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(importX) && getImportXConfig(mergedOptions),
     isEnabled(stylistic) && getStylisticConfig(mergedOptions),
     isEnabled(perfectionist) && getPerfectionistConfig(mergedOptions),
-    isEnabled(useBaseline) && getBaselineConfig(mergedOptions),
+    isEnabled(baseline) && getBaselineConfig(mergedOptions),
 
     isEnabled(node) && getNodeConfig(mergedOptions),
     isEnabled(packageJson) && getPackageJsonConfig(mergedOptions),

@@ -6,6 +6,7 @@ const config: Linter.Config[] = defineConfig({
   autoDetectDeps: false,
   configs: {
     astro: true,
+    baseline: true,
     css: true,
     html: true,
     importX: true,
@@ -31,7 +32,6 @@ const config: Linter.Config[] = defineConfig({
     },
     typescript: true,
     unicorn: true,
-    useBaseline: true,
     vue: true,
     zod: true,
   },

@@ -40,6 +40,23 @@ const defaultOptions = {
     astro: {
       overrides: {},
     },
+    baseline: {
+      baseline: 'widely',
+      css: {
+        allowedAtRules: [],
+        allowedFunctions: [],
+        allowedMediaConditions: [],
+        allowedProperties: [],
+        allowedPropertyValues: {},
+        allowedSelectors: [],
+        allowedUnits: [],
+      },
+      javascript: {
+        ignoredFeatures: [],
+        ignoredNodeTypes: [],
+      },
+      overrides: {},
+    },
     css: {
       overrides: {},
     },
@@ -148,23 +165,6 @@ const defaultOptions = {
         namedFunctions: 'declaration',
         reassignedVariables: 'arrow-function',
         typedVariables: 'arrow-function',
-      },
-      overrides: {},
-    },
-    useBaseline: {
-      baseline: 'widely',
-      css: {
-        allowedAtRules: [],
-        allowedFunctions: [],
-        allowedMediaConditions: [],
-        allowedProperties: [],
-        allowedPropertyValues: {},
-        allowedSelectors: [],
-        allowedUnits: [],
-      },
-      javascript: {
-        ignoredFeatures: [],
-        ignoredNodeTypes: [],
       },
       overrides: {},
     },

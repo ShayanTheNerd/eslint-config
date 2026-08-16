@@ -970,7 +970,7 @@ export interface ESLintSchema {
    * Enforce the use of baseline features.
    * @see https://html-eslint.org/docs/react/rules/use-baseline
    */
-  '@html-eslint/react/use-baseline'?: Linter.RuleEntry<HtmlEslintReactUseBaseline>
+  '@html-eslint/react/use-baseline'?: Linter.RuleEntry<HtmlEslintReactbaseline>
   /**
    * Require specified attributes
    * @see https://html-eslint.org/docs/rules/require-attrs
@@ -1075,7 +1075,7 @@ export interface ESLintSchema {
    * Enforce the use of baseline features.
    * @see https://html-eslint.org/docs/rules/use-baseline
    */
-  '@html-eslint/use-baseline'?: Linter.RuleEntry<HtmlEslintUseBaseline>
+  '@html-eslint/use-baseline'?: Linter.RuleEntry<HtmlEslintbaseline>
   /**
    * Enforce linebreaks after opening and before closing array brackets
    * @see https://eslint.style/rules/array-bracket-newline
@@ -2593,7 +2593,7 @@ export interface ESLintSchema {
   /**
    * Enforce JS Baseline by delegating to underlying syntax rules (es-x)
    */
-  'baseline-js/use-baseline'?: Linter.RuleEntry<BaselineJsUseBaseline>
+  'baseline-js/use-baseline'?: Linter.RuleEntry<BaselineJsbaseline>
   /**
    * Enforce canonical class names.
    * @see https://github.com/schoero/eslint-plugin-better-tailwindcss/blob/main/docs/rules/enforce-canonical-classes.md
@@ -2820,7 +2820,7 @@ export interface ESLintSchema {
    * Enforce the use of baseline features
    * @see https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md
    */
-  'css/use-baseline'?: Linter.RuleEntry<CssUseBaseline>
+  'css/use-baseline'?: Linter.RuleEntry<Cssbaseline>
   /**
    * Require use of layers
    * @see https://github.com/eslint/css/blob/main/docs/rules/use-layers.md
@@ -10105,9 +10105,9 @@ type EslintReactExhaustiveDeps = []|[{
 }]
 // ----- @eslint-react/jsx-no-useless-fragment -----
 type EslintReactJsxNoUselessFragment = []|[{
-  
+
   allowEmptyFragment?: boolean
-  
+
   allowExpressions?: boolean
 }]
 // ----- @eslint-react/no-unstable-default-props -----
@@ -10260,7 +10260,7 @@ type HtmlEslintReactNoInvalidAttrValue = []|[{
   }[]
 }]
 // ----- @html-eslint/react/use-baseline -----
-type HtmlEslintReactUseBaseline = []|[{
+type HtmlEslintReactbaseline = []|[{
   available?: (("widely" | "newly") | number)
 }]
 // ----- @html-eslint/require-attrs -----
@@ -10299,7 +10299,7 @@ type HtmlEslintSortAttrs = []|[{
   })[]
 }]
 // ----- @html-eslint/use-baseline -----
-type HtmlEslintUseBaseline = []|[{
+type HtmlEslintbaseline = []|[{
   available?: (("widely" | "newly") | number)
 }]
 // ----- @stylistic/array-bracket-newline -----
@@ -11152,7 +11152,7 @@ type StylisticLinesAroundComment = []|[{
 }]
 // ----- @stylistic/lines-between-class-members -----
 type StylisticLinesBetweenClassMembers = []|[({
-  
+
   enforce: [{
     blankLine: ("always" | "never")
     prev: ("method" | "field" | "*")
@@ -11163,7 +11163,7 @@ type StylisticLinesBetweenClassMembers = []|[({
     next: ("method" | "field" | "*")
   })[]]
 } | ("always" | "never"))]|[({
-  
+
   enforce: [{
     blankLine: ("always" | "never")
     prev: ("method" | "field" | "*")
@@ -11564,28 +11564,28 @@ type StylisticYieldStarSpacing = []|[(("before" | "after" | "both" | "neither") 
 })]
 // ----- @typescript-eslint/array-type -----
 type TypescriptEslintArrayType = []|[{
-  
+
   default?: ("array" | "generic" | "array-simple")
-  
+
   readonly?: ("array" | "generic" | "array-simple")
 }]
 // ----- @typescript-eslint/ban-ts-comment -----
 type TypescriptEslintBanTsComment = []|[{
-  
+
   minimumDescriptionLength?: number
-  
+
   "ts-check"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
-  
+
   "ts-expect-error"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
-  
+
   "ts-ignore"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
-  
+
   "ts-nocheck"?: (boolean | "allow-with-description" | {
     descriptionFormat?: string
   })
@@ -11594,13 +11594,13 @@ type TypescriptEslintBanTsComment = []|[{
 type TypescriptEslintClassLiteralPropertyStyle = []|[("fields" | "getters")]
 // ----- @typescript-eslint/class-methods-use-this -----
 type TypescriptEslintClassMethodsUseThis = []|[{
-  
+
   enforceForClassFields?: boolean
-  
+
   exceptMethods?: string[]
-  
+
   ignoreClassesThatImplementAnInterface?: (boolean | "public-fields")
-  
+
   ignoreOverrideMethods?: boolean
 }]
 // ----- @typescript-eslint/consistent-generic-constructors -----
@@ -11613,97 +11613,97 @@ type TypescriptEslintConsistentReturn = []|[{
 }]
 // ----- @typescript-eslint/consistent-type-assertions -----
 type TypescriptEslintConsistentTypeAssertions = []|[({
-  
+
   assertionStyle: "never"
 } | {
-  
+
   arrayLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
-  
+
   assertionStyle?: ("as" | "angle-bracket")
-  
+
   objectLiteralTypeAssertions?: ("allow" | "allow-as-parameter" | "never")
 })]
 // ----- @typescript-eslint/consistent-type-definitions -----
 type TypescriptEslintConsistentTypeDefinitions = []|[("interface" | "type")]
 // ----- @typescript-eslint/consistent-type-exports -----
 type TypescriptEslintConsistentTypeExports = []|[{
-  
+
   fixMixedExportsWithInlineTypeSpecifier?: boolean
 }]
 // ----- @typescript-eslint/consistent-type-imports -----
 type TypescriptEslintConsistentTypeImports = []|[{
-  
+
   disallowTypeAnnotations?: boolean
-  
+
   fixStyle?: ("separate-type-imports" | "inline-type-imports")
-  
+
   prefer?: ("type-imports" | "no-type-imports")
 }]
 // ----- @typescript-eslint/dot-notation -----
 type TypescriptEslintDotNotation = []|[{
-  
+
   allowIndexSignaturePropertyAccess?: boolean
-  
+
   allowKeywords?: boolean
-  
+
   allowPattern?: string
-  
+
   allowPrivateClassPropertyAccess?: boolean
-  
+
   allowProtectedClassPropertyAccess?: boolean
 }]
 // ----- @typescript-eslint/explicit-function-return-type -----
 type TypescriptEslintExplicitFunctionReturnType = []|[{
-  
+
   allowConciseArrowFunctionExpressionsStartingWithVoid?: boolean
-  
+
   allowDirectConstAssertionInArrowFunctions?: boolean
-  
+
   allowedNames?: string[]
-  
+
   allowExpressions?: boolean
-  
+
   allowFunctionsWithoutTypeParameters?: boolean
-  
+
   allowHigherOrderFunctions?: boolean
-  
+
   allowIIFEs?: boolean
-  
+
   allowTypedFunctionExpressions?: boolean
 }]
 // ----- @typescript-eslint/explicit-member-accessibility -----
 type TypescriptEslintExplicitMemberAccessibility = []|[{
-  
+
   accessibility?: ("explicit" | "no-public" | "off")
-  
+
   ignoredMethodNames?: string[]
-  
+
   overrides?: {
-    
+
     accessors?: ("explicit" | "no-public" | "off")
-    
+
     constructors?: ("explicit" | "no-public" | "off")
-    
+
     methods?: ("explicit" | "no-public" | "off")
-    
+
     parameterProperties?: ("explicit" | "no-public" | "off")
-    
+
     properties?: ("explicit" | "no-public" | "off")
   }
 }]
 // ----- @typescript-eslint/explicit-module-boundary-types -----
 type TypescriptEslintExplicitModuleBoundaryTypes = []|[{
-  
+
   allowArgumentsExplicitlyTypedAsAny?: boolean
-  
+
   allowDirectConstAssertionInArrowFunctions?: boolean
-  
+
   allowedNames?: string[]
-  
+
   allowHigherOrderFunctions?: boolean
-  
+
   allowOverloadFunctions?: boolean
-  
+
   allowTypedFunctionExpressions?: boolean
 }]
 // ----- @typescript-eslint/init-declarations -----
@@ -11712,40 +11712,40 @@ type TypescriptEslintInitDeclarations = ([]|["always"] | []|["never"]|["never", 
 }])
 // ----- @typescript-eslint/max-params -----
 type TypescriptEslintMaxParams = []|[{
-  
+
   countVoidThis?: boolean
-  
+
   max?: number
-  
+
   maximum?: number
 }]
 // ----- @typescript-eslint/member-ordering -----
 type TypescriptEslintMemberOrdering = []|[{
-  
+
   classes?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
-  
+
   classExpressions?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
-  
+
   default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
-  
+
   interfaces?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
     order?: ("alphabetically" | "alphabetically-case-insensitive" | "as-written" | "natural" | "natural-case-insensitive")
   })
-  
+
   typeLiterals?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | {
     memberTypes?: ((("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor") | ("readonly-signature" | "signature" | "readonly-field" | "field" | "method" | "constructor")[])[] | "never")
     optionalityOrder?: ("optional-first" | "required-first")
@@ -12075,23 +12075,23 @@ interface _TypescriptEslintNamingConvention_MatchRegexConfig {
 }
 // ----- @typescript-eslint/no-base-to-string -----
 type TypescriptEslintNoBaseToString = []|[{
-  
+
   checkUnknown?: boolean
-  
+
   ignoredTypeNames?: string[]
 }]
 // ----- @typescript-eslint/no-confusing-void-expression -----
 type TypescriptEslintNoConfusingVoidExpression = []|[{
-  
+
   ignoreArrowShorthand?: boolean
-  
+
   ignoreVoidOperator?: boolean
-  
+
   ignoreVoidReturningFunctions?: boolean
 }]
 // ----- @typescript-eslint/no-deprecated -----
 type TypescriptEslintNoDeprecated = []|[{
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12107,51 +12107,51 @@ type TypescriptEslintNoDeprecated = []|[{
 }]
 // ----- @typescript-eslint/no-duplicate-type-constituents -----
 type TypescriptEslintNoDuplicateTypeConstituents = []|[{
-  
+
   ignoreIntersections?: boolean
-  
+
   ignoreUnions?: boolean
 }]
 // ----- @typescript-eslint/no-empty-function -----
 type TypescriptEslintNoEmptyFunction = []|[{
-  
+
   allow?: ("functions" | "arrowFunctions" | "generatorFunctions" | "methods" | "generatorMethods" | "getters" | "setters" | "constructors" | "private-constructors" | "protected-constructors" | "asyncFunctions" | "asyncMethods" | "decoratedFunctions" | "overrideMethods")[]
 }]
 // ----- @typescript-eslint/no-empty-interface -----
 type TypescriptEslintNoEmptyInterface = []|[{
-  
+
   allowSingleExtends?: boolean
 }]
 // ----- @typescript-eslint/no-empty-object-type -----
 type TypescriptEslintNoEmptyObjectType = []|[{
-  
+
   allowInterfaces?: ("always" | "never" | "with-single-extends")
-  
+
   allowObjectTypes?: ("always" | "never")
-  
+
   allowWithName?: string
 }]
 // ----- @typescript-eslint/no-explicit-any -----
 type TypescriptEslintNoExplicitAny = []|[{
-  
+
   fixToUnknown?: boolean
-  
+
   ignoreRestArgs?: boolean
 }]
 // ----- @typescript-eslint/no-extraneous-class -----
 type TypescriptEslintNoExtraneousClass = []|[{
-  
+
   allowConstructorOnly?: boolean
-  
+
   allowEmpty?: boolean
-  
+
   allowStaticOnly?: boolean
-  
+
   allowWithDecorator?: boolean
 }]
 // ----- @typescript-eslint/no-floating-promises -----
 type TypescriptEslintNoFloatingPromises = []|[{
-  
+
   allowForKnownSafeCalls?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12164,7 +12164,7 @@ type TypescriptEslintNoFloatingPromises = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
-  
+
   allowForKnownSafePromises?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12177,18 +12177,18 @@ type TypescriptEslintNoFloatingPromises = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
-  
+
   checkThenables?: boolean
-  
+
   ignoreIIFE?: boolean
-  
+
   ignoreVoid?: boolean
 }]
 // ----- @typescript-eslint/no-inferrable-types -----
 type TypescriptEslintNoInferrableTypes = []|[{
-  
+
   ignoreParameters?: boolean
-  
+
   ignoreProperties?: boolean
 }]
 // ----- @typescript-eslint/no-invalid-this -----
@@ -12197,9 +12197,9 @@ type TypescriptEslintNoInvalidThis = []|[{
 }]
 // ----- @typescript-eslint/no-invalid-void-type -----
 type TypescriptEslintNoInvalidVoidType = []|[{
-  
+
   allowAsThisParameter?: boolean
-  
+
   allowInGenericTypeArguments?: (boolean | [string, ...(string)[]])
 }]
 // ----- @typescript-eslint/no-magic-numbers -----
@@ -12210,45 +12210,45 @@ type TypescriptEslintNoMagicNumbers = []|[{
   ignoreArrayIndexes?: boolean
   ignoreDefaultValues?: boolean
   ignoreClassFieldInitialValues?: boolean
-  
+
   ignoreEnums?: boolean
-  
+
   ignoreNumericLiteralTypes?: boolean
-  
+
   ignoreReadonlyClassProperties?: boolean
-  
+
   ignoreTypeIndexes?: boolean
 }]
 // ----- @typescript-eslint/no-meaningless-void-operator -----
 type TypescriptEslintNoMeaninglessVoidOperator = []|[{
-  
+
   checkNever?: boolean
 }]
 // ----- @typescript-eslint/no-misused-promises -----
 type TypescriptEslintNoMisusedPromises = []|[{
-  
+
   checksConditionals?: boolean
-  
+
   checksSpreads?: boolean
-  
+
   checksVoidReturn?: (boolean | {
-    
+
     arguments?: boolean
-    
+
     attributes?: boolean
-    
+
     inheritedMethods?: boolean
-    
+
     properties?: boolean
-    
+
     returns?: boolean
-    
+
     variables?: boolean
   })
 }]
 // ----- @typescript-eslint/no-misused-spread -----
 type TypescriptEslintNoMisusedSpread = []|[{
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12264,23 +12264,23 @@ type TypescriptEslintNoMisusedSpread = []|[{
 }]
 // ----- @typescript-eslint/no-namespace -----
 type TypescriptEslintNoNamespace = []|[{
-  
+
   allowDeclarations?: boolean
-  
+
   allowDefinitionFiles?: boolean
 }]
 // ----- @typescript-eslint/no-redeclare -----
 type TypescriptEslintNoRedeclare = []|[{
-  
+
   builtinGlobals?: boolean
-  
+
   ignoreDeclarationMerge?: boolean
 }]
 // ----- @typescript-eslint/no-require-imports -----
 type TypescriptEslintNoRequireImports = []|[{
-  
+
   allow?: string[]
-  
+
   allowAsImport?: boolean
 }]
 // ----- @typescript-eslint/no-restricted-imports -----
@@ -12289,7 +12289,7 @@ type TypescriptEslintNoRestrictedImports = ((string | {
   message?: string
   importNames?: string[]
   allowImportNames?: string[]
-  
+
   allowTypeImports?: boolean
 })[] | []|[{
   paths?: (string | {
@@ -12297,108 +12297,108 @@ type TypescriptEslintNoRestrictedImports = ((string | {
     message?: string
     importNames?: string[]
     allowImportNames?: string[]
-    
+
     allowTypeImports?: boolean
   })[]
   patterns?: (string[] | {
-    
+
     importNames?: [string, ...(string)[]]
-    
+
     allowImportNames?: [string, ...(string)[]]
-    
+
     group?: [string, ...(string)[]]
     regex?: string
     importNamePattern?: string
     allowImportNamePattern?: string
     message?: string
     caseSensitive?: boolean
-    
+
     allowTypeImports?: boolean
   }[])
 }])
 // ----- @typescript-eslint/no-restricted-types -----
 type TypescriptEslintNoRestrictedTypes = []|[{
-  
+
   types?: {
     [k: string]: (true | string | {
-      
+
       fixWith?: string
-      
+
       message?: string
-      
+
       suggest?: string[]
     }) | undefined
   }
 }]
 // ----- @typescript-eslint/no-shadow -----
 type TypescriptEslintNoShadow = []|[{
-  
+
   allow?: string[]
-  
+
   builtinGlobals?: boolean
-  
+
   hoist?: ("all" | "functions" | "functions-and-types" | "never" | "types")
-  
+
   ignoreFunctionTypeParameterNameValueShadow?: boolean
-  
+
   ignoreOnInitialization?: boolean
-  
+
   ignoreTypeValueShadow?: boolean
 }]
 // ----- @typescript-eslint/no-this-alias -----
 type TypescriptEslintNoThisAlias = []|[{
-  
+
   allowDestructuring?: boolean
-  
+
   allowedNames?: string[]
 }]
 // ----- @typescript-eslint/no-type-alias -----
 type TypescriptEslintNoTypeAlias = []|[{
-  
+
   allowAliases?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
+
   allowCallbacks?: ("always" | "never")
-  
+
   allowConditionalTypes?: ("always" | "never")
-  
+
   allowConstructors?: ("always" | "never")
-  
+
   allowGenerics?: ("always" | "never")
-  
+
   allowLiterals?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
+
   allowMappedTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
-  
+
   allowTupleTypes?: ("always" | "never" | "in-unions" | "in-intersections" | "in-unions-and-intersections")
 }]
 // ----- @typescript-eslint/no-unnecessary-boolean-literal-compare -----
 type TypescriptEslintNoUnnecessaryBooleanLiteralCompare = []|[{
-  
+
   allowComparingNullableBooleansToFalse?: boolean
-  
+
   allowComparingNullableBooleansToTrue?: boolean
-  
+
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
 }]
 // ----- @typescript-eslint/no-unnecessary-condition -----
 type TypescriptEslintNoUnnecessaryCondition = []|[{
-  
+
   allowConstantLoopConditions?: (boolean | ("always" | "never" | "only-allowed-literals"))
-  
+
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
+
   checkTypePredicates?: boolean
 }]
 // ----- @typescript-eslint/no-unnecessary-type-assertion -----
 type TypescriptEslintNoUnnecessaryTypeAssertion = []|[{
-  
+
   checkLiteralConstAssertions?: boolean
-  
+
   typesToIgnore?: string[]
 }]
 // ----- @typescript-eslint/no-unsafe-member-access -----
 type TypescriptEslintNoUnsafeMemberAccess = []|[{
-  
+
   allowOptionalChaining?: boolean
 }]
 // ----- @typescript-eslint/no-unused-expressions -----
@@ -12411,64 +12411,64 @@ type TypescriptEslintNoUnusedExpressions = []|[{
 }]
 // ----- @typescript-eslint/no-unused-vars -----
 type TypescriptEslintNoUnusedVars = []|[(("all" | "local") | {
-  
+
   args?: ("all" | "after-used" | "none")
-  
+
   argsIgnorePattern?: string
-  
+
   caughtErrors?: ("all" | "none")
-  
+
   caughtErrorsIgnorePattern?: string
-  
+
   destructuredArrayIgnorePattern?: string
-  
+
   enableAutofixRemoval?: {
-    
+
     imports?: boolean
   }
-  
+
   ignoreClassWithStaticInitBlock?: boolean
-  
+
   ignoreRestSiblings?: boolean
-  
+
   ignoreUsingDeclarations?: boolean
-  
+
   reportUsedIgnorePattern?: boolean
-  
+
   vars?: ("all" | "local")
-  
+
   varsIgnorePattern?: string
 })]
 // ----- @typescript-eslint/no-use-before-define -----
 type TypescriptEslintNoUseBeforeDefine = []|[("nofunc" | {
-  
+
   allowNamedExports?: boolean
-  
+
   classes?: boolean
-  
+
   enums?: boolean
-  
+
   functions?: boolean
-  
+
   ignoreTypeReferences?: boolean
-  
+
   typedefs?: boolean
-  
+
   variables?: boolean
 })]
 // ----- @typescript-eslint/no-useless-default-assignment -----
 type TypescriptEslintNoUselessDefaultAssignment = []|[{
-  
+
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
 }]
 // ----- @typescript-eslint/no-var-requires -----
 type TypescriptEslintNoVarRequires = []|[{
-  
+
   allow?: string[]
 }]
 // ----- @typescript-eslint/only-throw-error -----
 type TypescriptEslintOnlyThrowError = []|[{
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12481,18 +12481,18 @@ type TypescriptEslintOnlyThrowError = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
-  
+
   allowRethrowing?: boolean
-  
+
   allowThrowingAny?: boolean
-  
+
   allowThrowingUnknown?: boolean
 }]
 // ----- @typescript-eslint/parameter-properties -----
 type TypescriptEslintParameterProperties = []|[{
-  
+
   allow?: ("readonly" | "private" | "protected" | "public" | "private readonly" | "protected readonly" | "public readonly")[]
-  
+
   prefer?: ("class-property" | "parameter-property")
 }]
 // ----- @typescript-eslint/prefer-destructuring -----
@@ -12521,64 +12521,64 @@ type TypescriptEslintPreferDestructuring = []|[({
   array?: boolean
   object?: boolean
 }), {
-  
+
   enforceForDeclarationWithTypeAnnotation?: boolean
-  
+
   enforceForRenamedProperties?: boolean
 }]
 // ----- @typescript-eslint/prefer-literal-enum-member -----
 type TypescriptEslintPreferLiteralEnumMember = []|[{
-  
+
   allowBitwiseExpressions?: boolean
 }]
 // ----- @typescript-eslint/prefer-nullish-coalescing -----
 type TypescriptEslintPreferNullishCoalescing = []|[{
-  
+
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
+
   ignoreBooleanCoercion?: boolean
-  
+
   ignoreConditionalTests?: boolean
-  
+
   ignoreIfStatements?: boolean
-  
+
   ignoreMixedLogicalExpressions?: boolean
-  
+
   ignorePrimitives?: ({
-    
+
     bigint?: boolean
-    
+
     boolean?: boolean
-    
+
     number?: boolean
-    
+
     string?: boolean
   } | true)
-  
+
   ignoreTernaryTests?: boolean
 }]
 // ----- @typescript-eslint/prefer-optional-chain -----
 type TypescriptEslintPreferOptionalChain = []|[{
-  
+
   allowPotentiallyUnsafeFixesThatModifyTheReturnTypeIKnowWhatImDoing?: boolean
-  
+
   checkAny?: boolean
-  
+
   checkBigInt?: boolean
-  
+
   checkBoolean?: boolean
-  
+
   checkNumber?: boolean
-  
+
   checkString?: boolean
-  
+
   checkUnknown?: boolean
-  
+
   requireNullish?: boolean
 }]
 // ----- @typescript-eslint/prefer-promise-reject-errors -----
 type TypescriptEslintPreferPromiseRejectErrors = []|[{
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12591,21 +12591,21 @@ type TypescriptEslintPreferPromiseRejectErrors = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
-  
+
   allowEmptyReject?: boolean
-  
+
   allowThrowingAny?: boolean
-  
+
   allowThrowingUnknown?: boolean
 }]
 // ----- @typescript-eslint/prefer-readonly -----
 type TypescriptEslintPreferReadonly = []|[{
-  
+
   onlyInlineLambdas?: boolean
 }]
 // ----- @typescript-eslint/prefer-readonly-parameter-types -----
 type TypescriptEslintPreferReadonlyParameterTypes = []|[{
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12618,70 +12618,70 @@ type TypescriptEslintPreferReadonlyParameterTypes = []|[{
     name: (string | [string, ...(string)[]])
     package: string
   })[]
-  
+
   checkParameterProperties?: boolean
-  
+
   ignoreInferredTypes?: boolean
-  
+
   treatMethodsAsReadonly?: boolean
 }]
 // ----- @typescript-eslint/prefer-string-starts-ends-with -----
 type TypescriptEslintPreferStringStartsEndsWith = []|[{
-  
+
   allowSingleElementEquality?: ("always" | "never")
 }]
 // ----- @typescript-eslint/promise-function-async -----
 type TypescriptEslintPromiseFunctionAsync = []|[{
-  
+
   allowAny?: boolean
-  
+
   allowedPromiseNames?: string[]
-  
+
   checkArrowFunctions?: boolean
-  
+
   checkFunctionDeclarations?: boolean
-  
+
   checkFunctionExpressions?: boolean
-  
+
   checkMethodDeclarations?: boolean
 }]
 // ----- @typescript-eslint/require-array-sort-compare -----
 type TypescriptEslintRequireArraySortCompare = []|[{
-  
+
   ignoreStringArrays?: boolean
 }]
 // ----- @typescript-eslint/restrict-plus-operands -----
 type TypescriptEslintRestrictPlusOperands = []|[{
-  
+
   allowAny?: boolean
-  
+
   allowBoolean?: boolean
-  
+
   allowNullish?: boolean
-  
+
   allowNumberAndString?: boolean
-  
+
   allowRegExp?: boolean
-  
+
   skipCompoundAssignments?: boolean
 }]
 // ----- @typescript-eslint/restrict-template-expressions -----
 type TypescriptEslintRestrictTemplateExpressions = []|[{
-  
+
   allowAny?: boolean
-  
+
   allowArray?: boolean
-  
+
   allowBoolean?: boolean
-  
+
   allowNullish?: boolean
-  
+
   allowNumber?: boolean
-  
+
   allowRegExp?: boolean
-  
+
   allowNever?: boolean
-  
+
   allow?: (string | {
     from: "file"
     name: (string | [string, ...(string)[]])
@@ -12699,90 +12699,90 @@ type TypescriptEslintRestrictTemplateExpressions = []|[{
 type TypescriptEslintReturnAwait = []|[(("always" | "error-handling-correctness-only" | "in-try-catch" | "never") & string)]
 // ----- @typescript-eslint/sort-type-constituents -----
 type TypescriptEslintSortTypeConstituents = []|[{
-  
+
   caseSensitive?: boolean
-  
+
   checkIntersections?: boolean
-  
+
   checkUnions?: boolean
-  
+
   groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
 }]
 // ----- @typescript-eslint/strict-boolean-expressions -----
 type TypescriptEslintStrictBooleanExpressions = []|[{
-  
+
   allowAny?: boolean
-  
+
   allowNullableBoolean?: boolean
-  
+
   allowNullableEnum?: boolean
-  
+
   allowNullableNumber?: boolean
-  
+
   allowNullableObject?: boolean
-  
+
   allowNullableString?: boolean
-  
+
   allowNumber?: boolean
-  
+
   allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing?: boolean
-  
+
   allowString?: boolean
 }]
 // ----- @typescript-eslint/strict-void-return -----
 type TypescriptEslintStrictVoidReturn = []|[{
-  
+
   allowReturnAny?: boolean
 }]
 // ----- @typescript-eslint/switch-exhaustiveness-check -----
 type TypescriptEslintSwitchExhaustivenessCheck = []|[{
-  
+
   allowDefaultCaseForExhaustiveSwitch?: boolean
-  
+
   considerDefaultExhaustiveForUnions?: boolean
-  
+
   defaultCaseCommentPattern?: string
-  
+
   requireDefaultForNonUnion?: boolean
 }]
 // ----- @typescript-eslint/triple-slash-reference -----
 type TypescriptEslintTripleSlashReference = []|[{
-  
+
   lib?: ("always" | "never")
-  
+
   path?: ("always" | "never")
-  
+
   types?: ("always" | "never" | "prefer-import")
 }]
 // ----- @typescript-eslint/typedef -----
 type TypescriptEslintTypedef = []|[{
-  
+
   arrayDestructuring?: boolean
-  
+
   arrowParameter?: boolean
-  
+
   memberVariableDeclaration?: boolean
-  
+
   objectDestructuring?: boolean
-  
+
   parameter?: boolean
-  
+
   propertyDeclaration?: boolean
-  
+
   variableDeclaration?: boolean
-  
+
   variableDeclarationIgnoreFunction?: boolean
 }]
 // ----- @typescript-eslint/unbound-method -----
 type TypescriptEslintUnboundMethod = []|[{
-  
+
   ignoreStatic?: boolean
 }]
 // ----- @typescript-eslint/unified-signatures -----
 type TypescriptEslintUnifiedSignatures = []|[{
-  
+
   ignoreDifferentlyNamedParameters?: boolean
-  
+
   ignoreOverloadsWithDifferentJSDoc?: boolean
 }]
 // ----- accessor-pairs -----
@@ -12854,7 +12854,7 @@ type AstroJsxA11YAnchorHasContent = []|[{
 type AstroJsxA11YAnchorIsValid = []|[{
   components?: string[]
   specialLink?: string[]
-  
+
   aspects?: [("noHref" | "invalidHref" | "preferButton"), ...(("noHref" | "invalidHref" | "preferButton"))[]]
   [k: string]: unknown | undefined
 }]
@@ -12895,7 +12895,7 @@ type AstroJsxA11YControlHasAssociatedLabel = []|[{
   controlComponents?: string[]
   ignoreElements?: string[]
   ignoreRoles?: string[]
-  
+
   depth?: number
   [k: string]: unknown | undefined
 }]
@@ -12920,7 +12920,7 @@ type AstroJsxA11YImgRedundantAlt = []|[{
 }]
 // ----- astro/jsx-a11y/interactive-supports-focus -----
 type AstroJsxA11YInteractiveSupportsFocus = []|[{
-  
+
   tabbable?: ("button" | "checkbox" | "columnheader" | "combobox" | "grid" | "gridcell" | "link" | "listbox" | "menu" | "menubar" | "menuitem" | "menuitemcheckbox" | "menuitemradio" | "option" | "progressbar" | "radio" | "radiogroup" | "row" | "rowheader" | "scrollbar" | "searchbox" | "slider" | "spinbutton" | "switch" | "tab" | "tablist" | "textbox" | "tree" | "treegrid" | "treeitem" | "doc-backlink" | "doc-biblioref" | "doc-glossref" | "doc-noteref")[]
   [k: string]: unknown | undefined
 }]
@@ -12929,9 +12929,9 @@ type AstroJsxA11YLabelHasAssociatedControl = []|[{
   labelComponents?: string[]
   labelAttributes?: string[]
   controlComponents?: string[]
-  
+
   assert?: ("htmlFor" | "nesting" | "both" | "either")
-  
+
   depth?: number
   [k: string]: unknown | undefined
 }]
@@ -12948,9 +12948,9 @@ type AstroJsxA11YMediaHasCaption = []|[{
 }]
 // ----- astro/jsx-a11y/mouse-events-have-key-events -----
 type AstroJsxA11YMouseEventsHaveKeyEvents = []|[{
-  
+
   hoverInHandlers?: string[]
-  
+
   hoverOutHandlers?: string[]
   [k: string]: unknown | undefined
 }]
@@ -12969,7 +12969,7 @@ type AstroJsxA11YNoAutofocus = []|[{
 }]
 // ----- astro/jsx-a11y/no-distracting-elements -----
 type AstroJsxA11YNoDistractingElements = []|[{
-  
+
   elements?: ("marquee" | "blink")[]
   [k: string]: unknown | undefined
 }]
@@ -12988,9 +12988,9 @@ type AstroJsxA11YNoNoninteractiveElementToInteractiveRole = []|[{
 }]
 // ----- astro/jsx-a11y/no-noninteractive-tabindex -----
 type AstroJsxA11YNoNoninteractiveTabindex = []|[{
-  
+
   roles?: string[]
-  
+
   tags?: string[]
   [k: string]: unknown | undefined
 }]
@@ -13048,7 +13048,7 @@ type AstroSortAttributes = []|[{
   order?: ("asc" | "desc")
 }]
 // ----- baseline-js/use-baseline -----
-type BaselineJsUseBaseline = []|[{
+type BaselineJsbaseline = []|[{
   baseline?: (("widely" | "newly") | number)
   available?: (("widely" | "newly") | number)
   ignoreFeatures?: string[]
@@ -13070,4959 +13070,4959 @@ type BaselineJsUseBaseline = []|[{
 }]
 // ----- better-tailwindcss/enforce-canonical-classes -----
 type BetterTailwindcssEnforceCanonicalClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   collapse?: boolean
-  
+
   ignore?: string[]
-  
+
   logical?: boolean
 }]
 // ----- better-tailwindcss/enforce-consistent-class-order -----
 type BetterTailwindcssEnforceConsistentClassOrder = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   componentClassOrder?: ("asc" | "desc" | "preserve")
-  
+
   componentClassPosition?: ("start" | "end")
-  
+
   order?: ("asc" | "desc" | "official" | "strict")
-  
+
   unknownClassOrder?: ("asc" | "desc" | "preserve")
-  
+
   unknownClassPosition?: ("start" | "end")
 }]
 // ----- better-tailwindcss/enforce-consistent-important-position -----
 type BetterTailwindcssEnforceConsistentImportantPosition = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   position?: ("legacy" | "recommended")
 }]
 // ----- better-tailwindcss/enforce-consistent-line-wrapping -----
 type BetterTailwindcssEnforceConsistentLineWrapping = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   classesPerLine?: number
-  
+
   group?: ("newLine" | "emptyLine" | "never")
-  
+
   indent?: ("tab" | number)
-  
+
   lineBreakStyle?: ("unix" | "windows")
-  
+
   preferSingleLine?: boolean
-  
+
   printWidth?: number
-  
+
   strictness?: ("strict" | "loose")
-  
+
   tabWidth?: number
-  
+
   vueConvertToBinding?: boolean
 }]
 // ----- better-tailwindcss/enforce-consistent-variable-syntax -----
 type BetterTailwindcssEnforceConsistentVariableSyntax = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   syntax?: ("shorthand" | "variable")
 }]
 // ----- better-tailwindcss/enforce-consistent-variant-order -----
 type BetterTailwindcssEnforceConsistentVariantOrder = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/enforce-logical-properties -----
 type BetterTailwindcssEnforceLogicalProperties = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   ignore?: string[]
 }]
 // ----- better-tailwindcss/enforce-shorthand-classes -----
 type BetterTailwindcssEnforceShorthandClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/no-concatenated-classes -----
 type BetterTailwindcssNoConcatenatedClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/no-conflicting-classes -----
 type BetterTailwindcssNoConflictingClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/no-deprecated-classes -----
 type BetterTailwindcssNoDeprecatedClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/no-duplicate-classes -----
 type BetterTailwindcssNoDuplicateClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
 }]
 // ----- better-tailwindcss/no-restricted-classes -----
 type BetterTailwindcssNoRestrictedClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
   restrict?: ({
-    
+
     fix?: string
-    
+
     message?: string
-    
+
     pattern: string
   } | string)[]
 }]
 // ----- better-tailwindcss/no-unknown-classes -----
 type BetterTailwindcssNoUnknownClasses = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   ignore?: string[]
 }]
 // ----- better-tailwindcss/no-unnecessary-whitespace -----
 type BetterTailwindcssNoUnnecessaryWhitespace = []|[{
-  
+
   selectors?: ({
-    
+
     kind: "attribute"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   } | ({
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   } | {
-    
+
     callTarget?: ("all" | "first" | "last" | number)
-    
+
     kind: "callee"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
-    
+
     targetArgument?: ("all" | "first" | "last" | number)
-    
+
     targetCall?: ("all" | "first" | "last" | number)
   }) | ({
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
-    
+
     path?: string
   } | {
-    
+
     kind: "tag"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name?: string
-    
+
     path: string
   }) | {
-    
+
     kind: "variable"
-    
+
     match?: ({
-      
+
       type: "strings"
     } | {
-      
+
       path?: string
-      
+
       type: "objectKeys"
     } | {
-      
+
       path?: string
-      
+
       type: "objectValues"
     } | {
-      
+
       match: ({
-        
+
         type: "strings"
       } | {
-        
+
         path?: string
-        
+
         type: "objectKeys"
       } | {
-        
+
         path?: string
-        
+
         type: "objectValues"
       })[]
-      
+
       type: "anonymousFunctionReturn"
     })[]
-    
+
     name: string
   })[]
-  
+
   callees?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   attributes?: (string | [string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]])[]
-  
+
   variables?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   tags?: ([string, ({
-    
+
     match: "strings"
   } | {
-    
+
     match: "objectKeys"
-    
+
     pathPattern?: string
   } | {
-    
+
     match: "objectValues"
-    
+
     pathPattern?: string
   })[]] | string)[]
-  
+
   entryPoint?: string
-  
+
   messageStyle?: ("visual" | "compact" | "raw")
-  
+
   tailwindConfig?: string
-  
+
   tsconfig?: string
-  
+
   detectComponentClasses?: boolean
-  
+
   rootFontSize?: number
-  
+
   cwd?: string
-  
+
   allowMultiline?: boolean
 }]
 // ----- block-spacing -----
@@ -18039,7 +18039,7 @@ type Camelcase = []|[{
   ignoreImports?: boolean
   ignoreGlobals?: boolean
   properties?: ("always" | "never")
-  
+
   allow?: string[]
 }]
 // ----- capitalized-comments -----
@@ -18133,7 +18133,7 @@ type CssSelectorComplexity = []|[{
   disallowAttributeMatchers?: string[]
 }]
 // ----- css/use-baseline -----
-type CssUseBaseline = []|[{
+type Cssbaseline = []|[{
   available?: (("widely" | "newly") | number)
   allowAtRules?: ("position-try" | "keyframes" | "layer" | "charset" | "container" | "counter-style" | "view-transition" | "custom-media" | "font-face" | "font-palette-values" | "font-feature-values" | "function" | "import" | "media" | "namespace" | "page" | "property" | "scope" | "starting-style" | "supports")[]
   allowFunctions?: ("abs" | "sign" | "anchor" | "anchor-size" | "attr" | "calc" | "calc-size" | "shape" | "rect" | "color" | "color-mix" | "conic-gradient" | "repeating-conic-gradient" | "contrast-color" | "round" | "superellipse" | "counter" | "counters" | "cross-fade" | "cubic-bezier" | "var" | "dynamic-range-limit-mix" | "element" | "exp" | "hypot" | "log" | "pow" | "sqrt" | "blur" | "brightness" | "contrast" | "drop-shadow" | "grayscale" | "hue-rotate" | "invert" | "opacity" | "saturate" | "sepia" | "filter" | "fit-content" | "url" | "type" | "linear-gradient" | "radial-gradient" | "repeating-linear-gradient" | "repeating-radial-gradient" | "hsl" | "hwb" | "if" | "image" | "image-set" | "lab" | "lch" | "light-dark" | "clamp" | "max" | "min" | "ray" | "oklab" | "oklch" | "paint" | "path" | "progress" | "random" | "xywh" | "rgb" | "mod" | "rem" | "env" | "circle" | "ellipse" | "inset" | "polygon" | "sibling-count" | "sibling-index" | "steps" | "matrix" | "rotate" | "scale" | "scaleX" | "scaleY" | "skew" | "skewX" | "skewY" | "translate" | "translateX" | "translateY" | "matrix3d" | "perspective" | "rotate3d" | "rotateX" | "rotateY" | "rotateZ" | "scale3d" | "scaleZ" | "translate3d" | "translateZ" | "acos" | "asin" | "atan" | "atan2" | "cos" | "sin" | "tan" | "cross-origin" | "integrity" | "referrer-policy")[]
@@ -18565,7 +18565,7 @@ type Curly = ([]|["all"] | []|[("multi" | "multi-line" | "multi-or-nest")]|[("mu
 // ----- cypress/unsafe-to-chain-command -----
 type CypressUnsafeToChainCommand = []|[_CypressUnsafeToChainCommandRules]
 interface _CypressUnsafeToChainCommandRules {
-  
+
   methods?: unknown[]
 }
 // ----- default-case -----
@@ -18724,7 +18724,7 @@ type ImportXNamed = []|[{
 }]
 // ----- import-x/namespace -----
 type ImportXNamespace = []|[{
-  
+
   allowComputed?: boolean
 }]
 // ----- import-x/newline-after-import -----
@@ -18738,26 +18738,26 @@ type ImportXNoAbsolutePath = []|[{
   commonjs?: boolean
   amd?: boolean
   esmodule?: boolean
-  
+
   ignore?: [unknown, ...(unknown)[]]
 }]
 // ----- import-x/no-anonymous-default-export -----
 type ImportXNoAnonymousDefaultExport = []|[{
-  
+
   allowArray?: boolean
-  
+
   allowArrowFunction?: boolean
-  
+
   allowCallExpression?: boolean
-  
+
   allowAnonymousClass?: boolean
-  
+
   allowAnonymousFunction?: boolean
-  
+
   allowLiteral?: boolean
-  
+
   allowObject?: boolean
-  
+
   allowNew?: boolean
 }]
 // ----- import-x/no-commonjs -----
@@ -18771,12 +18771,12 @@ type ImportXNoCycle = []|[{
   commonjs?: boolean
   amd?: boolean
   esmodule?: boolean
-  
+
   ignore?: [unknown, ...(unknown)[]]
   maxDepth?: (number | "∞")
-  
+
   ignoreExternal?: boolean
-  
+
   allowUnsafeDynamicCyclicDependency?: boolean
 }]
 // ----- import-x/no-duplicates -----
@@ -18823,7 +18823,7 @@ type ImportXNoRelativePackages = []|[{
   commonjs?: boolean
   amd?: boolean
   esmodule?: boolean
-  
+
   ignore?: [unknown, ...(unknown)[]]
 }]
 // ----- import-x/no-relative-parent-imports -----
@@ -18831,7 +18831,7 @@ type ImportXNoRelativeParentImports = []|[{
   commonjs?: boolean
   amd?: boolean
   esmodule?: boolean
-  
+
   ignore?: [unknown, ...(unknown)[]]
 }]
 // ----- import-x/no-rename-default -----
@@ -18841,7 +18841,7 @@ type ImportXNoRenameDefault = []|[{
 }]
 // ----- import-x/no-restricted-paths -----
 type ImportXNoRestrictedPaths = []|[{
-  
+
   zones?: [{
     target?: (string | [string, ...(string)[]])
     from?: (string | [string, ...(string)[]])
@@ -18867,7 +18867,7 @@ type ImportXNoUnresolved = []|[{
   commonjs?: boolean
   amd?: boolean
   esmodule?: boolean
-  
+
   ignore?: [unknown, ...(unknown)[]]
   caseSensitive?: boolean
   caseSensitiveStrict?: boolean
@@ -18875,7 +18875,7 @@ type ImportXNoUnresolved = []|[{
 // ----- import-x/no-unused-modules -----
 type ImportXNoUnusedModules = []|[({
   unusedExports: true
-  
+
   src?: [unknown, ...(unknown)[]]
   [k: string]: unknown | undefined
 } | {
@@ -19018,7 +19018,7 @@ type JsxA11YAnchorHasContent = []|[{
 type JsxA11YAnchorIsValid = []|[{
   components?: string[]
   specialLink?: string[]
-  
+
   aspects?: [("noHref" | "invalidHref" | "preferButton"), ...(("noHref" | "invalidHref" | "preferButton"))[]]
   [k: string]: unknown | undefined
 }]
@@ -19059,7 +19059,7 @@ type JsxA11YControlHasAssociatedLabel = []|[{
   controlComponents?: string[]
   ignoreElements?: string[]
   ignoreRoles?: string[]
-  
+
   depth?: number
   [k: string]: unknown | undefined
 }]
@@ -19084,7 +19084,7 @@ type JsxA11YImgRedundantAlt = []|[{
 }]
 // ----- jsx-a11y/interactive-supports-focus -----
 type JsxA11YInteractiveSupportsFocus = []|[{
-  
+
   tabbable?: ("button" | "checkbox" | "columnheader" | "combobox" | "grid" | "gridcell" | "link" | "listbox" | "menu" | "menubar" | "menuitem" | "menuitemcheckbox" | "menuitemradio" | "option" | "progressbar" | "radio" | "radiogroup" | "row" | "rowheader" | "scrollbar" | "searchbox" | "slider" | "spinbutton" | "switch" | "tab" | "tablist" | "textbox" | "tree" | "treegrid" | "treeitem" | "doc-backlink" | "doc-biblioref" | "doc-glossref" | "doc-noteref")[]
   [k: string]: unknown | undefined
 }]
@@ -19093,9 +19093,9 @@ type JsxA11YLabelHasAssociatedControl = []|[{
   labelComponents?: string[]
   labelAttributes?: string[]
   controlComponents?: string[]
-  
+
   assert?: ("htmlFor" | "nesting" | "both" | "either")
-  
+
   depth?: number
   [k: string]: unknown | undefined
 }]
@@ -19103,11 +19103,11 @@ type JsxA11YLabelHasAssociatedControl = []|[{
 type JsxA11YLabelHasFor = []|[{
   components?: string[]
   required?: (("nesting" | "id") | {
-    
+
     some: ("nesting" | "id")[]
     [k: string]: unknown | undefined
   } | {
-    
+
     every: ("nesting" | "id")[]
     [k: string]: unknown | undefined
   })
@@ -19127,9 +19127,9 @@ type JsxA11YMediaHasCaption = []|[{
 }]
 // ----- jsx-a11y/mouse-events-have-key-events -----
 type JsxA11YMouseEventsHaveKeyEvents = []|[{
-  
+
   hoverInHandlers?: string[]
-  
+
   hoverOutHandlers?: string[]
   [k: string]: unknown | undefined
 }]
@@ -19148,7 +19148,7 @@ type JsxA11YNoAutofocus = []|[{
 }]
 // ----- jsx-a11y/no-distracting-elements -----
 type JsxA11YNoDistractingElements = []|[{
-  
+
   elements?: ("marquee" | "blink")[]
   [k: string]: unknown | undefined
 }]
@@ -19167,9 +19167,9 @@ type JsxA11YNoNoninteractiveElementToInteractiveRole = []|[{
 }]
 // ----- jsx-a11y/no-noninteractive-tabindex -----
 type JsxA11YNoNoninteractiveTabindex = []|[{
-  
+
   roles?: string[]
-  
+
   tags?: string[]
   [k: string]: unknown | undefined
 }]
@@ -19567,7 +19567,7 @@ type LinesAroundDirective = []|[(("always" | "never") | {
 })]
 // ----- lines-between-class-members -----
 type LinesBetweenClassMembers = []|[({
-  
+
   enforce: [{
     blankLine: ("always" | "never")
     prev: ("method" | "field" | "*")
@@ -19578,7 +19578,7 @@ type LinesBetweenClassMembers = []|[({
     next: ("method" | "field" | "*")
   })[]]
 } | ("always" | "never"))]|[({
-  
+
   enforce: [{
     blankLine: ("always" | "never")
     prev: ("method" | "field" | "*")
@@ -19768,9 +19768,9 @@ type MaxNestedCallbacks = []|[(number | {
 type MaxParams = []|[(number | {
   maximum?: number
   max?: number
-  
+
   countVoidThis?: boolean
-  
+
   countThis?: ("never" | "except-void" | "always")
 })]
 // ----- max-statements -----
@@ -19808,19 +19808,19 @@ type NHandleCallbackErr = []|[string]
 // ----- n/hashbang -----
 type NHashbang = []|[{
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   ignoreUnpublished?: boolean
@@ -19840,19 +19840,19 @@ type NNoDeprecatedApi = []|[{
 type NNoExtraneousImport = []|[{
   allowModules?: string[]
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
@@ -19864,19 +19864,19 @@ type NNoExtraneousImport = []|[{
 type NNoExtraneousRequire = []|[{
   allowModules?: string[]
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
@@ -19953,38 +19953,38 @@ type NNoSync = []|[{
 type NNoTopLevelAwait = []|[{
   ignoreBin?: boolean
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
 }]
 // ----- n/no-unpublished-bin -----
 type NNoUnpublishedBin = []|[{
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
 }]
@@ -19992,19 +19992,19 @@ type NNoUnpublishedBin = []|[{
 type NNoUnpublishedImport = []|[{
   allowModules?: string[]
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
@@ -20019,19 +20019,19 @@ type NNoUnpublishedImport = []|[{
 type NNoUnpublishedRequire = []|[{
   allowModules?: string[]
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   resolvePaths?: string[]
@@ -20086,19 +20086,19 @@ type NPreferProcessGetBuiltinModule = []|[{
 // ----- n/shebang -----
 type NShebang = []|[{
   convertPath?: ({
-    
+
     [k: string]: [string, string]
   } | [{
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   }, ...({
-    
+
     include: [string, ...(string)[]]
     exclude?: string[]
-    
+
     replace: [string, string]
   })[]])
   ignoreUnpublished?: boolean
@@ -20141,7 +20141,7 @@ type NoConfusingArrow = []|[{
 }]
 // ----- no-console -----
 type NoConsole = []|[{
-  
+
   allow?: [string, ...(string)[]]
 }]
 // ----- no-constant-binary-expression -----
@@ -20341,7 +20341,7 @@ type NoRestrictedGlobals = ((string | {
   name: string
   message?: string
 })[] | []|[{
-  
+
   globals: (string | {
     name: string
     message?: string
@@ -20355,7 +20355,7 @@ type NoRestrictedImports = ((string | {
   message?: string
   importNames?: string[]
   allowImportNames?: string[]
-  
+
   allowTypeImports?: boolean
 })[] | []|[{
   paths?: (string | {
@@ -20363,7 +20363,7 @@ type NoRestrictedImports = ((string | {
     message?: string
     importNames?: string[]
     allowImportNames?: string[]
-    
+
     allowTypeImports?: boolean
   })[]
   patterns?: (string[] | ({
@@ -20516,7 +20516,7 @@ type NoVoid = []|[{
 type NoWarningComments = []|[{
   terms?: string[]
   location?: ("start" | "anywhere")
-  
+
   decoration?: [string, ...(string)[]]
 }]
 // ----- nonblock-statement-body-position -----
@@ -20599,273 +20599,273 @@ type OperatorLinebreak = []|[("after" | "before" | "none" | null)]|[("after" | "
 }]
 // ----- package-json/exports-subpaths-style -----
 type PackageJsonExportsSubpathsStyle = []|[{
-  
+
   prefer?: ("implicit" | "explicit")
 }]
 // ----- package-json/no-empty-fields -----
 type PackageJsonNoEmptyFields = []|[{
-  
+
   ignoreProperties?: string[]
 }]
 // ----- package-json/no-local-dependencies -----
 type PackageJsonNoLocalDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/order-properties -----
 type PackageJsonOrderProperties = []|[{
-  
+
   order?: ("sort-package-json" | string[])
 }]
 // ----- package-json/repository-shorthand -----
 type PackageJsonRepositoryShorthand = []|[{
-  
+
   form?: ("object" | "shorthand")
 }]
 // ----- package-json/require-attribution -----
 type PackageJsonRequireAttribution = []|[{
-  
+
   ignorePrivate?: boolean
-  
+
   preferContributorsOnly?: boolean
 }]
 // ----- package-json/require-author -----
 type PackageJsonRequireAuthor = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-bin -----
 type PackageJsonRequireBin = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-browser -----
 type PackageJsonRequireBrowser = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-bugs -----
 type PackageJsonRequireBugs = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-bundleDependencies -----
 type PackageJsonRequireBundleDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-config -----
 type PackageJsonRequireConfig = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-contributors -----
 type PackageJsonRequireContributors = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-cpu -----
 type PackageJsonRequireCpu = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-dependencies -----
 type PackageJsonRequireDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-description -----
 type PackageJsonRequireDescription = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-devDependencies -----
 type PackageJsonRequireDevDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-devEngines -----
 type PackageJsonRequireDevEngines = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-directories -----
 type PackageJsonRequireDirectories = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-engines -----
 type PackageJsonRequireEngines = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-exports -----
 type PackageJsonRequireExports = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-files -----
 type PackageJsonRequireFiles = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-funding -----
 type PackageJsonRequireFunding = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-gypfile -----
 type PackageJsonRequireGypfile = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-homepage -----
 type PackageJsonRequireHomepage = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-keywords -----
 type PackageJsonRequireKeywords = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-libc -----
 type PackageJsonRequireLibc = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-license -----
 type PackageJsonRequireLicense = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-main -----
 type PackageJsonRequireMain = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-man -----
 type PackageJsonRequireMan = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-module -----
 type PackageJsonRequireModule = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-name -----
 type PackageJsonRequireName = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-optionalDependencies -----
 type PackageJsonRequireOptionalDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-os -----
 type PackageJsonRequireOs = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-packageManager -----
 type PackageJsonRequirePackageManager = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-peerDependencies -----
 type PackageJsonRequirePeerDependencies = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-peerDependenciesMeta -----
 type PackageJsonRequirePeerDependenciesMeta = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-publishConfig -----
 type PackageJsonRequirePublishConfig = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-repository -----
 type PackageJsonRequireRepository = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-scripts -----
 type PackageJsonRequireScripts = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-sideEffects -----
 type PackageJsonRequireSideEffects = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-type -----
 type PackageJsonRequireType = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-types -----
 type PackageJsonRequireTypes = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/require-version -----
 type PackageJsonRequireVersion = []|[{
-  
+
   ignorePrivate?: boolean
 }]
 // ----- package-json/restrict-dependency-ranges -----
 type PackageJsonRestrictDependencyRanges = []|[({
-  
+
   forDependencyTypes?: ("dependencies" | "devDependencies" | "optionalDependencies" | "peerDependencies")[]
-  
+
   forPackages?: string[]
-  
+
   forVersions?: string
-  
+
   rangeType: (("^" | "~" | "<" | "<=" | ">" | ">=" | "caret" | "pin" | "tilde" | "lt" | "le" | "gt" | "ge") | ("^" | "~" | "<" | "<=" | ">" | ">=" | "caret" | "pin" | "tilde" | "lt" | "le" | "gt" | "ge")[])
 } | {
-  
+
   forDependencyTypes?: ("dependencies" | "devDependencies" | "optionalDependencies" | "peerDependencies")[]
-  
+
   forPackages?: string[]
-  
+
   forVersions?: string
-  
+
   rangeType: (("^" | "~" | "<" | "<=" | ">" | ">=" | "caret" | "pin" | "tilde" | "lt" | "le" | "gt" | "ge") | ("^" | "~" | "<" | "<=" | ">" | ">=" | "caret" | "pin" | "tilde" | "lt" | "le" | "gt" | "ge")[])
 }[])]
 // ----- package-json/restrict-private-properties -----
 type PackageJsonRestrictPrivateProperties = []|[{
-  
+
   blockedProperties?: string[]
 }]
 // ----- package-json/restrict-top-level-properties -----
 type PackageJsonRestrictTopLevelProperties = []|[{
-  
+
   ban?: (string | {
-    
+
     message?: string
-    
+
     property: string
   })[]
 }]
 // ----- package-json/scripts-name-casing -----
 type PackageJsonScriptsNameCasing = []|[{
-  
+
   ignoreNames?: string[]
-  
+
   ignorePatterns?: string[]
 }]
 // ----- package-json/sort-collections -----
 type PackageJsonSortCollections = []|[(string | {
-  
+
   key: string
-  
+
   order: string[]
 })[]]
 // ----- padded-blocks -----
@@ -20890,4544 +20890,4544 @@ type PaddingLineBetweenStatements = {
 }[]
 // ----- perfectionist/sort-array-includes -----
 type PerfectionistSortArrayIncludes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: "literal"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-arrays -----
 type PerfectionistSortArrays = [{
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: "literal"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }, ...({
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: "literal"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 })[]]
 // ----- perfectionist/sort-classes -----
 type PerfectionistSortClasses = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("async" | "protected" | "private" | "public" | "static" | "abstract" | "override" | "readonly" | "decorated" | "declare" | "optional")[]
-      
+
       selector?: ("accessor-property" | "index-signature" | "constructor" | "static-block" | "get-method" | "set-method" | "function-property" | "property" | "method")
-      
+
       decoratorNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("async" | "protected" | "private" | "public" | "static" | "abstract" | "override" | "readonly" | "decorated" | "declare" | "optional")[]
-      
+
       selector?: ("accessor-property" | "index-signature" | "constructor" | "static-block" | "get-method" | "set-method" | "function-property" | "property" | "method")
-      
+
       decoratorNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("async" | "protected" | "private" | "public" | "static" | "abstract" | "override" | "readonly" | "decorated" | "declare" | "optional")[]
-    
+
     selector?: ("accessor-property" | "index-signature" | "constructor" | "static-block" | "get-method" | "set-method" | "function-property" | "property" | "method")
-    
+
     decoratorNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   useExperimentalDependencyDetection?: boolean
   newlinesBetweenOverloadSignatures?: ("ignore" | number)
-  
+
   ignoreCallbackDependenciesPatterns?: (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string))
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-decorators -----
 type PerfectionistSortDecorators = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   sortOnParameters?: boolean
-  
+
   sortOnProperties?: boolean
-  
+
   sortOnAccessors?: boolean
-  
+
   sortOnMethods?: boolean
-  
+
   sortOnClasses?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-enums -----
 type PerfectionistSortEnums = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   sortByValue?: ("always" | "ifNumericEnum" | "never")
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   useExperimentalDependencyDetection?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-export-attributes -----
 type PerfectionistSortExportAttributes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-exports -----
 type PerfectionistSortExports = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type" | "named" | "wildcard" | "multiline" | "singleline")[]
-      
+
       selector?: "export"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type" | "named" | "wildcard" | "multiline" | "singleline")[]
-      
+
       selector?: "export"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("value" | "type" | "named" | "wildcard" | "multiline" | "singleline")[]
-    
+
     selector?: "export"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-heritage-clauses -----
 type PerfectionistSortHeritageClauses = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByNewLine?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
 }[]
 // ----- perfectionist/sort-import-attributes -----
 type PerfectionistSortImportAttributes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-imports -----
 type PerfectionistSortImports = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("specifier" | "path")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
   sortBy?: ("specifier" | "path")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("specifier" | "path")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("specifier" | "path")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("default" | "multiline" | "named" | "require" | "side-effect" | "singleline" | "ts-equals" | "type" | "value" | "wildcard")[]
-      
+
       selector?: ("side-effect-style" | "tsconfig-path" | "side-effect" | "external" | "internal" | "builtin" | "sibling" | "subpath" | "import" | "parent" | "index" | "style" | "type")
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("default" | "multiline" | "named" | "require" | "side-effect" | "singleline" | "ts-equals" | "type" | "value" | "wildcard")[]
-      
+
       selector?: ("side-effect-style" | "tsconfig-path" | "side-effect" | "external" | "internal" | "builtin" | "sibling" | "subpath" | "import" | "parent" | "index" | "style" | "type")
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("specifier" | "path")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("specifier" | "path")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("default" | "multiline" | "named" | "require" | "side-effect" | "singleline" | "ts-equals" | "type" | "value" | "wildcard")[]
-    
+
     selector?: ("side-effect-style" | "tsconfig-path" | "side-effect" | "external" | "internal" | "builtin" | "sibling" | "subpath" | "import" | "parent" | "index" | "style" | "type")
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("specifier" | "path")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "type-import-first")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("specifier" | "path")
   })[]
   newlinesBetween?: ("ignore" | number)
   tsconfig?: {
-    
+
     rootDir: string
-    
+
     filename?: string
   }
-  
+
   maxLineLength?: number
-  
+
   sortSideEffects?: boolean
-  
+
   environment?: ("node" | "bun")
-  
+
   useExperimentalDependencyDetection?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
-  
+
   internalPattern?: (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string))
 }[]
 // ----- perfectionist/sort-interfaces -----
 type PerfectionistSortInterfaces = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
   sortBy?: ("name" | "value")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("optional" | "required" | "multiline")[]
-      
+
       selector?: ("index-signature" | "member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("optional" | "required" | "multiline")[]
-      
+
       selector?: ("index-signature" | "member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("optional" | "required" | "multiline")[]
-    
+
     selector?: ("index-signature" | "member" | "method" | "property")
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     hasNumericKeysOnly?: boolean
-    
+
     declarationCommentMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
-    
+
     declarationMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-intersection-types -----
 type PerfectionistSortIntersectionTypes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
   ignoreCallableTypes?: boolean
 }[]
 // ----- perfectionist/sort-jsx-props -----
 type PerfectionistSortJsxProps = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("shorthand" | "multiline")[]
-      
+
       selector?: "prop"
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("shorthand" | "multiline")[]
-      
+
       selector?: "prop"
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("shorthand" | "multiline")[]
-    
+
     selector?: "prop"
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
-    
+
     tagMatchesPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   }
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-maps -----
 type PerfectionistSortMaps = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-modules -----
 type PerfectionistSortModules = []|[{
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("async" | "declare" | "decorated" | "default" | "export")[]
-      
+
       selector?: ("enum" | "function" | "interface" | "type" | "class")
-      
+
       decoratorNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("async" | "declare" | "decorated" | "default" | "export")[]
-      
+
       selector?: ("enum" | "function" | "interface" | "type" | "class")
-      
+
       decoratorNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("async" | "declare" | "decorated" | "default" | "export")[]
-    
+
     selector?: ("enum" | "function" | "interface" | "type" | "class")
-    
+
     decoratorNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order" | "usage")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useExperimentalDependencyDetection?: boolean
   newlinesBetweenOverloadSignatures?: ("ignore" | number)
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }]
 // ----- perfectionist/sort-named-exports -----
 type PerfectionistSortNamedExports = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type")[]
-      
+
       selector?: "export"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type")[]
-      
+
       selector?: "export"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("value" | "type")[]
-    
+
     selector?: "export"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   ignoreAlias?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-named-imports -----
 type PerfectionistSortNamedImports = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type")[]
-      
+
       selector?: "import"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("value" | "type")[]
-      
+
       selector?: "import"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("value" | "type")[]
-    
+
     selector?: "import"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   ignoreAlias?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-object-types -----
 type PerfectionistSortObjectTypes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
   sortBy?: ("name" | "value")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("optional" | "required" | "multiline")[]
-      
+
       selector?: ("index-signature" | "member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("optional" | "required" | "multiline")[]
-      
+
       selector?: ("index-signature" | "member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("optional" | "required" | "multiline")[]
-    
+
     selector?: ("index-signature" | "member" | "method" | "property")
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     hasNumericKeysOnly?: boolean
-    
+
     declarationCommentMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
-    
+
     declarationMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-objects -----
 type PerfectionistSortObjects = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
   sortBy?: ("name" | "value")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("multiline")[]
-      
+
       selector?: ("member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       modifiers?: ("multiline")[]
-      
+
       selector?: ("member" | "method" | "property")
-      
+
       elementValuePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     modifiers?: ("multiline")[]
-    
+
     selector?: ("member" | "method" | "property")
-    
+
     elementValuePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
       sortBy?: ("name" | "value")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
     sortBy?: ("name" | "value")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     objectType?: ("destructured" | "non-destructured")
-    
+
     hasNumericKeysOnly?: boolean
-    
+
     declarationCommentMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     callingFunctionNamePattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
-    
+
     declarationMatchesPattern?: (({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
       scope?: ("shallow" | "deep")
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
   }
-  
+
   partitionByComputedKey?: boolean
-  
+
   styledComponents?: boolean
-  
+
   useExperimentalDependencyDetection?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-sets -----
 type PerfectionistSortSets = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: "literal"
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: "literal"
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-switch-case -----
 type PerfectionistSortSwitchCase = []|[{
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
 }]
 // ----- perfectionist/sort-union-types -----
 type PerfectionistSortUnionTypes = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: ("intersection" | "conditional" | "function" | "operator" | "keyword" | "literal" | "nullish" | "import" | "object" | "named" | "tuple" | "union")
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- perfectionist/sort-variable-declarations -----
 type PerfectionistSortVariableDeclarations = {
-  
+
   fallbackSort?: {
-    
+
     type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     order?: ("asc" | "desc")
   }
-  
+
   type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-  
+
   specialCharacters?: ("remove" | "trim" | "keep")
-  
+
   ignoreCase?: boolean
-  
+
   alphabet?: string
-  
+
   locales?: (string | string[])
-  
+
   order?: ("asc" | "desc")
-  
+
   customGroups?: ({
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     anyOf: [{
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("initialized" | "uninitialized")
     }, ...({
-      
+
       elementNamePattern?: (({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string)[] | ({
-        
+
         pattern: string
-        
+
         flags?: string
       } | string))
-      
+
       selector?: ("initialized" | "uninitialized")
     })[]]
   } | {
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-    
+
     groupName: string
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
-    
+
     elementNamePattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     selector?: ("initialized" | "uninitialized")
   })[]
   newlinesInside?: (("ignore" | number) | "newlinesBetween")
-  
+
   groups?: (string | [string, ...(string)[]] | {
     newlinesBetween: ("ignore" | number)
   } | {
     group: (string | [string, ...(string)[]])
-    
+
     fallbackSort?: {
-      
+
       type: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
-      
+
       order?: ("asc" | "desc")
     }
-    
+
     commentAbove?: string
-    
+
     type?: ("alphabetical" | "natural" | "line-length" | "custom" | "unsorted" | "subgroup-order")
     newlinesInside?: ("ignore" | number)
-    
+
     order?: ("asc" | "desc")
   })[]
   newlinesBetween?: ("ignore" | number)
-  
+
   useConfigurationIf?: {
-    
+
     allNamesMatchPattern?: (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string))
-    
+
     matchesAstSelector?: string
   }
-  
+
   useExperimentalDependencyDetection?: boolean
-  
+
   partitionByComment?: (boolean | (({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)[] | ({
-    
+
     pattern: string
-    
+
     flags?: string
   } | string)) | {
-    
+
     block?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
-    
+
     line?: (boolean | (({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)[] | ({
-      
+
       pattern: string
-      
+
       flags?: string
     } | string)))
   })
-  
+
   partitionByNewLine?: boolean
 }[]
 // ----- playwright/expect-expect -----
@@ -25574,9 +25574,9 @@ type PreferRegexLiterals = []|[{
 }]
 // ----- preserve-caught-error -----
 type PreserveCaughtError = []|[{
-  
+
   requireCatchParameter?: boolean
-  
+
   errorClassNames?: (string | {
     name: string
     argumentPosition: number
@@ -25665,7 +25665,7 @@ type SemiStyle = []|[("last" | "first")]
 // ----- sort-imports -----
 type SortImports = []|[{
   ignoreCase?: boolean
-  
+
   memberSyntaxSortOrder?: [("none" | "all" | "multiple" | "single"), ("none" | "all" | "multiple" | "single"), ("none" | "all" | "multiple" | "single"), ("none" | "all" | "multiple" | "single")]
   ignoreDeclarationSort?: boolean
   ignoreMemberSort?: boolean
@@ -25749,27 +25749,27 @@ type TemplateTagSpacing = []|[("always" | "never")]
 type UnicodeBom = []|[("always" | "never")]
 // ----- unicorn/catch-error-name -----
 type UnicornCatchErrorName = []|[{
-  
+
   name?: string
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
 }]
 // ----- unicorn/class-reference-in-static-methods -----
 type UnicornClassReferenceInStaticMethods = []|[{
-  
+
   preferThis?: boolean
-  
+
   preferSuper?: boolean
 }]
 // ----- unicorn/comment-content -----
 type UnicornCommentContent = []|[{
-  
+
   checkUniformCase?: boolean
-  
+
   extendDefaultReplacements?: boolean
-  
+
   replacements?: {
     [k: string]: (false | string | {
       replacement: string
@@ -25779,48 +25779,48 @@ type UnicornCommentContent = []|[{
 }]
 // ----- unicorn/consistent-boolean-name -----
 type UnicornConsistentBooleanName = []|[{
-  
+
   checkVariables?: ("always" | "prohibit" | "never")
-  
+
   checkArguments?: ("always" | "prohibit" | "never")
-  
+
   checkFunctions?: ("always" | "prohibit" | "never")
-  
+
   checkMethods?: ("always" | "prohibit" | "never")
-  
+
   checkFields?: ("always" | "prohibit" | "never")
-  
+
   prefixes?: {
-    
+
     [k: string]: boolean | undefined
   }
-  
+
   wrappers?: {
-    
+
     [k: string]: string | undefined
   }
-  
+
   ignore?: unknown[]
   [k: string]: unknown
 }]
 // ----- unicorn/consistent-class-member-order -----
 type UnicornConsistentClassMemberOrder = []|[{
-  
+
   order?: [("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method"), ("static-field" | "static-block" | "static-method" | "private-field" | "public-field" | "constructor" | "private-method" | "public-method")]
 }]
 // ----- unicorn/consistent-compound-words -----
 type UnicornConsistentCompoundWords = []|[{
-  
+
   checkProperties?: boolean
-  
+
   checkVariables?: boolean
-  
+
   checkDefaultAndNamespaceImports?: (boolean | "internal")
-  
+
   checkShorthandImports?: (boolean | "internal")
-  
+
   checkShorthandProperties?: boolean
-  
+
   extendDefaultReplacements?: boolean
   replacements?: _UnicornConsistentCompoundWords_Replacements
   allowList?: _UnicornConsistentCompoundWords_TrueObject
@@ -25837,7 +25837,7 @@ type UnicornConsistentConditionalObjectSpread = []|[("logical" | "ternary")]
 type UnicornConsistentExportDecoratorPosition = []|[("above" | "before" | "after")]
 // ----- unicorn/consistent-function-scoping -----
 type UnicornConsistentFunctionScoping = []|[{
-  
+
   checkArrowFunctions?: boolean
 }]
 // ----- unicorn/consistent-function-style -----
@@ -25860,26 +25860,26 @@ type UnicornDefaultExportStyle = []|[{
 }]
 // ----- unicorn/dom-node-dataset -----
 type UnicornDomNodeDataset = []|[{
-  
+
   preferAttributes?: boolean
 }]
 // ----- unicorn/escape-case -----
 type UnicornEscapeCase = []|[("uppercase" | "lowercase")]
 // ----- unicorn/expiring-todo-comments -----
 type UnicornExpiringTodoComments = []|[{
-  
+
   terms?: string[]
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
-  
+
   checkDates?: boolean
-  
+
   checkDatesOnPullRequests?: boolean
-  
+
   allowWarningComments?: boolean
-  
+
   date?: string
 }]
 // ----- unicorn/explicit-length-check -----
@@ -25890,37 +25890,37 @@ type UnicornExplicitLengthCheck = []|[{
 type UnicornExplicitTimerDelay = []|[("always" | "never")]
 // ----- unicorn/filename-case -----
 type UnicornFilenameCase = []|[({
-  
+
   case?: ("camelCase" | "camelCaseWithAcronyms" | "snakeCase" | "kebabCase" | "pascalCase")
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
-  
+
   multipleFileExtensions?: boolean
-  
+
   checkDirectories?: boolean
 } | {
-  
+
   cases?: {
-    
+
     camelCase?: boolean
-    
+
     camelCaseWithAcronyms?: boolean
-    
+
     snakeCase?: boolean
-    
+
     kebabCase?: boolean
-    
+
     pascalCase?: boolean
   }
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
-  
+
   multipleFileExtensions?: boolean
-  
+
   checkDirectories?: boolean
 })]
 // ----- unicorn/id-match -----
@@ -25929,20 +25929,20 @@ type UnicornIdMatch = []|[string]|[string, {
   classFields?: boolean
   onlyDeclarations?: boolean
   ignoreDestructuring?: boolean
-  
+
   checkNamedSpecifiers?: boolean
 }]
 // ----- unicorn/import-style -----
 type UnicornImportStyle = []|[{
-  
+
   checkImport?: boolean
-  
+
   checkDynamicImport?: boolean
-  
+
   checkExportFrom?: boolean
-  
+
   checkRequire?: boolean
-  
+
   extendDefaultStyles?: boolean
   styles?: _UnicornImportStyle_ModuleStyles
 }]
@@ -25955,15 +25955,15 @@ interface _UnicornImportStyle_BooleanObject {
 }
 // ----- unicorn/isolated-functions -----
 type UnicornIsolatedFunctions = []|[{
-  
+
   overrideGlobals?: {
     [k: string]: (boolean | ("readonly" | "writable" | "writeable" | "off")) | undefined
   }
-  
+
   functions?: string[]
-  
+
   selectors?: string[]
-  
+
   comments?: string[]
 }]
 // ----- unicorn/iteration-fallback-style -----
@@ -25974,30 +25974,30 @@ type UnicornLogicalAssignmentOperators = (([]|["always"]|["always", {
 }] | ["never"]) & unknown[])
 // ----- unicorn/max-nested-calls -----
 type UnicornMaxNestedCalls = []|[{
-  
+
   max?: number
 }]
 // ----- unicorn/name-replacements -----
 type UnicornNameReplacements = []|[{
-  
+
   checkProperties?: boolean
-  
+
   checkVariables?: boolean
-  
+
   checkDefaultAndNamespaceImports?: (boolean | string)
-  
+
   checkShorthandImports?: (boolean | string)
-  
+
   checkShorthandProperties?: boolean
-  
+
   checkFilenames?: boolean
-  
+
   extendDefaultReplacements?: boolean
   replacements?: _UnicornNameReplacements_NameReplacements
-  
+
   extendDefaultAllowList?: boolean
   allowList?: _UnicornNameReplacements_BooleanObject
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
@@ -26014,12 +26014,12 @@ interface _UnicornNameReplacements_BooleanObject {
 }
 // ----- unicorn/no-array-callback-reference -----
 type UnicornNoArrayCallbackReference = []|[{
-  
+
   ignore?: string[]
 }]
 // ----- unicorn/no-array-reduce -----
 type UnicornNoArrayReduce = []|[{
-  
+
   allowSimpleOperations?: boolean
 }]
 // ----- unicorn/no-array-reverse -----
@@ -26032,7 +26032,7 @@ type UnicornNoArraySort = []|[{
 }]
 // ----- unicorn/no-empty-file -----
 type UnicornNoEmptyFile = []|[{
-  
+
   allowComments?: boolean
 }]
 // ----- unicorn/no-instanceof-builtins -----
@@ -26051,56 +26051,56 @@ type UnicornNoInvalidArgumentCount = []|[{
 }]
 // ----- unicorn/no-keyword-prefix -----
 type UnicornNoKeywordPrefix = []|[{
-  
+
   disallowedPrefixes?: string[]
-  
+
   checkProperties?: boolean
-  
+
   onlyCamelCase?: boolean
 }]
 // ----- unicorn/no-negated-comparison -----
 type UnicornNoNegatedComparison = []|[{
-  
+
   checkLogicalExpressions?: boolean
 }]
 // ----- unicorn/no-non-function-verb-prefix -----
 type UnicornNoNonFunctionVerbPrefix = []|[{
-  
+
   verbs?: string[]
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
 }]
 // ----- unicorn/no-null -----
 type UnicornNoNull = []|[{
-  
+
   checkArguments?: boolean
-  
+
   checkStrictEquality?: boolean
 }]
 // ----- unicorn/no-typeof-undefined -----
 type UnicornNoTypeofUndefined = []|[{
-  
+
   checkGlobalVariables?: boolean
 }]
 // ----- unicorn/no-unnecessary-polyfills -----
 type UnicornNoUnnecessaryPolyfills = []|[{
-  
+
   targets?: (string | string[] | {
     [k: string]: unknown | undefined
   })
 }]
 // ----- unicorn/no-unreadable-array-destructuring -----
 type UnicornNoUnreadableArrayDestructuring = []|[{
-  
+
   maximumIgnoredElements?: number
 }]
 // ----- unicorn/no-useless-undefined -----
 type UnicornNoUselessUndefined = []|[{
-  
+
   checkArguments?: boolean
-  
+
   checkArrowFunctionBody?: boolean
 }]
 // ----- unicorn/number-literal-case -----
@@ -26110,172 +26110,172 @@ type UnicornNumberLiteralCase = []|[{
 // ----- unicorn/numeric-separators-style -----
 type UnicornNumericSeparatorsStyle = []|[{
   binary?: {
-    
+
     onlyIfContainsSeparator?: boolean
-    
+
     minimumDigits?: number
-    
+
     groupLength?: number
   }
   octal?: {
-    
+
     onlyIfContainsSeparator?: boolean
-    
+
     minimumDigits?: number
-    
+
     groupLength?: number
   }
   hexadecimal?: {
-    
+
     onlyIfContainsSeparator?: boolean
-    
+
     minimumDigits?: number
-    
+
     groupLength?: number
   }
   number?: {
-    
+
     onlyIfContainsSeparator?: boolean
-    
+
     minimumDigits?: number
-    
+
     groupLength?: number
-    
+
     fractionGroupLength?: number
   }
-  
+
   onlyIfContainsSeparator?: boolean
 }]
 // ----- unicorn/operator-assignment -----
 type UnicornOperatorAssignment = []|[("always" | "never")]
 // ----- unicorn/prefer-add-event-listener -----
 type UnicornPreferAddEventListener = []|[{
-  
+
   excludedPackages?: string[]
 }]
 // ----- unicorn/prefer-array-find -----
 type UnicornPreferArrayFind = []|[{
-  
+
   checkFromLast?: boolean
 }]
 // ----- unicorn/prefer-array-flat -----
 type UnicornPreferArrayFlat = []|[{
-  
+
   functions?: string[]
 }]
 // ----- unicorn/prefer-at -----
 type UnicornPreferAt = []|[{
-  
+
   getLastElementFunctions?: string[]
-  
+
   checkAllIndexAccess?: boolean
 }]
 // ----- unicorn/prefer-continue -----
 type UnicornPreferContinue = []|[{
-  
+
   maximumStatements?: number
 }]
 // ----- unicorn/prefer-dom-node-html-methods -----
 type UnicornPreferDomNodeHtmlMethods = []|[{
-  
+
   checkGetHTML?: boolean
-  
+
   checkSetHTML?: boolean
 }]
 // ----- unicorn/prefer-early-return -----
 type UnicornPreferEarlyReturn = []|[{
-  
+
   maximumStatements?: number
 }]
 // ----- unicorn/prefer-explicit-viewport-units -----
 type UnicornPreferExplicitViewportUnits = []|[{
-  
+
   unit?: ("dvh" | "svh" | "lvh")
 }]
 // ----- unicorn/prefer-export-from -----
 type UnicornPreferExportFrom = []|[{
-  
+
   checkUsedVariables?: boolean
 }]
 // ----- unicorn/prefer-https -----
 type UnicornPreferHttps = []|[{
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
 }]
 // ----- unicorn/prefer-includes-over-repeated-comparisons -----
 type UnicornPreferIncludesOverRepeatedComparisons = []|[{
-  
+
   minimumComparisons?: number
 }]
 // ----- unicorn/prefer-minimal-ternary -----
 type UnicornPreferMinimalTernary = []|[{
-  
+
   checkVaryingBase?: boolean
-  
+
   checkComputedMemberAccess?: boolean
 }]
 // ----- unicorn/prefer-number-properties -----
 type UnicornPreferNumberProperties = []|[{
-  
+
   checkInfinity?: boolean
-  
+
   checkNaN?: boolean
 }]
 // ----- unicorn/prefer-object-from-entries -----
 type UnicornPreferObjectFromEntries = []|[{
-  
+
   functions?: string[]
 }]
 // ----- unicorn/prefer-query-selector -----
 type UnicornPreferQuerySelector = []|[{
-  
+
   allowWithVariables?: boolean
 }]
 // ----- unicorn/prefer-queue-microtask -----
 type UnicornPreferQueueMicrotask = []|[{
-  
+
   checkSetImmediate?: boolean
-  
+
   checkSetTimeout?: boolean
 }]
 // ----- unicorn/prefer-set-has -----
 type UnicornPreferSetHas = []|[{
-  
+
   minimumItems?: number
 }]
 // ----- unicorn/prefer-short-arrow-method -----
 type UnicornPreferShortArrowMethod = []|[("always" | "consistent-as-needed")]
 // ----- unicorn/prefer-single-call -----
 type UnicornPreferSingleCall = []|[{
-  
+
   ignore?: string[]
 }]
 // ----- unicorn/prefer-string-repeat -----
 type UnicornPreferStringRepeat = []|[{
-  
+
   minimumRepetitions?: number
 }]
 // ----- unicorn/prefer-structured-clone -----
 type UnicornPreferStructuredClone = []|[{
-  
+
   functions?: string[]
 }]
 // ----- unicorn/prefer-switch -----
 type UnicornPreferSwitch = []|[{
-  
+
   minimumCases?: number
-  
+
   emptyDefaultCase?: ("no-default-comment" | "do-nothing-comment" | "no-default-case")
 }]
 // ----- unicorn/prefer-temporal -----
 type UnicornPreferTemporal = []|[{
-  
+
   checkDateNow?: boolean
-  
+
   checkReferences?: boolean
-  
+
   checkMethods?: boolean
 }]
 // ----- unicorn/prefer-ternary -----
@@ -26284,24 +26284,24 @@ type UnicornPreferTernary = []|[("always" | "only-single-line")]
 type UnicornRelativeUrlStyle = []|[("never" | "always")]
 // ----- unicorn/require-css-escape -----
 type UnicornRequireCssEscape = []|[{
-  
+
   checkAllSelectors?: boolean
 }]
 // ----- unicorn/require-frontmatter-fields -----
 type UnicornRequireFrontmatterFields = []|[{
-  
+
   fields?: string[]
 }]
 // ----- unicorn/single-line-block-comment-style -----
 type UnicornSingleLineBlockCommentStyle = []|[("multiline" | "single-line")]|[("multiline" | "single-line"), {
-  
+
   ignore?: (string | {
     [k: string]: unknown | undefined
   })[]
 }]
 // ----- unicorn/string-content -----
 type UnicornStringContent = []|[{
-  
+
   patterns?: {
     [k: string]: (string | {
       suggest: string
@@ -26310,32 +26310,32 @@ type UnicornStringContent = []|[{
       message?: string
     }) | undefined
   }
-  
+
   selectors?: string[]
 }]
 // ----- unicorn/switch-case-braces -----
 type UnicornSwitchCaseBraces = []|[("always" | "avoid" | "single-statement")]
 // ----- unicorn/template-indent -----
 type UnicornTemplateIndent = []|[{
-  
+
   indent?: (string | number)
-  
+
   tags?: string[]
-  
+
   functions?: string[]
-  
+
   selectors?: string[]
-  
+
   comments?: string[]
 }]
 // ----- unicorn/text-encoding-identifier-case -----
 type UnicornTextEncodingIdentifierCase = []|[{
-  
+
   withDash?: boolean
 }]
 // ----- unicorn/try-complexity -----
 type UnicornTryComplexity = []|[{
-  
+
   max?: number
 }]
 // ----- use-isnan -----
@@ -26349,73 +26349,73 @@ type ValidTypeof = []|[{
 }]
 // ----- vitest/consistent-each-for -----
 type VitestConsistentEachFor = []|[{
-  
+
   test?: ("each" | "for")
-  
+
   it?: ("each" | "for")
-  
+
   describe?: ("each" | "for")
-  
+
   suite?: ("each" | "for")
 }]
 // ----- vitest/consistent-test-filename -----
 type VitestConsistentTestFilename = []|[{
-  
+
   pattern?: string
-  
+
   allTestPattern?: string
 }]
 // ----- vitest/consistent-test-it -----
 type VitestConsistentTestIt = []|[{
-  
+
   fn?: ("test" | "it")
-  
+
   withinDescribe?: ("test" | "it")
 }]
 // ----- vitest/consistent-vitest-vi -----
 type VitestConsistentVitestVi = []|[{
-  
+
   fn?: ("vi" | "vitest")
 }]
 // ----- vitest/expect-expect -----
 type VitestExpectExpect = []|[{
-  
+
   assertFunctionNames?: string[]
-  
+
   additionalTestBlockFunctions?: string[]
 }]
 // ----- vitest/max-expects -----
 type VitestMaxExpects = []|[{
-  
+
   max?: number
 }]
 // ----- vitest/max-nested-describe -----
 type VitestMaxNestedDescribe = []|[{
-  
+
   max?: number
 }]
 // ----- vitest/no-conditional-expect -----
 type VitestNoConditionalExpect = []|[{
-  
+
   expectAssertions?: boolean
 }]
 // ----- vitest/no-focused-tests -----
 type VitestNoFocusedTests = []|[{
-  
+
   fixable?: boolean
 }]
 // ----- vitest/no-hooks -----
 type VitestNoHooks = []|[{
-  
+
   allow?: ("beforeAll" | "beforeEach" | "afterAll" | "afterEach" | "aroundAll" | "aroundEach")[]
 }]
 // ----- vitest/no-large-snapshots -----
 type VitestNoLargeSnapshots = []|[{
-  
+
   maxSize?: number
-  
+
   inlineMaxSize?: number
-  
+
   allowedSnapshots?: {
     [k: string]: unknown[] | undefined
   }
@@ -26430,76 +26430,76 @@ type VitestNoRestrictedViMethods = []|[{
 }]
 // ----- vitest/no-standalone-expect -----
 type VitestNoStandaloneExpect = []|[{
-  
+
   additionalTestBlockFunctions?: string[]
 }]
 // ----- vitest/prefer-expect-assertions -----
 type VitestPreferExpectAssertions = []|[{
-  
+
   onlyFunctionsWithAsyncKeyword?: boolean
-  
+
   onlyFunctionsWithExpectInLoop?: boolean
-  
+
   onlyFunctionsWithExpectInCallback?: boolean
-  
+
   disallowHasAssertions?: boolean
 }]
 // ----- vitest/prefer-import-in-mock -----
 type VitestPreferImportInMock = []|[{
-  
+
   fixable?: boolean
 }]
 // ----- vitest/prefer-lowercase-title -----
 type VitestPreferLowercaseTitle = []|[{
-  
+
   ignore?: ("describe" | "test" | "it")[]
-  
+
   allowedPrefixes?: string[]
-  
+
   ignoreTopLevelDescribe?: boolean
-  
+
   lowercaseFirstCharacterOnly?: boolean
 }]
 // ----- vitest/prefer-snapshot-hint -----
 type VitestPreferSnapshotHint = []|[("always" | "multi")]
 // ----- vitest/require-hook -----
 type VitestRequireHook = []|[{
-  
+
   allowedFunctionCalls?: string[]
 }]
 // ----- vitest/require-mock-type-parameters -----
 type VitestRequireMockTypeParameters = []|[{
-  
+
   checkImportFunctions?: boolean
 }]
 // ----- vitest/require-top-level-describe -----
 type VitestRequireTopLevelDescribe = []|[{
-  
+
   maxNumberOfTopLevelDescribes?: number
 }]
 // ----- vitest/unbound-method -----
 type VitestUnboundMethod = []|[{
-  
+
   ignoreStatic?: boolean
 }]
 // ----- vitest/valid-expect -----
 type VitestValidExpect = []|[{
-  
+
   alwaysAwait?: boolean
-  
+
   asyncMatchers?: string[]
-  
+
   minArgs?: number
-  
+
   maxArgs?: number
 }]
 // ----- vitest/valid-title -----
 type VitestValidTitle = []|[{
-  
+
   ignoreTypeOfDescribeName?: boolean
-  
+
   allowArguments?: boolean
-  
+
   disallowedWords?: string[]
   [k: string]: (string | [string]|[string, string] | {
     [k: string]: (string | [string]|[string, string]) | undefined
@@ -26583,7 +26583,7 @@ type VueCamelcase = []|[{
   ignoreImports?: boolean
   ignoreGlobals?: boolean
   properties?: ("always" | "never")
-  
+
   allow?: string[]
 }]
 // ----- vue/comma-dangle -----
@@ -26654,7 +26654,7 @@ type VueDotNotation = []|[{
 }]
 // ----- vue/enforce-style-attribute -----
 type VueEnforceStyleAttribute = []|[{
-  
+
   allow?: [("plain" | "scoped" | "module"), ...(("plain" | "scoped" | "module"))[]]
 }]
 // ----- vue/eqeqeq -----
@@ -27246,12 +27246,12 @@ type VueNoBareStringsInTemplate = []|[{
 type VueNoBooleanDefault = []|[("default-false" | "no-default")]
 // ----- vue/no-child-content -----
 type VueNoChildContent = []|[{
-  
+
   additionalDirectives: [string, ...(string)[]]
 }]
 // ----- vue/no-console -----
 type VueNoConsole = []|[{
-  
+
   allow?: [string, ...(string)[]]
 }]
 // ----- vue/no-constant-condition -----
@@ -27264,7 +27264,7 @@ type VueNoDeprecatedModelDefinition = []|[{
 }]
 // ----- vue/no-deprecated-router-link-tag-prop -----
 type VueNoDeprecatedRouterLinkTagProp = []|[{
-  
+
   components?: [string, ...(string)[]]
 }]
 // ----- vue/no-deprecated-slot-attribute -----
@@ -27388,9 +27388,9 @@ type VueNoParsingError = []|[{
 }]
 // ----- vue/no-potential-component-option-typo -----
 type VueNoPotentialComponentOptionTypo = []|[{
-  
+
   presets?: ("all" | "vue" | "vue-router" | "nuxt")[]
-  
+
   custom?: string[]
   threshold?: number
 }]
@@ -27478,7 +27478,7 @@ type VueNoRestrictedVOn = ((string | null) | {
   argument: (string | null)
   element?: string
   message?: string
-  
+
   modifiers?: [("prevent" | "stop" | "capture" | "self" | "once" | "passive"), ...(("prevent" | "stop" | "capture" | "self" | "once" | "passive"))[]]
 })[]
 // ----- vue/no-static-inline-styles -----
@@ -27873,102 +27873,102 @@ type Yoda = []|[("always" | "never")]|[("always" | "never"), {
 }]
 // ----- zod-mini/consistent-import -----
 type ZodMiniConsistentImport = []|[{
-  
+
   syntax?: ("namespace" | "named")
 }]
 // ----- zod-mini/consistent-import-source -----
 type ZodMiniConsistentImportSource = []|[{
-  
+
   sources?: [("zod/mini" | "zod/v4-mini"), ...(("zod/mini" | "zod/v4-mini"))[]]
 }]
 // ----- zod-mini/consistent-object-schema-type -----
 type ZodMiniConsistentObjectSchemaType = []|[{
-  
+
   allow?: [("object" | "looseObject" | "strictObject"), ...(("object" | "looseObject" | "strictObject"))[]]
 }]
 // ----- zod-mini/consistent-schema-output-type-style -----
 type ZodMiniConsistentSchemaOutputTypeStyle = []|[{
-  
+
   style?: ("infer" | "output")
 }]
 // ----- zod-mini/consistent-schema-var-name -----
 type ZodMiniConsistentSchemaVarName = []|[{
-  
+
   before?: string
-  
+
   after?: string
 }]
 // ----- zod-mini/no-conflicting-checks -----
 type ZodMiniNoConflictingChecks = []|[{
-  
+
   checkImpossibleCases?: boolean
-  
+
   checkConfusingCases?: boolean
-  
+
   checkInapplicableChecks?: boolean
 }]
 // ----- zod-mini/schema-error-property-style -----
 type ZodMiniSchemaErrorPropertyStyle = []|[{
-  
+
   selector?: string
-  
+
   example?: string
 }]
 // ----- zod/array-style -----
 type ZodArrayStyle = []|[{
-  
+
   style?: ("function" | "method")
 }]
 // ----- zod/consistent-import -----
 type ZodConsistentImport = []|[{
-  
+
   syntax?: ("namespace" | "named")
 }]
 // ----- zod/consistent-import-source -----
 type ZodConsistentImportSource = []|[{
-  
+
   sources?: [("zod" | "zod/v4" | "zod/v3"), ...(("zod" | "zod/v4" | "zod/v3"))[]]
 }]
 // ----- zod/consistent-object-schema-type -----
 type ZodConsistentObjectSchemaType = []|[{
-  
+
   allow?: [("object" | "looseObject" | "strictObject"), ...(("object" | "looseObject" | "strictObject"))[]]
 }]
 // ----- zod/consistent-schema-output-type-style -----
 type ZodConsistentSchemaOutputTypeStyle = []|[{
-  
+
   style?: ("infer" | "output")
 }]
 // ----- zod/consistent-schema-var-name -----
 type ZodConsistentSchemaVarName = []|[{
-  
+
   before?: string
-  
+
   after?: string
 }]
 // ----- zod/no-conflicting-checks -----
 type ZodNoConflictingChecks = []|[{
-  
+
   checkImpossibleCases?: boolean
-  
+
   checkConfusingCases?: boolean
-  
+
   checkInapplicableChecks?: boolean
 }]
 // ----- zod/no-optional-and-default-together -----
 type ZodNoOptionalAndDefaultTogether = []|[{
-  
+
   preferredMethod?: ("none" | "default" | "optional")
 }]
 // ----- zod/prefer-top-level-string-formats -----
 type ZodPreferTopLevelStringFormats = []|[{
-  
+
   ignore?: ("base64" | "base64url" | "cidrv4" | "cidrv6" | "cuid" | "cuid2" | "date" | "datetime" | "duration" | "e164" | "email" | "emoji" | "guid" | "ipv4" | "ipv6" | "jwt" | "ksuid" | "nanoid" | "time" | "ulid" | "url" | "uuid" | "uuidv4" | "uuidv6" | "uuidv7" | "xid")[]
 }]
 // ----- zod/schema-error-property-style -----
 type ZodSchemaErrorPropertyStyle = []|[{
-  
+
   selector?: string
-  
+
   example?: string
 }]
