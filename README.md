@@ -57,7 +57,7 @@ Legend:
 | [Promises][plugin-promise]                                                                            |     ✅      |
 | [Imports][plugin-import-x]                                                                            |     ✅      |
 | [Unicorn][plugin-unicorn]                                                                             |     ✅      |
-| [Baseline][plugin-baseline]                                                                           |     🔍      |
+| [Baseline][plugin-baseline] ([css/use-baseline], [@html-eslint/use-baseline], [@html-eslint/react/use-baseline])                                                                                        |     🔍      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
@@ -78,9 +78,9 @@ Legend:
    ```json title="package.json"
    {
      "scripts": {
-       "lint:inspect": "npx @eslint/config-inspector",
-       "lint:check": "eslint --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
-       "lint:fix": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
+       "lint": "eslint --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
+       "lint:fix": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
+       "lint:inspect": "npx @eslint/config-inspector"
      }
    }
    ```
@@ -88,8 +88,8 @@ Legend:
 ---
 
 After installation:
+- Use `npm run lint` to lint files without modifying them (useful for CI).
 - Use `npm run lint:fix` to lint and fix files.
-- Use `npm run lint:check` to lint files without fixing them (useful for CI).
 - Use `npm run lint:inspect` to see a visual breakdown of your configuration.
 - See [IDE Support](#ide-support) for editor integration.
 - See [Customization](#customization) for advanced configuration.
@@ -110,7 +110,7 @@ export default defineConfig();
 export default defineConfig({
   autoDetectDeps: false,
   configs: {
-    stylistic: false,
+    storybook: false,
     markdown: {
       language: 'commonmark',
     },
@@ -136,7 +136,7 @@ export default defineConfig(
         typeDefinitionStyle: 'type',
         overrides: {
           rules: {
-            '@typescript-eslint/explicit-module-boundary-types': 'off',
+            '@typescript-eslint/explicit-module-boundary-types': 'error',
           },
         },
       },
@@ -197,7 +197,7 @@ export default defineConfig({
 });
 ```
 
-For editor integration, to avoid inconsistent diagnostics from the [Tailwind CSS IntelliSense VS Code extension][extension-tailwind], add the following settings to _.vscode/settings.json_:
+For editor integration, to reduce noise and avoid inconsistent diagnostics from the [Tailwind CSS IntelliSense VS Code extension][extension-tailwind], add the following settings to _.vscode/settings.json_:
 ```json title=".vscode/settings.json"
 {
   "tailwindCSS.lint.cssConflict": "ignore",
@@ -222,7 +222,7 @@ Markdown linting is powered by [@eslint/markdown][plugin-md].
 By default, the plugin uses GitHub Flavored Markdown (GFM). You can [switch to CommonMark](#customization) if you prefer, but rules related to tables, label references, and other GFM syntax will be disabled because CommonMark doesn't support them.
 
 > [!NOTE]
-> Fenced code blocks inside Markdown files are not linted by @eslint/markdown.
+> Fenced code blocks inside Markdown files are not linted.
 
 ### Node.js
 Some rules depend on the specified Node.js version. Visit the documentation for [version-resolution options and project-specific configurations](https://github.com/eslint-community/eslint-plugin-n#configured-nodejs-version-range).
@@ -243,7 +243,7 @@ You can also add the following to your _.vscode/settings.json_:
   /* Enforce Unix-like line endings (LF). */
   "files.eol": "\n",
 
-  /* Enforce 2 spaces for indentation. */
+  /* Enforce 2 spaces for indentation, even when using the Tab key (`⇥`). */
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.detectIndentation": false,
@@ -274,7 +274,7 @@ You can also add the following to your _.vscode/settings.json_:
     "vue"
   ],
 
-  /* Adjust these based on the features you're using to silently auto-fix the stylistic rules. */
+  /* If the Stylistic integration is enabled, use these settings to silently auto-fix the corresponding rules. */
   "eslint.rules.customizations": [
     { "rule": "*styl*", "severity": "off", "fixable": true },
     { "rule": "*sort*", "severity": "off", "fixable": true },
@@ -301,82 +301,138 @@ This configuration uses [ESLint Stylistic][plugin-stylistic] to format:
 
 HTML and Vue's `<template>` blocks are formatted with [@html-eslint/eslint-plugin][plugin-html] and [eslint-plugin-vue][plugin-vue], respectively.
 
-For file types not handled by ESLint Stylistic—such as CSS, JSON, Yaml, and Markdown—you can use Prettier. To simplify the setup, this package also provides a customizable [shared Prettier configuration][prettier-shared-config].
+For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, and Markdown—you can use [Prettier][prettier] instead. To make setup easier, this package also provides a customizable [shared Prettier configuration][prettier-shared-config] with the same defaults as the Stylistic integration.
 
-1. Install Prettier as a dev dependency:
-   ```shell
-   npm i -D prettier
-   ```
+### Using Prettier Alongside ESLint Stylistic
+<details>
+  <summary>
+    In this setup, Prettier should only target files that ESLint Stylistic doesn't handle.
+  </summary>
 
-2. Create a Prettier config file in the root of your project (_prettier.config.js_):
-   ```js title="prettier.config.js"
-   import prettierConfig from '@shayanthenerd/eslint-config/prettier';
+  <br />
 
-   /** @type {import('prettier').Config} */
-   export default {
-     ...prettierConfig,
-     semi: false, // Override `semi` from the shared config
-   };
-   ```
+  1. Install Prettier as a dev dependency:
+     ```shell
+     npm i -D prettier
+     ```
 
-   Or if you prefer using TypeScript (_prettier.config.ts_):
-   ```ts title="prettier.config.ts"
-   import type { Config } from 'prettier';
+  2. Create a Prettier config file in the root of your project (_prettier.config.js_):
+     ```js title="prettier.config.js"
+     import prettierConfig from '@shayanthenerd/eslint-config/prettier';
 
-   import prettierConfig from '@shayanthenerd/eslint-config/prettier';
+     /** @type {import('prettier').Config} */
+     export default {
+       ...prettierConfig,
+       semi: false, // Override `semi` from the shared config
+     };
+     ```
 
-   export default {
-     ...prettierConfig,
-     semi: true, // Override `semi` from the shared config
-   } satisfies Config;
-   ```
+     Or if you prefer using TypeScript (_prettier.config.ts_):
+     ```ts title="prettier.config.ts"
+     import type { Config } from 'prettier';
 
-### Using ESLint Stylistic with Prettier
-In this setup, Prettier formats everything that ESLint Stylistic doesn't. To prevent overlaps and potential race conditions, Prettier should only target files that ESLint Stylistic doesn't format.
+     import prettierConfig from '@shayanthenerd/eslint-config/prettier';
 
-_package.json_:
-```json title="package.json"
-{
-  "scripts": {
-    "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
-  }
-}
-```
-_.vscode/settings.json_:
-```json title=".vscode/settings.json"
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro][{**/package.json}]": {
-  "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-}
-```
+     export default {
+       ...prettierConfig,
+       semi: false, // Override `semi` from the shared config
+     } satisfies Config;
+     ```
+
+  3. Add the following script to _package.json_:
+     ```json title="package.json"
+     {
+       "scripts": {
+         "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
+       }
+     }
+     ```
+
+  4. Add the following settings to _.vscode/settings.json_:
+     ```json title=".vscode/settings.json"
+     {
+       "editor.formatOnSave": true,
+       "editor.defaultFormatter": "esbenp.prettier-vscode",
+       "[javascript][typescript][javascriptreact][typescriptreact][html][vue][astro][{**/package.json}]": {
+         "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+       },
+     }
+     ```
+</details>
 
 ### Using Prettier Alone
-If you prefer to use Prettier as the only formatter, [disable the stylistic configuration](#customization) and let Prettier handle all formatting. Just make sure to avoid running `lint` and `format` scripts on the same files simultaneously.
+<details>
+  <summary>
+    If you prefer to use Prettier as the only formatter, disable the Stylistic integration and let Prettier handle all formatting.
+  </summary>
 
-_package.json_:
-```json title="package.json"
-{
-  "scripts": {
-    "format": "prettier --write . --cache",
-    "lint": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'"
-  }
-}
-```
-_.vscode/settings.json_:
-```json title=".vscode/settings.json"
-{
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  <br />
 
-  /* On file save, code actions are run before format, so the following doesn't cause conflicts. */
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  }
-}
-```
+  1. Disable the Stylistic rules in _eslint.config.js_:
+     ```js title="eslint.config.js"
+     import { defineConfig } from '@shayanthenerd/eslint-config';
+
+     export default defineConfig({
+       configs: {
+         stylistic: false,
+
+         /**
+           * The following rules remain enabled when the Stylistic integration is disabled.
+           * Disable them manually if you use the corresponding Prettier plugins, such as:
+           * - prettier-plugin-packagejson
+           * - prettier-plugin-sort-imports
+           * - prettier-plugin-tailwindcss
+           */
+         packageJson: {
+           overrides: {
+             rules: {
+               'package-json/order-properties': 'off',
+             },
+           },
+         },
+         perfectionist: {
+           overrides: {
+             rules: {
+               'perfectionist/sort-imports': 'off',
+               'perfectionist/sort-named-imports': 'off',
+             },
+           },
+         },
+         tailwind: {
+           overrides: {
+             rules: {
+               'better-tailwindcss/enforce-consistent-class-order': 'off',
+             },
+           },
+         },
+       },
+     });
+     ```
+
+  2. Add the following settings to _.vscode/settings.json_:
+     ```json title=".vscode/settings.json"
+     {
+       "editor.formatOnSave": true,
+       "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+       /* This runs before the formatter and doesn't cause conflicts. */
+       "editor.codeActionsOnSave": {
+         "source.fixAll.eslint": "explicit"
+       }
+     }
+     ```
+
+  3. Add the following script to _package.json_:
+     ```json title="package.json"
+     {
+       "scripts": {
+         "format": "prettier --write . --cache",
+       }
+     }
+     ```
+     To avoid conflicts, do not run the `format` and the `lint:fix` scripts on the same files simultaneously.
+</details>
+
 
 ## API Reference
 <details>
@@ -718,6 +774,11 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-vue-a11y]: https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility
 [plugin-zod]: https://github.com/marcalexiei/eslint-zod
 
+<!-- ESLint Rules -->
+[@html-eslint/react/use-baseline]: https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options
+[@html-eslint/use-baseline]: https://html-eslint.org/docs/rules/use-baseline#options
+[css/use-baseline]: https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options
+
 <!-- References -->
 [antfu]: https://github.com/antfu
 [contributing]: ./.github/CONTRIBUTING.md
@@ -726,6 +787,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [eslint-config-ts-setup]: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files
 [eslint-nuxt]: https://eslint.nuxt.com
 [local-pkg]: https://github.com/antfu-collective/local-pkg
+[prettier]: https://prettier.io
 [prettier-shared-config]: https://prettier.io/docs/sharing-configurations
 [releases]: https://github.com/ShayanTheNerd/eslint-config/releases
 [semver]: https://semver.org

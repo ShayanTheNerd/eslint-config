@@ -6,7 +6,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getUnicornRules(options: DeepNonNullable<Options>) {
-  const { unicorn } = options.configs;
+  const { unicorn, stylistic } = options.configs;
   const { functionStyle } = isEnabled(unicorn) ? unicorn : defaultOptions.configs.unicorn;
 
   const unicornRules = {
@@ -28,7 +28,7 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/consistent-tuple-labels': 'warn',
     'unicorn/custom-error-definition': 'error',
     'unicorn/dom-node-dataset': 'warn',
-    'unicorn/empty-brace-spaces': 'warn',
+    'unicorn/empty-brace-spaces': isEnabled(stylistic) ? 'warn' : 'off',
     'unicorn/error-message': 'error',
     'unicorn/escape-case': 'warn',
     'unicorn/explicit-length-check': 'warn',

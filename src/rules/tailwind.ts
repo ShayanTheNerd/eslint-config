@@ -47,7 +47,7 @@ function getTailwindRules(options: DeepNonNullable<Options>) {
     'better-tailwindcss/enforce-canonical-classes': 'warn',
     'better-tailwindcss/enforce-consistent-class-order': 'warn',
     'better-tailwindcss/enforce-consistent-line-wrapping': [
-      multilineSort ? 'warn' : 'off',
+      multilineSort && isEnabled(stylistic) ? 'warn' : 'off',
       {
         indent,
         tabWidth: indent,

@@ -25,7 +25,7 @@ type ReactAndHtmlReactRules =
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
-  const { react, unicorn, tailwind, baseline } = options.configs;
+  const { react, unicorn, tailwind, baseline, stylistic } = options.configs;
   const {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
@@ -181,7 +181,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@html-eslint/react/no-ineffective-attrs': 'warn',
     '@html-eslint/react/no-obsolete-attrs': 'error',
     '@html-eslint/react/no-obsolete-tags': 'error',
-    '@html-eslint/react/classname-spacing': ['warn', { callees: commonCallees }],
+    '@html-eslint/react/classname-spacing': isEnabled(stylistic) ? ['warn', { callees: commonCallees }] : 'off',
     '@html-eslint/react/no-duplicate-classname': ['warn', { callees: commonCallees }],
   } satisfies ReactAndHtmlReactRules;
 
