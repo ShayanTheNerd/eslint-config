@@ -1,21 +1,21 @@
-const srcExtensions = '?([mc])[jt]s' as const;
+const sourceExtensions = '?([mc])[jt]s' as const;
 const jsxTsxExtensions = '[jt]sx' as const;
-const vueExtensions = `{vue,${srcExtensions},${jsxTsxExtensions}}` as const;
+const vueSourceExtensions = `{vue,${sourceExtensions},${jsxTsxExtensions}}` as const;
 
 const globs = {
-  src: `**/*.${srcExtensions}`,
+  src: `**/*.${sourceExtensions}`,
   jsxTsx: `**/*.${jsxTsxExtensions}`,
   packageJson: '**/package.json',
   markdown: '**/*.md',
   html: '**/*.html',
   css: '**/*.css',
   astro: '**/*.astro',
-  vue: `**/*.${vueExtensions}`,
-  nuxtAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueExtensions}`,
-  nuxtServerComponents: `**/*.server.${vueExtensions}`,
-  nuxtMiddlewares: `**/middleware?(s)/**/*.${srcExtensions}`,
-  storybook: `**/*.(story|stories).{${srcExtensions},${jsxTsxExtensions}}`,
-  test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${srcExtensions}`,
+  vue: '**/*.vue',
+  nuxtAppErrorLayoutsPages: `**/{{app,error},{layouts,pages}/**/*}.${vueSourceExtensions}`,
+  nuxtServerComponents: `**/*.server.${vueSourceExtensions}`,
+  nuxtMiddlewares: `**/middleware?(s)/**/*.${sourceExtensions}`,
+  storybook: `**/*.(story|stories).{${sourceExtensions},${jsxTsxExtensions}}`,
+  test: `**/{__tests__/*,*.{test,spec,cy,bench?(mark)}.${sourceExtensions}`,
   coverage: '**/coverage/**',
 } as const;
 

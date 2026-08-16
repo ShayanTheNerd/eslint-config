@@ -21,7 +21,7 @@ function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const vueConfig = {
     name: 'shayanthenerd/vue',
-    files: [globs.vue],
+    files: [globs.src, globs.jsxTsx, globs.vue],
     plugins: {
       vue: eslintPluginVue,
       ...(isVueAccessibilityEnabled && { 'vuejs-accessibility': eslintPluginVueAccessibility }),
