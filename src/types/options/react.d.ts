@@ -1,7 +1,7 @@
 import type { ConfigWithOverrides } from '#types/index.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
-type ConfigRules = PluginRules<'react'>;
+type ConfigRules = PluginRules<'@eslint-react'>;
 
 interface ReactOptions extends ConfigWithOverrides<ConfigRules> {
   /**

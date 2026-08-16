@@ -8,8 +8,8 @@ import type { BaselineOptions } from '#types/options/baseline.d.ts';
 import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
-import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
+import type { CoreRules, PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
