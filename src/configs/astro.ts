@@ -5,7 +5,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import * as eslintParserAstro from 'astro-eslint-parser';
-import { parser as eslintParserTypeScript } from 'typescript-eslint';
+import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
 import { getAstroRules } from '#rules/astro.ts';
@@ -29,7 +29,7 @@ function getAstroConfig(options: DeepNonNullable<Options>): Linter.Config {
       },
       parser: eslintParserAstro,
       parserOptions: {
-        parser: eslintParserTypeScript,
+        parser: eslintParserTypescript,
         extraFileExtensions: ['.astro'],
       },
     },

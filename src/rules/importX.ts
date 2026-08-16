@@ -13,11 +13,11 @@ function getImportXRules(options: DeepNonNullable<Options>) {
       typescript,
     },
   } = options;
-  const isTypeScriptEnabled = isEnabled(typescript);
+  const isTypescriptEnabled = isEnabled(typescript);
 
   const importXRules = {
     /* Helpful Warnings */
-    'import-x/export': isTypeScriptEnabled ? 'off' : 'error',
+    'import-x/export': isTypescriptEnabled ? 'off' : 'error',
     'import-x/no-deprecated': 'warn',
     'import-x/no-empty-named-blocks': 'error',
     'import-x/no-extraneous-dependencies': ['error', {
@@ -33,13 +33,13 @@ function getImportXRules(options: DeepNonNullable<Options>) {
     'import-x/no-import-module-exports': 'error',
 
     /* Static Analysis */
-    'import-x/named': isTypeScriptEnabled ? 'off' : 'error',
-    'import-x/default': isTypeScriptEnabled ? 'off' : 'error',
+    'import-x/named': isTypescriptEnabled ? 'off' : 'error',
+    'import-x/default': isTypescriptEnabled ? 'off' : 'error',
     'import-x/namespace': ['error', { allowComputed: true }],
     'import-x/no-absolute-path': 'warn',
     'import-x/no-cycle': ['error', { maxDepth: 1, ignoreExternal: true }],
     'import-x/no-self-import': 'error',
-    'import-x/no-unresolved': isTypeScriptEnabled ? 'off' : 'error',
+    'import-x/no-unresolved': isTypescriptEnabled ? 'off' : 'error',
     'import-x/no-useless-path-segments': 'error',
 
     /* Style Guide */

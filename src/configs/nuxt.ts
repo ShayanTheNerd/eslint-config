@@ -7,7 +7,7 @@ import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginNuxt from '@nuxt/eslint-plugin';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginNuxtLinkChecker from 'nuxt-link-checker/eslint';
-import { parser as eslintParserTypeScript } from 'typescript-eslint';
+import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
 import { getNuxtRules } from '#rules/nuxt.ts';
@@ -62,7 +62,7 @@ function getNuxtConfigs(options: DeepNonNullable<Options>): Linter.Config[] {
     languageOptions: {
       parser: baseVueConfig?.languageOptions?.parser,
       parserOptions: {
-        parser: eslintParserTypeScript,
+        parser: eslintParserTypescript,
         extraFileExtensions: ['.vue'],
         vueFeatures: {
           filter: false,

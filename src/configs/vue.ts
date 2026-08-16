@@ -4,7 +4,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import eslintPluginVue from 'eslint-plugin-vue';
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import { parser as eslintParserTypeScript } from 'typescript-eslint';
+import { parser as eslintParserTypescript } from 'typescript-eslint';
 import eslintPluginVueAccessibility from 'eslint-plugin-vuejs-accessibility';
 
 import { globs } from '#helpers/globs.ts';
@@ -31,7 +31,7 @@ function getVueConfig(options: DeepNonNullable<Options>): Linter.Config {
       globals: eslintPluginVueAccessibility.configs['flat/recommended'][0].languageOptions.globals,
       parser: baseVueConfig?.languageOptions?.parser,
       parserOptions: {
-        parser: eslintParserTypeScript,
+        parser: eslintParserTypescript,
         extraFileExtensions: ['.vue'],
         vueFeatures: {
           filter: false,

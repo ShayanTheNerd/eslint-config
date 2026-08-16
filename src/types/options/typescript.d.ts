@@ -3,7 +3,7 @@ import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
 
 type ConfigRules = PluginRules<'@typescript-eslint'>;
 
-interface TypeScriptOptions extends ConfigWithOverrides<ConfigRules> {
+interface TypescriptOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Globs of files to allow running with the default project compiler options despite not being matched by the project service (_tsconfig.json_).
    *
@@ -47,4 +47,4 @@ interface TypeScriptOptions extends ConfigWithOverrides<ConfigRules> {
   typeDefinitionStyle?: RuleOptions<'@typescript-eslint/consistent-type-definitions'>,
 }
 
-export type { TypeScriptOptions };
+export type { TypescriptOptions };

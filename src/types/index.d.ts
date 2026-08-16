@@ -8,7 +8,7 @@ import type { BaselineOptions } from '#types/options/baseline.d.ts';
 import type { MarkdownOptions } from '#types/options/markdown.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
-import type { TypeScriptOptions } from '#types/options/typescript.d.ts';
+import type { TypescriptOptions } from '#types/options/typescript.d.ts';
 import type { PluginRules, RuleOptions, JavascriptRules } from '#types/eslintRules.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
@@ -419,7 +419,7 @@ interface Options {
      *
      * @default false // `true` if "typescript" is detected in the dependencies when `autoDetectDeps` is enabled
      */
-    typescript?: boolean | TypeScriptOptions,
+    typescript?: boolean | TypescriptOptions,
 
     /**
      * Use [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn) to enforce general best practices and catch common mistakes.

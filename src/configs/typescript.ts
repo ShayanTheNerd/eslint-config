@@ -3,16 +3,16 @@ import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import { parser as eslintParserTypeScript, plugin as eslintPluginTypeScript } from 'typescript-eslint';
+import { plugin as eslintPluginTypecript, parser as eslintParserTypescript } from 'typescript-eslint';
 import path from 'node:path';
 
 import { globs } from '#helpers/globs.ts';
 import { isTruthy } from '#utils/isTruthy.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { getTypeScriptRules } from '#rules/typescript.ts';
+import { getTypescriptRules } from '#rules/typescript.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
+function getTypescriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { tsConfig, configs: { vue, astro, typescript } } = options;
   const { allowedDefaultProjects } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
   const { overrides } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
@@ -26,10 +26,10 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
       isEnabled(astro) ? globs.astro : '',
     ].filter(isTruthy),
     plugins: {
-      '@typescript-eslint': eslintPluginTypeScript,
+      '@typescript-eslint': eslintPluginTypecript,
     },
     languageOptions: {
-      parser: eslintParserTypeScript,
+      parser: eslintParserTypescript,
       parserOptions: {
         warnOnUnsupportedTypeScriptVersion: false,
         tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
@@ -39,10 +39,10 @@ function getTypeScriptConfig(options: DeepNonNullable<Options>): Linter.Config {
         },
       },
     },
-    rules: getTypeScriptRules(options),
+    rules: getTypescriptRules(options),
   } satisfies Linter.Config;
 
   return mergeConfigs(typescriptConfig, overrides);
 }
 
-export { getTypeScriptConfig };
+export { getTypescriptConfig };

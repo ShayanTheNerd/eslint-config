@@ -66,9 +66,9 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.test.storybook ??= autoDetectedPackages.storybook;
   options.configs.test.playwright ??= autoDetectedPackages.playwright;
 
-  const isTypeScriptEnabled = isEnabled(options.configs.typescript);
+  const isTypescriptEnabled = isEnabled(options.configs.typescript);
 
-  if (isTypeScriptEnabled) {
+  if (isTypescriptEnabled) {
     const defaultTsConfigRootDir = options.packageDir ?? defaultOptions.packageDir;
     const defaultTsConfigFilename = 'tsconfig.json' as const;
 
@@ -83,7 +83,7 @@ function enableDetectedConfigs(options: Options): Options {
     }
   }
 
-  if (isTypeScriptEnabled && options.configs.vue) {
+  if (isTypescriptEnabled && options.configs.vue) {
     options.configs.vue = options.configs.vue === true ? {} : options.configs.vue;
     options.configs.vue.blockLang = { script: 'ts' };
   }

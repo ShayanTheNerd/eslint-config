@@ -6,7 +6,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
-function getTypeScriptRules(options: DeepNonNullable<Options>) {
+function getTypescriptRules(options: DeepNonNullable<Options>) {
   const { typescript } = options.configs;
   const {
     removeUnusedImports,
@@ -164,4 +164,4 @@ function getTypeScriptRules(options: DeepNonNullable<Options>) {
   return typescriptRules;
 }
 
-export { getTypeScriptRules };
+export { getTypescriptRules };

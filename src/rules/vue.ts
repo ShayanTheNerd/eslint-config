@@ -9,11 +9,11 @@ import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
 import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
 
 type StylisticRules = PluginRules<'@stylistic'>;
-type TypeScriptRules = PluginRules<'@typescript-eslint'>;
+type TypescriptRules = PluginRules<'@typescript-eslint'>;
 type VueRules =
   & PluginRules<'vue'>
   & Pick<StylisticRules, '@stylistic/max-len'>
-  & Pick<TypeScriptRules, '@typescript-eslint/no-useless-default-assignment'>;
+  & Pick<TypescriptRules, '@typescript-eslint/no-useless-default-assignment'>;
 
 function getVueRules(options: DeepNonNullable<Options>) {
   const { typescript, stylistic, vue, nuxt } = options.configs;

@@ -4,7 +4,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 
 import globals from 'globals';
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import { parser as eslintParserTypeScript } from 'typescript-eslint';
+import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
 import { isTruthy } from '#utils/isTruthy.ts';
@@ -51,7 +51,7 @@ function getJavascriptConfig(options: DeepNonNullable<Options>): Linter.Config {
       isEnabled(astro) ? globs.astro : '',
     ].filter(isTruthy),
     languageOptions: {
-      parser: eslintParserTypeScript,
+      parser: eslintParserTypescript,
       parserOptions: {
         ecmaVersion: 'latest',
         ecmaFeatures: {

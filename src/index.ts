@@ -26,7 +26,7 @@ import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
 import { getJavascriptConfig } from '#configs/javascript.ts';
 import { getPlaywrightConfig } from '#configs/playwright.ts';
-import { getTypeScriptConfig } from '#configs/typescript.ts';
+import { getTypescriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
@@ -136,7 +136,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     globalIgnores(ignorePatterns, 'shayanthenerd/ignores'),
 
     getJavascriptConfig(mergedOptions),
-    isEnabled(typescript) && getTypeScriptConfig(mergedOptions),
+    isEnabled(typescript) && getTypescriptConfig(mergedOptions),
     isEnabled(unicorn) && getUnicornConfig(mergedOptions),
     isEnabled(promise) && getPromiseConfig(mergedOptions),
     isEnabled(importX) && getImportXConfig(mergedOptions),
