@@ -142,6 +142,12 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
       'warn',
       {
         selector: 'variable',
+        modifiers: ['destructured'],
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+        leadingUnderscore: 'allow',
+      },
+      {
+        selector: 'variable',
         format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
       },
       {
