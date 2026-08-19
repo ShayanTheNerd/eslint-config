@@ -120,7 +120,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-console': ['warn', {
       allow: ['info', 'warn', 'error', 'table', 'group', 'groupEnd', 'groupCollapsed'],
     }],
-    'no-empty': 'warn',
+    'no-empty': ['warn', { allowEmptyCatch: true }],
     'no-empty-function': ['error', {
       allow: [
         'overrideMethods',
