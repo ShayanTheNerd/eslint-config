@@ -164,7 +164,7 @@ interface VueOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Enforce a consistent style for destructuring props.
    *
-   * @default 'always'
+   * @default 'only-when-assigned'
    *
    * @see [vue/define-props-destructuring: `destructure` option](https://eslint.vuejs.org/rules/define-props-destructuring#options)
    */

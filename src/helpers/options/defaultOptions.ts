@@ -207,7 +207,7 @@ const defaultOptions = {
         'docs',
       ],
       componentNameCaseInTemplate: 'PascalCase',
-      destructureProps: 'always',
+      destructureProps: 'only-when-assigned',
       ignoredUndefinedComponents: [],
       macrosOrder: [
         'definePage',
