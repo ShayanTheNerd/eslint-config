@@ -61,7 +61,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-self-compare': 'warn',
     'no-template-curly-in-string': 'error',
     'no-unassigned-vars': 'error',
-    'no-unmodified-loop-condition': 'error',
+    'no-unmodified-loop-condition': ['warn', { checkConditionalExpressions: true }],
     'no-unreachable-loop': 'warn',
     'no-unsafe-negation': isTypescriptEnabled ? 'off' : ['error', { enforceForOrderingRelations: true }],
     'no-unsafe-optional-chaining': ['error', { disallowArithmeticOperators: true }],
