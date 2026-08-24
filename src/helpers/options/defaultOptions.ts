@@ -225,7 +225,7 @@ const defaultOptions = {
       restrictedStaticAttributes: [],
       templateMaxLineLength: 130,
       vForDelimiterStyle: 'in',
-      // vOnHandlerStyle: ['method', 'inline'], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
+      vOnHandlerStyle: 'inline',
       overrides: {},
     },
     zod: {

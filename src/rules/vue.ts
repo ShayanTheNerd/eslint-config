@@ -30,6 +30,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     blocksOrder,
     macrosOrder,
     attributesOrder,
+    vOnHandlerStyle,
     destructureProps,
     vForDelimiterStyle,
     attributeHyphenation,
@@ -435,7 +436,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/require-typed-ref': isScriptLangTS ? 'error' : 'off',
     'vue/slot-name-casing': 'warn',
     'vue/v-for-delimiter-style': ['warn', vForDelimiterStyle],
-    // 'vue/v-on-handler-style': ['warn', vOnHandlerStyle], // https://github.com/vuejs/eslint-plugin-vue/issues/2571
+    'vue/v-on-handler-style': ['warn', vOnHandlerStyle],
   } satisfies VueRules;
 
   if (isEnabled(stylistic)) {

@@ -262,15 +262,16 @@ interface VueOptions extends ConfigWithOverrides<ConfigRules> {
    */
   vForDelimiterStyle?: RuleOptions<'vue/v-for-delimiter-style'>,
 
-  /* https://github.com/vuejs/eslint-plugin-vue/issues/2571 */
-  // /**
-  //  * Enforce a consistent handler style in `v-on` directives.
-  //  *
-  //  * @default ['method', 'inline-function']
-  //  *
-  //  * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
-  //  */
-  // vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
+  /**
+   * Enforce a consistent handler style in `v-on` directives.
+   *
+   * **Important:** The `'inline'` option works reliably, but this rule has [known issues](https://github.com/vuejs/eslint-plugin-vue/issues/2571) and other options may not work as expected.
+   *
+   * @default 'inline'
+   *
+   * @see [vue/v-on-handler-style](https://eslint.vuejs.org/rules/v-on-handler-style)
+   */
+  vOnHandlerStyle?: RuleOptions<'vue/v-on-handler-style'>,
 }
 
 export type { VueOptions };

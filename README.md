@@ -705,6 +705,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
         })[],
         templateMaxLineLength?: number,
         vForDelimiterStyle?: 'in' | 'of',
+        vOnHandlerStyle?: 'inline' | 'inline-function' | ['method', 'inline' | 'inline-function'],
         overrides?: Overrides,
       },
       zod?: boolean | {
