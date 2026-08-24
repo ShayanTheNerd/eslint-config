@@ -262,7 +262,6 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/require-module-specifiers': 'error',
     'unicorn/require-number-to-fixed-digits-argument': 'warn',
     'unicorn/require-passive-events': 'warn',
-    'unicorn/require-post-message-target-origin': 'error',
     'unicorn/require-proxy-trap-boolean-return': 'error',
     'unicorn/switch-case-braces': 'warn',
     'unicorn/switch-case-break-position': 'error',
