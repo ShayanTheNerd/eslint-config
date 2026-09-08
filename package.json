@@ -61,7 +61,9 @@
     "pre-commit": "./node_modules/.bin/nano-staged"
   },
   "nano-staged": {
-    "**/*.{json,yaml}!pnpm-lock.yaml": "pnpm format",
+    "**/*.json": "pnpm format",
+    "**/*.ts": "pnpm lint",
+    "package.json": "pnpm lint",
     "pnpm-lock.yaml": [
       "pnpm generate:types",
       "pnpm generate:docs",
@@ -71,7 +73,7 @@
       "pnpm generate:docs",
       "git add README.md"
     ],
-    "{**/*.ts,package.json}": "pnpm lint"
+    "{.github/workflows/**/*.yaml,pnpm-workspace.yaml}": "pnpm format"
   },
   "dependencies": {
     "@eslint-react/eslint-plugin": "5.19.0",
