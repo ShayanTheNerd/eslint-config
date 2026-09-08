@@ -1,12 +1,12 @@
-import type { Options } from '#types/index.d.ts';
 import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import { isTruthy } from '#utils/isTruthy.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
-import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
 import { getRestrictedVueElements } from '#helpers/vue/getRestrictedVueElements.ts';
+import { getRestrictedVueInputs } from '#helpers/vue/getRestrictedVueInputs.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 type StylisticRules = PluginRules<'@stylistic'>;
 type TypescriptRules = PluginRules<'@typescript-eslint'>;
@@ -397,6 +397,7 @@ function getVueRules(options: DeepNonNullable<Options>) {
     ],
     'vue/no-root-v-if': 'warn',
     'vue/no-setup-props-reactivity-loss': 'error',
+    'vue/no-shadow-native-events': 'error',
     'vue/no-static-inline-styles': ['warn', { allowBinding: true }],
     'vue/no-this-in-before-route-enter': 'error',
     'vue/no-undef-components': ['error', {
