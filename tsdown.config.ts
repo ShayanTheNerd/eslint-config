@@ -7,7 +7,7 @@ export default defineConfig({
     neverBundle: true,
   },
   exports: {
-    customExports(packageExports) {
+    customExports(packageExports): Record<string, unknown> {
       packageExports['./prettier'] = './dist/prettier.config.mjs';
       delete packageExports['./prettier.config'];
       return packageExports;

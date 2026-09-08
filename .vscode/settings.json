@@ -34,8 +34,6 @@
     { "rule": "package-json/order-properties", "severity": "off", "fixable": true }
   ],
 
-  "npm.packageManager": "pnpm",
-
   "files.associations": {
     ".gitmessage": "git-commit"
   },
