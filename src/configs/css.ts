@@ -1,16 +1,16 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import eslintPluginCss from '@eslint/css';
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
+import eslintPluginCss from '@eslint/css';
 import { tailwind3, tailwind4 } from 'tailwind-csstree';
 
 import { globs } from '#helpers/globs.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getCssRules } from '#rules/css.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getCssConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { css, unicorn, tailwind } = options.configs;

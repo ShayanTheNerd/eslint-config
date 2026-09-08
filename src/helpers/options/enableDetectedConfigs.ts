@@ -1,8 +1,8 @@
 import type { Options } from '#types/index.d.ts';
 
-import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isPackageDetected, logDetectedPackages } from '#helpers/isPackageDetected.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 function enableDetectedConfigs(options: Options): Options {
   const explicitlyDisabledConfigs = {

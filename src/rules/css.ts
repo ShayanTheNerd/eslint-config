@@ -1,9 +1,9 @@
-import type { Options } from '#types/index.d.ts';
-import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
+import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 type UnicornRules = Pick<
   PluginRules<'unicorn'>,

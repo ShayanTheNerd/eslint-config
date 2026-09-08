@@ -1,18 +1,18 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
-import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { PluginRules, JavascriptRules } from '#types/eslintRules.d.ts';
+import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import eslintPluginVue from 'eslint-plugin-vue';
-import eslintPluginNuxt from '@nuxt/eslint-plugin';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginNuxtLinkChecker from 'nuxt-link-checker/eslint';
+import eslintPluginNuxt from '@nuxt/eslint-plugin';
 import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getNuxtRules } from '#rules/nuxt.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 const baseVueConfig = eslintPluginVue.configs['flat/base'].find((config) => config.languageOptions?.parser);
 

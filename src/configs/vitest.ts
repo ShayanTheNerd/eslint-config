@@ -1,14 +1,14 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import eslintPluginVitest from '@vitest/eslint-plugin';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import eslintPluginVitest from '@vitest/eslint-plugin';
 
 import { globs } from '#helpers/globs.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
-import { getVitestRules } from '#rules/vitest.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { getVitestRules } from '#rules/vitest.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 function getVitestConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vitest } = options.configs.test;

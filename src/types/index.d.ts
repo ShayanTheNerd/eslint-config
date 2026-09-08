@@ -1,15 +1,15 @@
 import type { Linter } from 'eslint';
-import type { VueOptions } from '#types/options/vue.d.ts';
-import type { ZodOptions } from '#types/options/zod.d.ts';
-import type { NuxtOptions } from '#types/options/nuxt.d.ts';
-import type { TestOptions } from '#types/options/test.d.ts';
-import type { ReactOptions } from '#types/options/react.d.ts';
+import type { PluginRules, RuleOptions, JavascriptRules } from '#types/eslintRules.d.ts';
 import type { BaselineOptions } from '#types/options/baseline.d.ts';
 import type { MarkdownOptions } from '#types/options/markdown.d.ts';
-import type { TailwindOptions } from '#types/options/tailwind.d.ts';
+import type { NuxtOptions } from '#types/options/nuxt.d.ts';
+import type { ReactOptions } from '#types/options/react.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
+import type { TailwindOptions } from '#types/options/tailwind.d.ts';
+import type { TestOptions } from '#types/options/test.d.ts';
 import type { TypescriptOptions } from '#types/options/typescript.d.ts';
-import type { PluginRules, RuleOptions, JavascriptRules } from '#types/eslintRules.d.ts';
+import type { VueOptions } from '#types/options/vue.d.ts';
+import type { ZodOptions } from '#types/options/zod.d.ts';
 
 type ConfigOverrides = Pick<Linter.Config, 'name' | 'files' | 'ignores' | 'plugins' | 'settings' | 'languageOptions'>;
 
@@ -374,6 +374,8 @@ interface Options {
     perfectionist?: boolean | (ConfigWithOverrides<PluginRules<'perfectionist'>> & {
       /**
        * The type of sorting.
+       *
+       * It doesn't apply to [perfectionist/sort-imports](https://perfectionist.dev/rules/sort-imports).
        *
        * @default 'line-length'
        *

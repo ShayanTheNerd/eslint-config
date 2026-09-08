@@ -1,14 +1,14 @@
 import type { ESLint, Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginStorybook from 'eslint-plugin-storybook';
 
 import { globs } from '#helpers/globs.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
-import { getStorybookRules } from '#rules/storybook.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { getStorybookRules } from '#rules/storybook.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 function getStorybookConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { storybook } = options.configs.test;

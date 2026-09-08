@@ -1,15 +1,15 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import globals from 'globals';
 import { mergeConfigs } from 'eslint-flat-config-utils';
+import globals from 'globals';
 import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
-import { isTruthy } from '#utils/isTruthy.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
 import { getJavaScriptRules } from '#rules/javascript.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 function getJavascriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   const {

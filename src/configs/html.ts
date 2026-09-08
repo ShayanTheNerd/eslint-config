@@ -1,15 +1,15 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginHtml from '@html-eslint/eslint-plugin';
 
 import { globs } from '#helpers/globs.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getHtmlRules } from '#rules/html.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getHtmlConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { html, unicorn } = options.configs;

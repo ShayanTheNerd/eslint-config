@@ -1,6 +1,6 @@
-import type { Options } from '#types/index.d.ts';
 import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 function getVitestRules(options: DeepNonNullable<Options>) {
   const { testFunction, maxNestedDescribe } = options.configs.test;

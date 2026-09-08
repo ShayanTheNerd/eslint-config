@@ -1,5 +1,5 @@
-import generateESLintTypes from 'eslint-typegen';
 import eslintPluginZodMini from 'eslint-plugin-zod-mini';
+import generateESLintTypes from 'eslint-typegen';
 import { styleText } from 'node:util';
 
 import referenceConfig from './configs/eslint.config.reference.ts';

@@ -1,7 +1,7 @@
 import type { Linter } from 'eslint';
 import type { Selector } from 'eslint-plugin-better-tailwindcss/types';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginTailwind from 'eslint-plugin-better-tailwindcss';
@@ -10,10 +10,10 @@ import { MatcherType, SelectorKind } from 'eslint-plugin-better-tailwindcss/type
 import path from 'node:path';
 
 import { globs } from '#helpers/globs.ts';
-import { isTruthy } from '#utils/isTruthy.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
-import { getTailwindRules } from '#rules/tailwind.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { getTailwindRules } from '#rules/tailwind.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 const astroAttributes = {
   kind: SelectorKind.Attribute,

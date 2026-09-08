@@ -1,16 +1,16 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import eslintPluginAstro from 'eslint-plugin-astro';
-import { mergeConfigs } from 'eslint-flat-config-utils';
 import * as eslintParserAstro from 'astro-eslint-parser';
+import { mergeConfigs } from 'eslint-flat-config-utils';
+import eslintPluginAstro from 'eslint-plugin-astro';
 import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getAstroRules } from '#rules/astro.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 function getAstroConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { astro } = options.configs;

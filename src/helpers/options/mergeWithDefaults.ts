@@ -1,11 +1,11 @@
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import { createDefu } from 'defu';
 
-import { isEmptyString } from '#utils/isEmptyString.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { enableDetectedConfigs } from '#helpers/options/enableDetectedConfigs.ts';
+import { isEmptyString } from '#utils/isEmptyString.ts';
 
 const mergeOptions = createDefu((object, key, value): boolean => {
   const uniqueArrayOptions = ['allowedRelativeFontUnits', 'blocksOrder', 'macrosOrder', 'attributesOrder'];

@@ -1,10 +1,10 @@
 import type { SortImportsOptions, SortUnionTypesOptions, SortArrayIncludesOptions } from 'eslint-plugin-perfectionist';
-import type { Options } from '#types/index.d.ts';
-import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
+import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 const literalCustomGroups = [
   { groupName: 'template-literal', selector: 'literal', elementNamePattern: '^`.*`$' },
@@ -104,7 +104,7 @@ const sortImportsGroups = [
 
   ['tsconfig-path', 'subpath'],
   { newlinesBetween: 0 },
-  ['internal', 'index', 'parent', 'sibling'],
+  ['internal', 'parent', 'index', 'sibling'],
 
   ['import', 'unknown'],
 ] satisfies RuleOptions<'perfectionist/sort-imports'>['groups'];
@@ -115,11 +115,9 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
     tsConfig,
     configs: {
       stylistic,
-      perfectionist,
     },
   } = options;
   const { maxLineLength } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
-  const { sortType } = isEnabled(perfectionist) ? perfectionist : defaultOptions.configs.perfectionist;
 
   const perfectionistRules = {
     'perfectionist/sort-maps': 'warn',
@@ -132,17 +130,13 @@ function getPerfectionistRules(options: DeepNonNullable<Options>) {
     'perfectionist/sort-imports': ['warn', {
       environment: env === 'bun' ? env : 'node',
       tsconfig: tsConfig || { rootDir: '' },
-      sortSideEffects: true,
-      fallbackSort: {
-        order: 'asc',
-        type: 'natural',
-      },
-      partitionByComment: true,
-      specialCharacters: 'trim',
-      type: sortType,
       maxLineLength,
-      customGroups: sortImportsCustomGroups,
+      sortBy: 'path',
+      type: 'subgroup-order',
+      sortSideEffects: true,
+      partitionByComment: true,
       groups: sortImportsGroups,
+      customGroups: sortImportsCustomGroups,
     }],
   } satisfies PluginRules<'perfectionist'>;
 

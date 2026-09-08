@@ -1,9 +1,9 @@
-import type { Options } from '#types/index.d.ts';
 import type { PluginRules } from '#types/eslintRules.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import { isEnabled } from '#utils/isEnabled.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
 
 function getTypescriptRules(options: DeepNonNullable<Options>) {
   const { typescript } = options.configs;
@@ -52,7 +52,9 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-require-imports': 'error',
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
-    '@typescript-eslint/no-unnecessary-condition': 'error',
+    '@typescript-eslint/no-unnecessary-condition': ['error', {
+      allowConstantLoopConditions: 'only-allowed-literals',
+    }],
     '@typescript-eslint/no-unnecessary-template-expression': 'error',
     '@typescript-eslint/no-unnecessary-type-arguments': 'error',
     '@typescript-eslint/no-unnecessary-type-assertion': 'error',

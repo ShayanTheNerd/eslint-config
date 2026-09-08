@@ -1,15 +1,15 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 
 import { globs } from '#helpers/globs.ts';
-import { isTruthy } from '#utils/isTruthy.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
-import { getUnicornRules } from '#rules/unicorn.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
+import { getUnicornRules } from '#rules/unicorn.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 function getUnicornConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { vue, astro, unicorn } = options.configs;

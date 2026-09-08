@@ -1,6 +1,6 @@
 import { Project } from 'ts-morph';
-import path from 'node:path';
 import fs from 'node:fs/promises';
+import path from 'node:path';
 import { styleText } from 'node:util';
 
 import { expandType } from './helpers/expandType.ts';

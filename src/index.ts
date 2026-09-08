@@ -3,34 +3,34 @@ import type { Options } from '#types/index.d.ts';
 
 import { globalIgnores, defineConfig as defineESLintConfig } from 'eslint/config';
 
-import { isTruthy } from '#utils/isTruthy.ts';
+import { getAstroConfig } from '#configs/astro.ts';
+import { getBaselineConfig } from '#configs/baseline.ts';
 import { getCssConfig } from '#configs/css.ts';
-import { getVueConfig } from '#configs/vue.ts';
-import { getZodConfig } from '#configs/zod.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
+import { getCypressConfig } from '#configs/cypress.ts';
 import { getHtmlConfig } from '#configs/html.ts';
+import { getImportXConfig } from '#configs/importX.ts';
+import { getJavascriptConfig } from '#configs/javascript.ts';
+import { getMarkdownConfig } from '#configs/markdown.ts';
 import { getNextConfig } from '#configs/next.ts';
 import { getNodeConfig } from '#configs/node.ts';
 import { getNuxtConfigs } from '#configs/nuxt.ts';
-import { getAstroConfig } from '#configs/astro.ts';
-import { getReactConfig } from '#configs/react.ts';
-import { getVitestConfig } from '#configs/vitest.ts';
-import { getCypressConfig } from '#configs/cypress.ts';
-import { getImportXConfig } from '#configs/importX.ts';
-import { getPromiseConfig } from '#configs/promise.ts';
-import { getUnicornConfig } from '#configs/unicorn.ts';
-import { getBaselineConfig } from '#configs/baseline.ts';
-import { getMarkdownConfig } from '#configs/markdown.ts';
-import { getTailwindConfig } from '#configs/tailwind.ts';
-import { getStorybookConfig } from '#configs/storybook.ts';
-import { getStylisticConfig } from '#configs/stylistic.ts';
-import { getJavascriptConfig } from '#configs/javascript.ts';
-import { getPlaywrightConfig } from '#configs/playwright.ts';
-import { getTypescriptConfig } from '#configs/typescript.ts';
 import { getPackageJsonConfig } from '#configs/packageJson.ts';
 import { getPerfectionistConfig } from '#configs/perfectionist.ts';
+import { getPlaywrightConfig } from '#configs/playwright.ts';
+import { getPromiseConfig } from '#configs/promise.ts';
+import { getReactConfig } from '#configs/react.ts';
+import { getStorybookConfig } from '#configs/storybook.ts';
+import { getStylisticConfig } from '#configs/stylistic.ts';
+import { getTailwindConfig } from '#configs/tailwind.ts';
+import { getTypescriptConfig } from '#configs/typescript.ts';
+import { getUnicornConfig } from '#configs/unicorn.ts';
+import { getVitestConfig } from '#configs/vitest.ts';
+import { getVueConfig } from '#configs/vue.ts';
+import { getZodConfig } from '#configs/zod.ts';
 import { getIgnorePatterns } from '#helpers/ignores/getIgnorePatterns.ts';
 import { mergeWithDefaults } from '#helpers/options/mergeWithDefaults.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 /** Valid argument combinations for `defineConfig`. */
 type DefineConfigArguments =

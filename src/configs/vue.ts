@@ -1,16 +1,16 @@
 import type { Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
-import eslintPluginVue from 'eslint-plugin-vue';
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import { parser as eslintParserTypescript } from 'typescript-eslint';
+import eslintPluginVue from 'eslint-plugin-vue';
 import eslintPluginVueAccessibility from 'eslint-plugin-vuejs-accessibility';
+import { parser as eslintParserTypescript } from 'typescript-eslint';
 
 import { globs } from '#helpers/globs.ts';
+import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { getVueRules } from '#rules/vue.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 
 const baseVueConfig = eslintPluginVue.configs['flat/base'].find((config) => config.languageOptions?.parser);
 

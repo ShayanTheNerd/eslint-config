@@ -1,13 +1,13 @@
 import type { ESLint, Linter } from 'eslint';
-import type { Options } from '#types/index.d.ts';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
+import type { Options } from '#types/index.d.ts';
 
 import eslintPluginBaselineJs from 'eslint-plugin-baseline-js';
 
 import { globs } from '#helpers/globs.ts';
-import { isTruthy } from '#utils/isTruthy.ts';
-import { isEnabled } from '#utils/isEnabled.ts';
 import { getBaselineRules } from '#rules/baseline.ts';
+import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 function getBaselineConfig(options: DeepNonNullable<Options>) {
   const { vue, astro } = options.configs;

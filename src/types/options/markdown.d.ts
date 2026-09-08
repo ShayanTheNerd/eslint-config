@@ -1,5 +1,5 @@
-import type { ConfigWithOverrides } from '#types/index.d.ts';
 import type { PluginRules, RuleOptions } from '#types/eslintRules.d.ts';
+import type { ConfigWithOverrides } from '#types/index.d.ts';
 
 type ConfigRules = PluginRules<'markdown'>;
 
