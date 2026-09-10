@@ -43,7 +43,7 @@ function getJavascriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   } = options;
 
   const baseConfig = {
-    name: 'shayanthenerd/base',
+    name: 'shayanthenerd/javascript',
     files: [
       globs.src,
       globs.jsxTsx,
