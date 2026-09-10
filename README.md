@@ -62,7 +62,7 @@ Legend:
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
    ```shell
-   npm i -D @shayanthenerd/eslint-config eslint
+   pnpm i -D @shayanthenerd/eslint-config eslint
    ```
 
 2. Create an ESLint configuration file (_eslint.config.js_) at the root of your project:
@@ -88,9 +88,9 @@ Legend:
 ---
 
 After installation:
-- Use `npm run lint` to lint files without modifying them (useful for CI).
-- Use `npm run lint:fix` to lint and fix files.
-- Use `npm run lint:inspect` to see a visual breakdown of your configuration.
+- Use `pnpm run lint` to lint files without modifying them (useful for CI).
+- Use `pnpm run lint:fix` to lint and fix files.
+- Use `pnpm run lint:inspect` to see a visual breakdown of your configuration.
 - See [IDE Support](#ide-support) for editor integration.
 - See [Customization](#customization) for advanced configuration.
 - See [Formatting](#formatting) for formatting options and Prettier integration.
@@ -313,7 +313,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
 
   1. Install Prettier as a dev dependency:
      ```shell
-     npm i -D prettier
+     pnpm i -D prettier
      ```
 
   2. Create a Prettier config file in the root of your project (_prettier.config.js_):
