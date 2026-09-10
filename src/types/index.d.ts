@@ -6,6 +6,7 @@ import type { NuxtOptions } from '#types/options/nuxt.d.ts';
 import type { ReactOptions } from '#types/options/react.d.ts';
 import type { StylisticOptions } from '#types/options/stylistic.d.ts';
 import type { TailwindOptions } from '#types/options/tailwind.d.ts';
+import type { TanstackOptions } from '#types/options/tanstack.d.ts';
 import type { TestOptions } from '#types/options/test.d.ts';
 import type { TypescriptOptions } from '#types/options/typescript.d.ts';
 import type { VueOptions } from '#types/options/vue.d.ts';
@@ -411,6 +412,13 @@ interface Options {
      * @default false
      */
     tailwind?: false | TailwindOptions,
+
+    /**
+     * Use [@tanstack/eslint-plugin-start](https://tanstack.com/start/latest/docs/eslint/eslint-plugin-start), [@tanstack/eslint-plugin-query](https://tanstack.com/query/latest/docs/eslint/eslint-plugin-query), and [@tanstack/eslint-plugin-router](https://tanstack.com/router/latest/docs/eslint/eslint-plugin-router) to enforce best practices and avoid common mistakes when using TanStack Start, TanStack Router, and TanStack Query.
+     *
+     * @default false // `true` if either of "@tanstack/react-start", "@tanstack/react-query", or "@tanstack/react-router" are detected in the dependencies when `autoDetectDeps` is enabled
+     */
+    tanstack?: boolean | TanstackOptions,
 
     /**
      * Configuration options for the testing tools.

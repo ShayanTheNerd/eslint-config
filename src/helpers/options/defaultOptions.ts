@@ -134,6 +134,12 @@ const defaultOptions = {
       multilineSort: true,
       overrides: {},
     },
+    tanstack: {
+      query: false,
+      router: false,
+      start: false,
+      overrides: {},
+    },
     test: {
       maxNestedDescribe: 1,
       testFunction: 'test',

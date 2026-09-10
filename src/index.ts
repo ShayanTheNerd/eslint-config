@@ -22,6 +22,7 @@ import { getReactConfig } from '#configs/react.ts';
 import { getStorybookConfig } from '#configs/storybook.ts';
 import { getStylisticConfig } from '#configs/stylistic.ts';
 import { getTailwindConfig } from '#configs/tailwind.ts';
+import { getTanstackConfig } from '#configs/tanstack.ts';
 import { getTypescriptConfig } from '#configs/typescript.ts';
 import { getUnicornConfig } from '#configs/unicorn.ts';
 import { getVitestConfig } from '#configs/vitest.ts';
@@ -73,6 +74,10 @@ type DefineConfigArguments =
  *   ],
  * );
  */
+/* eslint-disable @typescript-eslint/unified-signatures -- Function overloads improve the diagnosed TypeScript errors. */
+function defineConfig(options: Options): Linter.Config[];
+function defineConfig(configs: Linter.Config[]): Linter.Config[];
+function defineConfig(options: Options, configs: Linter.Config[]): Linter.Config[];
 function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
   let options: Options = {};
   let userConfigs: Linter.Config[] = [];
@@ -112,6 +117,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
       baseline,
       markdown,
       tailwind,
+      tanstack,
       stylistic,
       typescript,
       packageJson,
@@ -154,6 +160,7 @@ function defineConfig(...args: DefineConfigArguments): Linter.Config[] {
     isEnabled(astro) && getAstroConfig(mergedOptions),
     isEnabled(react) && getReactConfig(mergedOptions),
     isEnabled(next) && getNextConfig(mergedOptions),
+    isEnabled(tanstack) && getTanstackConfig(mergedOptions),
     isEnabled(vue) && getVueConfig(mergedOptions),
     ...(isEnabled(nuxt) ? getNuxtConfigs(mergedOptions) : []),
 

@@ -24,6 +24,11 @@ const config: Linter.Config[] = defineConfig({
     tailwind: {
       entryPoint: '',
     },
+    tanstack: {
+      start: true,
+      query: true,
+      router: true,
+    },
     test: {
       cypress: true,
       playwright: true,

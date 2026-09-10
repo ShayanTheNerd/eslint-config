@@ -43,6 +43,7 @@ Legend:
 | [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y])                                          |     🔍      |
 | [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y], [@html-eslint/react][plugin-html-react]) |     🔍      |
 | [Next][plugin-next]                                                                                   |     🔍      |
+| [TanStack Start][plugin-tanstack-start], [TanStack Query][plugin-tanstack-query], [TanStack Router][plugin-tanstack-router]                                                                              |     🔍      |
 | [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                       |     🔍      |
 | [Tailwind][plugin-tailwind]                                                                           |     ⚙️      |
 | [Zod & Zod Mini][plugin-zod]                                                                          |     🔍      |
@@ -619,6 +620,12 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
         multilineSort?: boolean,
         overrides?: Overrides,
       },
+      tanstack?: boolean | {
+        query?: boolean,
+        router?: boolean,
+        start?: boolean,
+        overrides?: Overrides,
+      },
       test?: {
         maxNestedDescribe?: number,
         testFunction?: 'it' | 'test',
@@ -768,6 +775,9 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-storybook]: https://storybook.js.org/docs/configure/integration/eslint-plugin
 [plugin-stylistic]: https://eslint.style
 [plugin-tailwind]: https://github.com/schoero/eslint-plugin-better-tailwindcss
+[plugin-tanstack-query]: https://tanstack.com/query/latest/docs/eslint/eslint-plugin-query
+[plugin-tanstack-router]: https://tanstack.com/router/latest/docs/eslint/eslint-plugin-router
+[plugin-tanstack-start]: https://tanstack.com/start/latest/docs/eslint/eslint-plugin-start
 [plugin-ts]: https://typescript-eslint.io
 [plugin-unicorn]: https://github.com/sindresorhus/eslint-plugin-unicorn
 [plugin-vitest]: https://github.com/vitest-dev/eslint-plugin-vitest

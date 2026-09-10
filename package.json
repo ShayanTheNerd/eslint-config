@@ -62,7 +62,7 @@
   },
   "nano-staged": {
     "**/*.json": "pnpm format",
-    "**/*.ts": "pnpm lint",
+    "**/*.ts": "pnpm lint --no-warn-ignored",
     "package.json": "pnpm lint",
     "pnpm-lock.yaml": [
       "pnpm generate:types",
@@ -84,6 +84,9 @@
     "@next/eslint-plugin-next": "16.3.4",
     "@nuxt/eslint-plugin": "1.17.0",
     "@stylistic/eslint-plugin": "5.10.0",
+    "@tanstack/eslint-plugin-query": "5.102.8",
+    "@tanstack/eslint-plugin-router": "1.162.0",
+    "@tanstack/eslint-plugin-start": "0.1.0",
     "@vitest/eslint-plugin": "1.6.27",
     "astro-eslint-parser": "3.1.0",
     "defu": "6.1.7",
@@ -92,7 +95,7 @@
     "eslint-plugin-astro": "3.1.0",
     "eslint-plugin-baseline-js": "0.7.1",
     "eslint-plugin-better-tailwindcss": "4.7.0",
-    "eslint-plugin-cypress": "7.0.1",
+    "eslint-plugin-cypress": "7.0.2",
     "eslint-plugin-import-x": "4.17.1",
     "eslint-plugin-jsx-a11y": "6.10.2",
     "eslint-plugin-n": "18.3.0",

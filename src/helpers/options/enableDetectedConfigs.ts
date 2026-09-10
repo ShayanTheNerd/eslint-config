@@ -28,6 +28,9 @@ function enableDetectedConfigs(options: Options): Options {
     astro: isPackageDetected('astro', options),
     react: isPackageDetected('react', options),
     next: isPackageDetected('next', options),
+    tanstackStart: isPackageDetected('@tanstack/react-start', options),
+    tanstackQuery: isPackageDetected('@tanstack/react-query', options),
+    tanstackRouter: isPackageDetected('@tanstack/react-router', options),
     vue: isPackageDetected('vue', options),
     nuxt: isPackageDetected('nuxt', options),
     nuxtUI: isPackageDetected('@nuxt/ui', options),
@@ -61,6 +64,9 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.nuxt ??= autoDetectedPackages.nuxt;
   options.configs.react ??= autoDetectedPackages.react;
   options.configs.next ??= autoDetectedPackages.next;
+  options.configs.tanstack ??= (
+    autoDetectedPackages.tanstackStart || autoDetectedPackages.tanstackQuery || autoDetectedPackages.tanstackRouter
+  );
   options.configs.test.vitest ??= autoDetectedPackages.vitest;
   options.configs.test.cypress ??= autoDetectedPackages.cypress;
   options.configs.test.storybook ??= autoDetectedPackages.storybook;
@@ -86,6 +92,16 @@ function enableDetectedConfigs(options: Options): Options {
   if (isTypescriptEnabled && options.configs.vue) {
     options.configs.vue = options.configs.vue === true ? {} : options.configs.vue;
     options.configs.vue.blockLang = { script: 'ts' };
+  }
+
+  if (options.configs.tanstack) {
+    if (options.configs.tanstack === true) {
+      options.configs.tanstack = {};
+    }
+
+    options.configs.tanstack.start ??= autoDetectedPackages.tanstackStart;
+    options.configs.tanstack.query ??= autoDetectedPackages.tanstackQuery;
+    options.configs.tanstack.router ??= autoDetectedPackages.tanstackRouter;
   }
 
   if (options.configs.nuxt) {

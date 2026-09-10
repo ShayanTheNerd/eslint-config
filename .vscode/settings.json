@@ -79,6 +79,7 @@
     { "extensions": ["storybook.ts"], "icon": "storybook", "filename": true },
     { "extensions": ["stylistic.ts", "stylistic.d.ts"], "icon": "prettier", "filename": true },
     { "extensions": ["tailwind.d.ts"], "icon": "tailwind", "filename": true },
+    { "extensions": ["tanstack.ts", "tanstack.d.ts"], "icon": "greenkeeper", "filename": true },
     { "extensions": ["test.d.ts"], "icon": "testts", "filename": true },
     { "extensions": ["unicorn.ts"], "icon": "codemagic", "filename": true },
     { "extensions": ["vitest.ts"], "icon": "vitest", "filename": true },
