@@ -66,13 +66,9 @@
     "package.json": "pnpm lint",
     "pnpm-lock.yaml": [
       "pnpm generate:types",
-      "pnpm generate:docs",
-      "git add src/types/eslint-schema.d.ts README.md"
+      "pnpm generate:docs"
     ],
-    "src/types/**/*.d.ts": [
-      "pnpm generate:docs",
-      "git add README.md"
-    ],
+    "src/types/**/*.d.ts": "pnpm generate:docs",
     "{.github/workflows/**/*.yaml,pnpm-workspace.yaml}": "pnpm format"
   },
   "dependencies": {
