@@ -3,7 +3,7 @@ import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options } from '#types/index.d.ts';
 
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintPluginJsxA11yX from 'eslint-plugin-jsx-a11y-x';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginReact from '@eslint-react/eslint-plugin';
 import eslintPluginHtmlReact from '@html-eslint/eslint-plugin-react';
@@ -24,7 +24,7 @@ function getReactConfig(options: DeepNonNullable<Options>): Linter.Config {
       '@eslint-react': eslintPluginReact,
       '@html-eslint/react': eslintPluginHtmlReact,
       ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
-      ...(isEnabled(accessibility) && { 'jsx-a11y': eslintPluginJsxA11y }),
+      ...(isEnabled(accessibility) && { 'jsx-a11y-x': eslintPluginJsxA11yX }),
     },
     rules: getReactRules(options),
   } satisfies Linter.Config;

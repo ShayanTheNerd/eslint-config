@@ -28,37 +28,37 @@ Legend:
 - ⚙️ — **Opt-in** (requires manual configuration)
 - 🔍 — [**Automatically detected**](#automatic-dependency-detection) (based on project dependencies)
 
-| Category                                                                                              | Activation |
-| :---------------------------------------------------------------------------------------------------- | :--------: |
-| **Languages**                                                                                         |            |
-| [JavaScript][eslint]                                                                                  |     ✅      |
-| [TypeScript][plugin-ts]                                                                               |     🔍      |
-| [Markdown][plugin-md]                                                                                 |     ✅      |
-| [HTML][plugin-html]                                                                                   |     ⚙️      |
-| [CSS][plugin-css]                                                                                     |     ⚙️      |
-| **Formatting**                                                                                        |            |
-| [Stylistic][plugin-stylistic]                                                                         |     ✅      |
-| [Perfectionist][plugin-perfectionist]                                                                 |     ✅      |
-| **Frameworks & Libraries**                                                                            |            |
-| [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y])                                          |     🔍      |
-| [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y], [@html-eslint/react][plugin-html-react]) |     🔍      |
-| [Next][plugin-next]                                                                                   |     🔍      |
-| [TanStack Start][plugin-tanstack-start], [TanStack Query][plugin-tanstack-query], [TanStack Router][plugin-tanstack-router]                                                                              |     🔍      |
-| [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                       |     🔍      |
-| [Tailwind][plugin-tailwind]                                                                           |     ⚙️      |
-| [Zod & Zod Mini][plugin-zod]                                                                          |     🔍      |
-| **Testing Tools**                                                                                     |            |
-| [Storybook][plugin-storybook]                                                                         |     🔍      |
-| [Vitest][plugin-vitest]                                                                               |     🔍      |
-| [Cypress][plugin-cypress]                                                                             |     🔍      |
-| [Playwright][plugin-playwright]                                                                       |     🔍      |
-| **Miscellaneous**                                                                                     |            |
-| [_package.json_][plugin-package-json]                                                                 |     ✅      |
-| [Node][plugin-n]                                                                                      |     ✅      |
-| [Promises][plugin-promise]                                                                            |     ✅      |
-| [Imports][plugin-import-x]                                                                            |     ✅      |
-| [Unicorn][plugin-unicorn]                                                                             |     ✅      |
-| [Baseline][plugin-baseline] ([css/use-baseline], [@html-eslint/use-baseline], [@html-eslint/react/use-baseline])                                                                                        |     🔍      |
+| Category                                                                                                | Activation |
+| :------------------------------------------------------------------------------------------------------ | :--------: |
+| **Languages**                                                                                           |            |
+| [JavaScript][eslint]                                                                                    |     ✅      |
+| [TypeScript][plugin-ts]                                                                                 |     🔍      |
+| [Markdown][plugin-md]                                                                                   |     ✅      |
+| [HTML][plugin-html]                                                                                     |     ⚙️      |
+| [CSS][plugin-css]                                                                                       |     ⚙️      |
+| **Formatting**                                                                                          |            |
+| [Stylistic][plugin-stylistic]                                                                           |     ✅      |
+| [Perfectionist][plugin-perfectionist]                                                                   |     ✅      |
+| **Frameworks & Libraries**                                                                              |            |
+| [Astro][plugin-astro] ([jsx-accessibility][plugin-jsx-a11y-x])                                          |     🔍      |
+| [React][plugin-react] ([jsx-accessibility][plugin-jsx-a11y-x], [@html-eslint/react][plugin-html-react]) |     🔍      |
+| [Next][plugin-next]                                                                                     |     🔍      |
+| [TanStack Start][plugin-tanstack-start], [TanStack Query][plugin-tanstack-query], [TanStack Router][plugin-tanstack-router]                                                                                |     🔍      |
+| [Vue & Nuxt][plugin-vue] ([vue-accessibility][plugin-vue-a11y])                                         |     🔍      |
+| [Tailwind][plugin-tailwind]                                                                             |     ⚙️      |
+| [Zod & Zod Mini][plugin-zod]                                                                            |     🔍      |
+| **Testing Tools**                                                                                       |            |
+| [Storybook][plugin-storybook]                                                                           |     🔍      |
+| [Vitest][plugin-vitest]                                                                                 |     🔍      |
+| [Cypress][plugin-cypress]                                                                               |     🔍      |
+| [Playwright][plugin-playwright]                                                                         |     🔍      |
+| **Miscellaneous**                                                                                       |            |
+| [_package.json_][plugin-package-json]                                                                   |     ✅      |
+| [Node][plugin-n]                                                                                        |     ✅      |
+| [Promises][plugin-promise]                                                                              |     ✅      |
+| [Imports][plugin-import-x]                                                                              |     ✅      |
+| [Unicorn][plugin-unicorn]                                                                               |     ✅      |
+| [Baseline][plugin-baseline] ([css/use-baseline], [@html-eslint/use-baseline], [@html-eslint/react/use-baseline])                                                                                          |     🔍      |
 
 ## Installation and Configuration
 1. Install the package and ESLint as dev dependencies:
@@ -763,7 +763,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-html]: https://html-eslint.org
 [plugin-html-react]: https://html-eslint.org/docs/react/getting-started
 [plugin-import-x]: https://github.com/un-ts/eslint-plugin-import-x
-[plugin-jsx-a11y]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y
+[plugin-jsx-a11y-x]: https://github.com/jsx-eslint/eslint-plugin-jsx-a11y-x
 [plugin-md]: https://github.com/eslint/markdown
 [plugin-n]: https://github.com/eslint-community/eslint-plugin-n
 [plugin-next]: https://github.com/vercel/next.js/tree/HEAD/packages/eslint-plugin-next

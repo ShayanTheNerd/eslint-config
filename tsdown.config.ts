@@ -21,6 +21,6 @@ export default defineConfig({
   report: false,
   publint: true,
   unused: {
-    ignore: ['eslint-plugin-jsx-a11y', 'eslint-import-resolver-typescript'],
+    ignore: ['eslint-import-resolver-typescript'],
   },
 });
