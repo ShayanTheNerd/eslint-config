@@ -45,6 +45,7 @@ function getZodRules(options: DeepNonNullable<Options>) {
     'zod/prefer-top-level-string-formats': 'warn',
     'zod/prefer-trim-before-string-length-checks': 'error',
     'zod/prefer-tuple-over-array-length': 'warn',
+    'zod/prefer-validate': 'warn',
     'zod/require-brand-type-parameter': 'error',
     'zod/require-error-message': 'warn',
   } satisfies PluginRules<'zod'>;
@@ -70,6 +71,7 @@ function getZodRules(options: DeepNonNullable<Options>) {
     'zod-mini/prefer-meta': 'warn',
     'zod-mini/prefer-nullish': 'warn',
     'zod-mini/prefer-tuple-over-array-length': 'warn',
+    'zod-mini/prefer-validate': 'warn',
     'zod-mini/require-brand-type-parameter': 'error',
     'zod-mini/require-error-message': 'warn',
   } satisfies PluginRules<'zod-mini'>;
