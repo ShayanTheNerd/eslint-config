@@ -187,6 +187,10 @@ function getReactRules(options: DeepNonNullable<Options>) {
 
   if (isEnabled(tailwind)) {
     (reactAndHtmlReactRules as ReactAndHtmlReactRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+
+    if (tailwind.multilineSort) {
+      reactAndHtmlReactRules['@html-eslint/react/classname-spacing'] = 'off';
+    }
   }
 
   if (isEnabled(unicorn)) {
