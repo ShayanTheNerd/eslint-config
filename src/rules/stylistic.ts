@@ -58,7 +58,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
         single: maxAttributesPerLine,
       },
     }],
-    '@stylistic/jsx-one-expression-per-line': 'warn',
+    '@stylistic/jsx-one-expression-per-line': ['warn', { allow: 'single-line' }],
     '@stylistic/exp-jsx-props-style': ['warn', {
       singleLine: {
         maxItems: maxAttributesPerLine,
