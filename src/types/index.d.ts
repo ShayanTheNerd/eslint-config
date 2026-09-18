@@ -299,11 +299,30 @@ interface Options {
     },
 
     /**
-     * Use [@eslint/css](https://github.com/eslint/css) to enforce CSS best practices and identify mistakes.
+     * Use [@eslint/css](https://github.com/eslint/css) and [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)'s CSS rules to enforce CSS best practices and identify mistakes.
      *
      * @default false
      */
-    css?: boolean | ConfigWithOverrides<PluginRules<'css'>>,
+    css?: boolean | ConfigWithOverrides<PluginRules<'css'>> & {
+      /**
+       * Non-standard, vendor-prefixed, and/or framework-specific pseudo-selectors.
+       *
+       * New items extend the defaults instead of overriding them.
+       *
+       * @default
+       * [
+       *   '::-ms-reveal',
+       *   ':-webkit-autofill',
+       *   '::-webkit-inner-spin-button',
+       *   '::-webkit-search-cancel-button',
+       *   '::-webkit-search-results-button',
+       *   ':deep', ':global', ':slotted' // If Vue integration is enabled
+       * ]
+       *
+       * @see [unicorn/no-unknown-pseudo-selectors: `allow` option](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unknown-pseudo-selectors.md#allow)
+       */
+      allowedUnknownPseudoSelectors?: RuleOptions<'unicorn/no-unknown-pseudo-selectors'>['allow'],
+    },
 
     /**
      * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.

@@ -4,10 +4,22 @@ import type { Options } from '#types/index.d.ts';
 
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
+import { isTruthy } from '#utils/isTruthy.ts';
 
 type UnicornRules = Pick<
   PluginRules<'unicorn'>,
-  'unicorn/prefer-explicit-viewport-units' | 'unicorn/no-shorthand-property-overrides'
+  | 'unicorn/no-invalid-media-features'
+  | 'unicorn/no-deprecated-css-features'
+  | 'unicorn/no-duplicate-css-selectors'
+  | 'unicorn/no-unknown-css-annotations'
+  | 'unicorn/no-unknown-pseudo-selectors'
+  | 'unicorn/no-duplicate-font-family-names'
+  | 'unicorn/prefer-explicit-viewport-units'
+  | 'unicorn/no-redundant-nested-style-rules'
+  | 'unicorn/no-shorthand-property-overrides'
+  | 'unicorn/no-unscoped-css-nesting-selector'
+  | 'unicorn/no-nesting-with-mixed-specificity'
+  | 'unicorn/prefer-media-feature-range-syntax'
 >;
 type CssRules = UnicornRules & PluginRules<'css'>;
 
@@ -57,7 +69,10 @@ const allowedPhysicalProperties = [
 ] satisfies RuleOptions<'css/prefer-logical-properties'>['allowProperties'];
 
 function getCssRules(options: DeepNonNullable<Options>) {
-  const { unicorn, tailwind, baseline } = options.configs;
+  const { css, vue, unicorn, tailwind, baseline } = options.configs;
+  const {
+    allowedUnknownPseudoSelectors: userAllowedUnknownPseudoSelectors,
+  } = isEnabled(css) ? css : defaultOptions.configs.css;
   const {
     allowedAtRules: userAllowedAtRules,
     allowedFunctions: userAllowedFunctions,
@@ -104,9 +119,35 @@ function getCssRules(options: DeepNonNullable<Options>) {
     ] : 'off',
   } satisfies CssRules;
 
+  const unicornRules = {
+    'unicorn/no-deprecated-css-features': 'error',
+    'unicorn/no-duplicate-css-selectors': 'warn',
+    'unicorn/no-duplicate-font-family-names': 'error',
+    'unicorn/no-invalid-media-features': 'error',
+    'unicorn/no-nesting-with-mixed-specificity': 'warn',
+    'unicorn/no-redundant-nested-style-rules': 'warn',
+    'unicorn/no-shorthand-property-overrides': 'warn',
+    'unicorn/no-unknown-css-annotations': 'error',
+    'unicorn/no-unknown-pseudo-selectors': ['error', {
+      allow: [
+        '::-ms-reveal',
+        ':-webkit-autofill',
+        '::-webkit-inner-spin-button',
+        '::-webkit-search-cancel-button',
+        '::-webkit-search-results-button',
+        ...(isEnabled(vue) ? [':deep', ':global', ':slotted'] : []),
+        ...userAllowedUnknownPseudoSelectors,
+      ].filter(isTruthy),
+    }],
+    'unicorn/no-unscoped-css-nesting-selector': (
+      isEnabled(tailwind) ? ['error', { scopingRootAtRules: ['utility', 'custom-variant'] }] : 'error'
+    ),
+    'unicorn/prefer-explicit-viewport-units': 'warn',
+    'unicorn/prefer-media-feature-range-syntax': 'warn',
+  } satisfies UnicornRules;
+
   if (isEnabled(unicorn)) {
-    (cssRules as CssRules)['unicorn/no-shorthand-property-overrides'] = 'warn';
-    (cssRules as CssRules)['unicorn/prefer-explicit-viewport-units'] = 'warn';
+    Object.assign(cssRules, unicornRules);
   }
 
   return cssRules;

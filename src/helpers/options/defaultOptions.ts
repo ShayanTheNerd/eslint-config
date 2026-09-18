@@ -58,6 +58,7 @@ const defaultOptions = {
       overrides: {},
     },
     css: {
+      allowedUnknownPseudoSelectors: [],
       overrides: {},
     },
     html: {

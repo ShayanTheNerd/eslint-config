@@ -27,7 +27,6 @@ Legend:
 - ✅ — **Enabled** by default
 - 🔍 — [**Automatically detected**](#automatic-dependency-detection)
 - ⚙️ — **Opt-in** (requires manual configuration)
-- 🔍 — [**Automatically detected**](#automatic-dependency-detection) (based on project dependencies)
 
 | Category                                                                                                | Activation |
 | :------------------------------------------------------------------------------------------------------ | :--------: |
@@ -543,6 +542,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
         overrides?: Overrides,
       },
       css?: boolean | {
+        allowedUnknownPseudoSelectors?: string[],
         overrides?: Overrides,
       },
       html?: boolean | {
