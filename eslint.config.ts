@@ -7,6 +7,11 @@ export default defineConfig(
     project: {
       ignores: ['./src/types/eslint-schema.d.ts'],
     },
+    configs: {
+      typescript: {
+        allowedDefaultProjects: ['{eslint,prettier}.config.?([mc])ts'],
+      },
+    },
   },
   [
     {

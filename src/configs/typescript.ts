@@ -14,7 +14,9 @@ import { isTruthy } from '#utils/isTruthy.ts';
 
 function getTypescriptConfig(options: DeepNonNullable<Options>): Linter.Config {
   const { tsConfig, configs: { vue, astro, typescript } } = options;
-  const { allowedDefaultProjects } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
+  const {
+    allowedDefaultProjects: userAllowedDefaultProjects,
+  } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
   const { overrides } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
 
   const typescriptConfig = {
@@ -35,7 +37,7 @@ function getTypescriptConfig(options: DeepNonNullable<Options>): Linter.Config {
         tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
         projectService: {
           defaultProject: tsConfig ? tsConfig.filename : undefined,
-          allowDefaultProject: ['{prettier,eslint}.config.?([mc])ts', ...allowedDefaultProjects],
+          allowDefaultProject: userAllowedDefaultProjects,
         },
       },
     },

@@ -7,11 +7,11 @@ interface TypescriptOptions extends ConfigWithOverrides<ConfigRules> {
   /**
    * Globs of files to allow running with the default project compiler options despite not being matched by the project service (_tsconfig.json_).
    *
-   * The matched files may not also be included in their nearest _tsconfig.json_ file.
+   * The matched files cannot also be included in their nearest _tsconfig.json_ file.
    *
-   * New items extend the defaults instead of overriding them.
+   * @default []
    *
-   * @default ['{prettier,eslint}.config.?([mc])ts']
+   * @example ['{eslint,prettier}.config.?([mc])ts']
    *
    * @see [@typescript-eslint: `allowDefaultProject` option](https://typescript-eslint.io/packages/parser#allowdefaultproject)
    */
