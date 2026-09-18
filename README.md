@@ -25,6 +25,7 @@ ESLint configuration for enforcing best practices and maintaining a consistent c
 ## Plugin Support
 Legend:
 - ✅ — **Enabled** by default
+- 🔍 — [**Automatically detected**](#automatic-dependency-detection)
 - ⚙️ — **Opt-in** (requires manual configuration)
 - 🔍 — [**Automatically detected**](#automatic-dependency-detection) (based on project dependencies)
 
@@ -213,6 +214,11 @@ For editor integration, to reduce noise and avoid inconsistent diagnostics from 
   ]
 }
 ```
+
+### Vue
+[ESLint Stylistic][plugin-stylistic] and [eslint-plugin-vue][plugin-vue] don't format `<style>` blocks inside Vue SFCs. On the other hand, [Prettier][prettier] cannot be limited to just `<style>` blocks, and formats the whole file, including `<script>` and `<template>` blocks, which could conflict with ESLint. To work around this, you may use Tailwind, format styles manually, keep styles in separate `.css` files, or use Prettier and resolve any resulting conflicts.
+
+Read more about the formatting options and Prettier integration in the [Formatting](#formatting) section.
 
 ### Nuxt
 The required Nuxt configurations and rules are already included, so there's no need to install or configure the [@nuxt/eslint][eslint-nuxt] module.

@@ -260,14 +260,14 @@ interface Options {
    */
   configs?: {
     /**
-     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) and [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y) to enforce Astro best practices and accessibility guidelines.
+     * Use [eslint-plugin-astro](https://ota-meshi.github.io/eslint-plugin-astro) and [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x) to enforce Astro best practices and accessibility guidelines.
      *
      * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
      */
     astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
 
     /**
-     * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of baseline features.
+     * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of browser baseline features.
      *
      * @default true // `false` if `env` is set to a value other than `'browser'`
      */
@@ -393,7 +393,7 @@ interface Options {
     promise?: boolean | ConfigWithOverrides<PluginRules<'promise'>>,
 
     /**
-     * Use [@eslint-react/eslint-plugin](https://eslint-react.xyz), [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y), and [@html-eslint/eslint-plugin-react](https://html-eslint.org/docs/react/getting-started) to enforce React best practices and accessibility guidelines.
+     * Use [@eslint-react/eslint-plugin](https://eslint-react.xyz), [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x), and [@html-eslint/eslint-plugin-react](https://html-eslint.org/docs/react/getting-started) to enforce React best practices and accessibility guidelines.
      *
      * @default false // `true` if "react" is detected in the dependencies when `autoDetectDeps` is enabled
      */
