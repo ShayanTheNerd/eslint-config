@@ -34,12 +34,23 @@
     { "rule": "package-json/order-properties", "severity": "off", "fixable": true }
   ],
 
-  "files.associations": {
-    ".gitmessage": "git-commit"
-  },
+  "editor.rulers": [120],
+
   "[git-commit][scminput]": {
     "editor.rulers": [50, 72],
     "editor.wordWrap": "off"
+  },
+  "files.associations": {
+    ".gitmessage": "git-commit"
+  },
+  "files.watcherExclude": {
+    "src/types/eslint-schema.d.ts": true
+  },
+  "search.exclude": {
+    "src/types/eslint-schema.d.ts": true
+  },
+  "files.readonlyInclude": {
+    "src/types/eslint-schema.d.ts": true
   },
 
   "workbench.editor.customLabels.patterns": {
