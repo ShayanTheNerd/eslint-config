@@ -24,6 +24,15 @@ const astroAttributes = {
   ],
 } satisfies Selector;
 
+const reactAttributes = {
+  kind: SelectorKind.Attribute,
+  name: '^(?:className|.*Class)$',
+  match: [
+    { type: MatcherType.String },
+    { type: MatcherType.ObjectKey },
+  ],
+} satisfies Selector;
+
 const vueAttributes = {
   kind: SelectorKind.Attribute,
   name: '^(?:v-bind:)?(exactActiveClass|activeClass|inactiveClass|active-class|inactive-class)$',
@@ -75,6 +84,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
       nuxt,
       html,
       astro,
+      react,
       tailwind,
     },
   } = options;
@@ -85,6 +95,7 @@ function getTailwindConfig(options: DeepNonNullable<Options>): Linter.Config {
   const selectors = [
     ...getDefaultSelectors(),
     isEnabled(astro) ? astroAttributes : undefined,
+    isEnabled(react) ? reactAttributes : undefined,
     isEnabled(vue) ? vueAttributes : undefined,
     isNuxtUiEnabled ? nuxtUiAttributes : undefined,
     isNuxtUiEnabled ? nuxtUiAppConfigUiFields : undefined,
