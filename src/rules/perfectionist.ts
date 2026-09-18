@@ -69,15 +69,34 @@ const sortArrayIncludesOptions = {
   ],
 } satisfies SortArrayIncludesOptions[number];
 
+const componentPattern = ['\\.([jt]sx|astro|vue)$'];
 const sortImportsCustomGroups = [
   {
+    groupName: 'component-subpath',
+    elementNamePattern: componentPattern,
+    modifiers: ['value'],
+    selector: 'subpath',
+  },
+  {
+    groupName: 'component-tsconfig-path',
+    elementNamePattern: componentPattern,
+    modifiers: ['value'],
+    selector: 'tsconfig-path',
+  },
+  {
+    groupName: 'component-internal',
+    elementNamePattern: componentPattern,
+    modifiers: ['value'],
+    selector: 'internal',
+  },
+  {
     groupName: 'component',
-    elementNamePattern: ['\\.(vue|[jt]sx)$'],
+    elementNamePattern: componentPattern,
     modifiers: ['value'],
   },
   {
     groupName: 'image',
-    elementNamePattern: ['\\.(ico|svg|gif|png|jpe?g|webp|avif|heic)$'],
+    elementNamePattern: ['\\.(apng|avif|bmp|gif|heic|heif|ico|jfif|jpe?g|jxl|pjpeg|png|svgz?|tiff?|webp)$'],
   },
 ] satisfies SortImportsOptions[number]['customGroups'];
 
@@ -88,7 +107,7 @@ const sortImportsGroups = [
 
   'image',
 
-  'component',
+  ['component-subpath', 'component-tsconfig-path', 'component-internal', 'component'],
 
   'type-external',
   { newlinesBetween: 0 },
@@ -102,9 +121,9 @@ const sortImportsGroups = [
   { newlinesBetween: 0 },
   'builtin',
 
-  ['tsconfig-path', 'subpath'],
+  ['subpath', 'tsconfig-path', 'internal'],
   { newlinesBetween: 0 },
-  ['internal', 'parent', 'index', 'sibling'],
+  ['parent', 'index', 'sibling'],
 
   ['import', 'unknown'],
 ] satisfies RuleOptions<'perfectionist/sort-imports'>['groups'];
