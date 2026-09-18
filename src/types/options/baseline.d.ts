@@ -26,6 +26,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
     /**
      * At-rules that are allowed to be used regardless of the baseline.
      *
+     * New items extend the defaults instead of overriding them.
+     *
      * @default []
      *
      * @see [css/use-baseline: `allowedAtRules` option](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#allowatrules)
@@ -34,6 +36,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
 
     /**
      * Functions that are allowed to be used regardless of the baseline.
+     *
+     * New items extend the defaults instead of overriding them.
      *
      * @default []
      *
@@ -44,6 +48,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
     /**
      * Media conditions inside `@media` that are allowed to be used regardless of the baseline.
      *
+     * New items extend the defaults instead of overriding them.
+     *
      * @default []
      *
      * @see [css/use-baseline: `allowedMediaConditions` option](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#allowmediaconditions)
@@ -52,6 +58,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
 
     /**
      * Properties that are allowed to be used regardless of the baseline.
+     *
+     * New items extend the defaults instead of overriding them.
      *
      * @default []
      *
@@ -62,7 +70,12 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
     /**
      * Properties that are allowed to be used regardless of the baseline, mapped to their allowed identifier values.
      *
-     * @default {}
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default
+     * {
+     *   "background-clip": ['text'],
+     * }
      *
      * @see [css/use-baseline: `allowedPropertyValues` option](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#allowpropertyvalues)
      */
@@ -71,7 +84,9 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
     /**
      * Selectors that are allowed to be used regardless of the baseline.
      *
-     * @default []
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default ['selection']
      *
      * @see [css/use-baseline: `allowedSelectors` option](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#allowselectors)
      */
@@ -79,6 +94,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
 
     /**
      * Units that are allowed to be used regardless of the baseline.
+     *
+     * New items extend the defaults instead of overriding them.
      *
      * @default []
      *
@@ -96,7 +113,9 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
     /**
      * Feature IDs or regex patterns for features that are allowed to be used regardless of the baseline.
      *
-     * @default []
+     * New items extend the defaults instead of overriding them.
+     *
+     * @default ['async-clipboard']
      *
      * @see [baseline-js/use-baseline: `ignoreFeatures` option](https://github.com/3ru/eslint-plugin-baseline-js#options-rule)
      */
@@ -104,6 +123,8 @@ interface BaselineOptions extends ConfigWithOverrides<ConfigRules> {
 
     /**
      * ESTree `node.type`s or regex patterns for node types that are allowed to be used regardless of the baseline.
+     *
+     * New items extend the defaults instead of overriding them.
      *
      * @default []
      *

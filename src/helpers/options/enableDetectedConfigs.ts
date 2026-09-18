@@ -42,6 +42,8 @@ function enableDetectedConfigs(options: Options): Options {
     playwright: isPackageDetected('@playwright/test', options),
   };
 
+  options.autoDetectDeps ??= defaultOptions.autoDetectDeps;
+  options.env ??= defaultOptions.env;
   options.configs ??= {};
   options.configs.test ??= {};
 
@@ -55,8 +57,8 @@ function enableDetectedConfigs(options: Options): Options {
   options.configs.importX ??= true;
   options.configs.stylistic ??= true;
   options.configs.perfectionist ??= true;
-  options.configs.baseline ??= options.env === 'browser';
 
+  options.configs.baseline ??= options.autoDetectDeps && options.env === 'browser';
   options.configs.typescript ??= autoDetectedPackages.typescript;
   options.configs.zod ??= autoDetectedPackages.zod;
   options.configs.astro ??= autoDetectedPackages.astro;

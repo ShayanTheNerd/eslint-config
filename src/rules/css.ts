@@ -94,8 +94,11 @@ function getCssRules(options: DeepNonNullable<Options>) {
         allowFunctions: userAllowedFunctions,
         allowMediaConditions: userAllowedMediaConditions,
         allowProperties: userAllowedProperties,
-        allowPropertyValues: userAllowedPropertyValues,
-        allowSelectors: userAllowedSelectors,
+        allowPropertyValues: {
+          'background-clip': ['text'],
+          ...userAllowedPropertyValues,
+        },
+        allowSelectors: ['selection', ...userAllowedSelectors],
         allowUnits: userAllowedUnits,
       },
     ] : 'off',

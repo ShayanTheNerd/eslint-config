@@ -29,7 +29,7 @@ function getBaselineRules(options: DeepNonNullable<Options>) {
       includeJsBuiltins: {
         preset: 'auto',
       },
-      ignoreFeatures: userIgnoredFeatures,
+      ignoreFeatures: ['async-clipboard', ...userIgnoredFeatures],
       ignoreNodeTypes: userIgnoredNodeTypes,
     }],
   } satisfies PluginRules<'baseline-js'>;
