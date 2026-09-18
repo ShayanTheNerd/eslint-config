@@ -17,18 +17,18 @@ A clear and concise description of what the bug is.
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Reproduction**
-The link to a repository or an online editor/playground that can reproduce your issue.
+**The environment**
+- **Operating System:** (e.g. macOS Tahoe 26.7)
+- **Node version:** (e.g. v26.5.0)
+- **ESLint version:** (e.g. v10.10.0)
 
-**Screenshots**
+**Reproduction (optional, but encouraged)**
+Leave the link to a repository or an online editor/playground that can reproduce your issue.
+
+**Screenshots (optional)**
 If applicable, add screenshots to help explain your problem.
 
-**The environment**
-- **Operating System:** (e.g. Windows 11)
-- **Node version:** (e.g. v25.2.1)
-- **ESLint version:** (e.g. v9.39.2)
-
-**Additional context**
-Add any other context about the problem here.
+**Additional context (optional)**
+Add any other details or context about the problem.
 
 [extension-eslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
