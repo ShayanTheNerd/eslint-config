@@ -7,13 +7,13 @@ import { isEnabled } from '#utils/isEnabled.ts';
 
 type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
 type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
-type HtmlOnlyRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
+type HtmlSpecificRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
 
 type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
 
 type HtmlRules =
-  & HtmlOnlyRules
+  & HtmlSpecificRules
   & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
@@ -82,30 +82,31 @@ function getHtmlRules(options: DeepNonNullable<Options>) {
     '@html-eslint/require-img-alt': 'error',
     '@html-eslint/require-input-label': 'error',
     '@html-eslint/require-meta-viewport': 'error',
-  } satisfies HtmlOnlyRules;
+  } satisfies HtmlSpecificRules;
+
+  const stylisticRules = {
+    '@html-eslint/attrs-newline': ['warn', {
+      maxLen: maxLineLength,
+      ifAttrsMoreThan: maxAttributesPerLine,
+    }],
+    '@html-eslint/element-newline': ['warn', { inline: ['$inline'] }],
+    '@html-eslint/id-naming-convention': ['warn', idNamingConvention],
+    '@html-eslint/indent': ['warn', indent],
+    '@html-eslint/lowercase': 'warn',
+    '@html-eslint/no-extra-spacing-tags': ['warn', {
+      disallowTabs: true,
+      disallowMissing: true,
+      disallowInAssignment: true,
+      enforceBeforeSelfClose: true,
+    }],
+    '@html-eslint/no-extra-spacing-text': ['warn', { skip: ['pre'] }],
+    '@html-eslint/no-multiple-empty-lines': ['warn', { max: maxConsecutiveEmptyLines }],
+    '@html-eslint/no-trailing-spaces': 'warn',
+    '@html-eslint/quotes': ['warn', 'double', { enforceTemplatedAttrValue: true }],
+  } satisfies HtmlSpecificRules;
 
   if (isEnabled(stylistic)) {
-    Object.assign(htmlRules, {
-      /* Stylistic */
-      '@html-eslint/attrs-newline': ['warn', {
-        maxLen: maxLineLength,
-        ifAttrsMoreThan: maxAttributesPerLine,
-      }],
-      '@html-eslint/element-newline': ['warn', { inline: ['$inline'] }],
-      '@html-eslint/id-naming-convention': ['warn', idNamingConvention],
-      '@html-eslint/indent': ['warn', indent],
-      '@html-eslint/lowercase': 'warn',
-      '@html-eslint/no-extra-spacing-tags': ['warn', {
-        disallowTabs: true,
-        disallowMissing: true,
-        disallowInAssignment: true,
-        enforceBeforeSelfClose: true,
-      }],
-      '@html-eslint/no-extra-spacing-text': ['warn', { skip: ['pre'] }],
-      '@html-eslint/no-multiple-empty-lines': ['warn', { max: maxConsecutiveEmptyLines }],
-      '@html-eslint/no-trailing-spaces': 'warn',
-      '@html-eslint/quotes': ['warn', 'double', { enforceTemplatedAttrValue: true }],
-    } satisfies HtmlOnlyRules);
+    Object.assign(htmlRules, stylisticRules);
   }
 
   if (isEnabled(tailwind)) {
