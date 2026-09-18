@@ -73,7 +73,7 @@ const packageJsonRules = {
   'package-json/no-redundant-publishConfig': 'error',
   'package-json/order-properties': 'warn',
   'package-json/repository-shorthand': 'warn',
-  'package-json/require-attribution': ['warn', { ignorePrivate: true }],
+  'package-json/require-attribution': 'warn',
   'package-json/require-bugs': 'warn',
   'package-json/require-description': ['warn', { ignorePrivate: true }],
   'package-json/require-devEngines': 'warn',

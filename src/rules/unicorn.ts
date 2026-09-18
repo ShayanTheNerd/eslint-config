@@ -83,7 +83,7 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/no-misrefactored-assignment': 'warn',
     'unicorn/no-multiple-promise-resolver-calls': 'error',
     'unicorn/no-negated-array-predicate': 'warn',
-    'unicorn/no-negated-comparison': ['warn', { checkLogicalExpressions: false }],
+    'unicorn/no-negated-comparison': 'warn',
     'unicorn/no-negation-in-equality-check': 'warn',
     'unicorn/no-nested-ternary': 'warn',
     'unicorn/no-new-buffer': 'error',

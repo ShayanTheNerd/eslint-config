@@ -206,7 +206,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-with': 'error',
     'object-shorthand': 'warn',
     'operator-assignment': 'warn',
-    'prefer-arrow-callback': ['warn', { allowUnboundThis: true }],
+    'prefer-arrow-callback': 'warn',
     'prefer-const': 'error',
     'prefer-destructuring': isTypescriptEnabled ? 'off' : ['warn', { object: true, array: false }],
     'prefer-exponentiation-operator': 'warn',
