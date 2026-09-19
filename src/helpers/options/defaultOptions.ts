@@ -38,6 +38,7 @@ const defaultOptions = {
 
   configs: {
     astro: {
+      accessibility: false,
       overrides: {},
     },
     baseline: {

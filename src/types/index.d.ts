@@ -264,7 +264,14 @@ interface Options {
      *
      * @default false // `true` if "astro" is detected in the dependencies when `autoDetectDeps` is enabled
      */
-    astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>>,
+    astro?: boolean | ConfigWithOverrides<PluginRules<'astro'>> & {
+      /**
+       * Use [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x) to enforce accessibility standards in Astro components.
+       *
+       * @default false // `true` if both "astro" and "eslint-plugin-jsx-a11y-x" are detected in the dependencies when `autoDetectDeps` is enabled
+       */
+      accessibility?: boolean,
+    },
 
     /**
      * Use [eslint-plugin-baseline-js](https://github.com/3ru/eslint-plugin-baseline-js), [css/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options), [@html-eslint/use-baseline](https://html-eslint.org/docs/rules/use-baseline#options), and [@html-eslint/react/use-baseline](https://github.com/eslint/css/blob/main/docs/rules/use-baseline.md#options) to enforce the use of browser baseline features.

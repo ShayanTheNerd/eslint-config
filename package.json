@@ -128,7 +128,13 @@
     "unplugin-unused": "0.6.0"
   },
   "peerDependencies": {
-    "eslint": "^10.9.0"
+    "eslint": "^10.9.0",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-jsx-a11y-x": {
+      "optional": true
+    }
   },
   "engines": {
     "node": "^20.19.0 || ^22.13.0 || ^24.0.0 || ^26.0.0"

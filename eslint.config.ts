@@ -11,6 +11,15 @@ export default defineConfig(
       typescript: {
         allowedDefaultProjects: ['{eslint,prettier}.config.?([mc])ts'],
       },
+      packageJson: {
+        overrides: {
+          rules: {
+            /* The React integration uses `eslint-plugin-jsx-a11y-x` directly. It's also a required peer dependency for `eslint-plugin-astro`'s accessibility rules. */
+            'package-json/specify-peers-locally': 'off',
+            'package-json/unique-dependencies': 'off',
+          },
+        },
+      },
     },
   },
   [

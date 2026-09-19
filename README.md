@@ -222,6 +222,13 @@ Read more about the formatting options and Prettier integration in the [Formatti
 ### Nuxt
 The required Nuxt configurations and rules are already included, so there's no need to install or configure the [@nuxt/eslint][eslint-nuxt] module.
 
+### Astro
+The accessibility rules in [eslint-plugin-astro][plugin-astro] require [eslint-plugin-jsx-a11y-x][plugin-jsx-a11y-x] as a peer dependency. Install it with:
+```shell
+pnpm add -D eslint-plugin-jsx-a11y-x
+```
+When both `astro` and `eslint-plugin-jsx-a11y-x` are detected as dependencies, `configs.astro.accessibility` is set to `true` automatically. To disable the accessibility rules, set `configs.astro.accessibility` to `false`.
+
 ### Markdown
 Markdown linting is powered by [@eslint/markdown][plugin-md].
 

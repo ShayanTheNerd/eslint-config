@@ -9,6 +9,7 @@ function enableDetectedConfigs(options: Options): Options {
     'typescript': options.configs?.typescript === false,
     'zod': options.configs?.zod === false,
     'astro': options.configs?.astro === false,
+    'eslint-plugin-jsx-a11y-x': isEnabled(options.configs?.astro) && options.configs?.astro?.accessibility === false,
     'react': options.configs?.react === false,
     'next': options.configs?.next === false,
     '@tanstack/react-router': isEnabled(options.configs?.tanstack) && options.configs?.tanstack?.router === false,
@@ -29,6 +30,7 @@ function enableDetectedConfigs(options: Options): Options {
     typescript: isPackageDetected('typescript', options),
     zod: isPackageDetected('zod', options),
     astro: isPackageDetected('astro', options),
+    eslintPluginJsxA11yX: isPackageDetected('eslint-plugin-jsx-a11y-x', options),
     react: isPackageDetected('react', options),
     next: isPackageDetected('next', options),
     tanstackStart: isPackageDetected('@tanstack/react-start', options),
@@ -99,16 +101,6 @@ function enableDetectedConfigs(options: Options): Options {
     options.configs.vue.blockLang = { script: 'ts' };
   }
 
-  if (options.configs.tanstack) {
-    if (options.configs.tanstack === true) {
-      options.configs.tanstack = {};
-    }
-
-    options.configs.tanstack.start ??= autoDetectedPackages.tanstackStart;
-    options.configs.tanstack.query ??= autoDetectedPackages.tanstackQuery;
-    options.configs.tanstack.router ??= autoDetectedPackages.tanstackRouter;
-  }
-
   if (options.configs.nuxt) {
     if (options.configs.nuxt === true) {
       options.configs.nuxt = {};
@@ -117,6 +109,21 @@ function enableDetectedConfigs(options: Options): Options {
     options.configs.nuxt.ui ??= autoDetectedPackages.nuxtUI;
     options.configs.nuxt.icon ??= autoDetectedPackages.nuxtIcon;
     options.configs.nuxt.image ??= autoDetectedPackages.nuxtImage;
+  }
+
+  if (options.configs.astro) {
+    options.configs.astro = options.configs.astro === true ? {} : options.configs.astro;
+    options.configs.astro.accessibility ??= autoDetectedPackages.eslintPluginJsxA11yX;
+  }
+
+  if (options.configs.tanstack) {
+    if (options.configs.tanstack === true) {
+      options.configs.tanstack = {};
+    }
+
+    options.configs.tanstack.start ??= autoDetectedPackages.tanstackStart;
+    options.configs.tanstack.query ??= autoDetectedPackages.tanstackQuery;
+    options.configs.tanstack.router ??= autoDetectedPackages.tanstackRouter;
   }
 
   if (options.autoDetectDeps === 'verbose') {
