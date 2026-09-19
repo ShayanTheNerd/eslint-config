@@ -13,7 +13,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 import { isTruthy } from '#utils/isTruthy.ts';
 
 function getTypescriptConfig(options: DeepNonNullable<Options>): Linter.Config {
-  const { tsConfig, configs: { vue, astro, typescript } } = options;
+  const { tsConfig, configs: { vue, typescript } } = options;
   const {
     allowedDefaultProjects: userAllowedDefaultProjects,
   } = isEnabled(typescript) ? typescript : defaultOptions.configs.typescript;
@@ -21,19 +21,13 @@ function getTypescriptConfig(options: DeepNonNullable<Options>): Linter.Config {
 
   const typescriptConfig = {
     name: 'shayanthenerd/typescript',
-    files: [
-      globs.src,
-      globs.jsxTsx,
-      isEnabled(vue) ? globs.vue : '',
-      isEnabled(astro) ? globs.astro : '',
-    ].filter(isTruthy),
+    files: [globs.src, globs.jsxTsx, isEnabled(vue) ? globs.vue : ''].filter(isTruthy),
     plugins: {
       '@typescript-eslint': eslintPluginTypecript,
     },
     languageOptions: {
       parser: eslintParserTypescript,
       parserOptions: {
-        warnOnUnsupportedTypeScriptVersion: false,
         tsconfigRootDir: tsConfig ? path.resolve(tsConfig.rootDir) : undefined,
         projectService: {
           defaultProject: tsConfig ? tsConfig.filename : undefined,
