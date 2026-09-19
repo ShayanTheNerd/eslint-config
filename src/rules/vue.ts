@@ -61,40 +61,6 @@ function getVueRules(options: DeepNonNullable<Options>) {
   const isScriptLangTS = blockLang.script === 'ts';
   const isStyleLangImplicit = blockLang.style === 'implicit';
 
-  const vueAccessibilityRules = {
-    'vuejs-accessibility/alt-text': ['error', { img: userImageComponents }],
-    'vuejs-accessibility/anchor-has-content': ['error', {
-      components: userAnchorComponents,
-      accessibleChildren: userAccessibleChildComponents,
-    }],
-    'vuejs-accessibility/aria-props': 'error',
-    'vuejs-accessibility/aria-role': 'error',
-    'vuejs-accessibility/aria-unsupported-elements': 'error',
-    'vuejs-accessibility/form-control-has-label': ['error', {
-      labelComponents: isNuxtUIEnabled ? [`${nuxtUIPrefix}FormField`] : undefined,
-    }],
-    'vuejs-accessibility/heading-has-content': 'error',
-    'vuejs-accessibility/iframe-has-title': 'error',
-    'vuejs-accessibility/interactive-supports-focus': 'error',
-    'vuejs-accessibility/label-has-for': ['error', {
-      allowChildren: true,
-      required: {
-        some: ['nesting', 'id'],
-      },
-      controlComponents: ['input', 'output', 'meter', 'select', 'textarea', 'progress'],
-    }],
-    'vuejs-accessibility/media-has-caption': 'error',
-    'vuejs-accessibility/no-access-key': 'warn',
-    'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
-    'vuejs-accessibility/no-autofocus': 'warn',
-    'vuejs-accessibility/no-distracting-elements': 'warn',
-    'vuejs-accessibility/no-redundant-roles': 'warn',
-    'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
-    'vuejs-accessibility/no-static-element-interactions': 'error',
-    'vuejs-accessibility/role-has-required-aria-props': 'error',
-    'vuejs-accessibility/tabindex-no-positive': 'error',
-  } satisfies PluginRules<'vuejs-accessibility'>;
-
   const vueRules = {
     /* Reports a false positive when `true` is used as the default value for the destructured optional boolean props. */
     '@typescript-eslint/no-useless-default-assignment': 'off',
@@ -440,16 +406,49 @@ function getVueRules(options: DeepNonNullable<Options>) {
     'vue/v-on-handler-style': ['warn', vOnHandlerStyle],
   } satisfies VueRules;
 
+  const vueAccessibilityRules = {
+    'vuejs-accessibility/alt-text': ['error', { img: userImageComponents }],
+    'vuejs-accessibility/anchor-has-content': ['error', {
+      components: userAnchorComponents,
+      accessibleChildren: userAccessibleChildComponents,
+    }],
+    'vuejs-accessibility/aria-props': 'error',
+    'vuejs-accessibility/aria-role': 'error',
+    'vuejs-accessibility/aria-unsupported-elements': 'error',
+    'vuejs-accessibility/form-control-has-label': ['error', {
+      labelComponents: isNuxtUIEnabled ? [`${nuxtUIPrefix}FormField`] : undefined,
+    }],
+    'vuejs-accessibility/heading-has-content': 'error',
+    'vuejs-accessibility/iframe-has-title': 'error',
+    'vuejs-accessibility/interactive-supports-focus': 'error',
+    'vuejs-accessibility/label-has-for': ['error', {
+      allowChildren: true,
+      required: {
+        some: ['nesting', 'id'],
+      },
+      controlComponents: ['input', 'output', 'meter', 'select', 'textarea', 'progress'],
+    }],
+    'vuejs-accessibility/media-has-caption': 'error',
+    'vuejs-accessibility/no-access-key': 'warn',
+    'vuejs-accessibility/no-aria-hidden-on-focusable': 'error',
+    'vuejs-accessibility/no-autofocus': 'warn',
+    'vuejs-accessibility/no-distracting-elements': 'warn',
+    'vuejs-accessibility/no-redundant-roles': 'warn',
+    'vuejs-accessibility/no-role-presentation-on-focusable': 'error',
+    'vuejs-accessibility/no-static-element-interactions': 'error',
+    'vuejs-accessibility/role-has-required-aria-props': 'error',
+    'vuejs-accessibility/tabindex-no-positive': 'error',
+  } satisfies PluginRules<'vuejs-accessibility'>;
+
+  if (isEnabled(vue) && isEnabled(vue.accessibility)) {
+    Object.assign(vueRules, vueAccessibilityRules);
+  }
+
   if (isEnabled(stylistic)) {
     (vueRules as VueRules)['@stylistic/max-len'] = 'off';
   }
 
-  const isVueAccessibilityEnabled = isEnabled(vue) && isEnabled(vue.accessibility);
-
-  return {
-    ...vueRules,
-    ...(isVueAccessibilityEnabled && vueAccessibilityRules),
-  };
+  return vueRules;
 }
 
 export { getVueRules };

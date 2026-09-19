@@ -34,49 +34,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
     ? react.accessibility
     : defaultOptions.configs.react.accessibility;
 
-  const jsxA11yRules = {
-    'jsx-a11y-x/alt-text': ['error', { img: userImageComponents }],
-    'jsx-a11y-x/anchor-ambiguous-text': 'warn',
-    'jsx-a11y-x/anchor-has-content': ['error', { components: userAnchorComponents }],
-    'jsx-a11y-x/anchor-is-valid': ['error', {
-      specialLink: ['to'],
-      components: userAnchorComponents,
-    }],
-    'jsx-a11y-x/aria-activedescendant-has-tabindex': 'error',
-    'jsx-a11y-x/aria-props': 'error',
-    'jsx-a11y-x/aria-proptypes': 'error',
-    'jsx-a11y-x/aria-role': 'error',
-    'jsx-a11y-x/aria-unsupported-elements': 'error',
-    'jsx-a11y-x/autocomplete-valid': 'error',
-    'jsx-a11y-x/click-events-have-key-events': 'error',
-    'jsx-a11y-x/control-has-associated-label': 'error',
-    'jsx-a11y-x/heading-has-content': ['error', { components: userHeadingComponents }],
-    'jsx-a11y-x/html-has-lang': 'error',
-    'jsx-a11y-x/iframe-has-title': 'error',
-    'jsx-a11y-x/img-redundant-alt': ['error', { components: userImageComponents }],
-    'jsx-a11y-x/interactive-supports-focus': 'error',
-    'jsx-a11y-x/label-has-associated-control': 'error',
-    'jsx-a11y-x/lang': 'error',
-    'jsx-a11y-x/media-has-caption': 'error',
-    'jsx-a11y-x/mouse-events-have-key-events': 'error',
-    'jsx-a11y-x/no-access-key': 'warn',
-    'jsx-a11y-x/no-aria-hidden-on-focusable': 'error',
-    'jsx-a11y-x/no-autofocus': 'warn',
-    'jsx-a11y-x/no-distracting-elements': 'warn',
-    'jsx-a11y-x/no-interactive-element-to-noninteractive-role': 'error',
-    'jsx-a11y-x/no-noninteractive-element-interactions': 'error',
-    'jsx-a11y-x/no-noninteractive-element-to-interactive-role': 'error',
-    'jsx-a11y-x/no-noninteractive-tabindex': 'error',
-    'jsx-a11y-x/no-redundant-roles': 'warn',
-    'jsx-a11y-x/no-static-element-interactions': 'warn',
-    'jsx-a11y-x/prefer-tag-over-role': 'warn',
-    'jsx-a11y-x/role-has-required-aria-props': 'warn',
-    'jsx-a11y-x/role-supports-aria-props': 'warn',
-    'jsx-a11y-x/scope': 'error',
-    'jsx-a11y-x/tabindex-no-positive': 'error',
-  } satisfies PluginRules<'jsx-a11y-x'>;
-
-  const reactAndHtmlReactRules = {
+  const reactRules = {
     /*** @eslint/react ***/
     /* X */
     '@eslint-react/error-boundaries': 'error',
@@ -187,23 +145,63 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@html-eslint/react/no-duplicate-classname': ['warn', { callees: commonCallees }],
   } satisfies ReactAndHtmlReactRules;
 
+  const jsxA11yXRules = {
+    'jsx-a11y-x/alt-text': ['error', { img: userImageComponents }],
+    'jsx-a11y-x/anchor-ambiguous-text': 'warn',
+    'jsx-a11y-x/anchor-has-content': ['error', { components: userAnchorComponents }],
+    'jsx-a11y-x/anchor-is-valid': ['error', {
+      specialLink: ['to'],
+      components: userAnchorComponents,
+    }],
+    'jsx-a11y-x/aria-activedescendant-has-tabindex': 'error',
+    'jsx-a11y-x/aria-props': 'error',
+    'jsx-a11y-x/aria-proptypes': 'error',
+    'jsx-a11y-x/aria-role': 'error',
+    'jsx-a11y-x/aria-unsupported-elements': 'error',
+    'jsx-a11y-x/autocomplete-valid': 'error',
+    'jsx-a11y-x/click-events-have-key-events': 'error',
+    'jsx-a11y-x/control-has-associated-label': 'error',
+    'jsx-a11y-x/heading-has-content': ['error', { components: userHeadingComponents }],
+    'jsx-a11y-x/html-has-lang': 'error',
+    'jsx-a11y-x/iframe-has-title': 'error',
+    'jsx-a11y-x/img-redundant-alt': ['error', { components: userImageComponents }],
+    'jsx-a11y-x/interactive-supports-focus': 'error',
+    'jsx-a11y-x/label-has-associated-control': 'error',
+    'jsx-a11y-x/lang': 'error',
+    'jsx-a11y-x/media-has-caption': 'error',
+    'jsx-a11y-x/mouse-events-have-key-events': 'error',
+    'jsx-a11y-x/no-access-key': 'warn',
+    'jsx-a11y-x/no-aria-hidden-on-focusable': 'error',
+    'jsx-a11y-x/no-autofocus': 'warn',
+    'jsx-a11y-x/no-distracting-elements': 'warn',
+    'jsx-a11y-x/no-interactive-element-to-noninteractive-role': 'error',
+    'jsx-a11y-x/no-noninteractive-element-interactions': 'error',
+    'jsx-a11y-x/no-noninteractive-element-to-interactive-role': 'error',
+    'jsx-a11y-x/no-noninteractive-tabindex': 'error',
+    'jsx-a11y-x/no-redundant-roles': 'warn',
+    'jsx-a11y-x/no-static-element-interactions': 'warn',
+    'jsx-a11y-x/prefer-tag-over-role': 'warn',
+    'jsx-a11y-x/role-has-required-aria-props': 'warn',
+    'jsx-a11y-x/role-supports-aria-props': 'warn',
+    'jsx-a11y-x/scope': 'error',
+    'jsx-a11y-x/tabindex-no-positive': 'error',
+  } satisfies PluginRules<'jsx-a11y-x'>;
+
+  if (isEnabled(react) && isEnabled(react.accessibility)) {
+    Object.assign(reactRules, jsxA11yXRules);
+  }
+
   if (isEnabled(tailwind)) {
-    (reactAndHtmlReactRules as ReactAndHtmlReactRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+    (reactRules as ReactAndHtmlReactRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
 
     if (tailwind.multilineSort) {
-      reactAndHtmlReactRules['@html-eslint/react/classname-spacing'] = 'off';
+      reactRules['@html-eslint/react/classname-spacing'] = 'off';
     }
   }
 
   if (isEnabled(unicorn)) {
-    (reactAndHtmlReactRules as ReactAndHtmlReactRules)['unicorn/no-invalid-file-input-accept'] = 'error';
+    (reactRules as ReactAndHtmlReactRules)['unicorn/no-invalid-file-input-accept'] = 'error';
   }
-
-  const isReactAccessibilityEnabled = isEnabled(react) && isEnabled(react.accessibility);
-  const reactRules = {
-    ...reactAndHtmlReactRules,
-    ...(isReactAccessibilityEnabled && jsxA11yRules),
-  };
 
   return reactRules;
 }

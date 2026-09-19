@@ -11,10 +11,13 @@ type AstroRules =
   & PluginRules<'astro'>
   & Pick<ImportXRules, 'import-x/exports-last'>
   & Pick<StylisticRules, '@stylistic/jsx-one-expression-per-line'>;
+type AstroJsxA11yRuleNames = Extract<keyof AstroRules, `astro/jsx-a11y/${string}`>;
+type AstroJsxA11yRules = Pick<AstroRules, AstroJsxA11yRuleNames>;
 
 function getAstroRules(options: DeepNonNullable<Options>) {
-  const { importX, stylistic } = options.configs;
+  const { astro, importX, stylistic } = options.configs;
   const { semi } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
+  const { accessibility } = isEnabled(astro) ? astro : defaultOptions.configs.astro;
 
   const astroRules = {
     /* Possible Errors */
@@ -40,7 +43,11 @@ function getAstroRules(options: DeepNonNullable<Options>) {
     'astro/prefer-class-list-directive': 'warn',
     'astro/prefer-split-class-list': 'warn',
 
-    /* Accessibility */
+    /* Extensions */
+    'astro/semi': ['warn', semi],
+  } satisfies AstroRules;
+
+  const astroJsxA11yRules = {
     'astro/jsx-a11y/alt-text': 'error',
     'astro/jsx-a11y/anchor-ambiguous-text': 'warn',
     'astro/jsx-a11y/anchor-has-content': 'warn',
@@ -77,10 +84,11 @@ function getAstroRules(options: DeepNonNullable<Options>) {
     'astro/jsx-a11y/role-supports-aria-props': 'warn',
     'astro/jsx-a11y/scope': 'error',
     'astro/jsx-a11y/tabindex-no-positive': 'warn',
+  } satisfies AstroJsxA11yRules;
 
-    /* Extensions */
-    'astro/semi': ['warn', semi],
-  } satisfies AstroRules;
+  if (isEnabled(accessibility)) {
+    Object.assign(astroRules, astroJsxA11yRules);
+  }
 
   if (isEnabled(importX)) {
     (astroRules as AstroRules)['import-x/exports-last'] = 'off';
