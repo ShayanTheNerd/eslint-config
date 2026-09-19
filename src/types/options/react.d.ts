@@ -5,7 +5,7 @@ type ConfigRules = PluginRules<'@eslint-react'>;
 
 interface ReactOptions extends ConfigWithOverrides<ConfigRules> {
   /**
-   * Use [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x) and [@html-eslint/eslint-plugin-react](https://html-eslint.org/docs/react/getting-started) to enforce accessibility standards for React components.
+   * Use [eslint-plugin-jsx-a11y-x](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x) and [@html-eslint/eslint-plugin-react](https://html-eslint.org/docs/react/getting-started) to enforce accessibility standards in React components.
    *
    * @default true
    */

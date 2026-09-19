@@ -81,7 +81,7 @@ Legend:
      "scripts": {
        "lint": "eslint --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
        "lint:fix": "eslint --fix --max-warnings=0 --cache --cache-location='node_modules/.cache/.eslintcache'",
-       "lint:inspect": "npx @eslint/config-inspector"
+       "lint:inspect": "pnpx @eslint/config-inspector"
      }
    }
    ```
@@ -349,7 +349,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
      ```json title="package.json"
      {
        "scripts": {
-         "format": "prettier --write . '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
+         "format": "prettier --write . '!pnpm-lock.yaml' '!**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx,html,vue,astro}' --cache"
        }
      }
      ```
@@ -432,7 +432,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
      ```json title="package.json"
      {
        "scripts": {
-         "format": "prettier --write . --cache",
+         "format": "prettier --write . '!pnpm-lock.yaml' --cache",
        }
      }
      ```
@@ -522,6 +522,7 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
 
     configs?: {
       astro?: boolean | {
+        accessibility?: boolean,
         overrides?: Overrides,
       },
       baseline?: boolean | {

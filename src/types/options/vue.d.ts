@@ -34,7 +34,7 @@ type ConfigRules = PluginRules<'vue'> & PluginRules<'vuejs-accessibility'>;
 
 interface VueOptions extends ConfigWithOverrides<ConfigRules> {
   /**
-   * Use [eslint-plugin-vuejs-accessibility](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility) to enforce accessibility standards in SFCs.
+   * Use [eslint-plugin-vuejs-accessibility](https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility) to enforce accessibility standards in Vue SFCs.
    *
    * @default true
    */
