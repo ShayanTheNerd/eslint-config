@@ -384,7 +384,25 @@ interface Options {
      *
      * @default true
      */
-    packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>>,
+    packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>> & {
+      /**
+       * The allowed [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages).
+       *
+       * @default []
+       *
+       * @see [package-json/restrict-dist-tags: `allowed` option](https://eslint-plugin-package-json.dev/rules/restrict-dist-tags/#allowed)
+       */
+      allowedDistTags?: RuleOptions<'package-json/restrict-dist-tags'>['allowed'],
+
+      /**
+       * The dependencies for which the [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages) are allowed.
+       *
+       * @default []
+       *
+       * @see [package-json/restrict-dist-tags: `allowedFor` option](https://eslint-plugin-package-json.dev/rules/restrict-dist-tags/#allowedfor)
+       */
+      allowedDistTagsFor?: RuleOptions<'package-json/restrict-dist-tags'>['allowedFor'],
+    },
 
     /**
      * Use [eslint-plugin-perfectionist](https://perfectionist.dev) to sort imports, exports, maps, union types, etc.

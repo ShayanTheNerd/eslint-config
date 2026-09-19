@@ -580,6 +580,8 @@ For file types that ESLint Stylistic does not handle—such as CSS, JSON, YAML, 
         overrides?: Overrides,
       },
       packageJson?: boolean | {
+        allowedDistTags?: string[],
+        allowedDistTagsFor?: ('dependencies' | 'devDependencies' | 'peerDependencies' | 'optionalDependencies')[],
         overrides?: Overrides,
       },
       perfectionist?: boolean | {

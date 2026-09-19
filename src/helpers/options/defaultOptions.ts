@@ -96,6 +96,8 @@ const defaultOptions = {
       overrides: {},
     },
     packageJson: {
+      allowedDistTags: [],
+      allowedDistTagsFor: [],
       overrides: {},
     },
     perfectionist: {

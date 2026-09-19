@@ -23,7 +23,7 @@ function getPackageJsonConfig(options: DeepNonNullable<Options>): Linter.Config 
     languageOptions: {
       parser: eslintPluginPackageJson.configs.recommended.languageOptions.parser,
     },
-    rules: getPackageJsonRules(),
+    rules: getPackageJsonRules(options),
   } satisfies Linter.Config;
 
   return mergeConfigs(packageJsonConfig, overrides);
