@@ -78,7 +78,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
 
   const reactAndHtmlReactRules = {
     /*** @eslint/react ***/
-    /* X Rules */
+    /* X */
     '@eslint-react/error-boundaries': 'error',
     '@eslint-react/exhaustive-deps': 'error',
     '@eslint-react/globals': 'error',
@@ -133,18 +133,20 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/use-memo': 'error',
     '@eslint-react/use-state': 'warn',
 
-    /* JSX Rules */
+    /* JSX */
     '@eslint-react/jsx-no-children-prop': 'warn',
     '@eslint-react/jsx-no-children-prop-with-children': 'error',
     '@eslint-react/jsx-no-comment-textnodes': 'error',
     '@eslint-react/jsx-no-key-after-spread': 'warn',
+    '@eslint-react/jsx-no-leaked-dollar': 'warn',
+    '@eslint-react/jsx-no-leaked-semicolon': 'warn',
     '@eslint-react/jsx-no-namespace': 'error',
     '@eslint-react/jsx-no-useless-fragment': 'warn',
 
-    /* RSC Rules */
+    /* RSC */
     '@eslint-react/rsc-function-definition': 'error',
 
-    /* DOM Rules */
+    /* DOM */
     '@eslint-react/dom-no-dangerously-set-innerhtml': 'warn',
     '@eslint-react/dom-no-dangerously-set-innerhtml-with-children': 'error',
     '@eslint-react/dom-no-find-dom-node': 'error',
@@ -162,7 +164,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/dom-no-use-form-state': 'warn',
     '@eslint-react/dom-no-void-elements-with-children': 'error',
 
-    /* Web API Rules */
+    /* Web API */
     '@eslint-react/web-api-no-leaked-event-listener': 'error',
     '@eslint-react/web-api-no-leaked-fetch': 'error',
     '@eslint-react/web-api-no-leaked-intersection-observer': 'error',
@@ -170,7 +172,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/web-api-no-leaked-resize-observer': 'error',
     '@eslint-react/web-api-no-leaked-timeout': 'error',
 
-    /* Naming Convention Rules */
+    /* Naming Convention */
     '@eslint-react/naming-convention-context-name': 'warn',
     '@eslint-react/naming-convention-id-name': 'warn',
     '@eslint-react/naming-convention-ref-name': 'warn',
