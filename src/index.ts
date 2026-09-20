@@ -75,6 +75,7 @@ type DefineConfigArguments =
  * );
  */
 /* eslint-disable @typescript-eslint/unified-signatures -- Function overloads improve the diagnosed TypeScript errors. */
+function defineConfig(): Linter.Config[];
 function defineConfig(options: Options): Linter.Config[];
 function defineConfig(configs: Linter.Config[]): Linter.Config[];
 function defineConfig(options: Options, configs: Linter.Config[]): Linter.Config[];
