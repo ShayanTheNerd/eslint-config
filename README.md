@@ -229,6 +229,10 @@ pnpm add -D eslint-plugin-jsx-a11y-x
 ```
 When both `astro` and `eslint-plugin-jsx-a11y-x` are detected as dependencies, `configs.astro.accessibility` is set to `true` automatically. To disable the accessibility rules, set `configs.astro.accessibility` to `false`.
 
+### TanStack Start
+> [!NOTE]
+> The rules in [@tanstack/eslint-plugin-start][plugin-tanstack-start] require type information, and will be disabled automatically if the TypeScript integration is not enabled.
+
 ### Markdown
 Markdown linting is powered by [@eslint/markdown][plugin-md].
 
