@@ -16,7 +16,7 @@ function getNodeRules(options: DeepNonNullable<Options>) {
     'n/no-path-concat': 'error',
     'n/no-process-env': ['error', { allowedVariables: ['NODE_ENV'] }],
     'n/no-process-exit': 'error',
-    'n/no-sync': 'warn',
+    'n/no-sync': isEnabled(typescript) ? 'warn' : 'off',
     'n/no-unpublished-import': 'error',
     'n/no-unsupported-features/es-builtins': 'error',
     'n/no-unsupported-features/es-syntax': 'error',

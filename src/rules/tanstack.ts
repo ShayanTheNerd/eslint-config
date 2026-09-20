@@ -50,7 +50,7 @@ function getTanstackRules(options: DeepNonNullable<Options>) {
     }];
   }
 
-  if (isEnabled(tanstack.start)) {
+  if (isEnabled(tanstack.start) && isEnabled(typescript)) {
     Object.assign(rules, tanstackStartRules);
   }
 

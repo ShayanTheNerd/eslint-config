@@ -25,7 +25,7 @@ type ReactAndHtmlReactRules =
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
-  const { react, unicorn, tailwind, baseline, stylistic } = options.configs;
+  const { react, unicorn, tailwind, baseline, stylistic, typescript } = options.configs;
   const {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
@@ -33,6 +33,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
   } = isEnabled(react) && isEnabled(react.accessibility)
     ? react.accessibility
     : defaultOptions.configs.react.accessibility;
+  const isTypescriptEnabled = isEnabled(typescript);
 
   const reactRules = {
     /*** @eslint/react ***/
@@ -58,10 +59,10 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/no-direct-mutation-state': 'error',
     '@eslint-react/no-duplicate-key': 'error',
     '@eslint-react/no-forward-ref': 'warn',
-    '@eslint-react/no-implicit-children': 'warn',
-    '@eslint-react/no-implicit-key': 'warn',
-    '@eslint-react/no-implicit-ref': 'warn',
-    '@eslint-react/no-leaked-conditional-rendering': 'error',
+    '@eslint-react/no-implicit-children': isTypescriptEnabled ? 'warn' : 'off',
+    '@eslint-react/no-implicit-key': isTypescriptEnabled ? 'warn' : 'off',
+    '@eslint-react/no-implicit-ref': isTypescriptEnabled ? 'warn' : 'off',
+    '@eslint-react/no-leaked-conditional-rendering': isTypescriptEnabled ? 'error' : 'off',
     '@eslint-react/no-missing-component-display-name': 'warn',
     '@eslint-react/no-missing-context-display-name': 'warn',
     '@eslint-react/no-missing-key': 'error',
@@ -78,7 +79,7 @@ function getReactRules(options: DeepNonNullable<Options>) {
     '@eslint-react/no-unstable-context-value': 'error',
     '@eslint-react/no-unstable-default-props': 'error',
     '@eslint-react/no-unused-class-component-members': 'error',
-    '@eslint-react/no-unused-props': 'error',
+    '@eslint-react/no-unused-props': isTypescriptEnabled ? 'error' : 'off',
     '@eslint-react/no-unused-state': 'error',
     '@eslint-react/no-use-context': 'warn',
     '@eslint-react/purity': 'error',
