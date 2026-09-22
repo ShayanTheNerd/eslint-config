@@ -66,12 +66,12 @@ pnpm generate:types
 ```
 
 ### Dependency Updates
-When updating dependencies, you can use:
+For updating dependencies and GitHub workflow actions, you can use:
 ```sh
 pnpm update:deps
 ```
 
-This will help you interactively update dependencies, then it will regenerates the project's types and documentation.
+After updating all dependencies, it will also regenerate the types and documentation of the project.
 
 Additionally, if _pnpm-lock.yaml_ changes, the pre-commit Git hook automatically runs:
 ```sh

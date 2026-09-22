@@ -42,7 +42,7 @@
   "scripts": {
     "prepare": "pnpm git:gitmessage && simple-git-hooks",
     "git:gitmessage": "git config --local commit.template '.gitmessage'",
-    "update:deps": "pnpm update --latest && pnpm dedupe && pnpm generate:types && pnpm generate:docs",
+    "update:deps": "pnpm update --latest '!typescript' && pnpm dedupe && pnpm generate:types && pnpm generate:docs",
     "check:spell": "pnpx cspell . --gitignore --exclude='pnpm-lock.yaml' --cache --cache-location='./node_modules/.cache/.cspellcache'",
     "inspect": "pnpm build:package && eslint-config-inspector",
     "build:inspector": "eslint-config-inspector build --config=./scripts/configs/eslint.config.reference.ts --outDir=./netlify/eslint-config-inspector",
@@ -72,7 +72,7 @@
     "{.github/workflows/**/*.yaml,pnpm-workspace.yaml}": "pnpm format"
   },
   "dependencies": {
-    "@eslint-react/eslint-plugin": "5.20.0",
+    "@eslint-react/eslint-plugin": "5.20.5",
     "@eslint/css": "2.0.0",
     "@eslint/markdown": "8.0.3",
     "@html-eslint/eslint-plugin": "0.66.1",
@@ -80,7 +80,7 @@
     "@next/eslint-plugin-next": "16.3.5",
     "@nuxt/eslint-plugin": "1.17.0",
     "@stylistic/eslint-plugin": "5.10.0",
-    "@tanstack/eslint-plugin-query": "5.103.1",
+    "@tanstack/eslint-plugin-query": "5.103.2",
     "@tanstack/eslint-plugin-router": "1.162.0",
     "@tanstack/eslint-plugin-start": "0.1.0",
     "@vitest/eslint-plugin": "1.6.27",
@@ -89,7 +89,7 @@
     "eslint-flat-config-utils": "3.2.0",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-astro": "3.2.1",
-    "eslint-plugin-baseline-js": "0.7.1",
+    "eslint-plugin-baseline-js": "0.7.2",
     "eslint-plugin-better-tailwindcss": "4.7.0",
     "eslint-plugin-cypress": "7.0.2",
     "eslint-plugin-import-x": "4.17.1",
@@ -103,13 +103,13 @@
     "eslint-plugin-unicorn": "76.0.0",
     "eslint-plugin-vue": "10.11.0",
     "eslint-plugin-vuejs-accessibility": "2.6.0",
-    "eslint-plugin-zod": "4.14.1",
-    "eslint-plugin-zod-mini": "1.11.1",
+    "eslint-plugin-zod": "4.14.2",
+    "eslint-plugin-zod-mini": "1.11.2",
     "globals": "17.12.0",
     "local-pkg": "1.2.1",
     "nuxt-link-checker": "5.3.0",
     "tailwind-csstree": "0.4.0",
-    "typescript-eslint": "8.70.0"
+    "typescript-eslint": "8.70.1"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
