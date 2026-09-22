@@ -6,7 +6,7 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
 function getUnicornRules(options: DeepNonNullable<Options>) {
-  const { unicorn, stylistic } = options.configs;
+  const { node, unicorn, stylistic, typescript } = options.configs;
   const { functionStyle } = isEnabled(unicorn) ? unicorn : defaultOptions.configs.unicorn;
 
   const unicornRules = {
@@ -191,7 +191,7 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/prefer-https': 'warn',
     'unicorn/prefer-identifier-import-export-specifiers': 'warn',
     'unicorn/prefer-import-meta-properties': 'warn',
-    'unicorn/prefer-includes': 'warn',
+    'unicorn/prefer-includes': isEnabled(typescript) ? 'off' : 'warn',
     'unicorn/prefer-iterable-in-constructor': 'warn',
     'unicorn/prefer-iterator-concat': 'warn',
     'unicorn/prefer-iterator-helpers': 'warn',
@@ -212,7 +212,7 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/prefer-module': 'error',
     'unicorn/prefer-native-coercion-functions': 'warn',
     'unicorn/prefer-negative-index': 'warn',
-    'unicorn/prefer-node-protocol': 'warn',
+    'unicorn/prefer-node-protocol': isEnabled(node) ? 'off' : 'warn',
     'unicorn/prefer-number-coercion': 'warn',
     'unicorn/prefer-number-is-safe-integer': 'warn',
     'unicorn/prefer-number-properties': 'warn',
@@ -248,7 +248,7 @@ function getUnicornRules(options: DeepNonNullable<Options>) {
     'unicorn/prefer-string-repeat': 'warn',
     'unicorn/prefer-string-replace-all': 'warn',
     'unicorn/prefer-string-slice': 'warn',
-    'unicorn/prefer-string-starts-ends-with': 'warn',
+    'unicorn/prefer-string-starts-ends-with': isEnabled(typescript) ? 'off' : 'warn',
     'unicorn/prefer-string-trim-start-end': 'warn',
     'unicorn/prefer-structured-clone': 'warn',
     'unicorn/prefer-temporal': 'warn',

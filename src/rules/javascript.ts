@@ -6,6 +6,7 @@ import { isEnabled } from '#utils/isEnabled.ts';
 
 function getJavaScriptRules(options: DeepNonNullable<Options>) {
   const {
+    importX,
     unicorn,
     typescript,
     javascript: {
@@ -13,6 +14,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
       maxNestedCallbacks,
     },
   } = options.configs;
+  const isImportXEnabled = isEnabled(importX);
   const isUnicornEnabled = isEnabled(unicorn);
   const isTypescriptEnabled = isEnabled(typescript);
 
@@ -39,7 +41,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-dupe-class-members': isTypescriptEnabled ? 'off' : 'error',
     'no-dupe-else-if': 'error',
     'no-dupe-keys': isTypescriptEnabled ? 'off' : 'error',
-    'no-duplicate-case': 'error',
+    'no-duplicate-case': isImportXEnabled ? 'off' : 'error',
     'no-duplicate-imports': ['error', {
       includeExports: true,
       allowSeparateTypeImports: true,
@@ -196,7 +198,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'no-useless-call': 'error',
     'no-useless-catch': 'error',
     'no-useless-computed-key': 'error',
-    'no-useless-concat': 'error',
+    'no-useless-concat': isUnicornEnabled ? 'error' : 'off',
     'no-useless-constructor': 'error',
     'no-useless-escape': 'error',
     'no-useless-rename': 'error',
@@ -217,7 +219,7 @@ function getJavaScriptRules(options: DeepNonNullable<Options>) {
     'prefer-promise-reject-errors': isTypescriptEnabled ? 'off' : ['warn', { allowEmptyReject: true }],
     'prefer-regex-literals': ['warn', { disallowRedundantWrapping: true }],
     'prefer-rest-params': 'warn',
-    'prefer-spread': 'warn',
+    'prefer-spread': isUnicornEnabled ? 'warn' : 'off',
     'prefer-template': 'warn',
     'preserve-caught-error': 'warn',
     'radix': 'warn',
