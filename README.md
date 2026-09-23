@@ -214,20 +214,23 @@ For editor integration, to reduce noise and avoid inconsistent diagnostics from 
 }
 ```
 
-### Vue
-[ESLint Stylistic][plugin-stylistic] and [eslint-plugin-vue][plugin-vue] don't format `<style>` blocks inside Vue SFCs. On the other hand, [Prettier][prettier] cannot be limited to just `<style>` blocks, and formats the whole file, including `<script>` and `<template>` blocks, which could conflict with ESLint. To work around this, you may use Tailwind, format styles manually, keep styles in separate `.css` files, or use Prettier and resolve any resulting conflicts.
-
-Read more about the formatting options and Prettier integration in the [Formatting](#formatting) section.
-
-### Nuxt
-The required Nuxt configurations and rules are already included, so there's no need to install or configure the [@nuxt/eslint][eslint-nuxt] module.
-
 ### Astro
 The accessibility rules in [eslint-plugin-astro][plugin-astro] require [eslint-plugin-jsx-a11y-x][plugin-jsx-a11y-x] as a peer dependency. Install it with:
 ```shell
 pnpm add -D eslint-plugin-jsx-a11y-x
 ```
 When both `astro` and `eslint-plugin-jsx-a11y-x` are detected as dependencies, `configs.astro.accessibility` is set to `true` automatically. To disable the accessibility rules, set `configs.astro.accessibility` to `false`.
+
+### Vue
+[ESLint Stylistic][plugin-stylistic] and [eslint-plugin-vue][plugin-vue] don't format `<style>` blocks inside Vue SFCs. On the other hand, [Prettier][prettier] cannot be limited to just `<style>` blocks, and formats the whole file, including `<script>` and `<template>` blocks, which could conflict with ESLint. To work around this, you may use Tailwind, format styles manually, keep styles in separate `.css` files, or use Prettier and resolve any resulting conflicts.
+
+Read more about the formatting options and Prettier integration in the [Formatting](#formatting) section.
+
+### Nuxt
+The required Nuxt configurations and rules are already included, so there's no need to use the [@nuxt/eslint][eslint-nuxt] module.
+
+### React/Next
+The required Next configurations and rules, including for core web vitals, are already provided, so there's no need to use [eslint-config-next][eslint-next]. Similarly, the React integration also provides React-specific configurations and rules for accessibility and React Hooks.
 
 ### TanStack Start
 > [!NOTE]
@@ -816,6 +819,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [eslint]: https://eslint.org
 [online-preview]: https://eslintconfig.netlify.app
 [eslint-config-ts-setup]: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files
+[eslint-next]: https://nextjs.org/docs/app/api-reference/config/eslint
 [eslint-nuxt]: https://eslint.nuxt.com
 [local-pkg]: https://github.com/antfu-collective/local-pkg
 [prettier]: https://prettier.io
