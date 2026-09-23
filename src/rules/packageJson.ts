@@ -86,6 +86,7 @@ function getPackageJsonRules(options: DeepNonNullable<Options>) {
     'package-json/order-properties': 'warn',
     'package-json/repository-shorthand': 'warn',
     'package-json/require-attribution': 'warn',
+    'package-json/require-package-json-export': 'error',
     'package-json/require-bugs': 'warn',
     'package-json/require-description': ['warn', { ignorePrivate: true }],
     'package-json/require-devEngines': 'warn',
