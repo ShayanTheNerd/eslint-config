@@ -1,9 +1,7 @@
 const defaultIgnorePatterns = [
   /* Dependencies */
-  '**/*.min.*',
   '**/jspm_packages',
   '**/pnpm-lock.yaml',
-  '**/bower_components',
   '**/package-lock.json',
 
   /* Auto-generated files */
@@ -22,6 +20,7 @@ const defaultIgnorePatterns = [
   '**/public',
   '**/output',
   '**/.output',
+  '**/*.min.*',
   '**/.serverless',
   '**/.eslint-config-inspector',
 
@@ -35,7 +34,6 @@ const defaultIgnorePatterns = [
   '**/.cache',
   '**/deno_dir',
   '**/.parcel-cache',
-  '**/*.lerna_backup',
   '**/.postcss-cache',
   '**/.vitepress/cache',
   '**/vite.config.*.timestamp-*',
@@ -43,18 +41,15 @@ const defaultIgnorePatterns = [
   /* Frameworks and tools */
   '**/.nx',
   '**/.vite',
-  '**/.yarn',
   '**/.nuxt',
   '**/.next',
   '**/.astro',
   '**/.vitest',
   '**/.vercel',
-  '**/.svelte-kit',
   '**/.vite-inspect',
 
   /* Tests */
   '**/coverage',
-  '**/_fixtures',
   '**/.nyc_output',
   '**/__snapshots__',
 
