@@ -1,6 +1,8 @@
+autoDedupe: true
 engineStrict: true
 minimumReleaseAge: 100
 saveExact: true
+saveTypes: true
 shellEmulator: true
 
 update:
