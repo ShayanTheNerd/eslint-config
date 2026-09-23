@@ -10,6 +10,7 @@ function getImportXRules(options: DeepNonNullable<Options>) {
   const {
     packageDir,
     configs: {
+      unicorn,
       typescript,
     },
   } = options;
@@ -29,7 +30,7 @@ function getImportXRules(options: DeepNonNullable<Options>) {
 
     /* Module Systems */
     'import-x/no-amd': 'error',
-    'import-x/no-commonjs': 'error',
+    'import-x/no-commonjs': isEnabled(unicorn) ? 'off' : 'error',
     'import-x/no-import-module-exports': 'error',
 
     /* Static Analysis */

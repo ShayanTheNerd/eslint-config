@@ -6,7 +6,7 @@ import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
 function getTypescriptRules(options: DeepNonNullable<Options>) {
-  const { typescript } = options.configs;
+  const { unicorn, typescript } = options.configs;
   const {
     removeUnusedImports,
     typeDefinitionStyle,
@@ -49,7 +49,7 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-non-null-asserted-optional-chain': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
     '@typescript-eslint/no-redundant-type-constituents': 'error',
-    '@typescript-eslint/no-require-imports': 'error',
+    '@typescript-eslint/no-require-imports': isEnabled(unicorn) ? 'off' : 'error',
     '@typescript-eslint/no-this-alias': 'error',
     '@typescript-eslint/no-unnecessary-boolean-literal-compare': 'error',
     '@typescript-eslint/no-unnecessary-condition': ['error', {
