@@ -8,6 +8,9 @@ export default defineConfig(
       ignores: ['./src/types/eslint-schema.d.ts'],
     },
     configs: {
+      astro: {
+        accessibility: false,
+      },
       typescript: {
         allowedDefaultProjects: ['{eslint,prettier}.config.?([mc])ts'],
       },
