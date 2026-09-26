@@ -2,9 +2,6 @@ name: SETUP
 description: 'Set up the environment and install the dependencies'
 
 inputs:
-  full-git-history:
-    required: false
-    default: 'false'
   node-registry-url:
     required: false
     default: ''
@@ -12,11 +9,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Prepare the environment
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      with:
-        fetch-depth: ${{ inputs.full-git-history == 'true' && 0 || 1 }}
-
     - name: Install PNPM
       uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
 

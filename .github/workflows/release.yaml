@@ -25,9 +25,14 @@ jobs:
       contents: write
 
     steps:
-      - uses: ./.github/actions/setup
+      - name: Prepare the environment
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          full-git-history: 'true'
+          fetch-depth: 0
+
+      - name: Set up PNPM and Node.js, and install the dependencies
+        uses: ./.github/actions/setup
+        with:
           node-registry-url: 'https://registry.npmjs.org'
 
       - name: Configure Git

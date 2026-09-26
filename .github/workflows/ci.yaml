@@ -11,7 +11,11 @@ jobs:
     name: Validate the code
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/setup
+      - name: Prepare the environment
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up PNPM and Node.js, and install the dependencies
+        uses: ./.github/actions/setup
 
       - name: Run the validations
         run: pnpm run ci:validate
