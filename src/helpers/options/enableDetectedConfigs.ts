@@ -26,11 +26,12 @@ function enableDetectedConfigs(options: Options): Options {
     '@playwright/test': options.configs?.test?.playwright === false,
   };
 
+  const isAstroDetected = isPackageDetected('astro', options);
   const autoDetectedPackages = {
     typescript: isPackageDetected('typescript', options),
     zod: isPackageDetected('zod', options),
-    astro: isPackageDetected('astro', options),
-    eslintPluginJsxA11yX: isPackageDetected('eslint-plugin-jsx-a11y-x', options),
+    astro: isAstroDetected,
+    eslintPluginJsxA11yX: isAstroDetected && isPackageDetected('eslint-plugin-jsx-a11y-x', options),
     react: isPackageDetected('react', options),
     next: isPackageDetected('next', options),
     tanstackStart: isPackageDetected('@tanstack/react-start', options),
