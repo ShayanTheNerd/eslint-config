@@ -9,13 +9,16 @@ type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
 type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
 type HtmlSpecificRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
 
-type UnicornRules = PluginRules<'unicorn'>;
-type TailwindRules = PluginRules<'better-tailwindcss'>;
+type HtmlRules = HtmlSpecificRules & Pick<PluginRules<'better-tailwindcss'>, 'better-tailwindcss/no-duplicate-classes'>;
 
-type HtmlRules =
-  & HtmlSpecificRules
-  & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
-  & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
+type UnicornRules = Pick<
+  PluginRules<'unicorn'>,
+  | 'unicorn/relative-url-style'
+  | 'unicorn/no-invalid-integrity'
+  | 'unicorn/consistent-compound-words'
+  | 'unicorn/no-invalid-file-input-accept'
+  | 'unicorn/no-ineffective-csp-directives'
+>;
 
 function getHtmlRules(options: DeepNonNullable<Options>) {
   const { html, unicorn, tailwind, stylistic, baseline } = options.configs;
@@ -105,16 +108,24 @@ function getHtmlRules(options: DeepNonNullable<Options>) {
     '@html-eslint/quotes': ['warn', 'double', { enforceTemplatedAttrValue: true }],
   } satisfies HtmlSpecificRules;
 
+  const unicornRules = {
+    'unicorn/consistent-compound-words': 'warn',
+    'unicorn/no-ineffective-csp-directives': 'error',
+    'unicorn/no-invalid-file-input-accept': 'error',
+    'unicorn/no-invalid-integrity': 'error',
+    'unicorn/relative-url-style': 'warn',
+  } satisfies UnicornRules;
+
   if (isEnabled(stylistic)) {
     Object.assign(htmlRules, stylisticRules);
   }
 
-  if (isEnabled(tailwind)) {
-    (htmlRules as HtmlRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
+  if (isEnabled(unicorn)) {
+    Object.assign(htmlRules, unicornRules);
   }
 
-  if (isEnabled(unicorn)) {
-    (htmlRules as HtmlRules)['unicorn/no-invalid-file-input-accept'] = 'error';
+  if (isEnabled(tailwind)) {
+    (htmlRules as HtmlRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
   }
 
   return htmlRules;

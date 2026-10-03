@@ -13,19 +13,17 @@ type ReactRuleNames = keyof PluginRules<'@eslint-react'>;
 type ReactRuleNamesNotPrefixedWithX = Exclude<ReactRuleNames, `@eslint-react/x-${string}`>;
 type ReactRulesNotPrefixedWithX = Pick<PluginRules<'@eslint-react'>, ReactRuleNamesNotPrefixedWithX>;
 
-type UnicornRules = PluginRules<'unicorn'>;
 type TailwindRules = PluginRules<'better-tailwindcss'>;
 
 type ReactAndHtmlReactRules =
   & HtmlReactRules
   & ReactRulesNotPrefixedWithX
-  & Pick<UnicornRules, 'unicorn/no-invalid-file-input-accept'>
   & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
 
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
-  const { react, unicorn, tailwind, baseline, stylistic, typescript } = options.configs;
+  const { react, tailwind, baseline, stylistic, typescript } = options.configs;
   const {
     imageComponents: userImageComponents,
     anchorComponents: userAnchorComponents,
@@ -198,10 +196,6 @@ function getReactRules(options: DeepNonNullable<Options>) {
     if (tailwind.multilineSort) {
       reactRules['@html-eslint/react/classname-spacing'] = 'off';
     }
-  }
-
-  if (isEnabled(unicorn)) {
-    (reactRules as ReactAndHtmlReactRules)['unicorn/no-invalid-file-input-accept'] = 'error';
   }
 
   return reactRules;

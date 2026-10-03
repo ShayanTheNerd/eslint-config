@@ -5,7 +5,13 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-type MarkdownRules = PluginRules<'markdown'> & Pick<PluginRules<'unicorn'>, 'unicorn/no-missing-local-resource'>;
+type UnicornRules = Pick<
+  PluginRules<'unicorn'>,
+  | 'unicorn/no-javascript-url'
+  | 'unicorn/no-empty-link-text'
+  | 'unicorn/relative-url-style'
+  | 'unicorn/no-missing-local-resource'
+>;
 
 function getMarkdownRules(options: DeepNonNullable<Options>) {
   const { unicorn, markdown } = options.configs;
@@ -55,10 +61,17 @@ function getMarkdownRules(options: DeepNonNullable<Options>) {
     'markdown/no-unused-definitions': isCommonMark ? 'off' : 'warn',
     'markdown/require-alt-text': 'warn',
     'markdown/table-column-count': isCommonMark ? 'off' : ['error', { checkMissingCells: true }],
-  } satisfies MarkdownRules;
+  } satisfies PluginRules<'markdown'>;
+
+  const unicornRules = {
+    'unicorn/no-javascript-url': 'error',
+    'unicorn/no-empty-link-text': 'error',
+    'unicorn/no-missing-local-resource': 'error',
+    'unicorn/relative-url-style': 'warn',
+  } satisfies UnicornRules;
 
   if (isEnabled(unicorn)) {
-    (markdownRules as MarkdownRules)['unicorn/no-missing-local-resource'] = 'error';
+    Object.assign(markdownRules, unicornRules);
   }
 
   return markdownRules;
