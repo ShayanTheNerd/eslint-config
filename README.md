@@ -35,7 +35,7 @@ Legend:
 | [TypeScript][plugin-ts]                                                                                 |     🔍      |
 | [Markdown][plugin-md]                                                                                   |     ✅      |
 | [HTML][plugin-html]                                                                                     |     ⚙️      |
-| [CSS][plugin-css]                                                                                       |     ⚙️      |
+| [CSS][plugin-css] ([eslint-cssicorn][plugin-cssicorn])                                                  |     ⚙️      |
 | **Formatting**                                                                                          |            |
 | [Stylistic][plugin-stylistic]                                                                           |     ✅      |
 | [Perfectionist][plugin-perfectionist]                                                                   |     ✅      |
@@ -768,7 +768,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [MIT][license] License © 2025-PRESENT — [Shayan Zamani][ShayanTheNerd]
 
 <!-- Badges -->
-[license]: ./LICENSE
+[license]: LICENSE
 [license-badge]: https://img.shields.io/badge/License-MIT-blue.svg?logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
 [npm-version-badge]: https://img.shields.io/npm/v/@shayanthenerd/eslint-config?label=&logo=npm&logoColor=FEFEFE&labelColor=3B82F6&color=3B82F6
 [npmx]: https://www.npmjs.com/package/@shayanthenerd/eslint-config
@@ -782,6 +782,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 [plugin-astro]: https://ota-meshi.github.io/eslint-plugin-astro
 [plugin-baseline]: https://baselinejs.vercel.app
 [plugin-css]: https://github.com/eslint/css
+[plugin-cssicorn]: https://github.com/sindresorhus/eslint-cssicorn
 [plugin-cypress]: https://github.com/cypress-io/eslint-plugin-cypress
 [plugin-html]: https://html-eslint.org
 [plugin-html-react]: https://html-eslint.org/docs/react/getting-started
@@ -815,7 +816,7 @@ This project was inspired by the work of [Anthony Fu][antfu], whose generous con
 
 <!-- References -->
 [antfu]: https://github.com/antfu
-[contributing]: ./.github/CONTRIBUTING.md
+[contributing]: .github/CONTRIBUTING.md
 [eslint]: https://eslint.org
 [online-preview]: https://eslintconfig.netlify.app
 [eslint-config-ts-setup]: https://eslint.org/docs/latest/use/configure/configuration-files#typescript-configuration-files

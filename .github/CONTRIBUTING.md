@@ -97,7 +97,7 @@ By contributing, you agree that your contributions will be licensed under the [p
 
 <!-- References -->
 [bug-report-template]: https://github.com/ShayanTheNerd/eslint-config/issues/new?template=bug_report.md
-[code-of-conduct]: ./CODE_OF_CONDUCT.md
+[code-of-conduct]: CODE_OF_CONDUCT.md
 [conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0
 [eslint-typegen]: https://github.com/antfu/eslint-typegen
 [eslint-vscode-extension]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint

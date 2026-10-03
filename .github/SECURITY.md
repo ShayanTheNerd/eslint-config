@@ -5,4 +5,4 @@ If you discover a vulnerability or security issue, please report it by submittin
 
 Your responsible disclosure of security issues are appreciated and will be addressed as soon as possible.
 
-[bug-report-template]: ./ISSUE_TEMPLATE/bug_report.md
+[bug-report-template]: ISSUE_TEMPLATE/bug_report.md

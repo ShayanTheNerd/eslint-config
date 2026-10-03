@@ -306,33 +306,25 @@ interface Options {
     },
 
     /**
-     * Use [@eslint/css](https://github.com/eslint/css) and [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)'s CSS rules to enforce CSS best practices and identify mistakes.
+     * Use [@eslint/css](https://github.com/eslint/css) and [eslint-cssicorn](https://github.com/sindresorhus/eslint-cssicorn) to enforce CSS best practices and identify mistakes.
      *
      * @default false
      */
     css?: boolean | ConfigWithOverrides<PluginRules<'css'>> & {
       /**
-       * Non-standard, vendor-prefixed, and/or framework-specific pseudo-selectors.
+       * Allowed, unknown (non-standard) pseudo-selectors.
        *
        * New items extend the defaults instead of overriding them.
        *
-       * @default
-       * [
-       *   '::-ms-reveal',
-       *   ':-webkit-autofill',
-       *   '::-webkit-inner-spin-button',
-       *   '::-webkit-search-cancel-button',
-       *   '::-webkit-search-results-button',
-       *   ':deep', ':global', ':slotted' // If Vue integration is enabled
-       * ]
+       * @default []
        *
-       * @see [unicorn/no-unknown-pseudo-selectors: `allow` option](https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unknown-pseudo-selectors.md#allow)
+       * @see [cssicorn/no-unknown-pseudo-selectors: `allow` option](https://github.com/sindresorhus/eslint-cssicorn/blob/main/docs/rules/no-unknown-pseudo-selectors.md#allow)
        */
-      allowedUnknownPseudoSelectors?: RuleOptions<'unicorn/no-unknown-pseudo-selectors'>['allow'],
+      allowedUnknownPseudoSelectors?: RuleOptions<'cssicorn/no-unknown-pseudo-selectors'>['allow'],
     },
 
     /**
-     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) to enforce SEO and accessibility best practices, as well as some stylistic rules.
+     * Use [@html-eslint/eslint-plugin](https://html-eslint.org) and [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)'s HTML rules to enforce SEO and accessibility best practices, as well as some stylistic rules.
      *
      * @default false
      */
@@ -355,7 +347,7 @@ interface Options {
     importX?: boolean | ConfigWithOverrides<PluginRules<'import-x'>>,
 
     /**
-     * Use [@eslint/markdown](https://github.com/eslint/markdown) to enforce best practices for Markdown files.
+     * Use [@eslint/markdown](https://github.com/eslint/markdown) and [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn)'s Markdown rules to enforce best practices for Markdown files.
      *
      * @default true
      */
@@ -393,7 +385,7 @@ interface Options {
      */
     packageJson?: boolean | ConfigWithOverrides<PluginRules<'package-json'>> & {
       /**
-       * The allowed [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages).
+       * Allowed [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages).
        *
        * @default []
        *
@@ -402,7 +394,7 @@ interface Options {
       allowedDistTags?: RuleOptions<'package-json/restrict-dist-tags'>['allowed'],
 
       /**
-       * The dependencies for which the [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages) are allowed.
+       * Dependencies for which the [NPM distribution tags](https://docs.npmjs.com/adding-dist-tags-to-packages) are allowed.
        *
        * @default []
        *
