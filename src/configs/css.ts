@@ -2,8 +2,8 @@ import type { Linter } from 'eslint';
 import type { DeepNonNullable } from '#types/helpers.d.ts';
 import type { Options } from '#types/index.d.ts';
 
+import eslintPluginCssicorn from 'eslint-cssicorn';
 import { mergeConfigs } from 'eslint-flat-config-utils';
-import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import eslintPluginCss from '@eslint/css';
 import { tailwind3, tailwind4 } from 'tailwind-csstree';
 
@@ -13,7 +13,7 @@ import { getCssRules } from '#rules/css.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
 function getCssConfig(options: DeepNonNullable<Options>): Linter.Config {
-  const { css, unicorn, tailwind } = options.configs;
+  const { css, tailwind } = options.configs;
   const { overrides } = isEnabled(css) ? css : defaultOptions.configs.css;
   const tailwindSyntax = isEnabled(tailwind) && tailwind.entryPoint ? tailwind4 : tailwind3;
 
@@ -22,7 +22,7 @@ function getCssConfig(options: DeepNonNullable<Options>): Linter.Config {
     files: [globs.css],
     plugins: {
       css: eslintPluginCss,
-      ...(isEnabled(unicorn) && { unicorn: eslintPluginUnicorn }),
+      cssicorn: eslintPluginCssicorn,
     },
     language: 'css/css',
     languageOptions: {

@@ -4,24 +4,6 @@ import type { Options } from '#types/index.d.ts';
 
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
-import { isTruthy } from '#utils/isTruthy.ts';
-
-type UnicornRules = Pick<
-  PluginRules<'unicorn'>,
-  | 'unicorn/no-invalid-media-features'
-  | 'unicorn/no-deprecated-css-features'
-  | 'unicorn/no-duplicate-css-selectors'
-  | 'unicorn/no-unknown-css-annotations'
-  | 'unicorn/no-unknown-pseudo-selectors'
-  | 'unicorn/no-duplicate-font-family-names'
-  | 'unicorn/prefer-explicit-viewport-units'
-  | 'unicorn/no-redundant-nested-style-rules'
-  | 'unicorn/no-shorthand-property-overrides'
-  | 'unicorn/no-unscoped-css-nesting-selector'
-  | 'unicorn/no-nesting-with-mixed-specificity'
-  | 'unicorn/prefer-media-feature-range-syntax'
->;
-type CssRules = UnicornRules & PluginRules<'css'>;
 
 const allowedPhysicalUnits = [
   'cqh',
@@ -69,7 +51,7 @@ const allowedPhysicalProperties = [
 ] satisfies RuleOptions<'css/prefer-logical-properties'>['allowProperties'];
 
 function getCssRules(options: DeepNonNullable<Options>) {
-  const { css, vue, unicorn, tailwind, baseline } = options.configs;
+  const { css, tailwind, baseline } = options.configs;
   const {
     allowedUnknownPseudoSelectors: userAllowedUnknownPseudoSelectors,
   } = isEnabled(css) ? css : defaultOptions.configs.css;
@@ -83,7 +65,8 @@ function getCssRules(options: DeepNonNullable<Options>) {
     allowedUnits: userAllowedUnits,
   } = isEnabled(baseline) ? baseline.css : defaultOptions.configs.baseline.css;
 
-  const cssRules = {
+  const rules = {
+    /* CSS */
     'css/font-family-fallbacks': 'warn',
     'css/no-duplicate-imports': 'error',
     'css/no-duplicate-keyframe-selectors': 'error',
@@ -117,40 +100,32 @@ function getCssRules(options: DeepNonNullable<Options>) {
         allowUnits: userAllowedUnits,
       },
     ] : 'off',
-  } satisfies CssRules;
 
-  const unicornRules = {
-    'unicorn/no-deprecated-css-features': 'error',
-    'unicorn/no-duplicate-css-selectors': 'warn',
-    'unicorn/no-duplicate-font-family-names': 'error',
-    'unicorn/no-invalid-media-features': 'error',
-    'unicorn/no-nesting-with-mixed-specificity': 'warn',
-    'unicorn/no-redundant-nested-style-rules': 'warn',
-    'unicorn/no-shorthand-property-overrides': 'warn',
-    'unicorn/no-unknown-css-annotations': 'error',
-    'unicorn/no-unknown-pseudo-selectors': ['error', {
-      allow: [
-        '::-ms-reveal',
-        ':-webkit-autofill',
-        '::-webkit-inner-spin-button',
-        '::-webkit-search-cancel-button',
-        '::-webkit-search-results-button',
-        ...(isEnabled(vue) ? [':deep', ':global', ':slotted'] : []),
-        ...userAllowedUnknownPseudoSelectors,
-      ].filter(isTruthy),
-    }],
-    'unicorn/no-unscoped-css-nesting-selector': (
-      isEnabled(tailwind) ? ['error', { scopingRootAtRules: ['utility', 'custom-variant'] }] : 'error'
-    ),
-    'unicorn/prefer-explicit-viewport-units': 'warn',
-    'unicorn/prefer-media-feature-range-syntax': 'warn',
-  } satisfies UnicornRules;
+    /* CSSicorn */
+    'cssicorn/lowercase': 'error',
+    'cssicorn/no-declarations-after-nested-rules': 'warn',
+    'cssicorn/no-deprecated-features': 'error',
+    'cssicorn/no-descending-specificity': 'warn',
+    'cssicorn/no-duplicate-font-family-names': 'error',
+    'cssicorn/no-duplicate-properties': 'warn',
+    'cssicorn/no-duplicate-selectors': 'warn',
+    'cssicorn/no-invalid-media-features': 'error',
+    'cssicorn/no-nesting-with-mixed-specificity': 'warn',
+    'cssicorn/no-redundant-nested-style-rules': 'warn',
+    'cssicorn/no-redundant-shorthand-values': 'warn',
+    'cssicorn/no-self-referencing-custom-properties': 'error',
+    'cssicorn/no-unknown-animations': 'error',
+    'cssicorn/no-unknown-annotations': 'error',
+    'cssicorn/no-unknown-pseudo-selectors': ['error', { allow: userAllowedUnknownPseudoSelectors }],
+    'cssicorn/no-unscoped-nesting-selector': isEnabled(tailwind) ? 'error' : ['error', { scopingRootAtRules: [] }],
+    'cssicorn/no-zero-length-unit': 'warn',
+    'cssicorn/prefer-explicit-viewport-units': 'warn',
+    'cssicorn/prefer-media-feature-range-syntax': 'warn',
+    'cssicorn/prefer-modern-syntax': 'warn',
+    'cssicorn/require-property-descriptors': 'error',
+  } satisfies PluginRules<'css'> & PluginRules<'cssicorn'>;
 
-  if (isEnabled(unicorn)) {
-    Object.assign(cssRules, unicornRules);
-  }
-
-  return cssRules;
+  return rules;
 }
 
 export { getCssRules };
