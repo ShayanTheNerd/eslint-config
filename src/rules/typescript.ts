@@ -15,7 +15,7 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
 
   const typescriptRules = {
     /* Strict Type-Checked */
-    '@typescript-eslint/await-thenable': 'error',
+    '@typescript-eslint/await-thenable': ['error', { allowMixedPromiseArrays: true }],
     '@typescript-eslint/ban-ts-comment': ['warn', {
       'ts-expect-error': {
         descriptionFormat: '^ -- .+ $',
