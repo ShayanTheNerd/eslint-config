@@ -78,6 +78,13 @@ function getPackageJsonRules(options: DeepNonNullable<Options>) {
 
   const packageJsonRules = {
     'package-json/bin-name-casing': 'warn',
+    'package-json/consistent-package-manager-declaration': 'warn',
+    'package-json/consistent-property-aliases': ['warn', {
+      prefer: {
+        license: 'license',
+        bundleDependencies: 'bundledDependencies',
+      },
+    }],
     'package-json/exports-subpaths-style': ['warn', { prefer: 'implicit' }],
     'package-json/no-empty-fields': 'error',
     'package-json/no-local-dependencies': 'error',
