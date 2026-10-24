@@ -302,10 +302,9 @@ You can also add the following to your _.vscode/settings.json_:
     { "rule": "*quotes", "severity": "off", "fixable": true },
     { "rule": "import*", "severity": "off", "fixable": true },
     { "rule": "*-spac*", "severity": "off", "fixable": true },
-    { "rule": "*order-*", "severity": "off", "fixable": true },
+    { "rule": "*order*", "severity": "off", "fixable": true },
     { "rule": "*newline*", "severity": "off", "fixable": true },
     { "rule": "*attribute*", "severity": "off", "fixable": true },
-    { "rule": "package-json/order-properties", "severity": "off", "fixable": true },
     { "rule": "vue/max-len", "severity": "off", "fixable": true },
     { "rule": "vue/comma-dangle", "severity": "off", "fixable": true },
     { "rule": "vue/space-in-parens", "severity": "off", "fixable": true }
