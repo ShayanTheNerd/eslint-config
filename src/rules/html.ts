@@ -5,22 +5,19 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
-type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
-type HtmlSpecificRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
-
-type HtmlRules = HtmlSpecificRules & Pick<PluginRules<'better-tailwindcss'>, 'better-tailwindcss/no-duplicate-classes'>;
-
-type UnicornRules = Pick<
-  PluginRules<'unicorn'>,
-  | 'unicorn/relative-url-style'
-  | 'unicorn/no-invalid-integrity'
-  | 'unicorn/consistent-compound-words'
-  | 'unicorn/no-invalid-file-input-accept'
-  | 'unicorn/no-ineffective-csp-directives'
->;
-
 function getHtmlRules(options: DeepNonNullable<Options>) {
+  type UnicornRules = Pick<
+    PluginRules<'unicorn'>,
+    | 'unicorn/relative-url-style'
+    | 'unicorn/no-invalid-integrity'
+    | 'unicorn/consistent-compound-words'
+    | 'unicorn/no-invalid-file-input-accept'
+    | 'unicorn/no-ineffective-csp-directives'
+  >;
+  type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
+  type HtmlRuleNames = Exclude<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
+  type HtmlSpecificRules = Pick<PluginRules<'@html-eslint'>, HtmlRuleNames>;
+
   const { html, unicorn, tailwind, stylistic, baseline } = options.configs;
   const { idNamingConvention } = isEnabled(html) ? html : defaultOptions.configs.html;
   const {
@@ -125,6 +122,7 @@ function getHtmlRules(options: DeepNonNullable<Options>) {
   }
 
   if (isEnabled(tailwind)) {
+    type HtmlRules = HtmlSpecificRules & Pick<PluginRules<'better-tailwindcss'>, 'better-tailwindcss/no-duplicate-classes'>;
     (htmlRules as HtmlRules)['better-tailwindcss/no-duplicate-classes'] = 'off';
   }
 

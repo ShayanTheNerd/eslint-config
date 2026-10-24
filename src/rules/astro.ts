@@ -5,16 +5,16 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-type ImportXRules = PluginRules<'import-x'>;
-type StylisticRules = PluginRules<'@stylistic'>;
-type AstroRules =
-  & PluginRules<'astro'>
-  & Pick<ImportXRules, 'import-x/exports-last'>
-  & Pick<StylisticRules, '@stylistic/jsx-one-expression-per-line'>;
-type AstroJsxA11yRuleNames = Extract<keyof AstroRules, `astro/jsx-a11y/${string}`>;
-type AstroJsxA11yRules = Pick<AstroRules, AstroJsxA11yRuleNames>;
-
 function getAstroRules(options: DeepNonNullable<Options>) {
+  type StylisticRules = PluginRules<'@stylistic'>;
+  type ImportXRules = PluginRules<'import-x'>;
+  type AstroRules =
+    & PluginRules<'astro'>
+    & Pick<ImportXRules, 'import-x/exports-last'>
+    & Pick<StylisticRules, '@stylistic/jsx-one-expression-per-line'>;
+  type AstroJsxA11yRuleNames = Extract<keyof AstroRules, `astro/jsx-a11y/${string}`>;
+  type AstroJsxA11yRules = Pick<AstroRules, AstroJsxA11yRuleNames>;
+
   const { astro, importX, stylistic } = options.configs;
   const { semi } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
   const { accessibility } = isEnabled(astro) ? astro : defaultOptions.configs.astro;

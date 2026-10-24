@@ -5,24 +5,21 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
-type HtmlReactRuleNames = Extract<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
-type HtmlReactRules = Pick<PluginRules<'@html-eslint'>, HtmlReactRuleNames>;
-
-type ReactRuleNames = keyof PluginRules<'@eslint-react'>;
-type ReactRuleNamesNotPrefixedWithX = Exclude<ReactRuleNames, `@eslint-react/x-${string}`>;
-type ReactRulesNotPrefixedWithX = Pick<PluginRules<'@eslint-react'>, ReactRuleNamesNotPrefixedWithX>;
-
-type TailwindRules = PluginRules<'better-tailwindcss'>;
-
-type ReactAndHtmlReactRules =
-  & HtmlReactRules
-  & ReactRulesNotPrefixedWithX
-  & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
-
 const commonCallees = ['classnames', 'classNames', 'clsx', 'cx', 'cva', 'cn', 'twMerge', 'twJoin', 'classcat', 'ctl'];
 
 function getReactRules(options: DeepNonNullable<Options>) {
+  type TailwindRules = PluginRules<'better-tailwindcss'>;
+  type ReactRuleNames = keyof PluginRules<'@eslint-react'>;
+  type ReactRuleNamesNotPrefixedWithX = Exclude<ReactRuleNames, `@eslint-react/x-${string}`>;
+  type ReactRulesNotPrefixedWithX = Pick<PluginRules<'@eslint-react'>, ReactRuleNamesNotPrefixedWithX>;
+  type HtmlAndReactRuleNames = keyof PluginRules<'@html-eslint'>;
+  type HtmlReactRuleNames = Extract<HtmlAndReactRuleNames, `@html-eslint/react/${string}`>;
+  type HtmlReactRules = Pick<PluginRules<'@html-eslint'>, HtmlReactRuleNames>;
+  type ReactAndHtmlReactRules =
+    & HtmlReactRules
+    & ReactRulesNotPrefixedWithX
+    & Pick<TailwindRules, 'better-tailwindcss/no-duplicate-classes'>;
+
   const { react, tailwind, baseline, stylistic, typescript } = options.configs;
   const {
     imageComponents: userImageComponents,

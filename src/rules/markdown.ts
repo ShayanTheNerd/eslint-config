@@ -5,15 +5,15 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-type UnicornRules = Pick<
-  PluginRules<'unicorn'>,
-  | 'unicorn/no-javascript-url'
-  | 'unicorn/no-empty-link-text'
-  | 'unicorn/relative-url-style'
-  | 'unicorn/no-missing-local-resource'
->;
-
 function getMarkdownRules(options: DeepNonNullable<Options>) {
+  type UnicornRules = Pick<
+    PluginRules<'unicorn'>,
+    | 'unicorn/no-javascript-url'
+    | 'unicorn/no-empty-link-text'
+    | 'unicorn/relative-url-style'
+    | 'unicorn/no-missing-local-resource'
+  >;
+
   const { unicorn, markdown } = options.configs;
   const {
     language,
