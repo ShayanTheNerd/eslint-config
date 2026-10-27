@@ -5,10 +5,6 @@ import type { Options } from '#types/index.d.ts';
 import { defaultOptions } from '#helpers/options/defaultOptions.ts';
 import { isEnabled } from '#utils/isEnabled.ts';
 
-/**
-  Using a wildcard to target all objects within an array isn't supported yet.
-  @see https://github.com/michaelfaith/eslint-plugin-package-json/issues/1967
-*/
 const collectionSortPatterns = [
   {
     key: 'author',
@@ -19,16 +15,16 @@ const collectionSortPatterns = [
     order: ['email', 'url'],
   },
   'config',
-  // {
-  //   key: 'contributors.*',
-  //   order: ['name', 'email', 'url'],
-  // },
+  {
+    key: 'contributors.*',
+    order: ['name', 'email', 'url'],
+  },
   'dependencies',
   'devEngines',
-  // {
-  //   key: 'devEngines.*',
-  //   order: ['name', 'version', 'onFail'],
-  // },
+  {
+    key: 'devEngines.*',
+    order: ['name', 'version', 'onFail'],
+  },
   'devDependencies',
   'directories',
   {
@@ -37,21 +33,21 @@ const collectionSortPatterns = [
   },
   'engines',
   'exports',
-  // {
-  //   key: 'funding.*',
-  //   order: ['type', 'url'],
-  // },
+  {
+    key: 'funding.*',
+    order: ['type', 'url'],
+  },
   'husky',
   'husky.hooks',
-  // {
-  //   key: 'licenses.*',
-  //   order: ['type', 'url'],
-  // },
+  {
+    key: 'licenses.*',
+    order: ['type', 'url'],
+  },
   'lint-staged',
-  // {
-  //   key: 'maintainers.*',
-  //   order: ['name', 'email', 'url'],
-  // },
+  {
+    key: 'maintainers.*',
+    order: ['name', 'email', 'url'],
+  },
   'nano-staged',
   'optionalDependencies',
   'overrides',
@@ -63,10 +59,10 @@ const collectionSortPatterns = [
   },
   'release',
   'simple-git-hooks',
-  // {
-  //   key: 'workspaces.*',
-  //   order: ['packages', 'nohoist'],
-  // },
+  {
+    key: 'workspaces.*',
+    order: ['packages', 'nohoist'],
+  },
 ] satisfies RuleOptions<'package-json/sort-collections'>;
 
 function getPackageJsonRules(options: DeepNonNullable<Options>) {
