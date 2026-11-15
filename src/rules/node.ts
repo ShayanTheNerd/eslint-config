@@ -8,7 +8,6 @@ function getNodeRules(options: DeepNonNullable<Options>) {
   const { typescript } = options.configs;
 
   const nodeRules = {
-    'n/file-extension-in-import': 'error',
     'n/hashbang': 'error',
     'n/no-deprecated-api': 'error',
     'n/no-exports-assign': 'error',
