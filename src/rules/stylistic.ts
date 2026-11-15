@@ -21,8 +21,6 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
   } = isEnabled(stylistic) ? stylistic : defaultOptions.configs.stylistic;
 
   const stylisticRules = {
-    '@stylistic/array-bracket-newline': ['warn', 'consistent'],
-    '@stylistic/array-bracket-spacing': 'warn',
     '@stylistic/arrow-parens': ['warn', arrowParens],
     '@stylistic/arrow-spacing': 'warn',
     '@stylistic/block-spacing': 'warn',
@@ -33,8 +31,7 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
     '@stylistic/computed-property-spacing': 'warn',
     '@stylistic/dot-location': ['warn', 'property'],
     '@stylistic/eol-last': 'warn',
-    '@stylistic/exp-list-style': 'warn',
-    '@stylistic/function-call-argument-newline': ['warn', 'consistent'],
+    '@stylistic/list-style': 'warn',
     '@stylistic/generator-star-spacing': ['warn', 'after'],
     '@stylistic/implicit-arrow-linebreak': ['warn', 'beside'],
     '@stylistic/indent': ['warn', indent, {
@@ -65,6 +62,8 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
       },
     }],
     '@stylistic/jsx-quotes': ['warn', jsxQuotes],
+    '@stylistic/jsx-shorthand-boolean': 'warn',
+    '@stylistic/jsx-shorthand-fragment': 'warn',
     '@stylistic/jsx-tag-spacing': 'warn',
     '@stylistic/jsx-wrap-multilines': 'warn',
     '@stylistic/key-spacing': 'warn',
@@ -111,12 +110,6 @@ function getStylisticRules(options: DeepNonNullable<Options>) {
     '@stylistic/no-trailing-spaces': 'warn',
     '@stylistic/no-whitespace-before-property': 'warn',
     '@stylistic/nonblock-statement-body-position': 'warn',
-    '@stylistic/object-curly-newline': ['warn', {
-      multiline: true,
-      consistent: true,
-    }],
-    '@stylistic/object-curly-spacing': ['warn', 'always', { emptyObjects: 'never' }],
-    '@stylistic/object-property-newline': ['warn', { allowAllPropertiesOnSameLine: true }],
     '@stylistic/operator-linebreak': ['warn', 'none', {
       overrides: {
         '=': 'after',
