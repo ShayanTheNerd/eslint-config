@@ -64,7 +64,6 @@ function getTypescriptRules(options: DeepNonNullable<Options>) {
     '@typescript-eslint/no-unsafe-argument': 'warn',
     '@typescript-eslint/no-unsafe-assignment': 'warn',
     '@typescript-eslint/no-unsafe-call': 'warn',
-    '@typescript-eslint/no-unsafe-class-instance-assignment': 'error',
     '@typescript-eslint/no-unsafe-declaration-merging': 'warn',
     '@typescript-eslint/no-unsafe-enum-assignment': 'error',
     '@typescript-eslint/no-unsafe-enum-comparison': 'error',
