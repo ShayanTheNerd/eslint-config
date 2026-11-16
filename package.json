@@ -110,7 +110,7 @@
     "local-pkg": "2.0.0",
     "nuxt-link-checker": "6.0.1",
     "tailwind-csstree": "0.4.2",
-    "typescript-eslint": "8.72.2"
+    "typescript-eslint": "8.73.0"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
